@@ -472,4 +472,15 @@ hr { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 30px 0; 
     .modal-content { padding: 30px 20px; width: 95%; }
     .modal-content h3 { font-size: 1.8rem; }
     .close-modal { top: 15px; right: 15px; font-size: 2rem; }
+
+}
+
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--bg-dark); /* Utilise ta variable de fond */
+    color: var(--accent); /* Ton doré */
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2); /* Fine ligne dorée */
 }
