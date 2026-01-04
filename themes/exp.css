@@ -244,8 +244,9 @@ details strong { color: var(--gold-main); font-weight: 600; }
     text-align: center;
     padding: 20px;
     background-color: var(--bg-dark); /* Utilise ta variable de fond */
-    color: var(--accent); /* Ton doré */
+    color: var(--gold-500); /* Ton doré */
     font-family: var(--font-sans);
     font-size: 0.9rem;
     border-top: 1px solid rgba(212, 175, 55, 0.2); /* Fine ligne dorée */
 }
+
