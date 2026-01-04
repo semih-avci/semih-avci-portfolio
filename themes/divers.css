@@ -279,11 +279,12 @@ body {
 
 .site-footer {
     text-align: center;
-    padding: 20px;
+    padding: 40px;
     background-color: var(--bg-master); /* Utilise ta variable de fond */
     color: var(--gold-500); /* Ton doré */
     font-family: var(--font-body);
     font-size: 0.9rem;
     border-top: 1px solid rgba(212, 175, 55, 0.2); /* Fine ligne dorée */
 }
+
 
