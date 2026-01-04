@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet King Domino - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../themes/projet-kingdomino.css">
+</head>
+<body class="project-detail-body">
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projets.html" class="back-link">&larr; Retour aux projets</a><br><br>
+		<a href="../parcours.html" class="back-link">&larr; Retour au parcours </a>
+            </div>
+
+            <h1 class="page-title">King Domino<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Programmation Python</span>
+        </header>
+
+        <section class="featured-card">
+            <h2 class="card-title">1. Contexte du Projet</h2>
+            <p class="card-text">
+                Ce projet a été réalisé dans le cadre de mon cursus académique. L'objectif était de développer une version numérique complète du célèbre jeu de société <strong>King Domino</strong>.
+                <br><br>
+                <strong>Les règles du jeu :</strong><br>
+                Le but est de construire un royaume de 5x5 cases en connectant des dominos (Forêt, Prairie, Mer, etc.). Pour poser un domino, elle doit obligatoirement toucher une case du même type, tout en respectant les limites de la grille.
+                <br><br>
+                <strong>L'enjeu technique :</strong><br>
+                Au-delà du jeu, ce projet visait à valider nos compétences en manipulation de structures de données à l'aide des matrices, tout en optimisant la complexité des codes et en se répartissant la tâche.
+            </p>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card" style="margin-bottom: 30px;">
+                <h2 class="card-title">2. Travail Fourni</h2>
+                <p class="card-text">
+                    Nous avons travaillé en binôme en séparant le code en plusieurs modules distincts pour faciliter la collaboration.
+                    <br><br>
+                    <strong>Répartition des tâches :</strong>
+                    <ul>
+                        <li><strong>Mon Binôme :</strong> S'est occupé de la gestion des données (Création du royaume, pioche de domino) et de la boucle principale du jeu (Parties A, C, E).</li>
+                        <li><strong>Moi (Semih) :</strong>Je me suis occupé du moteur de l'application, ce qui inclu les règles de placement des dominos et l'algorithme de calcul des scores. (Parties B, D, F).</li>
+                    </ul>
+                </p>
+                <div class="tech-tags">
+                    <span>Python Avancé</span>
+                    <span>Matrices 2D</span>
+                    <span>Récursivité</span>
+                    <span>Algorithmique</span>
+                </div>
+            </div>
+
+            <div class="code-modules-container">
+
+                <div class="code-module binome-module">
+                    <details>
+                        <summary class="module-header">
+                            <h3>Partie A : Gestion du royaume <span class="badge-binome">CODE BINÔME</span></h3>
+                            <p>Initialisation des structures de données (Matrices). <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+                        
+                        <div class="code-window">
+                            <pre><code class="language-python">
+import copy
+import random
+
+def creerRoyaume(taille=7):
+    <span class="code-docstring">"""
+    Crée une matrice taille x taille remplie de None,
+    sauf la case centrale qui contient 'CH' (Château).
+    """</span>
+    
+    <span class="code-comment"># Vérification de sécurité : la taille doit être impaire</span>
+    if taille < 0 or taille % 2 == 0:  
+        print("Impossible de créer un royaume : 'taille' est pair ou négatif")
+        return None 
+
+    <span class="code-comment"># Création de la matrice vide (Liste de listes)</span>
+    royaume = [[None for _ in range(taille)] for _ in range(taille)]  
+   
+    milieu = taille // 2  <span class="code-comment"># Trouve le centre</span>
+    royaume[milieu][milieu] = 'CH'  <span class="code-comment"># Place le château</span>
+    
+    return royaume 
+
+def init_tuple_royaumes(taille=7):
+    <span class="code-docstring">"""Initialise les royaumes pour 2 joueurs."""</span>
+    
+    royaume1 = creerRoyaume(taille)
+    <span class="code-comment"># Deepcopy nécessaire pour éviter que les joueurs modifient le même objet mémoire</span>
+    royaume2 = copy.deepcopy(royaume1)  
+    return (royaume1, royaume2)
+
+def afficherCoordonnees(royaume):
+    <span class="code-docstring">"""Aide au débogage : affiche les coordonnées (x,y) de chaque case."""</span>
+    
+    n = len(royaume)
+    for i in range(n):  
+        for j in range(n):  
+            print("|"+str((i,j)), end ="")  
+        print("|") 
+
+def init_cases_libres(taille):
+    <span class="code-docstring">"""Génère la liste de toutes les coordonnées disponibles au début."""</span>
+    
+    cases_libres = [(i, j) for i in range(taille) for j in range(taille)]  
+    milieu = taille // 2  
+    cases_libres.remove((milieu, milieu)) <span class="code-comment"># On enlève le château</span>
+    return cases_libres 
+
+def init_tuple_libres(taille):
+    return (init_cases_libres(taille), init_cases_libres(taille))  
+
+def afficherRoyaume(royaume, joueur="A", vide="  "):
+    <span class="code-docstring">"""Affiche la grille dans la console de manière lisible."""</span>
+    
+    if royaume is None:
+        print("Royaume invalide.")
+        return
+    
+    print(f"Royaume du joueur {joueur}:")  
+    n = len(royaume)  
+    for i in range(n):  
+        for j in range(n):  
+            case = royaume[i][j] if royaume[i][j] is not None else vide  
+            print(f"|{case:2}", end="")  
+        print("|")  
+    print()
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Partie B : Gestion du placement <span class="badge-me">MON CODE</span></h3>
+                            <p>Gestion du positionnement des dominos et respect des règles du jeu (contraintes => adjacent ? collision avec un autre domino ? orientation ? en dehors du royaume ? etc ...) <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+
+                        <div class="code-window">
+                            <pre><code class="language-python">
+from A_gestion_royaume import * def partie_droite_domino(posL, posC, dir):
+    <span class="code-docstring">"""
+    Calcule les coordonnées de la deuxième moitié du domino 
+    en fonction de la direction (Haut, Bas, Gauche, Droite).
+    """</span>
+    
+    if dir == 'top':
+        return (posL + 1, posC) <span class="code-comment"># Attention : en matrice, +1 ligne = descendre visuellement</span>
+    elif dir == 'bottom':
+        return (posL - 1, posC)
+    elif dir == 'left':
+        return (posL, posC + 1)
+    elif dir == 'right':
+        return (posL, posC - 1)
+    else:
+        print(f"Direction mal renseignée : {dir}")
+        return None
+
+def espaceLibre(royaume, posL, posC, dir):
+    <span class="code-docstring">"""
+    Vérifie si un domino peut être posé à un endroit donné.
+    Contraintes :
+    1. Ne pas sortir des limites du tableau (Out of bounds).
+    2. Les cases doivent être vides (None).
+    """</span>
+    
+    taille_roy = len(royaume)
+    droite = partie_droite_domino(posL, posC, dir)
+
+    if droite == None: return False
+
+    <span class="code-comment"># Vérification des bornes (0 <= index < taille)</span>
+    if not(0 <= posL < taille_roy and 0 <= posC < taille_roy and 
+           0 <= droite[0] < taille_roy and 0 <= droite[1] < taille_roy):
+        return False
+
+    <span class="code-comment"># Vérification du contenu des cases</span>
+    if royaume[posL][posC] == None and royaume[droite[0]][droite[1]] == None:
+        return True
+    else:
+        return False
+
+def ajoutDomino(royaume, cases_libres, domino, posL, posC, dir):
+    <span class="code-docstring">"""
+    Place définitivement un domino dans la matrice 'royaume'
+    et met à jour la liste des 'cases_libres'.
+    """</span>
+    
+    if espaceLibre(royaume, posL, posC, dir):
+        <span class="code-comment"># Placement de la première case</span>
+        royaume[posL][posC] = domino[1]
+        if (posL, posC) in cases_libres:
+            cases_libres.remove((posL, posC))
+
+        <span class="code-comment"># Calcul des coordonnées de la deuxième case</span>
+        droite = partie_droite_domino(posL, posC, dir)
+        posL_droite, posC_droite = droite
+        
+        <span class="code-comment"># Placement de la deuxième case</span>
+        royaume[posL_droite][posC_droite] = domino[2]
+        if (posL_droite, posC_droite) in cases_libres:
+            cases_libres.remove((posL_droite, posC_droite))
+
+        print(f"Succès : Domino {domino} ajouté en ({posL}, {posC}).")
+    else:
+        print(f"Erreur : Impossible d'ajouter le domino {domino} ici.")
+
+def voisinages(royaume, posL, posC, libres=False):
+    <span class="code-docstring">"""
+    Retourne la liste des coordonnées voisines (Haut, Bas, Gauche, Droite).
+    Utilisé plus tard pour le calcul des scores (zones adjacentes).
+    """</span>
+    
+    voisins = []
+    taille_roy = len(royaume)
+
+    <span class="code-comment"># Vérification simplifiée des 4 directions</span>
+    if posL < taille_roy - 1: voisins.append((posL+1, posC)) <span class="code-comment"># Haut</span>
+    if posL > 0: voisins.append((posL-1, posC)) <span class="code-comment"># Bas</span>
+    if posC > 0: voisins.append((posL, posC-1)) <span class="code-comment"># Gauche</span>
+    if posC < taille_roy - 1: voisins.append((posL, posC+1)) <span class="code-comment"># Droite</span>
+            
+    return voisins
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module binome-module">
+                    <details>
+                        <summary class="module-header">
+                            <h3>Partie C : Gestion de la pioche des dominos <span class="badge-binome">CODE BINÔME</span></h3>
+                            <p>Chargement des données en format CSV et tirage aléatoire des dominos. <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+
+                        <div class="code-window">
+                            <pre><code class="language-python">
+import random
+import csv
+
+def extraire_dominos(nom_fichier):
+    <span class="code-docstring">"""Extrait les données brutes depuis un fichier CSV."""</span>
+    
+    dominos = []
+    with open(nom_fichier, 'r') as file:
+        for line in file:
+            line = line.strip()
+            a = line.split(';')
+            b = a[0]
+            case1 = a[1]
+            case2 = a[2]
+            <span class="code-comment"># Gestion des intervalles (ex: "1-5")</span>
+            if '-' in b:
+                v1, v2 = b.split('-')
+                i = int(v1)
+                while int(i) <= int(v2):
+                    dominos.append((int(i), case1, case2))
+                    i = i + 1
+            else:
+                dominos.append((int(b), case1, case2))
+    
+    random.shuffle(dominos) <span class="code-comment"># Mélange du paquet</span>
+    return dominos
+
+def extraire_premier_bloc(liste_dominos):
+    <span class="code-docstring">"""Prend les 4 premiers dominos et les trie par numéro."""</span>
+    
+    premiers_dominos = liste_dominos[:4]
+    <span class="code-comment"># Tri à bulles classique</span>
+    for i in range(len(premiers_dominos)):
+        min_index = i
+        for j in range(i + 1, len(premiers_dominos)):
+            if premiers_dominos[j][0] < premiers_dominos[min_index][0]:
+                min_index = j
+        premiers_dominos[i], premiers_dominos[min_index] = premiers_dominos[min_index], premiers_dominos[i]
+    return premiers_dominos
+
+def piocher_bloc(liste_dominos):
+    <span class="code-docstring">"""Retire 4 dominos de la pioche principale."""</span>
+    
+    premiers_dominos = liste_dominos[:4]
+    liste_dominos[:] = liste_dominos[4:] <span class="code-comment"># Met à jour la liste originale</span>
+    <span class="code-comment"># Tri... (identique ci-dessus)</span>
+    for i in range(len(premiers_dominos)):
+        min_index = i
+        for j in range(i + 1, len(premiers_dominos)):
+            if premiers_dominos[j][0] < premiers_dominos[min_index][0]:
+                min_index = j
+        premiers_dominos[i], premiers_dominos[min_index] = premiers_dominos[min_index], premiers_dominos[i]
+    return premiers_dominos
+
+def remplir_choix(liste_dominos, dico_choix):
+    if not liste_dominos:
+        dico_choix.clear()
+        return
+    premiers_dominos = piocher_bloc(liste_dominos)
+    for i in range(4):
+        dico_choix[i + 1] = [premiers_dominos[i], None]
+
+def afficher_choix_ou_depot(dico):
+    for i in range(1, 5):
+        print(i, "- Domino", dico[i][0], "Joueur", dico[i][1])
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Partie D : Gestion des joueurs & IA <span class="badge-me">MON CODE</span></h3>
+                            <p>Système d'interaction avec l'utilisateur et IA classique. <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+
+                        <div class="code-window">
+                            <pre><code class="language-python">
+from B_gestion_dominos import *
+import random
+
+def init_tuple_joueurs(perso = False):
+    <span class="code-docstring">"""Initialise les noms des joueurs."""</span>
+    nom_A = "A"
+    nom_B = "B"
+    if perso:
+        nom_A = input("Nom du premier joueur : ")
+        nom_B = input("Nom du second joueur : ")
+    return nom_A,nom_B
+
+def init_configurations(tuple_joueurs):
+    <span class="code-docstring">"""Demande à chaque joueur s'il veut jouer manuellement ou laisser l'ordi jouer."""</span>
+    
+    joueur_A, joueur_B = tuple_joueurs
+    configurations = {}
+
+    for joueur in (joueur_A, joueur_B):
+        mode = input(f"Quel mode de jeu pour le joueur {joueur} : manuel ou random (m/r) ? ").strip()
+        while mode not in ("m", "r"):
+            print("Saisie incorrecte !", end=" ")
+            mode = input(f"Quel mode de jeu pour le joueur {joueur} : manuel ou random (m/r) ? ").strip()
+        configurations[joueur] = mode
+    return configurations
+
+def pose_domino_manuel(royaume, cases_libres, domino, joueur="A"):
+    <span class="code-docstring">"""Interface console pour demander les coordonnées au joueur."""</span>
+    
+    valide = False
+    while not valide:
+        <span class="code-comment"># Saisie sécurisée des coordonnées</span>
+        ligne = int(input(f"{joueur} : Sur quelle ligne poser le domino {domino} ? "))
+        colonne = int(input(f"{joueur} : Sur quelle colonne poser le domino {domino} ? "))
+        orientation = input(f"{joueur} : Orientation (top/bottom/left/right) ? ").lower()
+
+        if orientation not in ['top', 'bottom', 'left', 'right']:
+            print("Erreur : orientation invalide.")
+            continue
+
+        <span class="code-comment"># Vérification via la fonction codée en Partie B</span>
+        if espaceLibre(royaume, ligne, colonne, orientation): 
+            ajoutDomino(royaume, cases_libres, domino, ligne, colonne, orientation)
+            print(f"{joueur} : Le domino {domino} a bien été ajouté.")
+            valide = True
+        else:
+            print("Erreur ! Le domino ne peut pas être placé à cet endroit.")
+
+def pose_domino_random(royaume, cases_libres, domino, joueur="A", TENTATIVES=10000):
+    <span class="code-docstring">"""
+    IA Aléatoire : Tente 10 000 fois de placer le domino au hasard.
+    Si ça ne marche pas, le domino est jeté.
+    """</span>
+    
+    directions = ["top", "bottom", "left", "right"]
+    domino_place = False 
+    i = 0 
+    
+    while i < TENTATIVES and not domino_place:
+        <span class="code-comment"># Choix aléatoire d'une case libre</span>
+        posL, posC = random.choice(cases_libres)
+        direction = random.choice(directions)
+        
+        <span class="code-comment"># Test de validité</span>
+        if espaceLibre(royaume, posL, posC, direction): 
+            ajoutDomino(royaume, cases_libres, domino, posL, posC, direction)
+            print(f"{joueur} (IA) : Domino {domino} placé.")
+            domino_place = True 
+            break
+        i += 1 
+        
+    if not domino_place:
+        print(f"IA : Impossible de placer le domino après {TENTATIVES} essais.")
+
+def pose_domino(royaume, cases_libres, domino, dico_configurations, joueur):
+    <span class="code-docstring">"""Aiguillage vers la bonne fonction selon la config du joueur."""</span>
+    
+    if dico_configurations[joueur] == 'm':
+        pose_domino_manuel(royaume, cases_libres, domino, joueur)
+    elif dico_configurations[joueur] == 'r':
+        pose_domino_random(royaume, cases_libres, domino, joueur)
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module binome-module">
+                    <details>
+                        <summary class="module-header">
+                            <h3>Partie E : Tour de jeu <span class="badge-binome">CODE BINÔME</span></h3>
+                            <p>Contrôle de l'enchaînement des tours et du choix des dominos. <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+
+                        <div class="code-window">
+                            <pre><code class="language-python">
+from B_gestion_dominos import *
+from C_pile_dominos import *
+from D_gestion_joueurs import *
+import random
+
+def vide_et_transfere_depot(dico_depot, dico_choix):
+    <span class="code-docstring">"""Prépare le tour suivant en déplaçant les choix."""</span>
+    dico_depot.clear()
+    for cle, valeur in dico_choix.items():
+        dico_depot[cle] = valeur[:]
+
+def choix_pion(dico_choix, joueur, dico_configurations):
+    <span class="code-docstring">"""Permet au joueur de réserver son prochain domino."""</span>
+    
+    if joueur not in dico_configurations:
+        return None
+    
+    mode = dico_configurations[joueur]
+    <span class="code-comment"># Filtre les dominos qui n'ont pas encore de propriétaire</span>
+    dominos_disponibles = [num for num, (domino, possesseur) in dico_choix.items() if possesseur is None]
+    
+    if mode == "m":
+        choix_valide = False
+        while not choix_valide:
+            try:
+                choix = int(input(f"{joueur} : Sur quel domino posez-vous votre pion ? "))
+                if choix in dominos_disponibles:
+                    choix_valide = True
+                    return choix
+                else:
+                    print("Impossible ! Ce domino n'est pas disponible.")
+            except ValueError:
+                print("Entrée invalide !")
+    elif mode == "r":
+        choix = random.choice(dominos_disponibles)
+        print(f"{joueur} a choisi aléatoirement le domino {choix}")
+        return choix
+
+def pose_et_choix(royaume, cases_libres, dico_depot, dico_choix, dico_configurations, indice_depot):
+    <span class="code-docstring">"""Séquence complète d'un tour individuel : Pose puis Choix."""</span>
+    
+    print("\n*** Joueur {} : à vous de jouer !".format(dico_depot[indice_depot][1]))
+    afficherRoyaume(royaume)
+    joueur = dico_depot[indice_depot][1]
+    domino = dico_depot[indice_depot][0]
+    
+    <span class="code-comment"># Phase 1 : Pose</span>
+    pose_domino(royaume, cases_libres, domino, dico_configurations, joueur)
+    
+    <span class="code-comment"># Phase 2 : Choix futur</span>
+    if dico_choix:
+        for k, v in dico_choix.items():
+            print(f"{k}- Domino {v[0]} Joueur {v[1]}")
+        choix = choix_pion(dico_choix, joueur, dico_configurations)
+        dico_choix[choix][1] = joueur
+
+def tour_de_jeu(tuple_royaumes, tuple_libres, liste_dominos, dico_depot, dico_choix, tuple_joueurs, dico_configurations):
+    <span class="code-docstring">"""Simule un tour complet pour les deux joueurs."""</span>
+    
+    for i in range(0, 4):
+        dico_choix[i+1][0] = liste_dominos[i]
+        
+    for i in range(1, 5):
+        <span class="code-comment"># Détermine qui joue en fonction de l'ordre du dépôt</span>
+        if dico_depot[i][1] == tuple_joueurs[0]:
+            pose_et_choix(tuple_royaumes[0], tuple_libres[0], dico_depot, dico_choix, dico_configurations, i)
+        elif dico_depot[i][1] == tuple_joueurs[1]:
+            pose_et_choix(tuple_royaumes[1], tuple_libres[1], dico_depot, dico_choix, dico_configurations, i)
+
+def premier_tour(liste_dominos, joueurs, configurations):
+    <span class="code-docstring">"""Gestion spécifique du tout premier tour (tirage au sort)."""</span>
+    
+    premier_joueur = random.choice(joueurs)
+    deuxieme_joueur = joueurs[1] if joueurs[0] == premier_joueur else joueurs[0]
+    print(f"Tirage au sort : le joueur {premier_joueur} commence !")
+    
+    choix = {}
+    depot = {}
+    
+    <span class="code-comment"># Initialisation manuelle</span>
+    for i in range(4):
+        choix[i + 1] = [liste_dominos[i], None]
+        
+    choix_pion(choix, premier_joueur, configurations[premier_joueur])
+    choix_pion(choix, deuxieme_joueur, configurations[deuxieme_joueur])
+    
+    depot = choix.copy()
+    return depot, choix
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Partie F : Calcul des scores <span class="badge-me">MON CODE</span></h3>
+                            <p>L'algorithme qui calcule les points par groupe de paysages (ce dernier aussi appelé type). <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Concept clé :</strong> La fonction <code>couronnes_zone</code> s'appelle elle-même (récursivité) pour explorer toutes les cases voisins d'un même type, jusqu'à ce qu'il n'y ait plus de voisins identiques.
+                            </div>
+                            <pre><code class="language-python">
+from E_tour_de_jeu import *
+import random
+
+def init_dominos(taille, nom_fichier):
+    taille_dominos = taille * taille - 1
+    dominos = extraire_dominos(nom_fichier)
+    domino_liste = dominos[:taille_dominos]
+    return domino_liste
+
+def couronnes_zone(royaume, posL, posC, cases_visitees, couronnes_total):
+    <span class="code-docstring">"""
+    ALGORITHME RÉCURSIF :
+    Parcourt une zone contiguë pour compter les couronnes et marquer les cases visitées.
+    """</span>
+    
+    <span class="code-comment"># Cas de base : si la case est déjà traitée, on arrête pour éviter une boucle infinie</span>
+    if (posL, posC) in cases_visitees:
+        return couronnes_total
+    
+    <span class="code-comment"># Marquer la case actuelle comme visitée</span>
+    cases_visitees.append((posL, posC))
+    
+    <span class="code-comment"># Ajoute les couronnes de la case actuelle (valeur extraite du tuple)</span>
+    couronnes_total += int(royaume[posL][posC][1])
+    
+    <span class="code-comment"># Récupère les voisins via la fonction de la Partie B</span>
+    liste_pos = voisinages(royaume, posL, posC)
+    
+    <span class="code-comment"># Pour chaque voisin</span>
+    for c in liste_pos:
+        <span class="code-comment"># Si le voisin existe, n'est pas visité, et est du même type de terrain</span>
+        if royaume[c[0]][c[1]] is not None and \
+           not ((c[0], c[1]) in cases_visitees) and \
+           royaume[c[0]][c[1]][0] == royaume[posL][posC][0]:
+            
+            <span class="code-comment"># APPEL RÉCURSIF : On plonge dans le voisin</span>
+            couronnes_total = couronnes_zone(royaume, c[0], c[1], cases_visitees, couronnes_total)
+            
+    return couronnes_total
+
+def score_zone(royaume, posL, posC):
+    <span class="code-docstring">"""Calcule le score d'une zone spécifique."""</span>
+    
+    if royaume[posL][posC] == None:
+        return 0
+    
+    cases_visitees = []
+    <span class="code-comment"># Appel de la fonction récursive</span>
+    nb_couronnes = couronnes_zone(royaume, posL, posC, cases_visitees, 0)
+    
+    <span class="code-comment"># Le score est : Nombre de Couronnes * Taille de la Zone</span>
+    return (nb_couronnes * len(cases_visitees), cases_visitees) 
+
+def total_score(royaume):
+    <span class="code-docstring">"""Parcourt tout le royaume pour calculer le score final."""</span>
+    
+    score_total = 0
+    cases_non_traitees = []
+    
+    <span class="code-comment"># On liste toutes les cases occupées qui ne sont pas le château</span>
+    for x in range(len(royaume)):
+        for y in range(len(royaume[x])):
+            if royaume[x][y] != None and royaume[x][y] != 'CH':
+                cases_non_traitees.append((x, y))
+    
+    <span class="code-comment"># Tant qu'il reste des cases à analyser</span>
+    while cases_non_traitees != []:
+        <span class="code-comment"># On prend la première case et on calcule le score de toute sa zone</span>
+        zone_score, cases_de_la_zone = score_zone(royaume, cases_non_traitees[0][0], cases_non_traitees[0][1])
+        
+        score_total += zone_score
+        
+        <span class="code-comment"># Optimisation : On retire toutes les cases de cette zone de la liste à traiter</span>
+        for i in cases_de_la_zone:
+            if i in cases_non_traitees:
+                cases_non_traitees.remove(i)
+                
+    return score_total
+
+def jeu_complet():
+    <span class="code-docstring">"""Boucle principale du jeu (Main Loop)."""</span>
+    
+    tuple_joueurs = init_tuple_joueurs() 
+    n, pioche, configurations = init_configurations(tuple_joueurs)
+
+    configurations = premier_tour(n, configurations, pioche)
+    
+    while pioche != []:
+        configurations, pioche = tour_de_jeu(n, configurations, pioche)
+        
+    for i in range(n):
+        print("Château du joueur", i + 1)
+        print("Score :", configurations[i][3])
+        
+    scores = [configurations[i][3] for i in range(n)]
+    max_score = max(scores)
+    gagnant = scores.index(max_score)
+    print("Le joueur gagnant est :", gagnant + 1)
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="featured-card" style="margin-top: 60px;">
+            <h2 class="card-title">3. Difficultés Rencontrées</h2>
+            <p class="card-text">
+                <strong>1. Le code récursive (Partie F) :</strong><br>
+                La difficulté majeure a été de concevoir l'algorithme de calcul des points. Il fallait s'assurer que la fonction ne tourne pas en boucle infinie en visitant les mêmes cases. J'ai résolu cela en passant une liste `cases_visitees` en paramètre de l'appel récursif dans la fonction <code> couronnes_zone</code>.
+                <br><br>
+                <strong>2. Gestion des coordonnées :</strong><br>
+                Manipuler des matrices (Ligne, Colonne) est parfois très difficile par rapport aux coordonnées classiques que l'on connait en maths (X, Y), ce qui a causé quelques bugs de placement au début (Par exemple : nous avons eu une inversion des lignes et des colonnes).
+                <br><br>
+                <strong>3. Fusion du code :</strong><br>
+                Travailler en binôme a nécessité une rigueur sur les noms de chaque fonctions pour que ma partie soit parfaitement cohérente avec celui de mon binôme.
+            </p>
+        </section>
+
+        <section class="featured-card">
+            <h2 class="card-title">4. Résultats</h2>
+            <p class="card-text">
+                <strong>Le produit final :</strong><br>
+                Le jeu est entièrement fonctionnel. On peut jouer à deux joueurs (humains) ou contre une IA qui joue de manière aléatoire. Le calcul des scores est instantané et correct, respectant toutes les règles officielles du King Domino.
+                <br><br>
+                <strong>Compétences acquises :</strong><br>
+                Ce projet m'a appris manipuler des matrices 2D et à comprendre concrètement l'intérêt de la récursivité pour les algorithmes de parcours de zone.
+            </p>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projets.html" class="btn-cv">Retour aux projets</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

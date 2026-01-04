@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Portfolio Personnel - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../themes/projet-kingdomino.css">
+</head>
+<body class="project-detail-body">
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projets.html" class="back-link">&larr; Retour aux projets</a>
+            </div>
+
+            <h1 class="page-title">Mon Portfolio<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Développement Web / Design CSS / Animations CSS</span>
+        </header>
+
+        <section class="featured-card">
+            <h2 class="card-title">1. Contexte du Projet</h2>
+            <p class="card-text">
+                Ce projet a été réalisé cette année dans le cadre scolaire. La consigne était claire : concevoir et développer notre propre site web portfolio pour nous présenter.
+                <br><br>
+                <strong>La contrainte technique majeure :</strong><br>
+                Tout devait être codé <strong>à la main</strong> uniquement en <strong>HTML et CSS</strong>, sans utiliser de modèles pré-définis.
+                <br><br>
+                <strong>L'objectif :</strong><br>
+                Prouver notre maîtrise des bases fondamentales du web (positionnement des textes, images, logos) et créer un thème unique (qui est pour mon cas un thème Royal & Luxueux).
+            </p>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card" style="margin-bottom: 30px;">
+                <h2 class="card-title">2. Travail Fourni</h2>
+                <p class="card-text">
+                    J'ai abordé ce projet comme un véritable projet professionnel. J'ai commencé par définir un thème Royal & Luxueux ainsi que les polices que j'allais utiliser avant de structurer le code.
+                    <br><br>
+                    <strong>Mon organisation :</strong>
+                    <ul>
+                        <li><strong>Design Web :</strong> Création de variables CSS dans la partie ":root" pour avoir accès à une sorte de palettes comme  la gestion des couleurs et des polices sur toutes les pages.</li>
+                        <li><strong>Structure Sémantique :</strong> Utilisation rigoureuse des balises HTML5 (`nav`, `header`, `section`) pour l'accessibilité et le référencement.</li>
+                        <li><strong>Animations :</strong> Développement d'effets visuels fluides (apparitions, survols) en CSS pur pour dynamiser l'interface sans JavaScript lourd.</li>
+                    </ul>
+                </p>
+                <div class="tech-tags">
+                    <span>HTML5 Sémantique</span>
+                    <span>CSS3 Avancé</span>
+                    <span>Flexbox & Grid</span>
+                    <span>Responsive Design</span>
+                </div>
+            </div>
+
+            <div class="code-modules-container">
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Partie A : Architecture CSS (Variables) <span class="badge-me">DESIGN</span></h3>
+                            <p>Définition de la charte graphique "Ultimate Gold" via les variables CSS. <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+                        
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Extrait de <code>themes/projets.css</code> :</strong> L'utilisation de <code>:root</code> me permet de modifier le thème (couleurs, polices, ombres) sur l'ensemble du site en changeant une seule valeur.
+                            </div>
+                            <pre><code class="language-css">
+:root {
+    <span class="code-comment">/* --- COULEURS DE FOND --- */</span>
+    <span class="code-comment">/* J'utilise un noir très profond mais pas pur (#000) pour plus de douceur */</span>
+    --bg-dark: #050505;           
+    --bg-panel: #0a0a0a;          
+    
+    <span class="code-comment">/* --- PALETTE OR (ACCENTUATION) --- */</span>
+    <span class="code-comment">/* Couleur principale utilisée pour les titres et les lignes */</span>
+    --accent: #d4af37;            
+    --gold-main: #d4af37;
+    
+    <span class="code-comment">/* Variante foncée pour créer du relief dans les ombres */</span>
+    --gold-dark: #aa8c2c;         
+    
+    <span class="code-comment">/* Variante claire pour les reflets métalliques */</span>
+    --gold-light: #f9e5a0;        
+    
+    <span class="code-comment">/* Dégradé complexe utilisé sur les boutons pour un effet 'Lingot d'Or' */</span>
+    --gold-gradient: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+    
+    <span class="code-comment">/* --- TYPOGRAPHIE --- */</span>
+    <span class="code-comment">/* Police avec empattement pour le côté prestigieux */</span>
+    --font-serif: 'Playfair Display', serif; 
+    <span class="code-comment">/* Police sans empattement pour la lisibilité du texte courant */</span>
+    --font-sans: 'Montserrat', sans-serif;   
+}
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Partie B : Structure Sémantique <span class="badge-me">HTML5</span></h3>
+                            <p>Architecture de la page d'Accueil (Navigation & Hero). <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Extrait de <code>portfolio.html</code> :</strong> J'utilise les balises sémantiques <code>nav</code> et <code>header</code> pour que le site soit bien structuré pour les moteurs de recherche (SEO).
+                            </div>
+                            <pre><code class="language-html">
+<span class="code-comment">&lt;!-- 1. BARRE DE NAVIGATION FIXE --&gt;</span>
+<span class="code-comment">&lt;!-- La balise &lt;nav&gt; indique aux moteurs de recherche qu'il s'agit des liens principaux --&gt;</span>
+&lt;nav class="navbar"&gt;
+    
+    <span class="code-comment">&lt;!-- Logo cliquable qui ramène à l'accueil --&gt;</span>
+    &lt;a href="portfolio.html" class="nav-brand"&gt;
+        &lt;img src="images/logosemih.png" alt="Logo Avci Semih"&gt;
+    &lt;/a&gt;
+    
+    <span class="code-comment">&lt;!-- Liens de navigation centraux --&gt;</span>
+    &lt;div class="nav-links"&gt;
+        &lt;a href="portfolio.html" class="active"&gt;Accueil&lt;/a&gt;
+        &lt;a href="competences.html"&gt;Compétences&lt;/a&gt;
+        &lt;a href="projets.html"&gt;Projets&lt;/a&gt;
+    &lt;/div&gt;
+    
+    <span class="code-comment">&lt;!-- Bouton d'action (Call to Action) distinct --&gt;</span>
+    &lt;a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv"&gt;
+        Mon CV
+    &lt;/a&gt;
+
+&lt;/nav&gt;
+
+<span class="code-comment">&lt;!-- 2. EN-TÊTE PRINCIPAL (HERO SECTION) --&gt;</span>
+<span class="code-comment">&lt;!-- Cette section doit capter l'attention en moins de 3 secondes --&gt;</span>
+&lt;div class="hero-container"&gt;
+    &lt;div class="hero-content fade-in"&gt;
+        &lt;span class="greeting"&gt;Portfolio&lt;/span&gt;
+        &lt;h1 class="main-title"&gt;Avci Semih&lt;span class="dot"&gt;.&lt;/span&gt;&lt;/h1&gt;
+        
+        &lt;h2 class="subtitle"&gt;Étudiant en BUT Réseaux & Télécoms&lt;/h2&gt;
+        
+        <span class="code-comment">&lt;!-- Description courte et impactante --&gt;</span>
+        &lt;div class="description"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Partie C : Animations & Interactivité <span class="badge-me">CSS3</span></h3>
+                            <p>Création d'effets fluides sans JavaScript. <em>(Cliquer pour dérouler)</em></p>
+                        </summary>
+
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Extrait de <code>themes/projets.css</code> :</strong> J'utilise <code>@keyframes</code> pour l'apparition douce des éléments (`fadeUp`) et les pseudo-classes `:hover` pour réagir au survol de la souris.
+                            </div>
+                            <pre><code class="language-css">
+<span class="code-comment">/* 1. DÉFINITION DE L'ANIMATION 'FADE UP' */</span>
+<span class="code-comment">/* L'élément part de 30px plus bas et remonte en devenant opaque */</span>
+@keyframes fadeUp { 
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateY(0);    
+    } 
+}
+
+<span class="code-comment">/* Application de l'animation sur les cartes projets */</span>
+.featured-card {
+    opacity: 0; <span class="code-comment">/* Invisible au départ */</span>
+    <span class="code-comment">/* forwards : l'élément garde son état final (visible) à la fin de l'animation */</span>
+    animation: fadeUp 0.8s ease-out forwards;
+}
+
+<span class="code-comment">/* 2. INTERACTIVITÉ BOUTONS (HOVER) */</span>
+.btn-cv:hover {
+    <span class="code-comment">/* Le bouton monte légèrement de 2px pour un effet 3D */</span>
+    transform: translateY(-2px); 
+    
+    <span class="code-comment">/* Ajout d'une ombre portée dorée pour simuler la lumière */</span>
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); 
+    
+    <span class="code-comment">/* Changement de fond pour un or plus clair */</span>
+    background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
+}
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="featured-card" style="margin-top: 60px;">
+            <h2 class="card-title">3. Difficultés Rencontrées</h2>
+            <p class="card-text">
+                <strong>1. Le Responsive Design sans bibliothèque(s) :</strong><br>
+                Rendre le site compatible sur mobile a été le plus grand défi. J'ai dû gérer moi-même les affichage pour empiler les éléments de la barre de navigation et redimensionner les titres sur les petits écrans.
+                <br><br>
+                <strong>2. L'organisation du CSS :</strong><br>
+                Avec beaucoup de styles différents (boutons, cartes, fenêtres de code), le code CSS devenait long. J'ai appris à organiser mes fichiers par thème (`themes/projets.css`, `themes/accueil.css`) et selon les noms de leur code HTML pour éviter les "bugs" et ne pas me perdre.
+                <br><br>
+                <strong>3. L'équilibre du Design :</strong><br>
+                Avoir un design "Royal & Luxueux" est risqué : si les couleurs sont mal dosées, le site peut devenir illisible. J'ai passé beaucoup de temps à ajuster les contrastes et les ombres pour garder une belle esthétique.
+            </p>
+        </section>
+
+        <section class="featured-card">
+            <h2 class="card-title">4. Résultats</h2>
+            <p class="card-text">
+                <strong>Le produit final :</strong><br>
+                Vous êtes en train de naviguer dessus ! Le site est entièrement fonctionnel, et présente mes projets de manière claire. Il reflète ma capacité à construire une interface web complète.
+                <br><br>
+                <strong>Compétences acquises :</strong><br>
+                Ce projet m'a permis de comprendre comment les sites sont construits derrière nos écrans. Je maîtrise désormais le CSS (Flexbox, Grid), la gestion des variables CSS et l'importance d'une structure de fichiers claire et commentée.
+            </p>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projets.html" class="btn-cv">Retour aux projets</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

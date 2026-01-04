@@ -1,0 +1,236 @@
+/* ==========================================================================
+   FICHIER : themes/contact.css
+   VERSION : NO-LAG (Optimisée)
+   ========================================================================== */
+
+/* 1. VARIABLES & SYSTÈME DE DESIGN (INCHANGÉ) */
+:root {
+    --bg-master: #020202;
+    --bg-surface: #0a0a0a;
+    --bg-surface-hover: #111111;
+    --bg-modal: #0f0f0f;
+    --gold-100: #fff9e6;
+    --gold-300: #f0d78c;
+    --gold-500: #d4af37;
+    --gold-600: #b59024;
+    --gold-700: #8a6d1c;
+    --gold-900: #4a3b0f;
+    --gradient-gold-standard: linear-gradient(135deg, var(--gold-500) 0%, var(--gold-700) 100%);
+    --gradient-gold-shine: linear-gradient(45deg, var(--gold-700), var(--gold-300), var(--gold-500));
+    --gradient-dark-fade: linear-gradient(to bottom, rgba(5,5,5,0), var(--bg-master));
+    --gold-gradient-ultimate: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-tertiary: #525252;
+    --text-on-gold: #000000;
+    --border-subtle: 1px solid rgba(255, 255, 255, 0.05);
+    --border-gold-fine: 1px solid rgba(212, 175, 55, 0.3);
+    --border-gold-glow: 1px solid rgba(212, 175, 55, 0.6);
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.8);
+    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
+    --gold-glow: 0 0 25px rgba(212, 175, 55, 0.25);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-pill: 50px;
+}
+
+/* 2. RESET & CONFIGURATION GLOBALE (OPTIMISÉE) */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-master);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 110px;
+    overflow-x: hidden;
+    
+    /* --- CORRECTION LAG #1 : BODY --- */
+    background-image: radial-gradient(circle at 50% 0%, #1a1400 0%, #000000 60%);
+    background-attachment: scroll;
+}
+
+::selection { background: var(--gold-500); color: #000; }
+
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg-master); }
+::-webkit-scrollbar-thumb { background: var(--gold-700); border-radius: 6px; border: 3px solid var(--bg-master); }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-500); }
+
+/* ==========================================================================
+   3. BARRE DE NAVIGATION (OPTIMISÉE)
+   ========================================================================== */
+.navbar {
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 90px;
+    
+    /* --- CORRECTION LAG #2 : NAVBAR --- */
+    background: rgba(5, 5, 5, 0.98);
+    /* backdrop-filter: blur(20px); <-- SUPPRIMÉ */
+    
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 25px; box-sizing: border-box; z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+/* LOGO */
+.nav-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.nav-logo-img { height: 48px; width: auto; object-fit: contain; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3)); transition: transform 0.3s ease; }
+.navbar:hover .nav-logo-img { transform: scale(1.05); }
+
+/* LIENS */
+.nav-links { display: flex; flex: 1; justify-content: center; gap: 2vw; margin: 0 10px; }
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-family: var(--font-body); font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; padding: 2px 0; transition: all 0.3s ease; position: relative; white-space: nowrap; }
+.nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--gold-500); transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); }
+.nav-links a:hover, .nav-links a.active { color: #ffffff; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+/* BOUTON CV */
+.btn-cv { display: inline-flex; align-items: center; justify-content: center; height: 37px; padding: 0 25px; min-width: 175px; flex-shrink: 0; gap: 8px; margin-left: auto; margin-right: 25px; background: var(--gold-gradient-ultimate); color: #000 !important; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px; border: 1px solid var(--gold-300); box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.btn-cv:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%); }
+.btn-cv svg { width: 14px; height: 14px; stroke-width: 2.5; transition: transform 0.3s ease; flex-shrink: 0; display: block; margin-top: -2px; }
+.btn-cv:hover svg { transform: rotate(-10deg) scale(1.1); }
+.btn-cv::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.6s; }
+.btn-cv:hover::before { left: 100%; }
+
+/* ==========================================================================
+   4. MISE EN PAGE CONTACT
+   ========================================================================== */
+.contact-container {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 40px 20px; width: 90%; max-width: 1280px; margin: 0 auto; animation: fadeDown 1s ease-out;
+}
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+
+.page-header { text-align: center; margin-bottom: 50px; }
+.main-title {
+    font-family: var(--font-heading); font-size: 4rem; font-weight: 400; font-style: italic; line-height: 1.1;
+    background: linear-gradient(to right, #ffffff 20%, var(--gold-300) 50%, #ffffff 80%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); margin: 0 0 10px 0;
+}
+.subtitle-instruction {
+    font-family: var(--font-body); color: var(--gold-500); font-size: 1.1rem; font-weight: 300;
+    margin: 0; position: relative; display: inline-block; padding-bottom: 15px;
+}
+.subtitle-instruction::after {
+    content: ''; display: block; width: 40px; height: 1px; background-color: var(--gold-500);
+    margin: 10px auto 0 auto; box-shadow: 0 0 10px var(--gold-500);
+}
+
+/* ==========================================================================
+   5. LA CARTE DE VISITE "LUXE"
+   ========================================================================== */
+.contact-card {
+    background-color: var(--bg-surface); border: var(--border-gold-fine); border-radius: var(--radius-lg);
+    padding: 60px; width: 100%; max-width: 700px;
+    box-shadow: var(--shadow-lg);
+    background-image: linear-gradient(to bottom right, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.95));
+    position: relative; overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.1);
+    border-color: var(--gold-500);
+}
+.contact-card::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+}
+.contact-info { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 40px; }
+
+/* ITEMS DE CONTACT */
+.contact-item {
+    display: flex; align-items: center; gap: 25px; padding: 20px;
+    border-radius: var(--radius-md); transition: background 0.3s ease; border: 1px solid transparent;
+}
+.contact-item:hover { background: rgba(255, 255, 255, 0.02); border: var(--border-subtle); }
+
+.icon-circle {
+    width: 60px; height: 60px; min-width: 60px; border-radius: 50%;
+    border: 1px solid var(--gold-500); display: flex; align-items: center; justify-content: center;
+    color: var(--gold-500); background: rgba(10, 10, 10, 0.5);
+    transition: all 0.4s ease; box-shadow: var(--shadow-gold);
+}
+.contact-item:hover .icon-circle {
+    background: var(--gold-500); color: var(--text-on-gold);
+    box-shadow: var(--gold-glow); transform: scale(1.1);
+}
+.icon-circle svg { width: 24px; height: 24px; }
+
+.contact-item h3 {
+    font-family: var(--font-heading); color: var(--gold-300); font-size: 1.3rem;
+    margin: 0 0 5px 0; font-weight: 400;
+}
+.contact-link {
+    font-family: var(--font-body); color: var(--text-primary); text-decoration: none;
+    font-size: 1.1rem; font-weight: 300; position: relative; transition: color 0.3s;
+}
+.contact-text {
+    font-family: var(--font-body); color: var(--text-secondary); font-size: 1rem; font-weight: 300;
+}
+.contact-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+    background-color: var(--gold-500); transition: width 0.3s ease;
+}
+.contact-link:hover { color: var(--gold-500); }
+.contact-link:hover::after { width: 100%; }
+
+/* LIENS SOCIAUX */
+.social-links {
+    margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex; justify-content: center; position: relative; z-index: 1;
+}
+.social-btn {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+    padding: 15px 40px; border: 1px solid var(--text-secondary); border-radius: var(--radius-pill);
+    color: var(--text-secondary); font-family: var(--font-body); font-weight: 600;
+    text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; transition: all 0.4s ease;
+}
+.social-btn svg { transition: transform 0.4s ease; }
+.social-btn:hover {
+    border-color: var(--gold-500); color: var(--gold-500); background: rgba(212, 175, 55, 0.05);
+    transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.social-btn:hover svg { transform: scale(1.2); }
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .navbar { padding: 0 30px; }
+    .nav-links { gap: 20px; }
+    .page-title { font-size: 3.5rem; }
+}
+
+@media (max-width: 900px) {
+    .navbar { flex-direction: column; height: auto; padding: 20px; gap: 15px; background: var(--bg-master); border-bottom: 1px solid var(--gold-700); }
+    .nav-links { width: 100%; flex-wrap: wrap; justify-content: center; gap: 15px 20px; margin: 5px 0 15px 0; }
+    .btn-cv { width: 100%; margin-left: 0; min-width: auto; }
+    .contact-container { padding: 20px; padding-top: 40px; }
+    .page-title { font-size: 2.8rem; margin-bottom: 40px; }
+    .contact-card { padding: 40px 20px; }
+    .contact-item { flex-direction: column; text-align: center; padding: 15px 0; gap: 15px; }
+    .contact-link { word-break: break-all; }
+    .social-btn { width: 100%; justify-content: center; }
+}
