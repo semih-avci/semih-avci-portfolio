@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences - Avci Semih</title>
+    <link rel="stylesheet" href="themes/comp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
+        <div class="nav-links">
+            <a href="portfolio.html">Accueil</a>
+            <a href="apropos.html">À propos</a>
+            <a href="competences.html" class="active">Compétences</a>
+            <a href="parcours.html">Parcours</a>
+            <a href="experience.html">Expérience</a>
+            <a href="projets.html">Projets</a>
+            <a href="contact.html">Contact</a>
+            <a href="divers.html">Divers</a>
+        </div>
+        <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv">
+            Mon CV
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        </a>
+    </nav>
+
+    <div class="main-container">
+        <h1 class="page-title">Mes Compétences</h1>
+
+        <input type="radio" name="main-view" id="view-tech" checked>
+        <input type="radio" name="main-view" id="view-human">
+
+        <div class="slider-controls">
+            <label for="view-tech" class="slider-label">Techniques</label>
+            <label for="view-human" class="slider-label">Humaines</label>
+            <div class="slider-highlight"></div>
+        </div>
+
+        <div class="views-container">
+
+            <section class="view-section tech-view">
+                <div class="skills-wrapper">
+            
+                    <input type="radio" name="tabs" id="tab-reseaux" checked>
+                    <input type="radio" name="tabs" id="tab-prog">
+                    <input type="radio" name="tabs" id="tab-web">
+                    <input type="radio" name="tabs" id="tab-langues">
+        
+                    <div class="skills-sidebar">
+                        <label for="tab-reseaux" class="tab-label">Réseaux & Télécommunications</label>
+                        <label for="tab-prog" class="tab-label">Programmation</label>
+                        <label for="tab-web" class="tab-label">Développement Web</label>
+                        <label for="tab-langues" class="tab-label">Langues</label>
+                    </div>
+        
+                    <div class="skills-display">
+                        
+                        <div class="content content-reseaux">
+                            <h2>Réseaux & Télécommunications</h2>
+                            <p>Compétences clés acquises en BUT R&T.</p>
+                            <ul class="skill-list">
+                                <li>
+                                    <strong>Cisco Packet Tracer</strong>
+                                    <label for="trigger-cisco" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Adressage IP</strong>
+                                    <label for="trigger-ip" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Wi-Fi & Points d'accès</strong>
+                                    <label for="trigger-wifi" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Téléphonie (ToIP)</strong>
+                                    <label for="trigger-tel" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>GBF</strong>
+                                    <label for="trigger-gbf" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Oscilloscope</strong>
+                                    <label for="trigger-oscillo" class="btn-see-more">Voir plus</label>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <div class="content content-prog">
+                            <h2>Programmation</h2>
+                            <ul class="skill-list">
+                                <li>
+                                    <strong>Python</strong>
+                                    <label for="trigger-python" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Langage C</strong>
+                                    <label for="trigger-c" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Bash / Linux</strong>
+                                    <label for="trigger-bash" class="btn-see-more">Voir plus</label>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <div class="content content-web">
+                            <h2>Développement Web</h2>
+                            <ul class="skill-list">
+                                <li>
+                                    <strong>HTML</strong>
+                                    <label for="trigger-html" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>CSS</strong>
+                                    <label for="trigger-css" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>JavaScript</strong>
+                                    <label for="trigger-js" class="btn-see-more">Voir plus</label>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <div class="content content-langues">
+                            <h2>Langues</h2>
+                            <div class="language-item">
+                                <div class="lang-header">
+                                    <span class="lang-name">Turc (B2)</span>
+                                    <label for="trigger-turc" class="btn-see-more-sm">Voir plus</label>
+                                </div>
+                                <div class="progress-bar"><div class="fill" style="width: 75%;"></div></div>
+                            </div>
+                            <div class="language-item">
+                                <div class="lang-header">
+                                    <span class="lang-name">Anglais (B1+)</span>
+                                    <label for="trigger-anglais" class="btn-see-more-sm">Voir plus</label>
+                                </div>
+                                <div class="progress-bar"><div class="fill" style="width: 60%;"></div></div>
+                            </div>
+                            <div class="language-item">
+                                <div class="lang-header">
+                                    <span class="lang-name">Allemand (B1)</span>
+                                    <label for="trigger-allemand" class="btn-see-more-sm">Voir plus</label>
+                                </div>
+                                <div class="progress-bar"><div class="fill" style="width: 50%;"></div></div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </section>
+
+            <section class="view-section human-view">
+                <div class="human-skills-container">
+                    <h2>Qualités Humaines / Soft Skills</h2>
+                    <p>Au-delà de la technique, voici mes 3 atouts majeurs.</p>
+                    
+                    <div class="soft-skills-grid">
+                        
+                        <div class="soft-skill-card">
+                            <h3>Rigueur</h3>
+                            <p>Précision et respect strict des procédures techniques.</p>
+                            <label for="trigger-rigueur" class="btn-see-more-card">Voir plus</label>
+                        </div>
+
+                        <div class="soft-skill-card">
+                            <h3>Organisation</h3>
+                            <p>Planification structurée du travail et gestion des priorités.</p>
+                            <label for="trigger-org" class="btn-see-more-card">Voir plus</label>
+                        </div>
+
+                        <div class="soft-skill-card">
+                            <h3>Patience</h3>
+                            <p>Persévérance face aux problèmes complexes et à l'apprentissage.</p>
+                            <label for="trigger-patience" class="btn-see-more-card">Voir plus</label>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-cisco" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-cisco" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-cisco" class="close-modal">×</label>
+            <h3>Cisco Packet Tracer</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Configuration complète d'équipements réseaux (routeurs, switchs) dans un environnement virtuel. Création de VLANs pour séparer le réseau et sécuriser l'accès à ces derniers.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-ip" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-ip" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-ip" class="close-modal">×</label>
+            <h3>Adressage IP & Routage</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Conception de plans d'adressage (IPv4). Mise en place de routage statique/dynamique pour interconnecter les réseaux.</p>
+                <p><strong>Enjeux :</strong> Optimiser l'espace d'adressage et garantir la communication entre les différents sous-réseaux.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-wifi" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-wifi" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-wifi" class="close-modal">×</label>
+            <h3>Réseaux Sans Fil (Wi-Fi)</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Installation et configuration de points d'accès Wi-Fi. Gestion des SSID et sécurisation des clés d'accès (WPA2/3).</p>
+                <p><strong>Objectif :</strong> Fournir une couverture réseau fiable et sécurisée pour les utilisateurs (mobiles / PCs).</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-tel" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-tel" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-tel" class="close-modal">×</label>
+            <h3>Téléphonie sur IP</h3>
+            <div class="modal-body">
+                <p><strong>Compétence à venir</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-gbf" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-gbf" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-gbf" class="close-modal">×</label>
+            <h3>Générateur Basse Fréquence</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Utilisation du GBF de la marque Rigol pour générer des signaux périodiques (sinusoïdaux, carrés, triangulaires). Plus précisément je sais régler la fréquence, l'amplitude (Vpp), l'Offset, le rapport cyclique, le temps de propagation.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-oscillo" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-oscillo" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-oscillo" class="close-modal">×</label>
+            <h3>Oscilloscope</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Visualisation temporelle des signaux électriques. Utilisation des curseurs pour mesurer la tension crête-à-crête, la période et la fréquence.</p>
+                <p><strong>Compétences :</strong> Je suis capable de comparer les entrées/sorties (déphasage, atténuation) sur l'oscilloscope de la marque Keysight.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-python" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-python" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-python" class="close-modal">×</label>
+            <h3>Programmation Python</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je fais :</strong> Développement de programmes pour automatiser des tâches répétitives.</p>
+                <p><strong>Détails techniques :</strong> Utilisation de bibliothèques, gestion des fichiers et structures de données.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-c" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-c" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-c" class="close-modal">×</label>
+            <h3>Langage C</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je fais :</strong> Programmation système bas niveau. Gestion manuelle de la mémoire (malloc/free) et utilisation des pointeurs pour gérer des tableaux à 1/2 dimension(s).</p>
+                <p><strong>Intérêt :</strong> Comprendre le fonctionnement interne de l'ordinateur et optimiser la complexité d'un programme codé en C.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-bash" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-bash" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-bash" class="close-modal">×</label>
+            <h3>Bash & Linux</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je fais :</strong> Navigation en ligne de commande, gestion des droits utilisateurs et écriture de scripts Shell pour l'administration système.</p>
+                <p><strong>Utilisation :</strong> Administration de serveurs et automatisation de configurations des réseaux.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-html" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-html" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-html" class="close-modal">×</label>
+            <h3>HTML</h3>
+            <div class="modal-body">
+                <p><strong>Détails :</strong> Mise en place de la structure du site pour afficher correctement les textes, les images et les boutons et leur attribuer un identifiant à chacun pour que chaque texte/image/bouton ait son propre design.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-css" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-css" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-css" class="close-modal">×</label>
+            <h3>CSS</h3>
+            <div class="modal-body">
+                <p><strong>Détails :</strong> Mise en page avec Flexbox et Grid. Gestion du responsive design pour adapter l'affichage aux mobiles et tablettes.</p>
+                <p><strong>Design :</strong> Création d'animations fluides et d'interfaces utilisateur.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-js" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-js" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-js" class="close-modal">×</label>
+            <h3>JavaScript</h3>
+            <div class="modal-body">
+                <p><strong>Détails :</strong> Ajout d'interactivité sur les pages web.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-turc" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-turc" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-turc" class="close-modal">×</label>
+            <h3>Turc (Niveau B2)</h3>
+            <div class="modal-body">
+                <p><strong>Compétence :</strong> Capacité à comprendre le contenu essentiel de sujets concrets ou abstraits. Aisance dans la conversation courante.</p>
+                <p><strong>Atout :</strong> Ouverture culturelle et capacité à communiquer dans un contexte international.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-anglais" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-anglais" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-anglais" class="close-modal">×</label>
+            <h3>Anglais (Niveau B1+)</h3>
+            <div class="modal-body">
+                <p><strong>Compétence :</strong> Compréhension de textes techniques liés aux réseaux et à l'informatique. Capacité à échanger sur des sujets familiers.</p>
+                <p><strong>Usage :</strong> Lecture de documentation technique et communication professionnelle de base.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-allemand" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-allemand" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-allemand" class="close-modal">×</label>
+            <h3>Allemand (Niveau B1)</h3>
+            <div class="modal-body">
+                <p><strong>Compétence :</strong> Compréhension des points essentiels quand un langage clair et standard est utilisé.</p>
+                <p><strong>Usage :</strong> Communication basique en environnement professionnel ou voyage.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-rigueur" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-rigueur" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-rigueur" class="close-modal">×</label>
+            <h3>Rigueur</h3>
+            <div class="modal-body">
+                <p class="section-title">Comment je l'ai acquis :</p>
+                <p>Par le respect strict des délais et procédures logistiques chez <strong>DB Schenker</strong> (tri, gestion de tournées) ainsi que la précision requise lors de mes montages vidéo.</p>
+                <hr>
+                <p class="section-title">En entreprise, cela sert à :</p>
+                <p>Garantir des plans d'adressage IP cohérents, maintenir une documentation technique propre et assurer un câblage structuré et fiable.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-org" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-org" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-org" class="close-modal">×</label>
+            <h3>Organisation</h3>
+            <div class="modal-body">
+                <p class="section-title">Comment je l'ai acquis :</p>
+                <p>En utilisant des loigiciels de planification comme <strong>Notion</strong>, avec une pratique sportive intensive et des jobs étudiants/d'été.</p>
+                <hr>
+                <p class="section-title">En entreprise, cela sert à :</p>
+                <p>Prioriser les tickets d'incidents critiques, gérer son temps efficacement, et maintenir un environnement de travail ordonné.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-patience" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-patience" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-patience" class="close-modal">×</label>
+            <h3>Patience</h3>
+            <div class="modal-body">
+                <p class="section-title">Comment je l'ai acquis :</p>
+                <p>Grâce à des logiciels de montage vidéo comme Adobe After Effects qui demandent un travail minutieux où chaque détail, chaque bout d'image/vidéo est important, et la résolution de bugs qui surviennent quand on code en langage de programmation C.</p>
+                <hr>
+                <p class="section-title">En entreprise, cela sert à :</p>
+                <p>Diagnostiquer des pannes réseaux sans trop se compliquer et expliquer calmement des problèmes techniques aux utilisateurs avec des termes vulgarisés.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

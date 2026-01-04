@@ -1,0 +1,266 @@
+/* themes/apr.css - Version "Luxury Identity Card" (NO LAG) */
+
+/* 1. PALETTE DE COULEURS PREMIUM */
+:root {
+    --bg-color: #050505;        /* Noir Onyx Profond */
+    --card-bg: #111111;         /* Carte très sombre */
+    --text-primary: #f0f0f0;    /* Blanc Porcelaine */
+    --text-secondary: #a0a0a0;  /* Gris Argent */
+    
+    /* PALETTE OR RICHE */
+    --accent: #d4af37;
+    --gold-main: #d4af37;
+    --accent-dim: rgba(212, 175, 55, 0.1);
+    
+    --gold-dark: #aa8c2c;
+    --gold-light: #f9e5a0;
+    --gold-gradient: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+    --gold-glow: 0 0 25px rgba(212, 175, 55, 0.25);
+    
+    /* Polices */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Montserrat', sans-serif;
+    
+    --border-gold: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* 2. BASE & TEXTURE (OPTIMISÉE) */
+body {
+    margin: 0; padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    padding-top: 120px; 
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    
+    /* --- CORRECTION LAG #1 : BODY --- */
+    /* On garde le dégradé */
+    background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
+    
+    /* IMPORTANT : On supprime 'fixed' pour que le scroll soit natif et fluide */
+    background-attachment: scroll;
+}
+
+/* ==========================================================================
+   3. BARRE DE NAVIGATION (OPTIMISÉE)
+   ========================================================================== */
+.navbar {
+    position: fixed; top: 0; left: 0; width: 100%; height: 90px;
+    
+    /* --- CORRECTION LAG #2 : NAVBAR --- */
+    /* On remplace le flou par un fond quasi-opaque (98%) */
+    background: rgba(5, 5, 5, 0.98);
+    /* backdrop-filter: blur(20px); <-- SUPPRIMÉ */
+    /* -webkit-backdrop-filter: blur(20px); <-- SUPPRIMÉ */
+    
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 25px; box-sizing: border-box; z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+/* LOGO */
+.nav-brand {
+    display: flex; align-items: center; text-decoration: none; flex-shrink: 0; margin-right: 10px;
+}
+.nav-logo-img {
+    height: 48px; width: auto; object-fit: contain; margin-right: 15px;
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3)); transition: transform 0.3s ease;
+}
+.navbar:hover .nav-logo-img { transform: scale(1.05); }
+
+/* LIENS */
+.nav-links {
+    display: flex; flex: 1; justify-content: center; gap: 2vw; margin: 0 10px;
+}
+.nav-links a {
+    text-decoration: none; color: var(--text-secondary); font-family: var(--font-sans);
+    font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 1px; padding: 5px 0;
+    transition: all 0.3s ease; position: relative;
+}
+/* La ligne dorée */
+.nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+    background: var(--gold-main); transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+/* Survol & Actif */
+.nav-links a:hover, .nav-links a.active { 
+    color: #ffffff; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+/* BOUTON CV */
+.btn-cv {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 37px; padding: 0 25px; min-width: 125px; flex-shrink: 0; gap: 8px;
+    margin-left: auto; margin-right: 25px;
+    
+    background: var(--gold-gradient);
+    color: #000 !important; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1px; text-decoration: none; 
+    border-radius: 4px; border: 1px solid var(--gold-light);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn-cv:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+    background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
+}
+.btn-cv svg {
+    width: 14px; height: 14px; stroke-width: 2.5; transition: transform 0.3s ease; flex-shrink: 0; display: block; margin-top: -2px; 
+}
+.btn-cv:hover svg { transform: rotate(-10deg) scale(1.1); }
+.btn-cv::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.6s;
+}
+.btn-cv:hover::before { left: 100%; }
+
+/* Mobile Menu */
+@media (max-width: 1024px) {
+    .navbar { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
+    .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; margin: 0; gap: 15px 20px; }
+    .btn-cv { width: 100%; margin-left: 0; }
+}
+
+/* ==========================================================================
+   4. STRUCTURE DE LA PAGE "A PROPOS" (CARTE D'IDENTITÉ)
+   ========================================================================== */
+.about-container {
+    flex: 1; display: flex; justify-content: center; align-items: center;
+    padding: 60px 20px; width: 100%;
+}
+
+/* CARTE LUXE (OPTIMISÉE) */
+.identity-card {
+    display: flex; width: 100%; max-width: 1000px;
+    background-color: var(--card-bg);
+    border: 1px solid rgba(212, 175, 55, 0.15); 
+    padding: 60px;
+    
+    /* Correction Lag: Ombre réduite pour moins de calculs */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
+    
+    align-items: center; gap: 70px;
+    position: relative; border-radius: 8px; 
+}
+
+/* Ligne dorée supérieure */
+.identity-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* --- COLONNE GAUCHE (Photo) --- */
+.id-photo-wrapper { flex-shrink: 0; text-align: center; }
+
+.photo-frame {
+    width: 240px; height: 300px; padding: 8px;
+    border: 1px solid var(--accent); 
+    position: relative;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.id-photo {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 20%;
+}
+
+.status-indicator {
+    margin-top: 20px; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+.dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 5px var(--accent); }
+
+/* --- COLONNE DROITE (Texte) --- */
+.id-content { flex: 1; text-align: left; }
+
+.tech-tag {
+    font-family: var(--font-sans); color: var(--text-secondary); 
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    display: block; margin-bottom: 10px; opacity: 0.8;
+}
+
+/* TITRE PRINCIPAL */
+.id-content h1 {
+    font-family: var(--font-serif); font-size: 3.8rem; margin: 0; 
+    font-weight: 400; line-height: 1.1;
+    background: linear-gradient(to right, #ffffff 20%, #d4af37 50%, #ffffff 80%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+}
+.dot-gold { color: var(--accent); -webkit-text-fill-color: var(--accent); }
+
+.role {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 1.3rem; color: var(--text-secondary); font-weight: 400;
+    margin-top: 5px; margin-bottom: 25px;
+}
+
+.separator-line {
+    width: 50px; height: 2px; background-color: var(--accent); margin-bottom: 30px;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.bio-text p {
+    font-family: var(--font-sans); font-weight: 300;
+    line-height: 1.9; color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;
+}
+.bio-text strong { color: var(--text-primary); font-weight: 500; }
+
+.highlight {
+    color: var(--text-primary) !important;
+    border-left: 2px solid var(--accent); padding-left: 15px;
+    font-style: italic; font-family: var(--font-serif);
+    background: linear-gradient(to right, rgba(212,175,55,0.05), transparent);
+}
+
+/* --- BOUTONS D'ACTION --- */
+.id-actions { display: flex; align-items: center; gap: 30px; margin-top: 40px; }
+
+.btn-gold {
+    background-color: transparent; color: var(--text-primary);
+    padding: 12px 35px; text-decoration: none;
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+    transition: 0.3s; border: 1px solid var(--accent);
+    position: relative; overflow: hidden;
+}
+.btn-gold:hover { 
+    background-color: var(--accent); color: #000; 
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.info-badges { 
+    display: flex; gap: 15px; color: var(--text-secondary); font-size: 0.85rem; 
+    font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* --- ANIMATIONS --- */
+.fade-in { animation: fadeIn 1.2s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+    .navbar { flex-direction: column; padding: 20px; height: auto; }
+    .nav-links { flex-wrap: wrap; justify-content: center; margin-bottom: 10px; gap: 15px; }
+    
+    .identity-card { flex-direction: column; padding: 40px 20px; text-align: center; gap: 40px; }
+    
+    .photo-frame { width: 200px; height: 250px; margin: 0 auto; }
+    
+    .id-content h1 { font-size: 2.8rem; }
+    .separator-line { margin: 25px auto; }
+    .highlight { border-left: none; border-top: 2px solid var(--accent); padding-top: 10px; padding-left: 0; }
+    
+    .id-actions { flex-direction: column; gap: 20px; }
+    
+    .about-container { padding-top: 40px; } 
+}

@@ -1,0 +1,277 @@
+/* ==========================================================================
+   FICHIER : themes/divers.css
+   VERSION : NO-LAG (Optimisée)
+   ========================================================================== */
+
+/* 1. VARIABLES & DESIGN SYSTEM */
+:root {
+    --bg-master: #020202;
+    --bg-surface: #0a0a0a;
+    --bg-card: rgba(20, 20, 20, 0.6);
+    --gold-100: #fff9e6;
+    --gold-300: #f0d78c;
+    --gold-500: #d4af37;
+    --gold-700: #8a6d1c;
+    --gold-gradient-ultimate: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+    --gradient-card: linear-gradient(160deg, rgba(30, 30, 30, 0.6) 0%, rgba(10, 10, 10, 0.9) 100%);
+    --gradient-text: linear-gradient(to right, #ffffff 20%, #d4af37 50%, #ffffff 80%);
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-on-gold: #000000;
+    --border-gold: 1px solid rgba(212, 175, 55, 0.3);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+/* 2. BASE (OPTIMISÉE) */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-master); color: var(--text-primary);
+    font-family: var(--font-body); line-height: 1.6; min-height: 100vh;
+    display: flex; flex-direction: column; padding-top: 110px;
+    
+    /* --- CORRECTION LAG #1 : SUPPRESSION DU BRUIT SVG --- */
+    /* On garde uniquement le dégradé fluide */
+    background-image: radial-gradient(circle at 50% 0%, #1a1400 0%, #000000 60%);
+    
+    /* On enlève 'fixed' qui est très lourd */
+    background-attachment: scroll;
+}
+
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg-master); }
+::-webkit-scrollbar-thumb { background: var(--gold-700); border-radius: 6px; border: 3px solid var(--bg-master); }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-500); }
+::selection { background: var(--gold-500); color: #000; }
+
+/* 3. NAVBAR (OPTIMISÉE) */
+.navbar {
+    position: fixed; top: 0; left: 0; width: 100%; height: 90px;
+    
+    /* --- CORRECTION LAG #2 : SUPPRESSION DU FLOU NAVBAR --- */
+    /* On remplace le flou par un fond quasi-opaque */
+    background: rgba(5, 5, 5, 0.98); 
+    /* backdrop-filter: blur(20px);  <-- SUPPRIMÉ */
+    
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 25px; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.nav-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.nav-logo-img { height: 48px; width: auto; object-fit: contain; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3)); transition: transform 0.3s ease; }
+.navbar:hover .nav-logo-img { transform: scale(1.05); }
+.nav-links { display: flex; flex: 1; justify-content: center; gap: 2vw; margin: 0 10px; }
+.nav-links a {
+    text-decoration: none; color: var(--text-secondary);
+    font-family: var(--font-body); font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem);
+    font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+    padding: 2px 0; transition: all 0.3s ease; position: relative; white-space: nowrap;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+    background: var(--gold-500); transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+.nav-links a:hover, .nav-links a.active { color: #ffffff; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.btn-cv {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 38px; padding: 0 25px; min-width: 175px; flex-shrink: 0; gap: 16px;
+    margin-left: auto; margin-right: 25px;
+    background: var(--gold-gradient-ultimate); color: #000 !important;
+    font-family: var(--font-body); font-size: 0.75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; text-decoration: none;
+    border-radius: 4px; border: 1px solid var(--gold-300);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn-cv:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%); }
+.btn-cv svg { width: 14px; height: 14px; stroke-width: 2.5; transition: transform 0.3s ease; }
+.btn-cv:hover svg { transform: rotate(-10deg) scale(1.1); }
+.btn-cv::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.6s;
+}
+.btn-cv:hover::before { left: 100%; }
+
+/* 4. CONTENU PRINCIPAL */
+.main-container {
+    width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 80px;
+    display: flex; flex-direction: column; align-items: center;
+}
+.page-header { text-align: center; margin-bottom: 70px; margin-top: 20px; }
+.main-title {
+    font-family: var(--font-heading); font-size: 4rem; font-weight: 400; font-style: italic;
+    background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    animation: fadeDown 1s ease-out; margin-bottom: 15px;
+}
+.subtitle-instruction {
+    display: inline-block; color: var(--gold-500);
+    font-family: var(--font-body); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px;
+    position: relative; padding-bottom: 10px; opacity: 0; animation: fadeIn 1s ease-out 0.3s forwards;
+}
+.subtitle-instruction::after {
+    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 1px; background: var(--gold-500); opacity: 0.5;
+}
+
+/* 5. GRILLE & CARTE PRINCIPALE */
+.interests-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px; width: 100%; max-width: 1000px;
+}
+.interest-wrapper { position: relative; } 
+
+.interest-card {
+    background: var(--gradient-card); border: var(--border-gold);
+    border-radius: 16px; padding: 50px 40px;
+    position: relative; overflow: hidden;
+    /* Optimisation transition */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    opacity: 0; transform: translateY(30px); animation: slideUp 0.8s ease forwards;
+}
+.interest-wrapper:nth-child(2) .interest-card { animation-delay: 0.2s; }
+
+.interest-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+    border-color: var(--gold-500);
+    background: linear-gradient(160deg, rgba(40, 40, 40, 0.7) 0%, rgba(15, 15, 15, 0.95) 100%);
+}
+.interest-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+    opacity: 0.5; transition: opacity 0.3s;
+}
+.interest-card:hover::before { opacity: 1; }
+
+.card-icon-wrapper {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 30px; color: var(--gold-500);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8); transition: all 0.5s ease;
+}
+.interest-card:hover .card-icon-wrapper {
+    background: var(--gold-500); color: #000;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    transform: scale(1.1) rotate(5deg); border-color: transparent;
+}
+.card-icon-wrapper svg { transition: transform 0.5s; }
+.interest-card:hover .card-icon-wrapper svg { transform: scale(1.1); }
+
+.card-content h2 {
+    font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--text-secondary); margin-bottom: 5px;
+}
+.activity-name {
+    font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-primary);
+    margin-bottom: 25px; font-weight: 400; font-style: italic;
+}
+
+/* BOUTON "EN SAVOIR PLUS" */
+.btn-see-more {
+    display: inline-block; padding: 10px 25px;
+    border: 1px solid var(--gold-500); color: var(--gold-500);
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    cursor: pointer; transition: 0.3s ease; border-radius: 4px;
+}
+.btn-see-more:hover {
+    background: var(--gold-500); color: #000; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* ==========================================================================
+   6. SYSTÈME DE MODALE (OPTIMISÉ) - C'est ici que tu avais le lag
+   ========================================================================== */
+.modal-toggle { display: none; }
+
+/* Fond Flou */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    
+    /* --- CORRECTION LAG #3 : SUPPRESSION DU FLOU MODALE --- */
+    /* Le flou sur toute la page consomme trop de ressources */
+    /* On met un fond noir quasi-opaque (95%) pour compenser */
+    background: rgba(0, 0, 0, 0.95); 
+    
+    /* backdrop-filter: blur(10px); <-- SUPPRIMÉ */
+    
+    z-index: -1; opacity: 0; visibility: hidden;
+    transition: opacity 0.4s ease; /* Transition simplifiée */
+    
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* Activation */
+.modal-toggle:checked ~ .modal-overlay {
+    opacity: 1; visibility: visible; z-index: 10000;
+}
+
+/* Carte Modale */
+.modal-card {
+    background: #0f0f0f; width: 90%; max-width: 500px; padding: 40px;
+    border: 1px solid var(--gold-500); border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    position: relative; 
+    
+    transform: translateY(50px) scale(0.95);
+    /* Ajout de will-change pour aider le navigateur */
+    will-change: transform, opacity;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal-toggle:checked ~ .modal-overlay .modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close-area { position: absolute; top:0; left:0; width:100%; height:100%; cursor: default; }
+
+.close-icon {
+    position: absolute; top: 15px; right: 20px;
+    font-size: 2rem; color: var(--text-secondary); cursor: pointer; transition: 0.3s;
+}
+.close-icon:hover { color: var(--gold-500); transform: rotate(90deg); }
+
+/* Contenu Modale */
+.modal-title {
+    font-family: var(--font-heading); font-size: 2rem; color: var(--gold-500);
+    text-align: center; margin-bottom: 20px;
+}
+.separator-line {
+    width: 60px; height: 2px; background: var(--gold-500); margin: 0 auto 30px auto;
+}
+.modal-details { text-align: left; }
+.detail-row {
+    display: flex; justify-content: space-between; margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+}
+.detail-label { color: var(--gold-300); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+.detail-value { color: var(--text-primary); font-weight: 600; text-align: right; }
+.modal-description {
+    margin-top: 25px; color: var(--text-secondary); font-size: 1rem; line-height: 1.8; text-align: center;
+}
+
+/* ==========================================================================
+   7. ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 1024px) {
+    .main-title { font-size: 3.5rem; }
+    .navbar { padding: 0 30px; }
+}
+@media (max-width: 900px) {
+    .navbar { flex-direction: column; height: auto; padding: 20px; gap: 15px; background: var(--bg-master); border-bottom: 1px solid var(--gold-700); }
+    .nav-links { width: 100%; flex-wrap: wrap; justify-content: center; gap: 15px 20px; margin: 5px 0 15px 0; }
+    .btn-cv { width: 100%; margin-left: 0; min-width: auto; }
+    .main-title { font-size: 2.5rem; }
+    .interests-grid { grid-template-columns: 1fr; padding: 0 20px; }
+    .detail-row { flex-direction: column; gap: 5px; }
+    .detail-value { text-align: left; }
+}

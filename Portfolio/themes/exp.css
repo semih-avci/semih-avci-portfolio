@@ -1,0 +1,240 @@
+/* ==========================================================================
+   FICHIER : themes/exp.css
+   VERSION : OPTIMISÉE (NO LAG)
+   ========================================================================== */
+
+/* 1. VARIABLES & PALETTE (INCHANGÉES) */
+:root {
+    /* ... tes variables ... */
+    --bg-dark: #050505;
+    --text-main: #ffffff;
+    --text-muted: #b0b0b0;
+    --gold-main: #d4af37;
+    --gold-dark: #aa8c2c;
+    --bg-master: #020202;
+    --bg-surface: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-on-gold: #000000;
+    --gold-300: #f0d78c;
+    --gold-500: #d4af37;
+    --gold-700: #8a6d1c;
+    --gold-gradient-ultimate: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+    --gradient-gold-standard: linear-gradient(135deg, var(--gold-500) 0%, var(--gold-700) 100%);
+    --radius-sm: 4px;
+    --font-serif: 'Playfair Display', serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+/* 2. BASE (OPTIMISÉE) */
+body {
+    margin: 0; padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: 110px; 
+    padding-bottom: 60px;
+    
+    /* --- CORRECTION LAG #1 --- */
+    /* Suppression de l'image SVG lourde et du 'fixed' */
+    background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
+    background-attachment: scroll;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* SCROLLBAR PERSONNALISÉE */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb {
+    background: var(--gold-700);
+    border-radius: 6px;
+    border: 3px solid var(--bg-dark);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--gold-main); }
+
+
+/* ==========================================================================
+   3. BARRE DE NAVIGATION (OPTIMISÉE)
+   ========================================================================== */
+.navbar {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 90px;
+    
+    /* --- CORRECTION LAG #2 --- */
+    /* Remplacement du flou par un fond quasi-opaque */
+    background: rgba(5, 5, 5, 0.98);
+    /* backdrop-filter: blur(20px); <-- SUPPRIMÉ */
+    /* -webkit-backdrop-filter: blur(20px); <-- SUPPRIMÉ */
+    
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 25px; 
+    box-sizing: border-box; 
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+/* ... Le reste de la navbar (LOGO, LIENS, BOUTON CV) reste identique ... */
+/* LOGO */
+.nav-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; margin-right: 10px; }
+.nav-logo-img { height: 48px; width: auto; object-fit: contain; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3)); transition: transform 0.3s ease; }
+.navbar:hover .nav-logo-img { transform: scale(1.05); }
+
+/* LIENS */
+.nav-links { display: flex; flex: 1; justify-content: center; gap: 2vw; margin: 0 10px; }
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-family: var(--font-body); font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; padding: 5px 0; transition: all 0.3s ease; position: relative; white-space: nowrap; }
+.nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--gold-500); transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); }
+.nav-links a:hover, .nav-links a.active { color: #ffffff; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+/* BOUTON CV */
+.btn-cv { display: inline-flex; align-items: center; justify-content: center; height: 37px; padding: 0 25px; min-width: 175px; flex-shrink: 0; gap: 8px; margin-left: auto; margin-right: 25px; background: var(--gold-gradient-ultimate); color: #000 !important; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px; border: 1px solid var(--gold-300); box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.btn-cv:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%); }
+.btn-cv svg { width: 14px; height: 14px; stroke-width: 2.5; transition: transform 0.3s ease; }
+.btn-cv:hover svg { transform: rotate(-10deg) scale(1.1); }
+.btn-cv::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.6s; }
+.btn-cv:hover::before { left: 100%; }
+
+@media (max-width: 900px) {
+    .navbar { flex-direction: column; height: auto; padding: 20px; gap: 15px; background: var(--bg-master); border-bottom: 1px solid var(--gold-700); }
+    .nav-links { width: 100%; flex-wrap: wrap; justify-content: center; gap: 15px 20px; margin: 5px 0 15px 0; }
+    .btn-cv { width: 100%; margin-left: 0; min-width: auto; }
+}
+
+/* ==========================================================================
+   4. TITRES & EN-TÊTE
+   ========================================================================== */
+h1 {
+    text-align: center; font-family: var(--font-heading); font-size: 3.8rem;
+    font-weight: 400; font-style: italic; margin: 0 0 15px 0;
+    background: linear-gradient(to right, #ffffff 20%, #d4af37 50%, #ffffff 80%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+}
+.subtitle-instruction {
+    display: block; text-align: center; color: var(--gold-main);
+    font-family: var(--font-body); font-size: 0.85rem; text-transform: uppercase;
+    letter-spacing: 3px; margin-bottom: 70px; font-style: normal; opacity: 0.9;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* ==========================================================================
+   5. CADRES D'EXPÉRIENCE (OPTIMISÉS)
+   ========================================================================== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+details {
+    width: 90%; max-width: 950px; margin: 0 auto 35px auto;
+    
+    background: linear-gradient(160deg, rgba(20, 18, 10, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
+    
+    border: 1px solid rgba(212, 175, 55, 0.15); 
+    border-left: 4px solid var(--gold-dark);
+    border-radius: 10px; overflow: hidden; 
+    
+    /* Correction Lag: Transition plus légère */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    
+    animation: fadeInUp 0.8s ease forwards; opacity: 0;
+}
+details:nth-of-type(1) { animation-delay: 0.1s; }
+details:nth-of-type(2) { animation-delay: 0.3s; }
+details:nth-of-type(3) { animation-delay: 0.5s; }
+
+details:hover {
+    transform: translateY(-3px); /* Réduit un peu le mouvement pour fluidité */
+    background: linear-gradient(160deg, rgba(40, 35, 15, 0.7) 0%, rgba(15, 15, 15, 0.9) 100%);
+    border-color: var(--gold-main); box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+}
+
+details[open] {
+    background: #080808; border: 1px solid var(--gold-main); border-left: 4px solid var(--gold-main);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+}
+
+/* ==========================================================================
+   6. HEADER DU CADRE
+   ========================================================================== */
+summary {
+    list-style: none; padding: 25px 35px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; 
+    background: linear-gradient(to right, rgba(212,175,55,0.05), transparent);
+}
+summary::-webkit-details-marker { display: none; }
+
+summary strong {
+    font-family: var(--font-heading); font-size: 1.6rem; color: #fff;
+    font-weight: 500; letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+summary .exp-date {
+    display: block; font-family: var(--font-body); font-size: 0.95rem; font-weight: 700;
+    color: var(--gold-main); text-transform: uppercase; letter-spacing: 1.5px;
+    background: rgba(212, 175, 55, 0.05); border: 1px solid var(--gold-main);
+    padding: 8px 20px; border-radius: 50px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+summary::after {
+    content: '+'; font-family: var(--font-body); font-size: 2.2rem; font-weight: 200;
+    color: var(--gold-main); transition: all 0.4s ease;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    margin-left: 20px;
+}
+details[open] summary::after { content: '−'; transform: rotate(180deg); color: #fff; text-shadow: none; }
+
+/* ==========================================================================
+   7. STYLE DES LOGOS
+   ========================================================================== */
+.summary-left { display: flex; align-items: center; gap: 20px; }
+
+.exp-logo {
+    width: 60px; height: 60px; object-fit: contain;
+    background: #ffffff; border-radius: 50%; padding: 8px;
+    border: 2px solid var(--gold-main); 
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    flex-shrink: 0; transition: transform 0.3s ease;
+}
+
+details:hover .exp-logo { transform: scale(1.1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+
+@media (max-width: 768px) {
+    summary { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .summary-left { width: 100%; }
+    .exp-date { align-self: flex-start; margin-left: 80px; }
+    summary::after { position: absolute; top: 35px; right: 25px; }
+    .exp-logo { width: 50px; height: 50px; }
+    summary strong { font-size: 1.3rem; }
+}
+
+/* ==========================================================================
+   8. CONTENU INTERNE (OPTIMISÉ)
+   ========================================================================== */
+details > div {
+    padding: 10px 45px 50px 95px; 
+    color: var(--text-muted); font-size: 1.05rem; line-height: 2;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: 0; opacity: 0; animation: textFadeIn 0.6s ease 0.2s forwards;
+}
+
+@media (max-width: 768px) { details > div { padding: 20px 25px; } }
+
+@keyframes textFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+details p { margin-bottom: 25px; text-align: justify; }
+details strong { color: var(--gold-main); font-weight: 600; }
