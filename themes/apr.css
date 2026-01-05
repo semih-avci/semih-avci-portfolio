@@ -275,3 +275,25 @@ body {
     font-size: 0.9rem;
     border-top: 1px solid rgba(212, 175, 55, 0.2); /* Fine ligne dorée */
 }
+
+/* SCROLLBAR PERSONNALISÉE (Luxe) - Version ACCUEIL */
+::-webkit-scrollbar {
+    width: 12px; /* La largeur de la barre */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark); /* Le fond de la barre (Noir) */
+}
+
+::-webkit-scrollbar-thumb {
+    /* C'EST ICI QUE JE L'AI MISE EN OR */
+    background: var(--gold-dark); 
+    
+    border-radius: 6px; /* Pour l'arrondir */
+    border: 3px solid var(--bg-dark); /* Pour créer un petit espace autour */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    /* C'EST ICI QU'ELLE DEVIENT PLUS BRILLANTE QUAND TU PASSES LA SOURIS */
+    background: var(--gold-main); 
+}
