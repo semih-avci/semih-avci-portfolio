@@ -18,11 +18,17 @@ body {
     background-color: #050505;
     color: #ffffff;
     min-height: 100vh;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     padding-top: 110px;
-    padding-bottom: 60px;
+    overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
+}
+
+::selection {
+    background: #d4af37;
+    color: #000000;
 }
 
 ::-webkit-scrollbar {
@@ -34,7 +40,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #8a6d1c;
+    background: #aa8c2c;
     border-radius: 6px;
     border: 3px solid #050505;
 }
@@ -55,7 +61,6 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 25px;
-    box-sizing: border-box;
     z-index: 1000;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
@@ -63,8 +68,6 @@ body {
 .nav-brand {
     display: flex;
     align-items: center;
-    text-decoration: none;
-    flex-shrink: 0;
     margin-right: 10px;
 }
 
@@ -85,24 +88,21 @@ body {
     display: flex;
     flex: 1;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px 2vw;
+    gap: 2vw; 
     margin: 0 10px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #a3a3a3;
+    color: #a0a0a0;
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 5px 0;
-    transition: all 0.3s ease;
     position: relative;
-    white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
 .nav-links a::after {
@@ -135,11 +135,10 @@ body {
     height: 37px;
     padding: 0 25px;
     min-width: 125px;
-    flex-shrink: 0;
     gap: 8px;
     margin: 0 25px 0 auto;
     background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
-    color: #000 !important;
+    color: #000000 !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
@@ -165,8 +164,6 @@ body {
     height: 14px;
     stroke-width: 2.5;
     transition: transform 0.3s ease;
-    flex-shrink: 0;
-    display: block;
     margin-top: -2px;
 }
 
@@ -189,31 +186,6 @@ body {
     left: 100%;
 }
 
-@media (max-width: 900px) {
-    .navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-        gap: 15px;
-        background: #050505;
-        border-bottom: 1px solid #8a6d1c;
-    }
-
-    .nav-links {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px 20px;
-        margin: 5px 0 15px 0;
-    }
-
-    .btn-cv {
-        width: 100%;
-        margin-left: 0;
-        min-width: auto;
-    }
-}
-
 h1 {
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -225,6 +197,7 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8));
+    animation: fadeDown 1s ease-out;
 }
 
 .subtitle-instruction {
@@ -239,6 +212,7 @@ h1 {
     font-style: normal;
     opacity: 0.9;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    animation: fadeIn 1.5s ease-out;
 }
 
 @keyframes fadeInUp {
@@ -249,6 +223,26 @@ h1 {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
@@ -266,17 +260,9 @@ details {
     opacity: 0;
 }
 
-details:nth-of-type(1) {
-    animation-delay: 0.1s;
-}
-
-details:nth-of-type(2) {
-    animation-delay: 0.3s;
-}
-
-details:nth-of-type(3) {
-    animation-delay: 0.5s;
-}
+details:nth-of-type(1) { animation-delay: 0.1s; }
+details:nth-of-type(2) { animation-delay: 0.3s; }
+details:nth-of-type(3) { animation-delay: 0.5s; }
 
 details:hover {
     transform: translateY(-3px);
@@ -374,38 +360,6 @@ details:hover .exp-logo {
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
-@media (max-width: 768px) {
-    summary {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-
-    .summary-left {
-        width: 100%;
-    }
-
-    .exp-date {
-        align-self: flex-start;
-        margin-left: 80px;
-    }
-
-    summary::after {
-        position: absolute;
-        top: 35px;
-        right: 25px;
-    }
-
-    .exp-logo {
-        width: 50px;
-        height: 50px;
-    }
-
-    summary strong {
-        font-size: 1.3rem;
-    }
-}
-
 details > div {
     padding: 10px 45px 50px 95px;
     color: #b0b0b0;
@@ -417,21 +371,9 @@ details > div {
     animation: textFadeIn 0.6s ease 0.2s forwards;
 }
 
-@media (max-width: 768px) {
-    details > div {
-        padding: 20px 25px;
-    }
-}
-
 @keyframes textFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 details p {
@@ -444,20 +386,58 @@ details strong {
     font-weight: 600;
 }
 
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 15px;
+        background: #050505;
+    }
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        margin: 5px 0 15px 0;
+    }
+    .btn-cv {
+        width: 100%;
+        margin-left: 0;
+    }
+    summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .summary-left {
+        width: 100%;
+    }
+    .exp-date {
+        align-self: flex-start;
+        margin-left: 80px;
+    }
+    summary::after {
+        position: absolute;
+        top: 35px;
+        right: 25px;
+    }
+    .exp-logo {
+        width: 50px;
+        height: 50px;
+    }
+    summary strong {
+        font-size: 1.3rem;
+    }
+    details > div {
+        padding: 20px 25px;
+    }
+}
+
 .site-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    margin-top: 60px;
-    width: 100%;
+    text-align: center;
+    padding: 20px;
     background-color: #050505;
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
     color: #d4af37;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 1;
-    padding: 0;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: auto; 
 }
