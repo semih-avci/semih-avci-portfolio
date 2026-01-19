@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
+        <a href="index.html" class="nav-brand"><img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img"></a>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="apropos.html">À propos</a>
@@ -34,7 +34,7 @@
         <div class="timeline">
             <div class="timeline-item">
                 <input type="checkbox" id="modal-but">
-                <label class="timeline-content" for="modal-but">
+                <label class="timeline-content clickable" for="modal-but">
                     <span class="tag tag-school">Formation • En cours</span>
                     <div class="header-content">
                         <h3>BUT Réseaux & Télécommunications</h3>
@@ -43,7 +43,7 @@
                     <div class="school-info">
                         <img src="images/iut.png" alt="Logo IUT" class="school-logo-tiny logo-xl">
                     </div>
-                    <p>Formation polyvalente axée sur l'administration réseau, la programmation et le déploiement d'infrastructures.</p>
+                    <p>Formation polyvalente axée sur l'administration réseau (Routage, Adressage IP, Câblage), la programmation (Python, C, Java, Bash) et le déploiement d'infrastructures.</p>
                     <span class="click-hint">➔ Voir le détail</span>
                 </label>
                 <div class="timeline-dot"></div>
@@ -60,12 +60,12 @@
                         </div>
                         <hr>
                         <h3>Objectif de la Formation</h3>
-                        <p>Le BUT R&T forme des experts de l'infrastructure numérique. L'objectif est de maîtriser l'administration des réseaux, les télécommunications et la programmation informatique.</p>
+                        <p>Le BUT R&T est un cursus technologique en 3 ans qui forme des experts de l'infrastructure numérique. L'objectif est de maîtriser à la fois l'administration des réseaux, les télécommunications et la programmation informatique.</p>
                         <h3>Pourquoi l’IUT d’Aubière ?</h3>
-                        <p>J’ai choisi cet établissement pour son équilibre théorie/pratique. L'accent est mis sur les TPs sur matériel physique et les projets (SAÉ). Cela me permet de développer des compétences en configuration réseau, Python et Linux.</p>
+                        <p>J’ai choisi cet établissement pour sa manière d'équilibrer la théorie et la pratique. L'accent est mis sur la pratique via des TPs sur du matériel physique et des projets (SAÉ). Cela me permet de développer rapidement des compétences techniques.</p>
                         <div class="highlight-text">
                             <strong>Et maintenant ?</strong>
-                            <p>Je prépare activement mon <strong>alternance pour septembre 2026</strong> (rythme 1 mois/1 mois).</p>
+                            <p>Actuellement à la fin du 1er semestre, je prépare activement mon entrée dans le monde professionnel. Mon projet est clair : poursuivre ce cursus en <strong>alternance dès septembre 2026</strong>.</p>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
 
             <div class="timeline-item">
                 <input type="checkbox" id="modal-licence">
-                <label class="timeline-content" for="modal-licence">
+                <label class="timeline-content clickable" for="modal-licence">
                     <span class="tag tag-school">Formation</span>
                     <div class="header-content">
                         <h3>Licence Maths Informatique</h3>
@@ -82,7 +82,7 @@
                     <div class="school-info">
                         <img src="images/uca.png" alt="Logo UCA" class="school-logo-tiny logo-xl">
                     </div>
-                    <p>Acquisition de bases solides en mathématiques et introduction à l'informatique théorique/pratique.</p>
+                    <p>Acquisition de bases solides en résolution de problèmes mathématiques et introduction à l'informatique théorique/pratique grâce à des cours d'algorithmique et de programmation C/Python.</p>
                     <span class="click-hint">➔ Voir le détail</span>
                 </label>
                 <div class="timeline-dot"></div>
@@ -91,42 +91,35 @@
                     <label for="modal-licence" class="overlay"></label>
                     <div class="panel-content">
                         <label for="modal-licence" class="close-btn">×</label>
-                        <h2>Licence Maths Info</h2>
+                        <h2>Détails de la Formation</h2>
                         <div class="info-grid">
                             <div class="info-box"><strong>Établissement</strong><span>Université Clermont Auvergne</span></div>
                             <div class="info-box"><strong>Année</strong><span>2024 - 2025</span></div>
                             <div class="info-box"><strong>Niveau</strong><span>L1 (Parcours MI)</span></div>
                         </div>
                         <hr>
-                        <h3>Semestre 1 : Bases</h3>
+                        <h3>Contenu Pédagogique</h3>
                         <div class="highlight-text">
-                            <strong>Informatique & Logique</strong>
-                            <ul>
-                                <li>Algorithmique & Python</li>
-                                <li>Architecture & Binaire</li>
-                                <li>Initiation Système (Shell)</li>
-                            </ul>
-                        </div>
-                        <h3>Semestre 2 : Approfondissement</h3>
-                        <div class="highlight-text">
-                            <strong>Programmation Avancée</strong>
-                            <ul>
-                                <li>Programmation C (Pointeurs, Allocations)</li>
-                                <li>Algorithmique & Complexité</li>
-                                <li>Environnement Linux</li>
-                            </ul>
+                            <strong>Semestre 1 : Bases</strong>
+                            <p>Algorithmique, Python, Architecture & Binaire, Système (Shell).</p>
                         </div>
                         <div class="highlight-text">
-                            <strong>Projet</strong>
-                            <a href="projets/projet-king-domino.html" class="discrete-link">Voir mon projet Informatique</a>
+                            <strong>Semestre 2 : Approfondissement</strong>
+                            <p>Programmation C (Pointeurs, Malloc), Algorithmique complexe, Linux.</p>
                         </div>
+                        <div class="highlight-text">
+                            <strong>Projet Informatique</strong>
+                            <a href="projets/projet-king-domino.html" class="discrete-link">Voir mon projet King Domino</a>
+                        </div>
+                        <h3>Pourquoi ce parcours ?</h3>
+                        <p>Cette formation m'a apporté une grande <strong>rigueur scientifique</strong>. L'apprentissage du C et des pointeurs me permet de mieux comprendre le fonctionnement bas niveau des systèmes.</p>
                     </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <input type="checkbox" id="modal-bac">
-                <label class="timeline-content" for="modal-bac">
+                <label class="timeline-content clickable" for="modal-bac">
                     <span class="tag tag-school">Diplôme</span>
                     <div class="header-content">
                         <h3>Baccalauréat Général</h3>
@@ -144,7 +137,7 @@
                     <label for="modal-bac" class="overlay"></label>
                     <div class="panel-content">
                         <label for="modal-bac" class="close-btn">×</label>
-                        <h2>Baccalauréat Général</h2>
+                        <h2>Détails du Diplôme</h2>
                         <div class="info-grid">
                             <div class="info-box"><strong>Lycée</strong><span>La Fayette (Aubière)</span></div>
                             <div class="info-box"><strong>Année</strong><span>2024</span></div>
@@ -152,12 +145,12 @@
                         <hr>
                         <h3>Spécialités Choisies</h3>
                         <div class="highlight-text">
-                            <strong>NSI (Numérique et Sciences Informatiques)</strong>
+                            <strong>NSI</strong>
                             <p>Python, Web, SQL, Linux.</p>
                         </div>
                         <div class="highlight-text">
                             <strong>SI (Sciences de l'Ingénieur)</strong>
-                            <p>Mécanique, électronique, projets.</p>
+                            <p>Analyse de systèmes mécaniques et électroniques.</p>
                         </div>
                         <div class="highlight-text">
                             <strong>Mathématiques</strong>
