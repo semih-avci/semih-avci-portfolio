@@ -1,4 +1,4 @@
-    *::before, *::after {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -11,16 +11,17 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    padding: 0;
     background-color: #050505;
     color: #f0f0f0;
+    font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 110px;
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
+    padding-top: 110px;
 }
 
 /* Scrollbar */
@@ -84,8 +85,10 @@ body {
     display: flex;
     flex: 1;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 2vw;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 .nav-links a {
@@ -96,8 +99,9 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 5px 0;
-    position: relative;
     transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
 }
 
 .nav-links a::after {
@@ -112,12 +116,14 @@ body {
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
     color: #ffffff;
     text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
 
-.nav-links a:hover::after, .nav-links a.active::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
     width: 100%;
 }
 
@@ -129,6 +135,7 @@ body {
     padding: 0 25px;
     min-width: 125px;
     gap: 8px;
+    flex-shrink: 0;
     margin: 0 0 0 auto;
     background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
     color: #000 !important;
@@ -149,18 +156,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
     background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
-}
-
-.btn-cv-desktop svg {
-    width: 14px;
-    height: 14px;
-    stroke-width: 2.5;
-    transition: transform 0.3s;
-    margin-top: -2px;
-}
-
-.btn-cv-desktop:hover svg {
-    transform: rotate(-10deg) scale(1.1);
 }
 
 .btn-cv-desktop::before {
@@ -199,8 +194,8 @@ body {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     align-items: center;
     gap: 70px;
-    border-radius: 4px;
     position: relative;
+    border-radius: 4px;
 }
 
 .identity-card::before {
@@ -378,7 +373,7 @@ body {
     to { opacity: 1; }
 }
 
-/* --- RESPONSIVE MOBILE OPTIMISÉ (MENU BURGER) --- */
+/* --- RESPONSIVE MOBILE OPTIMISÉ (MENU BURGER + CORRECTION DÉBORDEMENT) --- */
 @media (max-width: 900px) {
     body {
         padding-top: 70px;
@@ -448,6 +443,7 @@ body {
         transform: translateX(0);
     }
 
+    /* Animation Burger */
     .nav-toggle:checked ~ .nav-burger span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 6px);
     }
@@ -478,16 +474,20 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Adaptation contenu mobile */
+    /* --- CORRECTION DU DÉBORDEMENT MOBILE --- */
     .about-container {
-        padding: 20px;
+        padding: 20px 10px; /* Marges externes réduites */
+        width: 100%;
+        overflow-x: hidden; /* Sécurité anti-débordement */
     }
 
     .identity-card {
         flex-direction: column;
-        padding: 30px 20px;
+        padding: 30px 15px; /* Marges internes réduites */
         text-align: center;
         gap: 30px;
+        width: 100%; /* Force la largeur à 100% */
+        max-width: 100%; /* Empêche de dépasser */
     }
 
     .photo-frame {
@@ -497,7 +497,8 @@ body {
     }
 
     .id-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem; /* Titre légèrement réduit */
+        word-wrap: break-word; /* Coupe les mots longs si nécessaire */
     }
 
     .separator-line {
@@ -514,6 +515,14 @@ body {
         flex-direction: column;
         justify-content: center;
         gap: 20px;
+        width: 100%; /* S'assure que les boutons ne débordent pas */
     }
-}
+    
+    .btn-gold, .info-badges {
+        width: 100%; /* Boutons pleine largeur sur mobile */
+        justify-content: center;
+    }
+   }
+       
+
 
