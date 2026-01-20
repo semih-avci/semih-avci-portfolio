@@ -337,9 +337,9 @@ details[open] summary::after {
 }
 
 .summary-left {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .exp-logo {
@@ -441,3 +441,4 @@ details strong {
     border-top: 1px solid rgba(212, 175, 55, 0.2);
     margin-top: auto; 
 }
+
