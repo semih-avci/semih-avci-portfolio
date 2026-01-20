@@ -334,9 +334,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 9999;
-    visibility: hidden;
+    z-index: 5000;
     pointer-events: none;
+    visibility: hidden;
 }
 
 .overlay {
@@ -345,10 +345,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.85);
     opacity: 0;
     transition: 0.3s;
     cursor: pointer;
+    z-index: 1;
 }
 
 .panel-content {
@@ -367,6 +368,7 @@ body {
     box-shadow: -10px 0 50px rgba(0,0,0,0.8);
     display: flex;
     flex-direction: column;
+    z-index: 10;
 }
 
 .timeline-item input:checked ~ .side-panel {
@@ -391,7 +393,6 @@ body {
     cursor: pointer;
     transition: 0.3s;
     line-height: 1;
-    z-index: 10000;
 }
 
 .close-btn:hover {
@@ -403,7 +404,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
     color: #fff;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 30px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 15px;
@@ -617,9 +618,7 @@ hr {
         width: 100%;
         max-width: 100%;
         padding: 40px 20px;
-        padding-top: 80px;
     }
-    
     .info-grid {
         grid-template-columns: 1fr;
     }
