@@ -76,7 +76,11 @@ body {
     transform: scale(1.05);
 }
 
-.nav-toggle, .nav-burger, .btn-cv-mobile {
+.nav-toggle {
+    display: none;
+}
+
+.nav-burger, .btn-cv-mobile {
     display: none;
 }
 
@@ -339,7 +343,6 @@ body {
     border-radius: 3px;
     transition: transform 0.3s, box-shadow 0.3s;
     letter-spacing: 1px;
-    display: inline-block;
 }
 
 .btn-gold:hover {
@@ -450,13 +453,15 @@ body {
         justify-content: center;
         margin-top: 18px;
         padding: 11px 28px;
-        border: 1px solid #d4af37;
-        color: #d4af37;
+        background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+        color: #000;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
         text-decoration: none;
         font-size: 0.9rem;
+        border-radius: 4px;
+        border: 1px solid #f9e5a0;
     }
 
     .about-container {
