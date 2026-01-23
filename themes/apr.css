@@ -166,10 +166,6 @@ body {
     left: 100%;
 }
 
-.btn-cv-desktop svg {
-    display: none;
-}
-
 .about-container {
     max-width: 1190px;
     width: 88%;
@@ -177,6 +173,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
 
 .identity-card {
@@ -191,6 +188,7 @@ body {
     position: relative;
     overflow: hidden;
     max-width: 1000px;
+    width: 100%;
 }
 
 .identity-card::before {
@@ -341,6 +339,7 @@ body {
     border-radius: 3px;
     transition: transform 0.3s, box-shadow 0.3s;
     letter-spacing: 1px;
+    display: inline-block;
 }
 
 .btn-gold:hover {
@@ -372,9 +371,10 @@ body {
     .navbar {
         height: 73px;
         padding: 0 18px;
-        flex-direction: column;
-        background: #0a0a0a;
-        gap: 14px;
+        flex-direction: row;
+        justify-content: space-between;
+        background: #050505;
+        gap: 0;
     }
 
     .nav-logo-img {
@@ -457,6 +457,11 @@ body {
         letter-spacing: 1px;
         text-decoration: none;
         font-size: 0.9rem;
+    }
+
+    .about-container {
+        padding: 0 20px;
+        margin: 40px auto;
     }
 
     .identity-card {
