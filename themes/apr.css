@@ -1,4 +1,3 @@
-/* --- RESET GLOBAL --- */
 *,
 *::before,
 *::after {
@@ -33,7 +32,6 @@ body {
     color: #000000;
 }
 
-/* --- SCROLLBAR DORÉE --- */
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -52,7 +50,6 @@ body {
     background: #d4af37;
 }
 
-/* --- NAVBAR --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -227,7 +224,6 @@ body {
     text-align: center;
 }
 
-/* --- STYLE SPÉCIFIQUE À PROPOS (C'est ici que ça manquait) --- */
 
 .about-container {
     flex: 1;
@@ -428,7 +424,6 @@ body {
     to { opacity: 1; }
 }
 
-/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 900px) {
     .navbar {
         height: 70px;
@@ -493,7 +488,6 @@ body {
         display: inline-block;
     }
 
-    /* Style spécifique Mobile pour la Carte d'Identité */
     .about-container {
         padding: 20px 10px;
     }
@@ -535,3 +529,4 @@ body {
         gap: 20px;
     }
 }
+
