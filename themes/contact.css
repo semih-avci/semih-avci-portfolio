@@ -424,7 +424,6 @@ body {
         display: none;
     }
 
-    /* Activation du Burger */
     .nav-burger {
         display: flex;
         flex-direction: column;
@@ -444,7 +443,6 @@ body {
         transition: all 0.3s ease;
     }
 
-    /* Menu latéral */
     .nav-links {
         position: fixed;
         top: 0;
@@ -468,8 +466,7 @@ body {
     .nav-toggle:checked ~ .nav-links {
         transform: translateX(0);
     }
-
-    /* Animation Croix Burger */
+    
     .nav-toggle:checked ~ .nav-burger span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 6px);
     }
@@ -500,7 +497,6 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Adaptation de la carte contact */
     .contact-container {
         padding: 20px;
         padding-top: 40px;
@@ -525,3 +521,4 @@ body {
         justify-content: center;
     }
 }
+
