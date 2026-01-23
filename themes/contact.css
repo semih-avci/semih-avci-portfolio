@@ -33,17 +33,14 @@ body {
 ::-webkit-scrollbar {
     width: 12px;
 }
-
 ::-webkit-scrollbar-track {
     background: #050505;
 }
-
 ::-webkit-scrollbar-thumb {
     background: #aa8c2c;
     border-radius: 6px;
     border: 3px solid #050505;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background: #d4af37;
 }
@@ -68,7 +65,6 @@ body {
     display: flex;
     align-items: center;
     margin-right: 10px;
-    flex-shrink: 0;
 }
 
 .nav-logo-img {
@@ -88,10 +84,8 @@ body {
     display: flex;
     flex: 1;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px 2vw;
-    margin: 0 15px;
+    gap: 2vw; 
+    margin: 0 10px;
 }
 
 .nav-links a {
@@ -102,9 +96,9 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 2px 0;
-    transition: all 0.3s ease;
+    padding: 5px 0;
     position: relative;
+    transition: all 0.3s ease;
     white-space: nowrap;
 }
 
@@ -131,7 +125,7 @@ body {
     width: 100%;
 }
 
-.btn-cv {
+.btn-cv-desktop {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -139,7 +133,6 @@ body {
     padding: 0 25px;
     min-width: 125px;
     gap: 8px;
-    flex-shrink: 0;
     margin: 0 0 0 auto;
     background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
     color: #000000 !important;
@@ -157,27 +150,13 @@ body {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.btn-cv:hover {
+.btn-cv-desktop:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
     background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
 }
 
-.btn-cv svg {
-    width: 14px;
-    height: 14px;
-    stroke-width: 2.5;
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
-    display: block;
-    margin-top: -2px;
-}
-
-.btn-cv:hover svg {
-    transform: rotate(-10deg) scale(1.1);
-}
-
-.btn-cv::before {
+.btn-cv-desktop::before {
     content: '';
     position: absolute;
     top: 0;
@@ -188,8 +167,12 @@ body {
     transition: 0.6s;
 }
 
-.btn-cv:hover::before {
+.btn-cv-desktop:hover::before {
     left: 100%;
+}
+
+.btn-cv-mobile, .nav-toggle, .nav-burger {
+    display: none;
 }
 
 .contact-container {
@@ -206,14 +189,8 @@ body {
 }
 
 @keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .page-header {
@@ -320,6 +297,7 @@ body {
     justify-content: center;
     color: #d4af37;
     background: rgba(10, 10, 10, 0.5);
+    font-size: 1.5rem; /* Taille de l'émoji/icone */
     transition: all 0.4s ease;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
@@ -331,12 +309,7 @@ body {
     transform: scale(1.1);
 }
 
-.icon-circle svg {
-    width: 24px;
-    height: 24px;
-}
-
-.contact-item h3 {
+.item-text h2 {
     font-family: 'Playfair Display', serif;
     color: #f0d78c;
     font-size: 1.3rem;
@@ -423,52 +396,118 @@ body {
     transform: scale(1.2);
 }
 
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 0 30px;
-    }
-
-    .nav-links {
-        gap: 20px;
-    }
-
-    .page-title {
-        font-size: 3.5rem;
-    }
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #050505;
+    color: #d4af37;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: auto;
 }
 
 @media (max-width: 900px) {
     .navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-        gap: 15px;
+        height: 70px;
+        padding: 0 20px;
+        flex-direction: row;
+        justify-content: space-between;
         background: #050505;
-        border-bottom: 1px solid #aa8c2c;
     }
 
+    .nav-logo-img {
+        height: 35px;
+        margin: 0;
+    }
+
+    .btn-cv-desktop {
+        display: none;
+    }
+
+    /* Activation du Burger */
+    .nav-burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 2002;
+    }
+
+    .nav-burger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #d4af37;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    /* Menu latéral */
     .nav-links {
-        width: 100%;
-        flex-wrap: wrap;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%;
+        height: 100vh;
+        background-color: #050505;
+        border-left: 1px solid #d4af37;
+        flex-direction: column;
         justify-content: center;
-        gap: 15px 20px;
-        margin: 5px 0 15px 0;
+        align-items: center;
+        gap: 30px;
+        margin: 0;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 2000;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.8);
+        padding: 20px;
     }
 
-    .btn-cv {
-        width: 100%;
-        margin-left: 0;
-        min-width: auto;
+    .nav-toggle:checked ~ .nav-links {
+        transform: translateX(0);
     }
 
+    /* Animation Croix Burger */
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        color: #f0f0f0;
+    }
+
+    .btn-cv-mobile {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 12px 30px;
+        border: 1px solid #d4af37;
+        color: #d4af37;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    /* Adaptation de la carte contact */
     .contact-container {
         padding: 20px;
         padding-top: 40px;
     }
 
-    .page-title {
-        font-size: 2.8rem;
-        margin-bottom: 40px;
+    .main-title {
+        font-size: 3rem;
     }
 
     .contact-card {
@@ -478,26 +517,11 @@ body {
     .contact-item {
         flex-direction: column;
         text-align: center;
-        padding: 15px 0;
         gap: 15px;
-    }
-
-    .contact-link {
-        word-break: break-all;
     }
 
     .social-btn {
         width: 100%;
         justify-content: center;
     }
-}
-
-.site-footer {
-    text-align: center;
-    padding: 30px;
-    background-color: #050505;
-    color: #d4af37;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
