@@ -16,7 +16,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* Suppression du padding-top car pas de navbar fixe ici */
     padding-top: 0; 
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
@@ -45,7 +44,6 @@ body {
 .main-container {
     max-width: 1090px;
     width: 89%;
-    /* Ajout de marge en haut pour compenser l'absence de navbar */
     margin: 60px auto 95px auto; 
     position: relative;
 }
@@ -381,7 +379,6 @@ code {
     margin-top: auto;
 }
 
-/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 900px) {
     .main-container {
         width: 92%;
@@ -407,3 +404,4 @@ code {
         margin: 5px 0 0 0;
     }
 }
+
