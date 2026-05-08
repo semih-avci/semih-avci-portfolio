@@ -210,13 +210,17 @@ body {
     position: relative;
     margin-bottom: 60px;
     opacity: 0;
-    transform: translateY(20px); /* Modifié pour éviter le bug d'invisibilité */
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    top: 40px; /* On utilise 'top' au lieu de 'transform' pour casser la prison du fixed ! */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), top 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .timeline-item.visible {
     opacity: 1;
-    transform: none;
+    top: 0;
+}
+
+.timeline-item:has(input:checked) {
+    z-index: 9999;
 }
 
 .timeline-item input[type="checkbox"] { display: none; }
