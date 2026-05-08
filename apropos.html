@@ -8,66 +8,6 @@
     
     <link rel="stylesheet" href="themes/apr.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        #gold-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1; 
-            pointer-events: none; 
-        }
-
-        /* Lueur dorée qui suit le curseur */
-        .cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            mix-blend-mode: screen;
-            transition: opacity 0.3s ease;
-        }
-
-        /* Effet d'Onde sur le bouton de contact */
-        .btn-gold {
-            position: relative;
-            overflow: hidden;
-        }
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple-effect 0.6s linear;
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-        @keyframes ripple-effect {
-            to { transform: scale(4); opacity: 0; }
-        }
-
-        /* Rendre la carte prête pour la 3D */
-        .identity-card {
-            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
-            transform-style: preserve-3d;
-            /* Cache la carte au tout début pour l'animation d'apparition */
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        /* On fait "ressortir" le contenu de la carte en 3D */
-        .id-photo-wrapper, .id-content {
-            transform: translateZ(30px);
-        }
-
-        /* Assurer que la navigation reste au premier plan */
-        .navbar { z-index: 2000; position: fixed; }
-        .about-container { position: relative; z-index: 10; }
-    </style>
 </head>
 <body>
 
@@ -95,10 +35,10 @@
             <a href="divers.html">Divers</a>
             <a href="contact.html">Contact</a>
             
-            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
+            <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-mobile">Mon CV</a>
         </div>
 
-        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">Mon CV</a>
+        <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-desktop">Mon CV</a>
     </nav>
 
     <main class="about-container">
@@ -149,12 +89,11 @@
                 card.style.transition = 'all 1s cubic-bezier(0.25, 1, 0.5, 1)';
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0) scale(1)';
-            }, 150); // Petit délai pour laisser la page charger
+            }, 150);
 
             /* 2. EFFET 3D (TILT) SUR LA CARTE COMPLÈTE */
             if (window.matchMedia("(min-width: 768px)").matches) {
                 card.addEventListener('mousemove', (e) => {
-                    // Supprimer la transition lente pour que la 3D suive la souris en temps réel
                     card.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
                     
                     const rect = card.getBoundingClientRect();
@@ -163,18 +102,14 @@
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
                     
-                    // Calcul de l'inclinaison
-                    const rotateX = ((y - centerY) / centerY) * -8; // 8 degrés max d'inclinaison
+                    const rotateX = ((y - centerY) / centerY) * -8; 
                     const rotateY = ((x - centerX) / centerX) * 8;
 
                     card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                    
-                    // Ombre dynamique qui bouge à l'opposé de la souris
                     card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 30}px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2)`;
                 });
 
                 card.addEventListener('mouseleave', () => {
-                    // Remettre une transition douce pour le retour à la normale
                     card.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
                     card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
                     card.style.boxShadow = `0 28px 55px rgba(0, 0, 0, 0.75)`;
