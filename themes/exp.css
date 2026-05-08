@@ -20,7 +20,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 110px;
+    /* CORRECTION DU BUG : On laisse 130px d'espace vide en haut pour ne jamais toucher la navbar de 90px */
+    padding-top: 130px; 
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
@@ -55,7 +56,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 25px;
-    z-index: 2000; /* Assure que la navbar est au dessus des effets de souris */
+    z-index: 2000;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -168,15 +169,6 @@ body {
     background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
 }
 
-.btn-cv-desktop svg {
-    width: 14px;
-    height: 14px;
-    stroke-width: 2.5;
-    transition: transform 0.3s ease;
-    margin-top: -2px;
-}
-
-.btn-cv-desktop:hover svg { transform: rotate(-10deg) scale(1.1); }
 .btn-cv-desktop::before {
     content: '';
     position: absolute;
@@ -208,10 +200,10 @@ body {
 /* ========================================= */
 
 .header-section {
-    margin-top: 20px; /* Réduction de l'espace vide en haut */
     text-align: center;
     position: relative;
     z-index: 10;
+    margin-bottom: 50px;
 }
 
 h1 {
@@ -234,30 +226,31 @@ h1 {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 50px;
     font-style: normal;
     opacity: 0.9;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     animation: fadeIn 1.5s ease-out;
 }
 
-/* Les boîtes de détails */
+/* --- LES BOITES EN MÉTAL 3D --- */
 details {
     width: 90%;
     max-width: 950px;
     margin: 0 auto 35px auto;
     background: linear-gradient(145deg, #151515 0%, #050505 100%);
+    
+    /* Bords biseautés asymétriques */
     border-top: 1px solid rgba(212, 175, 55, 0.4);
     border-left: 1px solid rgba(212, 175, 55, 0.2);
     border-right: 1px solid rgba(0, 0, 0, 0.9);
     border-bottom: 1px solid rgba(0, 0, 0, 0.9);
     border-radius: 12px;
-    overflow: hidden;
+    
     position: relative;
     z-index: 10;
     
-    /* Préparation pour la 3D et le FadeInUp */
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.3s ease;
+    /* PREPARATION 3D (pas d'overflow hidden !) */
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out, background 0.3s ease;
     transform-style: preserve-3d;
     box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.05);
     
@@ -269,22 +262,13 @@ details:nth-of-type(1) { animation-delay: 0.1s; }
 details:nth-of-type(2) { animation-delay: 0.3s; }
 details:nth-of-type(3) { animation-delay: 0.5s; }
 
-/* Ne s'applique que sur ordinateur (hover) */
-@media (min-width: 768px) {
-    details:hover {
-        transform: translateY(-5px) !important;
-        border-top-color: #d4af37;
-        border-left-color: #d4af37;
-        box-shadow: 15px 25px 40px rgba(0, 0, 0, 0.95), inset 2px 2px 5px rgba(212, 175, 55, 0.2);
-    }
-}
-
 details[open] {
     border-top-color: #d4af37;
     border-left-color: #d4af37;
     box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
 }
 
+/* Lévitation des éléments internes */
 summary {
     list-style: none;
     padding: 25px 35px;
@@ -294,8 +278,10 @@ summary {
     justify-content: space-between;
     position: relative;
     background: linear-gradient(to right, rgba(212, 175, 55, 0.05), transparent);
-    /* On fait sortir le texte en 3D */
-    transform: translateZ(20px);
+    
+    /* LEVITATION MASSIVE */
+    transform: translateZ(40px);
+    transform-style: preserve-3d;
 }
 
 summary::-webkit-details-marker { display: none; }
@@ -322,7 +308,6 @@ summary .exp-date {
     padding: 8px 20px;
     border-radius: 50px;
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 summary::after {
@@ -360,22 +345,26 @@ details[open] summary::after {
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
     flex-shrink: 0;
     transition: transform 0.3s ease;
+    
+    /* Lévite encore plus haut que le summary */
+    transform: translateZ(20px);
 }
 
 details:hover .exp-logo {
-    transform: scale(1.1);
+    transform: translateZ(20px) scale(1.1);
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
-/* Le conteneur du texte caché */
+/* Le texte caché */
 .exp-details {
-    padding: 10px 45px 50px 95px;
+    padding: 10px 45px 40px 95px;
     color: #b0b0b0;
     font-size: 1.05rem;
     line-height: 2;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
-    margin-top: 0;
-    transform: translateZ(20px);
+    
+    /* LEVITATION DU TEXTE */
+    transform: translateZ(30px);
 }
 
 .exp-details p {
@@ -389,12 +378,12 @@ details:hover .exp-logo {
 }
 
 /* ========================================= */
-/* ANIMATIONS MAGIQUES (CSS & JS)            */
+/* ANIMATIONS ET MAGIE                       */
 /* ========================================= */
 
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: none; } /* Modifié en none pour la 3D */
+    to { opacity: 1; transform: none; }
 }
 
 @keyframes fadeDown {
@@ -416,6 +405,7 @@ details:hover .exp-logo {
     z-index: -1; 
     pointer-events: none; 
 }
+
 .cursor-glow {
     position: fixed;
     width: 400px;
@@ -428,6 +418,7 @@ details:hover .exp-logo {
     mix-blend-mode: screen;
     transition: opacity 0.3s ease;
 }
+
 .ripple {
     position: absolute;
     border-radius: 50%;
@@ -435,6 +426,7 @@ details:hover .exp-logo {
     animation: ripple-effect 0.6s linear;
     background-color: rgba(255, 255, 255, 0.5);
 }
+
 @keyframes ripple-effect {
     to { transform: scale(4); opacity: 0; }
 }
@@ -445,6 +437,9 @@ details:hover .exp-logo {
 /* ========================================= */
 
 @media (max-width: 900px) {
+    /* Sur mobile, on réduit l'espace en haut car la navbar est plus fine */
+    body { padding-top: 100px; }
+    
     .navbar {
         height: 70px;
         padding: 0 20px;
@@ -482,6 +477,8 @@ details:hover .exp-logo {
     .nav-links a { font-size: 1.2rem; color: #f0f0f0; }
     .btn-cv-mobile { display: inline-block; }
 
+    h1 { font-size: 2.5rem; }
+
     summary {
         flex-direction: column;
         align-items: flex-start;
@@ -498,17 +495,14 @@ details:hover .exp-logo {
         top: 35px;
         right: 25px;
     }
-    .exp-logo {
-        width: 40px;
-        height: 40px;
-    }
+    .exp-logo { width: 40px; height: 40px; }
     summary strong { font-size: 1.3rem; }
     
-    details > div { padding: 20px 25px; }
+    .exp-details { padding: 20px 25px; }
     
-    /* Désactiver la 3D sur mobile */
+    /* Désactiver la 3D sur mobile pour éviter les bugs tactiles */
     details { transform-style: flat; }
-    summary, .exp-details { transform: none; }
+    summary, .exp-details, .exp-logo { transform: none !important; }
 }
 
 .site-footer {
