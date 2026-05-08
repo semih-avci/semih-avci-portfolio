@@ -353,7 +353,8 @@ input[name="main-view"] { display: none; }
 .skills-display h2 {
     color: #d4af37;
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    /* TAILLE FLUIDE POUR LE TITRE DES ONGLETS */
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
     margin-top: 0; margin-bottom: 30px;
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     padding-bottom: 15px; display: inline-block;
@@ -538,6 +539,15 @@ input[name="main-view"] { display: none; }
     
     /* Espacements divers réduits pour mobile */
     .skills-display { padding: 30px 20px; }
+    
+    /* CORRECTION : Le titre de la catégorie peut se mettre sur plusieurs lignes */
+    .skills-display h2 { 
+        font-size: 1.6rem; 
+        line-height: 1.3; 
+        white-space: normal; /* Autorise le retour à la ligne */
+        word-wrap: break-word;
+    }
+
     .skill-list { grid-template-columns: 1fr; }
     .human-skills-container { padding: 40px 20px; }
     .soft-skills-grid { grid-template-columns: 1fr; }
