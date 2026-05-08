@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez les compétences de Semih Avci : réseaux Cisco, programmation Python/C, administration Linux et développement web.">
+    <meta name="description" content="Découvrez les compétences de Semih Avci : réseaux Cisco, programmation Python/C, administration Linux, Windows Server, Docker et bases de données.">
     <title>Compétences - Avci Semih</title>
     <link rel="stylesheet" href="themes/comp.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
             <a href="divers.html">Divers</a>
             <a href="contact.html">Contact</a>
         </div>
-        <a href="CV-AVCI-Semih.jpeg" target="_blank" class="btn-cv">
+        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv">
             Mon CV
         </a>
     </nav>
@@ -47,71 +47,85 @@
                     <input type="radio" name="tabs" id="tab-langues">
         
                     <div class="skills-sidebar">
-                        <label for="tab-reseaux" class="tab-label">Réseaux & Télécommunications</label>
-                        <label for="tab-prog" class="tab-label">Programmation</label>
-                        <label for="tab-web" class="tab-label">Développement Web</label>
+                        <label for="tab-reseaux" class="tab-label">Réseaux & Télécoms</label>
+                        <label for="tab-prog" class="tab-label">Prog & Systèmes</label>
+                        <label for="tab-web" class="tab-label">Web & BDD</label>
                         <label for="tab-langues" class="tab-label">Langues</label>
                     </div>
         
                     <div class="skills-display">
                         <div class="content content-reseaux">
                             <h2>Réseaux & Télécommunications</h2>
-                            <p>Compétences clés acquises en BUT R&T.</p>
+                            <p>Compétences clés acquises en infrastructure et analyse.</p>
                             <ul class="skill-list">
                                 <li>
-                                    <strong>Cisco Packet Tracer</strong>
+                                    <strong>Matériel Cisco & Routage</strong>
                                     <label for="trigger-cisco" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
-                                    <strong>Adressage IP</strong>
+                                    <strong>Adressage IPv4 & IPv6</strong>
                                     <label for="trigger-ip" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
-                                    <strong>Wi-Fi & Points d'accès</strong>
-                                    <label for="trigger-wifi" class="btn-see-more">Voir plus</label>
-                                </li>
-                                <li>
-                                    <strong>Téléphonie (ToIP)</strong>
+                                    <strong>Téléphonie sur IP (ToIP)</strong>
                                     <label for="trigger-tel" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
-                                    <strong>GBF</strong>
-                                    <label for="trigger-gbf" class="btn-see-more">Voir plus</label>
+                                    <strong>Analyse Trame (Wireshark)</strong>
+                                    <label for="trigger-wireshark" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
-                                    <strong>Oscilloscope</strong>
-                                    <label for="trigger-oscillo" class="btn-see-more">Voir plus</label>
+                                    <strong>Services Réseaux (DHCP/FTP)</strong>
+                                    <label for="trigger-services" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Équipements Télécoms</strong>
+                                    <label for="trigger-telecoms" class="btn-see-more">Voir plus</label>
                                 </li>
                             </ul>
                         </div>
         
                         <div class="content content-prog">
-                            <h2>Programmation</h2>
+                            <h2>Programmation & Systèmes</h2>
+                            <p>Administration de serveurs et développement logiciel.</p>
                             <ul class="skill-list">
                                 <li>
-                                    <strong>Python</strong>
+                                    <strong>Python (POO)</strong>
                                     <label for="trigger-python" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
-                                    <strong>Langage C</strong>
+                                    <strong>Langage C & Archi</strong>
                                     <label for="trigger-c" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
-                                    <strong>Bash / Linux</strong>
+                                    <strong>Linux & Scripting Bash</strong>
                                     <label for="trigger-bash" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Windows Server & AD</strong>
+                                    <label for="trigger-ad" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>Docker & VirtualBox</strong>
+                                    <label for="trigger-docker" class="btn-see-more">Voir plus</label>
                                 </li>
                             </ul>
                         </div>
         
                         <div class="content content-web">
-                            <h2>Développement Web</h2>
+                            <h2>Développement Web & BDD</h2>
+                            <p>Création d'interfaces et modélisation de données.</p>
                             <ul class="skill-list">
                                 <li>
-                                    <strong>HTML</strong>
+                                    <strong>Bases de Données (SQL)</strong>
+                                    <label for="trigger-sql" class="btn-see-more">Voir plus</label>
+                                </li>
+                                <li>
+                                    <strong>HTML5</strong>
                                     <label for="trigger-html" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
-                                    <strong>CSS</strong>
+                                    <strong>CSS3 & Flexbox</strong>
                                     <label for="trigger-css" class="btn-see-more">Voir plus</label>
                                 </li>
                                 <li>
@@ -180,9 +194,10 @@
         <label for="trigger-cisco" class="modal-close-area"></label>
         <div class="modal-content">
             <label for="trigger-cisco" class="close-modal">×</label>
-            <h3>Cisco Packet Tracer</h3>
+            <h3>Matériel Cisco & Routage</h3>
             <div class="modal-body">
-                <p><strong>Ce que je maîtrise :</strong> Configuration complète d'équipements réseaux (routeurs, switchs) dans un environnement virtuel. Création de VLANs pour séparer le réseau et sécuriser l'accès à ces derniers.</p>
+                <p><strong>Ce que je maîtrise :</strong> Configuration complète sur matériel physique et simulateur Packet Tracer.</p>
+                <p><strong>Détails :</strong> Création de VLANs, configuration de ports Trunk/Access, et mise en œuvre experte du routage statique et dynamique (protocoles RIP et EIGRP) pour interconnecter des architectures complexes.</p>
             </div>
         </div>
     </div>
@@ -192,23 +207,10 @@
         <label for="trigger-ip" class="modal-close-area"></label>
         <div class="modal-content">
             <label for="trigger-ip" class="close-modal">×</label>
-            <h3>Adressage IP & Routage</h3>
+            <h3>Adressage IPv4 & IPv6</h3>
             <div class="modal-body">
-                <p><strong>Ce que je maîtrise :</strong> Conception de plans d'adressage (IPv4). Mise en place de routage statique/dynamique pour interconnecter les réseaux.</p>
-                <p><strong>Enjeux :</strong> Optimiser l'espace d'adressage et garantir la communication entre les différents sous-réseaux.</p>
-            </div>
-        </div>
-    </div>
-
-    <input type="checkbox" id="trigger-wifi" class="modal-toggle">
-    <div class="modal-overlay">
-        <label for="trigger-wifi" class="modal-close-area"></label>
-        <div class="modal-content">
-            <label for="trigger-wifi" class="close-modal">×</label>
-            <h3>Réseaux Sans Fil (Wi-Fi)</h3>
-            <div class="modal-body">
-                <p><strong>Ce que je maîtrise :</strong> Installation et configuration de points d'accès Wi-Fi. Gestion des SSID et sécurisation des clés d'accès (WPA2/3).</p>
-                <p><strong>Objectif :</strong> Fournir une couverture réseau fiable et sécurisée pour les utilisateurs (mobiles / PCs).</p>
+                <p><strong>Ce que je maîtrise :</strong> Conception et implémentation de plans d'adressage complets.</p>
+                <p><strong>IPv6 :</strong> Compréhension avancée de l'autoconfiguration, du protocole NDP (Network Discovery Protocol) et de la résolution d'adresses MAC sans ARP. Configuration de passerelles et de routes par défaut sous Linux et Cisco.</p>
             </div>
         </div>
     </div>
@@ -218,37 +220,54 @@
         <label for="trigger-tel" class="modal-close-area"></label>
         <div class="modal-content">
             <label for="trigger-tel" class="close-modal">×</label>
-            <h3>Téléphonie sur IP</h3>
+            <h3>Téléphonie sur IP (ToIP)</h3>
             <div class="modal-body">
-                <p><strong>Compétence à venir</strong></p>
+                <p><strong>Ce que je maîtrise :</strong> Déploiement d'une infrastructure VoIP professionnelle via un serveur d'appels Xivo (Asterisk).</p>
+                <p><strong>Détails :</strong> Création de lignes SIP, intégration de téléphones physiques (Deskphones, DECT) et virtuels (Softphones). Configuration avancée des Trunk SIP, des files d'attentes, renvois d'appels, groupes, conférences et boîtes vocales (Messagerie Unifiée).</p>
             </div>
         </div>
     </div>
 
-    <input type="checkbox" id="trigger-gbf" class="modal-toggle">
+    <input type="checkbox" id="trigger-wireshark" class="modal-toggle">
     <div class="modal-overlay">
-        <label for="trigger-gbf" class="modal-close-area"></label>
+        <label for="trigger-wireshark" class="modal-close-area"></label>
         <div class="modal-content">
-            <label for="trigger-gbf" class="close-modal">×</label>
-            <h3>Générateur Basse Fréquence</h3>
+            <label for="trigger-wireshark" class="close-modal">×</label>
+            <h3>Analyse de Trame & Cybersécurité</h3>
             <div class="modal-body">
-                <p><strong>Ce que je maîtrise :</strong> Utilisation du GBF de la marque Rigol pour générer des signaux périodiques (sinusoïdaux, carrés, triangulaires). Plus précisément je sais régler la fréquence, l'amplitude (Vpp), l'Offset, le rapport cyclique, le temps de propagation.</p>
+                <p><strong>Ce que je maîtrise :</strong> Capture et analyse du trafic avec Wireshark.</p>
+                <p><strong>Détails :</strong> Décorticage des protocoles TCP (3-way handshake), UDP, ICMP, ARP et NDP. Compréhension approfondie de la sécurité système, notamment l'analyse des attaques par déni de service (SYN Flood) et le fonctionnement des protections noyau Linux (SYN Cookies).</p>
             </div>
         </div>
     </div>
 
-    <input type="checkbox" id="trigger-oscillo" class="modal-toggle">
+    <input type="checkbox" id="trigger-services" class="modal-toggle">
     <div class="modal-overlay">
-        <label for="trigger-oscillo" class="modal-close-area"></label>
+        <label for="trigger-services" class="modal-close-area"></label>
         <div class="modal-content">
-            <label for="trigger-oscillo" class="close-modal">×</label>
-            <h3>Oscilloscope</h3>
+            <label for="trigger-services" class="close-modal">×</label>
+            <h3>Services Réseaux (Linux)</h3>
             <div class="modal-body">
-                <p><strong>Ce que je maîtrise :</strong> Visualisation temporelle des signaux électriques. Utilisation des curseurs pour mesurer la tension crête-à-crête, la période et la fréquence.</p>
-                <p><strong>Compétences :</strong> Je suis capable de comparer les entrées/sorties (déphasage, atténuation) sur l'oscilloscope de la marque Keysight.</p>
+                <p><strong>Ce que je maîtrise :</strong> Installation et sécurisation de services critiques sous Debian.</p>
+                <p><strong>Serveur DHCP :</strong> Configuration d'isc-dhcp-server, création d'étendues, réservations d'adresses et gestion des baux.</p>
+                <p><strong>Serveur FTP :</strong> Déploiement de vsftpd, désactivation de l'accès anonyme, gestion des droits (chmod) et sécurisation par isolation des utilisateurs dans leur répertoire (chroot).</p>
             </div>
         </div>
     </div>
+
+    <input type="checkbox" id="trigger-telecoms" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-telecoms" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-telecoms" class="close-modal">×</label>
+            <h3>Équipements Télécoms</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Manipulation experte du matériel de laboratoire (Générateur Basse Fréquence Rigol, Oscilloscope Keysight, Analyseur de spectre).</p>
+                <p><strong>Détails :</strong> Visualisation des signaux, réglages avancés (Vpp, Offset, rapport cyclique). Réalisation de diagrammes de Bode, étude de la numérisation et caractérisation de filtres sélectifs (passe-bande).</p>
+            </div>
+        </div>
+    </div>
+
 
     <input type="checkbox" id="trigger-python" class="modal-toggle">
     <div class="modal-overlay">
@@ -257,8 +276,8 @@
             <label for="trigger-python" class="close-modal">×</label>
             <h3>Programmation Python</h3>
             <div class="modal-body">
-                <p><strong>Ce que je fais :</strong> Développement de programmes pour automatiser des tâches répétitives.</p>
-                <p><strong>Détails techniques :</strong> Utilisation de bibliothèques, gestion des fichiers et structures de données.</p>
+                <p><strong>Ce que je maîtrise :</strong> Programmation structurée et Programmation Orientée Objet (POO).</p>
+                <p><strong>Détails :</strong> Création de classes complexes, de méthodes, et manipulation de listes/tableaux d'objets. Lecture, écriture et structuration de données dans des fichiers externes pour l'automatisation de tâches.</p>
             </div>
         </div>
     </div>
@@ -268,10 +287,10 @@
         <label for="trigger-c" class="modal-close-area"></label>
         <div class="modal-content">
             <label for="trigger-c" class="close-modal">×</label>
-            <h3>Langage C</h3>
+            <h3>Langage C & Architecture</h3>
             <div class="modal-body">
-                <p><strong>Ce que je fais :</strong> Programmation système bas niveau. Gestion manuelle de la mémoire (malloc/free) et utilisation des pointeurs pour gérer des tableaux à 1/2 dimension(s).</p>
-                <p><strong>Intérêt :</strong> Comprendre le fonctionnement interne de l'ordinateur et optimiser la complexité d'un programme codé en C.</p>
+                <p><strong>Ce que je maîtrise :</strong> Programmation système bas niveau et architecture matérielle.</p>
+                <p><strong>Détails :</strong> Gestion de la mémoire (malloc/free), utilisation des pointeurs, optimisation algorithmique. Compréhension du lien direct entre le logiciel et les composants physiques (CPU, registres, threads) ainsi que la gestion des pilotes (/dev) sous Linux et Windows.</p>
             </div>
         </div>
     </div>
@@ -281,10 +300,50 @@
         <label for="trigger-bash" class="modal-close-area"></label>
         <div class="modal-content">
             <label for="trigger-bash" class="close-modal">×</label>
-            <h3>Bash & Linux</h3>
+            <h3>Bash & Environnement Linux</h3>
             <div class="modal-body">
-                <p><strong>Ce que je fais :</strong> Navigation en ligne de commande, gestion des droits utilisateurs et écriture de scripts Shell pour l'administration système.</p>
-                <p><strong>Utilisation :</strong> Administration de serveurs et automatisation de configurations des réseaux.</p>
+                <p><strong>Ce que je maîtrise :</strong> Administration de serveurs via l'interface en ligne de commande (CLI).</p>
+                <p><strong>Détails :</strong> Gestion des permissions (chmod/chown), manipulation avancée de fichiers, et écriture de scripts Shell. Mise en place de processus de sauvegardes automatisées via <code>rsync</code> et <code>crontab</code>.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-ad" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-ad" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-ad" class="close-modal">×</label>
+            <h3>Windows Server & Active Directory</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Déploiement et administration d'infrastructures Microsoft.</p>
+                <p><strong>Détails :</strong> Création de domaines, conception d'Unités Organisationnelles (UO) et gestion des comptes utilisateurs. Mise en place de Stratégies de Groupes (GPO) et automatisation de mappages de lecteurs réseaux partagés.</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="trigger-docker" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-docker" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-docker" class="close-modal">×</label>
+            <h3>Docker & VirtualBox</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Conteneurisation et gestion d'hyperviseurs.</p>
+                <p><strong>Détails :</strong> Configuration de réseaux virtuels NAT sous VirtualBox et gestion de VMs (clones/exportation). Utilisation de Docker : création de conteneurs (Apache), redirections de ports, création de snapshots d'images modifiées (commit) et exportation sécurisée (.tar).</p>
+            </div>
+        </div>
+    </div>
+
+
+    <input type="checkbox" id="trigger-sql" class="modal-toggle">
+    <div class="modal-overlay">
+        <label for="trigger-sql" class="modal-close-area"></label>
+        <div class="modal-content">
+            <label for="trigger-sql" class="close-modal">×</label>
+            <h3>Bases de Données (SQL)</h3>
+            <div class="modal-body">
+                <p><strong>Ce que je maîtrise :</strong> Modélisation et conception de bases de données relationnelles.</p>
+                <p><strong>Détails :</strong> Traduction d'un cahier des charges en architecture de données. Création de tables sécurisées avec contraintes de clés primaires et étrangères (DELETE CASCADE). Rédaction de requêtes d'insertion (INSERT) et d'extraction (SELECT).</p>
             </div>
         </div>
     </div>
@@ -294,9 +353,9 @@
         <label for="trigger-html" class="modal-close-area"></label>
         <div class="modal-content">
             <label for="trigger-html" class="close-modal">×</label>
-            <h3>HTML</h3>
+            <h3>HTML5</h3>
             <div class="modal-body">
-                <p><strong>Détails :</strong> Mise en place de la structure du site pour afficher correctement les textes, les images et les boutons et leur attribuer un identifiant à chacun pour que chaque texte/image/bouton ait son propre design.</p>
+                <p><strong>Détails :</strong> Mise en place sémantique de l'architecture d'un site web. Structuration du contenu (textes, images, conteneurs interactifs) pour garantir une navigation claire et optimisée.</p>
             </div>
         </div>
     </div>
@@ -306,10 +365,9 @@
         <label for="trigger-css" class="modal-close-area"></label>
         <div class="modal-content">
             <label for="trigger-css" class="close-modal">×</label>
-            <h3>CSS</h3>
+            <h3>CSS3 & Flexbox/Grid</h3>
             <div class="modal-body">
-                <p><strong>Détails :</strong> Mise en page avec Flexbox et Grid. Gestion du responsive design pour adapter l'affichage aux mobiles et tablettes.</p>
-                <p><strong>Design :</strong> Création d'animations fluides et d'interfaces utilisateur.</p>
+                <p><strong>Détails :</strong> Mise en page avancée sans bibliothèques externes. Gestion intégrale du Responsive Design pour une adaptation parfaite sur smartphones et tablettes. Maîtrise des animations (keyframes, transitions) et de l'esthétique UI (ombres, dégradés, 3D).</p>
             </div>
         </div>
     </div>
@@ -321,10 +379,11 @@
             <label for="trigger-js" class="close-modal">×</label>
             <h3>JavaScript</h3>
             <div class="modal-body">
-                <p><strong>Détails :</strong> Ajout d'interactivité sur les pages web.</p>
+                <p><strong>Détails :</strong> Ajout d'interactivité dynamique sur les pages web (gestion des clics, des survols, manipulation de l'affichage en temps réel).</p>
             </div>
         </div>
     </div>
+
 
     <input type="checkbox" id="trigger-turc" class="modal-toggle">
     <div class="modal-overlay">
@@ -347,7 +406,7 @@
             <h3>Anglais (Niveau B1+)</h3>
             <div class="modal-body">
                 <p><strong>Compétence :</strong> Compréhension de textes techniques liés aux réseaux et à l'informatique. Capacité à échanger sur des sujets familiers.</p>
-                <p><strong>Usage :</strong> Lecture de documentation technique et communication professionnelle de base.</p>
+                <p><strong>Usage :</strong> Lecture de documentation technique (datasheets Cisco, manuels Linux) et communication professionnelle de base.</p>
             </div>
         </div>
     </div>
@@ -372,11 +431,11 @@
             <label for="trigger-rigueur" class="close-modal">×</label>
             <h3>Rigueur</h3>
             <div class="modal-body">
-                <p class="section-title">Comment je l'ai acquis :</p>
-                <p>Par le respect strict des délais et procédures logistiques chez <strong>DB Schenker</strong> (tri, gestion de tournées) ainsi que la précision requise lors de mes montages vidéo.</p>
+                <p class="section-title">Comment je l'ai acquise :</p>
+                <p>Par le respect strict des délais et procédures logistiques chez <strong>DB Schenker</strong> (tri, gestion de tournées), par l'architecture stricte de bases de données, ainsi que la précision requise lors de mes montages vidéo.</p>
                 <hr>
                 <p class="section-title">En entreprise, cela sert à :</p>
-                <p>Garantir des plans d'adressage IP cohérents, maintenir une documentation technique propre et assurer un câblage structuré et fiable.</p>
+                <p>Garantir des plans d'adressage IP cohérents, maintenir une documentation technique propre, éviter les failles de sécurité et assurer un câblage structuré et fiable.</p>
             </div>
         </div>
     </div>
@@ -388,11 +447,11 @@
             <label for="trigger-org" class="close-modal">×</label>
             <h3>Organisation</h3>
             <div class="modal-body">
-                <p class="section-title">Comment je l'ai acquis :</p>
-                <p>En utilisant des logiciels de planification comme <strong>Notion</strong>, avec une pratique sportive intensive et des jobs étudiants/d'été.</p>
+                <p class="section-title">Comment je l'ai acquise :</p>
+                <p>En coordonnant mes travaux pratiques avec la rédaction de cahiers des charges, en utilisant des logiciels de planification comme <strong>Notion</strong>, et en gérant une pratique sportive intensive en parallèle de mes jobs d'été.</p>
                 <hr>
                 <p class="section-title">En entreprise, cela sert à :</p>
-                <p>Prioriser les tickets d'incidents critiques, gérer son temps efficacement, et maintenir un environnement de travail ordonné.</p>
+                <p>Prioriser les tickets d'incidents critiques, gérer son temps efficacement face à une panne, et maintenir un environnement de travail ordonné.</p>
             </div>
         </div>
     </div>
@@ -404,11 +463,11 @@
             <label for="trigger-patience" class="close-modal">×</label>
             <h3>Patience</h3>
             <div class="modal-body">
-                <p class="section-title">Comment je l'ai acquis :</p>
-                <p>Grâce à des logiciels de montage vidéo comme Adobe After Effects qui demandent un travail minutieux où chaque détail, chaque seconde est important, et la résolution de bugs qui surviennent quand on code en langage de programmation C/Python.</p>
+                <p class="section-title">Comment je l'ai acquise :</p>
+                <p>Grâce au travail minutieux du montage vidéo sur After Effects, à l'analyse experte de trames sur Wireshark (trouver le paquet défectueux parmi des milliers), et la résolution de bugs (troubleshooting) en programmation C et Python.</p>
                 <hr>
                 <p class="section-title">En entreprise, cela sert à :</p>
-                <p>Diagnostiquer des pannes réseaux sans trop se compliquer et expliquer calmement des problèmes techniques aux utilisateurs avec des mots simples.</p>
+                <p>Diagnostiquer des pannes systèmes complexes sans précipitation, et expliquer calmement des problèmes informatiques aux utilisateurs finaux avec des mots simples.</p>
             </div>
         </div>
     </div>
@@ -418,4 +477,3 @@
     </footer>
 </body>
 </html>
-
