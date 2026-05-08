@@ -92,7 +92,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            /* 1. L'ACCORDÉON MAGIQUE (Animation d'ouverture des Details) */
+            /* 1. L'ACCORDÉON MAGIQUE (Animation fluide des Details) */
             class Accordion {
                 constructor(el) {
                     this.el = el;
@@ -106,6 +106,7 @@
 
                 onClick(e) {
                     e.preventDefault();
+                    // On masque l'overflow juste le temps de l'animation pour ne pas tuer la 3D de façon permanente
                     this.el.style.overflow = 'hidden';
                     if (this.isClosing || !this.el.open) {
                         this.open();
@@ -157,6 +158,7 @@
                     this.animation = null;
                     this.isClosing = false;
                     this.isExpanding = false;
+                    // On retire l'overflow hidden à la fin pour rendre la 3D (translateZ) à nouveau visible !
                     this.el.style.height = this.el.style.overflow = '';
                 }
             }
@@ -166,7 +168,7 @@
             });
 
 
-            /* 2. EFFET 3D (TILT) SUR LES CARTES */
+            /* 2. LE REFLET MÉTALLIQUE LUXUEUX (3D) */
             const tiltCards = document.querySelectorAll('.tilt-card');
             
             if (window.matchMedia("(min-width: 768px)").matches) {
@@ -178,23 +180,34 @@
                         const centerX = rect.width / 2;
                         const centerY = rect.height / 2;
                         
-                        // Calcul d'inclinaison ultra-doux (car les boîtes sont très larges)
-                        const rotateX = ((y - centerY) / centerY) * -3; 
-                        const rotateY = ((x - centerX) / centerX) * 3;
+                        // Inclinaison
+                        const rotateX = ((y - centerY) / centerY) * -6; 
+                        const rotateY = ((x - centerX) / centerX) * 6;
 
-                        card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                        // Calcul de l'angle du dégradé (Lumière)
+                        const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) - 90;
+
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                         
-                        // Dégradé combiné (Matière Noble + Lueur Souris)
+                        // Le rayon métallique qui tourne
                         card.style.background = `
-                            radial-gradient(circle at ${x}px ${y}px, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
-                            linear-gradient(145deg, #151515 0%, #050505 100%)
+                            linear-gradient(${angle}deg, 
+                                rgba(255, 255, 255, 0.1) 0%, 
+                                rgba(212, 175, 55, 0.25) 30%, 
+                                rgba(10, 10, 10, 0.95) 70%
+                            ),
+                            #050505
                         `;
-                        card.style.boxShadow = `${-rotateY}px ${rotateX + 10}px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.3)`;
+                        
+                        card.style.boxShadow = `
+                            ${-rotateY * 2}px ${rotateX * 2 + 15}px 30px rgba(0, 0, 0, 0.9), 
+                            inset 0 0 2px rgba(212, 175, 55, 0.5)
+                        `;
                         card.style.borderColor = "#d4af37";
                     });
 
                     card.addEventListener('mouseleave', () => {
-                        card.style.transform = `perspective(2000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
                         card.style.background = `linear-gradient(145deg, #151515 0%, #050505 100%)`;
                         card.style.boxShadow = `10px 15px 30px rgba(0, 0, 0, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.05)`;
                         card.style.borderColor = `rgba(0,0,0,0.9)`;
