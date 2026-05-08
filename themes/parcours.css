@@ -158,11 +158,8 @@ body {
 .main-container {
     width: 90%;
     max-width: 1000px;
-    /* REDUCTION DU VIDE : On passe la marge du haut à 30px au lieu de 60px */
     margin: 30px auto 60px auto; 
     flex: 1;
-    position: relative;
-    z-index: 10;
 }
 
 .page-title {
@@ -219,7 +216,7 @@ body {
 
 .timeline-item.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
 .timeline-item input[type="checkbox"] { display: none; }
