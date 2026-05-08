@@ -36,7 +36,7 @@
             <a href="divers.php" class="<?php echo ($page == 'divers') ? 'active' : ''; ?>">Divers</a>
             <a href="contact.php" class="<?php echo ($page == 'contact') ? 'active' : ''; ?>">Contact</a>
             
-            <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-mobile">Mon CV</a>
+            <a href="CV-AVCI-Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
         </div>
 
         <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-desktop">Mon CV</a>
