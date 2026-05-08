@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <nav class="navbar">
         <a href="index.html" class="nav-brand">
             <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
@@ -16,9 +20,7 @@
 
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-burger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </label>
 
         <div class="nav-links">
@@ -30,18 +32,18 @@
             <a href="projets.html">Projets</a>
             <a href="divers.html">Divers</a>
             <a href="contact.html">Contact</a>
-            <a href="CV-AVCI-Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
+            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
         </div>
 
-        <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-desktop">Mon CV</a>
+        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">Mon CV</a>
     </nav>
 
-    <header style="margin-top: 40px; text-align: center;">
+    <header class="header-section">
         <h1>Mon Parcours Professionnel</h1>
         <p class="subtitle-instruction"><em>Cliquez sur les expériences pour découvrir mon histoire</em></p>
     </header>
 
-    <details>
+    <details class="tilt-card">
         <summary>
             <span class="summary-left"> <img src="images/europavox.jpeg" alt="Logo Europavox" class="exp-logo">
                 <strong>Restaurateur Polyvalent - Europavox</strong>
@@ -55,7 +57,7 @@
         </div>
     </details>
 
-    <details>
+    <details class="tilt-card">
         <summary>
             <span class="summary-left"> <img src="images/db-schenker-logo.jpg" alt="Logo DB Schenker" class="exp-logo">
                 <strong>Agent de tri / Logistique - DB Schenker</strong>
@@ -69,7 +71,7 @@
         </div>
     </details>
 
-    <details>
+    <details class="tilt-card">
         <summary>
             <span class="summary-left"> <img src="images/manpower.jpg" alt="Logo Manpower BTP" class="exp-logo">
                 <strong>Manutention - Secteur BTP</strong>
@@ -86,5 +88,212 @@
     <footer class="site-footer">
         <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* 1. L'ACCORDÉON MAGIQUE (Animation d'ouverture des Details) */
+            class Accordion {
+                constructor(el) {
+                    this.el = el;
+                    this.summary = el.querySelector('summary');
+                    this.content = el.querySelector('.exp-details');
+                    this.animation = null;
+                    this.isClosing = false;
+                    this.isExpanding = false;
+                    this.summary.addEventListener('click', (e) => this.onClick(e));
+                }
+
+                onClick(e) {
+                    e.preventDefault();
+                    this.el.style.overflow = 'hidden';
+                    if (this.isClosing || !this.el.open) {
+                        this.open();
+                    } else if (this.isExpanding || this.el.open) {
+                        this.shrink();
+                    }
+                }
+
+                shrink() {
+                    this.isClosing = true;
+                    const startHeight = `${this.el.offsetHeight}px`;
+                    const endHeight = `${this.summary.offsetHeight}px`;
+                    
+                    if (this.animation) this.animation.cancel();
+                    
+                    this.animation = this.el.animate({ height: [startHeight, endHeight] }, {
+                        duration: 400,
+                        easing: 'ease-out'
+                    });
+                    
+                    this.animation.onfinish = () => this.onAnimationFinish(false);
+                    this.animation.oncancel = () => this.isClosing = false;
+                }
+
+                open() {
+                    this.el.style.height = `${this.el.offsetHeight}px`;
+                    this.el.open = true;
+                    window.requestAnimationFrame(() => this.expand());
+                }
+
+                expand() {
+                    this.isExpanding = true;
+                    const startHeight = `${this.el.offsetHeight}px`;
+                    const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+                    
+                    if (this.animation) this.animation.cancel();
+                    
+                    this.animation = this.el.animate({ height: [startHeight, endHeight] }, {
+                        duration: 400,
+                        easing: 'ease-out'
+                    });
+                    
+                    this.animation.onfinish = () => this.onAnimationFinish(true);
+                    this.animation.oncancel = () => this.isExpanding = false;
+                }
+
+                onAnimationFinish(open) {
+                    this.el.open = open;
+                    this.animation = null;
+                    this.isClosing = false;
+                    this.isExpanding = false;
+                    this.el.style.height = this.el.style.overflow = '';
+                }
+            }
+
+            document.querySelectorAll('details').forEach((el) => {
+                new Accordion(el);
+            });
+
+
+            /* 2. EFFET 3D (TILT) SUR LES CARTES */
+            const tiltCards = document.querySelectorAll('.tilt-card');
+            
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                tiltCards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        // Calcul d'inclinaison ultra-doux (car les boîtes sont très larges)
+                        const rotateX = ((y - centerY) / centerY) * -3; 
+                        const rotateY = ((x - centerX) / centerX) * 3;
+
+                        card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                        
+                        // Dégradé combiné (Matière Noble + Lueur Souris)
+                        card.style.background = `
+                            radial-gradient(circle at ${x}px ${y}px, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                            linear-gradient(145deg, #151515 0%, #050505 100%)
+                        `;
+                        card.style.boxShadow = `${-rotateY}px ${rotateX + 10}px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.3)`;
+                        card.style.borderColor = "#d4af37";
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = `perspective(2000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                        card.style.background = `linear-gradient(145deg, #151515 0%, #050505 100%)`;
+                        card.style.boxShadow = `10px 15px 30px rgba(0, 0, 0, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.05)`;
+                        card.style.borderColor = `rgba(0,0,0,0.9)`;
+                        card.style.borderTopColor = `rgba(212, 175, 55, 0.4)`;
+                        card.style.borderLeftColor = `rgba(212, 175, 55, 0.2)`;
+                    });
+                });
+            }
+
+            /* 3. LUEUR DORÉE QUI SUIT LE CURSEUR */
+            const cursorGlow = document.getElementById('cursorGlow');
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+
+            /* 4. EFFET D'ONDE (RIPPLE) SUR LES BOUTONS */
+            const buttons = document.querySelectorAll('.btn-cv-desktop');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const ripple = document.createElement('span');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            /* 5. PARTICULES D'OR EN ARRIÈRE-PLAN */
+            const canvas = document.getElementById('gold-particles');
+            const ctx = canvas.getContext('2d');
+            let particlesArray = [];
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 1.5; 
+                    this.speedX = Math.random() * 0.5 - 0.25; 
+                    this.speedY = Math.random() * -1 - 0.2;   
+                    const colors = ['rgba(212, 175, 55, 0.7)', 'rgba(249, 229, 160, 0.5)', 'rgba(170, 140, 44, 0.4)'];
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                }
+                
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.y < 0) {
+                        this.y = canvas.height;
+                        this.x = Math.random() * canvas.width;
+                    }
+                    if (this.x < 0 || this.x > canvas.width) {
+                        this.speedX *= -1;
+                    }
+                }
+
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+        });
+    </script>
 </body>
 </html>
