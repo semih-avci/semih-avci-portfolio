@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Découvrez le profil de Semih Avci, étudiant en BUT Réseaux et Télécommunications à l'IUT Clermont Auvergne.">
     <title>À propos - Avci Semih</title>
+    
     <link rel="stylesheet" href="themes/apr.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
         #gold-particles {
             position: fixed;
@@ -17,6 +19,8 @@
             z-index: -1; 
             pointer-events: none; 
         }
+
+        /* Lueur dorée qui suit le curseur */
         .cursor-glow {
             position: fixed;
             width: 400px;
@@ -29,6 +33,8 @@
             mix-blend-mode: screen;
             transition: opacity 0.3s ease;
         }
+
+        /* Effet d'Onde sur le bouton de contact */
         .btn-gold {
             position: relative;
             overflow: hidden;
@@ -43,15 +49,22 @@
         @keyframes ripple-effect {
             to { transform: scale(4); opacity: 0; }
         }
+
+        /* Rendre la carte prête pour la 3D */
         .identity-card {
             transition: transform 0.15s ease-out, box-shadow 0.3s ease;
             transform-style: preserve-3d;
+            /* Cache la carte au tout début pour l'animation d'apparition */
             opacity: 0;
             transform: translateY(40px);
         }
+
+        /* On fait "ressortir" le contenu de la carte en 3D */
         .id-photo-wrapper, .id-content {
             transform: translateZ(30px);
         }
+
+        /* Assurer que la navigation reste au premier plan */
         .navbar { z-index: 2000; position: fixed; }
         .about-container { position: relative; z-index: 10; }
     </style>
@@ -82,10 +95,10 @@
             <a href="divers.html">Divers</a>
             <a href="contact.html">Contact</a>
             
-            <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-mobile">Mon CV</a>
+            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
         </div>
 
-        <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-desktop">Mon CV</a>
+        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">Mon CV</a>
     </nav>
 
     <main class="about-container">
@@ -126,38 +139,56 @@
     <footer class="site-footer">
         <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            /* 1. ANIMATION D'ENTRÉE THÉÂTRALE */
             const card = document.getElementById('idCard');
             setTimeout(() => {
                 card.style.transition = 'all 1s cubic-bezier(0.25, 1, 0.5, 1)';
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0) scale(1)';
-            }, 150); 
+            }, 150); // Petit délai pour laisser la page charger
+
+            /* 2. EFFET 3D (TILT) SUR LA CARTE COMPLÈTE */
             if (window.matchMedia("(min-width: 768px)").matches) {
                 card.addEventListener('mousemove', (e) => {
+                    // Supprimer la transition lente pour que la 3D suive la souris en temps réel
                     card.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
+                    
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -8;
+                    
+                    // Calcul de l'inclinaison
+                    const rotateX = ((y - centerY) / centerY) * -8; // 8 degrés max d'inclinaison
                     const rotateY = ((x - centerX) / centerX) * 8;
+
                     card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    
+                    // Ombre dynamique qui bouge à l'opposé de la souris
                     card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 30}px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2)`;
                 });
+
                 card.addEventListener('mouseleave', () => {
+                    // Remettre une transition douce pour le retour à la normale
                     card.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
                     card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
                     card.style.boxShadow = `0 28px 55px rgba(0, 0, 0, 0.75)`;
                 });
             }
+
+            /* 3. LUEUR DORÉE QUI SUIT LE CURSEUR */
             const cursorGlow = document.getElementById('cursorGlow');
             document.addEventListener('mousemove', (e) => {
                 cursorGlow.style.left = e.clientX + 'px';
                 cursorGlow.style.top = e.clientY + 'px';
             });
+
+            /* 4. EFFET D'ONDE (RIPPLE) SUR LE BOUTON CONTACT */
             const btnGold = document.querySelector('.btn-gold');
             if(btnGold) {
                 btnGold.addEventListener('click', function(e) {
@@ -174,15 +205,20 @@
                     setTimeout(() => ripple.remove(), 600);
                 });
             }
+
+            /* 5. PARTICULES D'OR EN ARRIÈRE-PLAN */
             const canvas = document.getElementById('gold-particles');
             const ctx = canvas.getContext('2d');
             let particlesArray = [];
+
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+
             window.addEventListener('resize', () => {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             });
+
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width;
@@ -192,7 +228,8 @@
                     this.speedY = Math.random() * -1 - 0.2;   
                     const colors = ['rgba(212, 175, 55, 0.7)', 'rgba(249, 229, 160, 0.5)', 'rgba(170, 140, 44, 0.4)'];
                     this.color = colors[Math.floor(Math.random() * colors.length)];
-                } 
+                }
+                
                 update() {
                     this.x += this.speedX;
                     this.y += this.speedY;
@@ -205,6 +242,7 @@
                         this.speedX *= -1;
                     }
                 }
+
                 draw() {
                     ctx.fillStyle = this.color;
                     ctx.beginPath();
@@ -212,6 +250,7 @@
                     ctx.fill();
                 }
             }
+
             function initParticles() {
                 particlesArray = [];
                 const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
@@ -219,6 +258,7 @@
                     particlesArray.push(new Particle());
                 }
             }
+
             function animateParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 for (let i = 0; i < particlesArray.length; i++) {
@@ -227,6 +267,7 @@
                 }
                 requestAnimationFrame(animateParticles);
             }
+
             initParticles();
             animateParticles();
         });
