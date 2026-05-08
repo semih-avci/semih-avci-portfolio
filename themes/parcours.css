@@ -623,3 +623,78 @@ hr {
         grid-template-columns: 1fr;
     }
 }
+
+/* ========================================= */
+/* EFFETS LUXUEUX - PARTICULES, LUEUR ET 3D  */
+/* ========================================= */
+
+#gold-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    pointer-events: none; 
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    mix-blend-mode: screen;
+    transition: opacity 0.3s ease;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes ripple-effect {
+    to { transform: scale(4); opacity: 0; }
+}
+
+/* --- Préparation 3D des cartes de la timeline --- */
+.timeline-content {
+    /* Ajout des propriétés pour la 3D */
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    /* On enlève le overflow hidden s'il y était pour que la 3D ressorte */
+}
+
+/* Les textes à l'intérieur de la carte ressortent vers l'écran */
+.timeline-content .header-content,
+.timeline-content .school-info,
+.timeline-content p,
+.timeline-content .tag-school,
+.timeline-content .click-hint {
+    transform: translateZ(20px);
+}
+
+/* --- Animation d'apparition au scroll (Fade Up) --- */
+.timeline-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* S'assurer que le contenu principal est devant les particules */
+.main-container {
+    position: relative;
+    z-index: 10;
+}
