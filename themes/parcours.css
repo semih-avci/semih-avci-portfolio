@@ -17,29 +17,21 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 110px;
+    /* REDUCTION DU VIDE : 90px correspond exactement à la hauteur de la navbar */
+    padding-top: 90px;
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
 }
 
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    background: #050505;
-}
-
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #050505; }
 ::-webkit-scrollbar-thumb {
     background: #aa8c2c;
     border-radius: 6px;
     border: 3px solid #050505;
 }
-
-::-webkit-scrollbar-thumb:hover {
-    background: #d4af37;
-}
+::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
 .navbar {
     position: fixed;
@@ -72,13 +64,8 @@ body {
     transition: transform 0.3s;
 }
 
-.navbar:hover .nav-logo-img {
-    transform: scale(1.05);
-}
-
-.nav-toggle, .nav-burger, .btn-cv-mobile {
-    display: none;
-}
+.navbar:hover .nav-logo-img { transform: scale(1.05); }
+.nav-toggle, .nav-burger, .btn-cv-mobile { display: none; }
 
 .nav-links {
     display: flex;
@@ -116,10 +103,7 @@ body {
     color: #ffffff;
     text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
-
-.nav-links a:hover::after, .nav-links a.active::after {
-    width: 100%;
-}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
 .btn-cv-desktop {
     display: inline-flex;
@@ -158,11 +142,7 @@ body {
     transition: transform 0.3s;
     margin-top: -2px;
 }
-
-.btn-cv-desktop:hover svg {
-    transform: rotate(-10deg) scale(1.1);
-}
-
+.btn-cv-desktop:hover svg { transform: rotate(-10deg) scale(1.1); }
 .btn-cv-desktop::before {
     content: '';
     position: absolute;
@@ -173,16 +153,16 @@ body {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: 0.6s;
 }
-
-.btn-cv-desktop:hover::before {
-    left: 100%;
-}
+.btn-cv-desktop:hover::before { left: 100%; }
 
 .main-container {
     width: 90%;
     max-width: 1000px;
-    margin: 40px auto;
+    /* REDUCTION DU VIDE : On passe la marge du haut à 30px au lieu de 60px */
+    margin: 30px auto 60px auto; 
     flex: 1;
+    position: relative;
+    z-index: 10;
 }
 
 .page-title {
@@ -192,7 +172,8 @@ body {
     font-weight: 400;
     font-style: italic;
     color: #f0f0f0;
-    margin: 20px 0 10px 0;
+    /* REDUCTION DU VIDE : suppression de la marge haute */
+    margin: 0 0 10px 0; 
     background: linear-gradient(to right, #ffffff 20%, #d4af37 50%, #ffffff 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -202,64 +183,101 @@ body {
 .subtitle {
     text-align: center;
     color: #d4af37;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     font-size: 0.9rem;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+/* --- LE VRAI EFFET 3D COMMENCE ICI --- */
 
 .timeline {
     position: relative;
     padding-left: 50px;
 }
 
+/* La ligne centrale devient un tube doré 3D */
 .timeline::before {
     content: '';
     position: absolute;
     left: 19px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: rgba(212, 175, 55, 0.3);
+    width: 4px; /* Plus épais pour la 3D */
+    background: linear-gradient(to right, #f9e5a0 0%, #aa8c2c 100%); /* Dégradé cylindrique */
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(20px); /* Modifié pour éviter le bug d'invisibilité */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.timeline-item input[type="checkbox"] {
-    display: none;
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
+.timeline-item input[type="checkbox"] { display: none; }
+
+/* Les points deviennent des sphères dorées 3D */
 .timeline-dot {
     position: absolute;
-    left: 12px;
+    left: 11px;
     top: 30px;
-    width: 16px;
-    height: 16px;
-    background: #050505;
-    border: 2px solid #d4af37;
+    width: 20px;
+    height: 20px;
+    /* Effet sphère magique */
+    background: radial-gradient(circle at 30% 30%, #fff7cc 0%, #d4af37 40%, #5a4505 100%);
     border-radius: 50%;
     z-index: 2;
     transition: 0.3s;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.8), inset -2px -2px 4px rgba(0,0,0,0.5);
 }
 
+/* La carte devient une plaque premium 3D */
 .timeline-content {
     display: block;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    padding: 30px;
-    border-radius: 8px;
+    /* Dégradé de fond pour imiter une matière noble */
+    background: linear-gradient(145deg, #151515 0%, #050505 100%);
+    
+    /* Bords asymétriques pour l'effet biseauté (lumière en haut à gauche, ombre en bas à droite) */
+    border-top: 1px solid rgba(212, 175, 55, 0.4);
+    border-left: 1px solid rgba(212, 175, 55, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+    
+    padding: 35px;
+    border-radius: 12px; /* Coins plus arrondis */
     cursor: pointer;
-    transition: 0.3s;
     margin-left: 30px;
+    
+    /* Ombre portée massive + Ombre interne pour l'épaisseur du verre */
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+    
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
 }
 
 .timeline-content:hover {
-    transform: translateX(10px);
-    background: rgba(212, 175, 55, 0.05);
-    border-color: #d4af37;
+    transform: translateX(10px) translateY(-5px) !important;
+    border-top-color: #d4af37;
+    border-left-color: #d4af37;
+    box-shadow: 15px 25px 40px rgba(0, 0, 0, 0.95), inset 2px 2px 5px rgba(212, 175, 55, 0.2);
+}
+
+/* --- Préparation des éléments internes pour qu'ils "sortent" de la carte 3D --- */
+.timeline-content .header-content,
+.timeline-content .school-info,
+.timeline-content p,
+.timeline-content .tag-school,
+.timeline-content .click-hint {
+    transform: translateZ(25px);
 }
 
 .tag-school {
@@ -328,6 +346,7 @@ body {
     border-bottom: 1px dashed #d4af37;
 }
 
+/* Modales / Side Panel */
 .side-panel {
     position: fixed;
     top: 0;
@@ -376,13 +395,8 @@ body {
     visibility: visible;
 }
 
-.timeline-item input:checked ~ .side-panel .overlay {
-    opacity: 1;
-}
-
-.timeline-item input:checked ~ .side-panel .panel-content {
-    transform: translateX(0);
-}
+.timeline-item input:checked ~ .side-panel .overlay { opacity: 1; }
+.timeline-item input:checked ~ .side-panel .panel-content { transform: translateX(0); }
 
 .close-btn {
     position: absolute;
@@ -481,11 +495,41 @@ hr {
     margin-top: auto;
 }
 
-@media (max-width: 900px) {
-    body {
-        padding-top: 70px;
-    }
+/* Magie JS */
+#gold-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    pointer-events: none; 
+}
+.cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    mix-blend-mode: screen;
+    transition: opacity 0.3s ease;
+}
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+@keyframes ripple-effect {
+    to { transform: scale(4); opacity: 0; }
+}
 
+@media (max-width: 900px) {
+    body { padding-top: 70px; }
     .navbar {
         height: 70px;
         padding: 0 20px;
@@ -493,16 +537,8 @@ hr {
         flex-direction: row;
         background: #050505;
     }
-
-    .nav-logo-img {
-        height: 35px;
-        margin: 0;
-    }
-
-    .btn-cv-desktop {
-        display: none;
-    }
-
+    .nav-logo-img { height: 35px; margin: 0; }
+    .btn-cv-desktop { display: none; }
     .nav-burger {
         display: flex;
         flex-direction: column;
@@ -512,7 +548,6 @@ hr {
         cursor: pointer;
         z-index: 2002;
     }
-
     .nav-burger span {
         display: block;
         height: 3px;
@@ -521,7 +556,6 @@ hr {
         border-radius: 3px;
         transition: all 0.3s ease;
     }
-
     .nav-links {
         position: fixed;
         top: 0;
@@ -541,26 +575,11 @@ hr {
         box-shadow: -5px 0 15px rgba(0,0,0,0.8);
         padding: 20px;
     }
-
-    .nav-toggle:checked ~ .nav-links {
-        transform: translateX(0);
-    }
-
-    .nav-toggle:checked ~ .nav-burger span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-    }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(2) {
-        opacity: 0;
-    }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-    }
-
-    .nav-links a {
-        font-size: 1.2rem;
-        color: #f0f0f0;
-    }
-
+    .nav-toggle:checked ~ .nav-links { transform: translateX(0); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+    .nav-links a { font-size: 1.2rem; color: #f0f0f0; }
     .btn-cv-mobile {
         display: inline-flex;
         align-items: center;
@@ -576,125 +595,26 @@ hr {
         font-size: 0.9rem;
     }
 
-    .main-container {
-        width: 95%;
-        margin-top: 10px;
-        overflow-x: hidden;
-    }
-    
-    .page-title {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-    }
-
-    .subtitle {
-        margin-bottom: 40px;
-        font-size: 0.8rem;
-    }
-    
-    .timeline {
-        padding-left: 20px;
-    }
-    .timeline::before {
-        left: 9px;
-    }
-    .timeline-dot {
-        left: 2px;
-        top: 20px;
-    }
+    .main-container { width: 95%; margin-top: 10px; overflow-x: hidden; }
+    .page-title { font-size: 2.2rem; margin-bottom: 10px; }
+    .subtitle { margin-bottom: 40px; font-size: 0.8rem; }
+    .timeline { padding-left: 20px; }
+    .timeline::before { left: 9px; }
+    .timeline-dot { left: 2px; top: 20px; }
     .timeline-content {
         margin-left: 25px;
         padding: 20px;
         width: calc(100% - 25px);
+        transform-style: flat; /* Désactive la 3D sur mobile pour éviter les bugs tactiles */
     }
-    
-    .school-logo-tiny, .logo-xl {
-        max-width: 100%;
-        height: auto;
-        max-height: 60px;
+    .timeline-content .header-content,
+    .timeline-content .school-info,
+    .timeline-content p,
+    .timeline-content .tag-school,
+    .timeline-content .click-hint {
+        transform: none;
     }
-    
-    .panel-content {
-        width: 100%;
-        max-width: 100%;
-        padding: 40px 20px;
-    }
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ========================================= */
-/* EFFETS LUXUEUX - PARTICULES, LUEUR ET 3D  */
-/* ========================================= */
-
-#gold-particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; 
-    pointer-events: none; 
-}
-
-.cursor-glow {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    mix-blend-mode: screen;
-    transition: opacity 0.3s ease;
-}
-
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple-effect 0.6s linear;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-@keyframes ripple-effect {
-    to { transform: scale(4); opacity: 0; }
-}
-
-/* --- Préparation 3D des cartes de la timeline --- */
-.timeline-content {
-    /* Ajout des propriétés pour la 3D */
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.3s ease;
-    transform-style: preserve-3d;
-    position: relative;
-    /* On enlève le overflow hidden s'il y était pour que la 3D ressorte */
-}
-
-/* Les textes à l'intérieur de la carte ressortent vers l'écran */
-.timeline-content .header-content,
-.timeline-content .school-info,
-.timeline-content p,
-.timeline-content .tag-school,
-.timeline-content .click-hint {
-    transform: translateZ(20px);
-}
-
-/* --- Animation d'apparition au scroll (Fade Up) --- */
-.timeline-item {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.timeline-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* S'assurer que le contenu principal est devant les particules */
-.main-container {
-    position: relative;
-    z-index: 10;
+    .school-logo-tiny, .logo-xl { max-width: 100%; height: auto; max-height: 60px; }
+    .panel-content { width: 100%; max-width: 100%; padding: 40px 20px; }
+    .info-grid { grid-template-columns: 1fr; }
 }
