@@ -35,6 +35,7 @@
             
             <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
         </div>
+        
         <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop ripple-btn">
             Mon CV
         </a>
@@ -126,12 +127,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            /* 1. EFFET 3D PARALLAX (Le contenu sort de la carte !) */
+            /* 1. EFFET 3D PARALLAX */
             const tiltCards = document.querySelectorAll('.tilt-card');
             
             if (window.matchMedia("(min-width: 768px)").matches) {
                 tiltCards.forEach(card => {
-                    // Les éléments internes qui vont léviter
                     const icon = card.querySelector('.card-icon-wrapper');
                     const content = card.querySelector('.card-content');
                     const btn = card.querySelector('.btn-see-more');
@@ -143,14 +143,11 @@
                         const centerX = rect.width / 2;
                         const centerY = rect.height / 2;
                         
-                        // Calcul d'inclinaison (12 degrés max pour un bel effet 3D)
                         const rotateX = ((y - centerY) / centerY) * -12; 
                         const rotateY = ((x - centerX) / centerX) * 12;
 
-                        // On applique la rotation sur la carte principale
                         card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                         
-                        // Le reflet métallique qui suit la souris
                         const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) - 90;
                         card.style.background = `
                             linear-gradient(${angle}deg, 
@@ -161,10 +158,8 @@
                             #050505
                         `;
                         
-                        // L'ombre bouge à l'opposé pour créer le volume
                         card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 20}px 40px rgba(0, 0, 0, 0.9)`;
 
-                        // LA MAGIE PARALLAX : on accentue le translateZ pendant le mouvement !
                         icon.style.transform = `translateZ(80px) rotateX(${rotateX * -0.5}deg) rotateY(${rotateY * -0.5}deg)`;
                         content.style.transform = `translateZ(40px)`;
                         btn.style.transform = `translateZ(60px)`;
@@ -173,13 +168,11 @@
                     });
 
                     card.addEventListener('mouseleave', () => {
-                        // Retour à l'état initial fluide
                         card.style.transition = `transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease`;
                         card.style.transform = `rotateX(0deg) rotateY(0deg)`;
                         card.style.background = `linear-gradient(145deg, #151515 0%, #050505 100%)`;
                         card.style.boxShadow = `10px 20px 40px rgba(0, 0, 0, 0.8), inset 1px 1px 2px rgba(255, 255, 255, 0.05)`;
                         
-                        // Rangement des éléments lévitants
                         icon.style.transition = `transform 0.5s ease`;
                         icon.style.transform = `translateZ(60px)`;
                         
@@ -191,7 +184,6 @@
                         btn.style.boxShadow = `none`;
                         btn.style.background = `transparent`;
                         
-                        // On retire la transition de la carte après le retour au calme pour que le prochain survol soit instantané
                         setTimeout(() => {
                             card.style.transition = `none`;
                             icon.style.transition = `transform 0.1s ease-out`;
@@ -200,7 +192,6 @@
                         }, 500);
                     });
                     
-                    // Initialisation : on supprime la transition par défaut pour que ça suive la souris instantanément
                     card.addEventListener('mouseenter', () => {
                         card.style.transition = `none`;
                     });
