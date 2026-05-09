@@ -19,8 +19,8 @@ body {
     padding-top: 130px; 
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
-    background-attachment: scroll;
-    perspective: 2000px;
+    background-attachment: fixed; /* CORRECTION : Le fond reste fixe pendant le scroll */
+    /* CORRECTION : On a retiré le "perspective" ici qui cassait les éléments "fixed" */
 }
 
 ::-webkit-scrollbar { width: 11px; }
@@ -29,7 +29,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
 /* ========================================= */
-/* BARRE DE NAVIGATION (DESKTOP)             */
+/* BARRE DE NAVIGATION                       */
 /* ========================================= */
 .navbar {
     position: fixed; 
@@ -230,7 +230,7 @@ body {
 .featured-project-section {
     margin-bottom: 78px; 
     animation: fadeUp 1s ease-out 0.3s backwards; 
-    perspective: 2000px;
+    perspective: 2000px; /* La 3D reste active sur les sections */
 }
 
 .featured-card {
@@ -300,7 +300,7 @@ body {
 
 .featured-title { 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(2rem, 4vw, 3.5rem); 
+    font-size: clamp(2rem, 4vw, 3rem); 
     color: #f0f0f0; 
     margin: 0 0 25px 0; 
     line-height: 1.1; 
@@ -443,7 +443,7 @@ body {
 }
 
 /* ========================================= */
-/* RESPONSIVE MOBILE (SANS BUG)              */
+/* RESPONSIVE MOBILE                         */
 /* ========================================= */
 @media (max-width: 900px) {
     body { padding-top: 0 !important; }
