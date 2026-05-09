@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Analyse de données d'emplois du temps universitaires (SAE 1.05) par Semih Avci. Utilisation de Python et Pandas.">
+    <title>Projet Data : Analyseur d'Emploi du Temps - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projets.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour aux projets
+                </a>
+            </div>
+
+            <h1 class="page-title">Analyseur de Données<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">SAE 1.05 / Python & Pandas / Data Processing</span>
+        </header>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">1. Contexte du Projet</h2>
+            <p class="card-text">
+                Ce projet, réalisé dans le cadre de la <strong>SAE 1.05</strong> (Traitement de données), avait pour but d'automatiser l'analyse d'emplois du temps universitaires. 
+                <br><br>
+                <strong>La problématique :</strong><br>
+                Les fichiers d'emplois du temps (souvent au format ICS ou CSV brut) sont difficilement lisibles par l'humain pour effectuer des statistiques globales (nombre d'heures par matière, par enseignant ou par groupe). 
+                <br><br>
+                <strong>L'objectif technique :</strong><br>
+                Développer un outil en Python capable de parser ces fichiers, de nettoyer les données "sales" et de générer une synthèse structurée permettant de filtrer les cours par groupes (TDA, TDB, etc.).
+            </p>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card tilt-card" style="margin-bottom: 30px;">
+                <h2 class="card-title">2. Travail Fourni</h2>
+                <div class="card-text">
+                    Le projet a été structuré autour de la bibliothèque <strong>Pandas</strong>, l'outil de référence pour la Data Science en Python.
+                    <br><br>
+                    <strong>Étapes de réalisation :</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Extraction (Parsing) :</strong> Lecture des fichiers sources et transformation en DataFrames Pandas.</li>
+                        <li><strong>Nettoyage (Cleaning) :</strong> Suppression des doublons, gestion des valeurs manquantes et formatage des dates/heures.</li>
+                        <li><strong>Filtrage Intelligent :</strong> Mise en place de fonctions permettant d'extraire uniquement les cours d'un groupe spécifique ou d'une ressource précise.</li>
+                        <li><strong>Statistiques :</strong> Calcul automatique du volume horaire total par module (SAE, Ressources, etc.).</li>
+                    </ul>
+                </div>
+                <div class="tech-tags">
+                    <span>Python 3.11</span>
+                    <span>Pandas</span>
+                    <span>Numpy</span>
+                    <span>Format ICS / CSV</span>
+                </div>
+            </div>
+
+            <div class="code-modules-container">
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Chargement & Nettoyage <span class="badge-me">PARTIE A</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Initialisation du DataFrame et formatage des colonnes temporelles. (Cliquer pour dérouler)</p>
+                        </summary>
+                        
+                        <div class="code-window">
+                            <pre><code class="language-python">
+<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+
+<span class="code-keyword">def</span> charger_donnees(chemin_fichier):
+    <span class="code-comment"># Chargement du fichier CSV exporté de l'emploi du temps</span>
+    df = pd.read_csv(chemin_fichier, sep=';', encoding='utf-8')
+    
+    <span class="code-comment"># Conversion des colonnes en objets Datetime pour les calculs</span>
+    df['Debut'] = pd.to_datetime(df['Debut'])
+    df['Fin'] = pd.to_datetime(df['Fin'])
+    
+    <span class="code-comment"># Calcul de la durée de chaque cours</span>
+    df['Duree'] = df['Fin'] - df['Debut']
+    
+    <span class="code-keyword">return</span> df.dropna(subset=['Module'])</code></pre>
+                            <div class="explanation-box">
+                                <strong>Analyse :</strong> La conversion en <code>datetime</code> est cruciale pour permettre à Python de comprendre qu'il s'agit d'heures et non de simples chaînes de caractères.
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3 class="text-highlight">Filtrage par Groupe <span class="badge-me">PARTIE B</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Extraction des données spécifiques à un groupe d'étudiants. (Cliquer pour dérouler)</p>
+                        </summary>
+
+                        <div class="code-window">
+                            <pre><code class="language-python">
+<span class="code-keyword">def</span> filtrer_par_groupe(df, nom_groupe):
+    <span class="code-docstring">""" Retourne uniquement les lignes contenant le groupe spécifié. """</span>
+    mask = df['Groupes'].str.contains(nom_groupe, na=<span class="code-keyword">False</span>)
+    df_filtre = df[mask]
+    
+    <span class="code-comment"># Calcul du total d'heures pour ce groupe</span>
+    total_heures = df_filtre['Duree'].sum()
+    <span class="code-keyword">print</span>(f"Total pour {nom_groupe} : {total_heures}")
+    
+    <span class="code-keyword">return</span> df_filtre</code></pre>
+                            <div class="explanation-box">
+                                <strong>Logique :</strong> L'utilisation de <code>str.contains</code> permet de capturer un groupe même s'il est listé avec d'autres (ex: "TDA, TDB").
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="featured-card tilt-card" style="margin-top: 60px;">
+            <h2 class="card-title">3. Difficultés Rencontrées</h2>
+            <p class="card-text">
+                <strong>1. Hétérogénéité des données :</strong><br>
+                Les fichiers sources contenaient souvent des incohérences (noms de modules écrits différemment, formats de dates changeants). J'ai dû implémenter des expressions régulières (Regex) pour normaliser les données avant l'analyse.
+                <br><br>
+                <strong>2. Gestion des fuseaux horaires :</strong><br>
+                Le format ICS utilise parfois le temps universel (UTC). Il a fallu ajuster les décalages horaires pour que les rapports correspondent aux heures réelles de cours en France.
+                <br><br>
+                <strong>3. Performance de calcul :</strong><br>
+                Avec des fichiers contenant des milliers de lignes, l'utilisation de boucles `for` classiques était trop lente. L'apprentissage de la vectorisation avec Pandas a permis de rendre le script quasi instantané.
+            </p>
+        </section>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">4. Résultats</h2>
+            <p class="card-text">
+                <strong>Le produit final :</strong><br>
+                L'analyseur est capable de produire en quelques secondes un bilan complet de l'emploi du temps d'un semestre. Il génère des fichiers Excel récapitulatifs classés par type de cours (CM, TD, TP) et par enseignant.
+                <br><br>
+                <strong>Compétences acquises :</strong><br>
+                Ce projet a été ma première réelle immersion dans la <strong>Data Analysis</strong>. J'ai appris à manipuler des structures de données massives et à comprendre l'importance du "Data Cleaning" dans tout projet informatique.
+            </p>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projets.html" class="btn-cv ripple-btn">Retour aux projets</a>
+        </div>
+
+    </div>
+    
+<footer class="site-footer">
+    <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        /* 1. LUEUR DU CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        if(cursorGlow) {
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+        }
+
+        /* 2. EFFET 3D PARALLAX SUR LES CARTES */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -3; 
+                    const rotateY = ((x - centerX) / centerX) * 3;
+                    card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                    card.style.borderColor = "rgba(212, 175, 55, 0.6)";
+                    card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 20}px 40px rgba(0, 0, 0, 0.9)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    card.style.borderColor = "rgba(212, 175, 55, 0.3)";
+                    card.style.boxShadow = `0 28px 58px rgba(0, 0, 0, 0.8)`;
+                });
+            });
+        }
+
+        /* 3. EFFET RIPPLE SUR LES BOUTONS */
+        const buttons = document.querySelectorAll('.ripple-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const ripple = document.createElement('span');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        /* 4. CONSTELLATION DORÉE / RÉSEAU DYNAMIQUE */
+        const canvas = document.getElementById('gold-particles');
+        if(canvas) {
+            const ctx = canvas.getContext('2d');
+            let particlesArray = [];
+            const mouse = { x: null, y: null };
+            document.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 1.2;
+                    this.speedY = (Math.random() - 0.5) * 1.2;
+                }
+                update() {
+                    this.x += this.speedX; this.y += this.speedY;
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                    let dx = mouse.x - this.x; let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 120) { this.x -= dx / 25; this.y -= dy / 25; }
+                }
+                draw() {
+                    ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+                }
+            }
+            function init() {
+                particlesArray = [];
+                const n = Math.floor((canvas.width * canvas.height) / 10000);
+                for (let i = 0; i < n; i++) particlesArray.push(new Particle());
+            }
+            function connect() {
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                        if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+                            let opacity = 1 - (distance / 18000);
+                            ctx.strokeStyle = 'rgba(212, 175, 55, ' + opacity + ')';
+                            ctx.lineWidth = 1; ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
+                        }
+                    }
+                }
+            }
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particlesArray.forEach(p => { p.update(); p.draw(); });
+                connect(); requestAnimationFrame(animate);
+            }
+            init(); animate();
+        }
+    });
+</script>
+</body>
+</html>
