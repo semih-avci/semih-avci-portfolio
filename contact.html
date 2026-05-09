@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <canvas id="comm-waves"></canvas>
+
     <nav class="navbar">
         <a href="index.html" class="nav-brand">
             <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
@@ -16,9 +19,7 @@
 
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-burger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </label>
 
         <div class="nav-links">
@@ -30,50 +31,62 @@
             <a href="projets.html">Projets</a>
             <a href="divers.html">Divers</a>
             <a href="contact.html" class="active">Contact</a>
-            <a href="CV-AVCI-Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
+            
+            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
         </div>
 
-        <a href="CV-AVCI-Semih.pdf" target="_blank" class="btn-cv-desktop">Mon CV</a>
+        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop ripple-btn">Mon CV</a>
     </nav>
 
     <div class="contact-container">
         <header class="page-header">
             <h1 class="main-title">Me Contacter</h1>
-            <p class="subtitle-instruction"><em>Disponible pour une alternance</em></p>
+            <p class="subtitle-instruction"><em>Disponible pour une alternance (Septembre 2026)</em></p>
         </header>
 
-        <div class="contact-card">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="icon-circle">@</div>
-                    <div class="item-text">
-                        <h2>Email</h2>
-                        <p class="contact-link">semih.avci@etu.uca.fr</p>
+        <div class="card-wrapper">
+            <div class="contact-card tilt-card">
+                <div class="contact-info">
+                    
+                    <div class="contact-item ripple-btn" data-copy="semih.avci@etu.uca.fr">
+                        <div class="icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        </div>
+                        <div class="item-text">
+                            <h2>Email</h2>
+                            <p class="contact-link">semih.avci@etu.uca.fr</p>
+                        </div>
+                        <div class="copy-tooltip">Copié !</div>
+                    </div>
+
+                    <div class="contact-item ripple-btn" data-copy="+330757428190">
+                        <div class="icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div class="item-text">
+                            <h2>Téléphone</h2>
+                            <p class="contact-link">+33 07 57 42 81 90</p>
+                        </div>
+                        <div class="copy-tooltip">Copié !</div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div class="item-text">
+                            <h2>Localisation</h2>
+                            <span class="contact-text">Clermont-Ferrand, Auvergne</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <div class="icon-circle">✆</div>
-                    <div class="item-text">
-                        <h2>Téléphone</h2>
-                        <p class="contact-link">+33 07 57 42 81 90</p>
-                    </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/semih-avci-b409b739b" target="_blank" class="social-btn ripple-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        LinkedIn
+                    </a>
                 </div>
-
-                <div class="contact-item">
-                    <div class="icon-circle">📍</div>
-                    <div class="item-text">
-                        <h2>Localisation</h2>
-                        <span class="contact-text">Clermont-Ferrand, France</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/semih-avci-b409b739b" target="_blank" class="social-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    LinkedIn
-                </a>
             </div>
         </div>
     </div>
@@ -81,5 +94,171 @@
     <footer class="site-footer">
         <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* 1. COPIE DANS LE PRESSE-PAPIERS */
+            const copyItems = document.querySelectorAll('[data-copy]');
+            copyItems.forEach(item => {
+                item.addEventListener('click', async () => {
+                    const textToCopy = item.getAttribute('data-copy');
+                    try {
+                        await navigator.clipboard.writeText(textToCopy);
+                        
+                        // Afficher l'infobulle "Copié"
+                        const tooltip = item.querySelector('.copy-tooltip');
+                        tooltip.classList.add('active');
+                        
+                        // Retirer l'infobulle après 2 secondes
+                        setTimeout(() => {
+                            tooltip.classList.remove('active');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Échec de la copie', err);
+                    }
+                });
+            });
+
+            /* 2. EFFET 3D PARALLAX MAGNÉTIQUE */
+            const tiltCards = document.querySelectorAll('.tilt-card');
+            
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                tiltCards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        const rotateX = ((y - centerY) / centerY) * -8; 
+                        const rotateY = ((x - centerX) / centerX) * 8;
+
+                        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                        
+                        // Reflet métallique dynamique
+                        const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) - 90;
+                        card.style.background = `
+                            linear-gradient(${angle}deg, 
+                                rgba(255, 255, 255, 0.1) 0%, 
+                                rgba(212, 175, 55, 0.25) 30%, 
+                                rgba(10, 10, 10, 0.95) 80%
+                            ),
+                            #050505
+                        `;
+                        
+                        card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 30}px 50px rgba(0, 0, 0, 0.9)`;
+                        card.style.borderColor = "#d4af37";
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transition = `transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease, background 0.6s ease`;
+                        card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                        card.style.background = `linear-gradient(145deg, #111 0%, #050505 100%)`;
+                        card.style.boxShadow = `0 20px 50px rgba(0, 0, 0, 0.8)`;
+                        card.style.borderColor = `rgba(0,0,0,0.9)`;
+                        card.style.borderTopColor = `rgba(212, 175, 55, 0.4)`;
+                        card.style.borderLeftColor = `rgba(212, 175, 55, 0.2)`;
+                        
+                        setTimeout(() => {
+                            card.style.transition = `none`;
+                        }, 600);
+                    });
+                    
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transition = `none`;
+                    });
+                });
+            }
+
+            /* 3. EFFET RIPPLE SUR BOUTONS */
+            const buttons = document.querySelectorAll('.ripple-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const ripple = document.createElement('span');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            /* 4. ANIMATION ONDES DE COMMUNICATION EN ARRIÈRE-PLAN */
+            const canvas = document.getElementById('comm-waves');
+            const ctx = canvas.getContext('2d');
+            let waves = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Wave {
+                constructor() {
+                    // Les ondes naissent aléatoirement sur l'écran
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.radius = 1;
+                    // Vitesse de propagation de l'onde
+                    this.speed = Math.random() * 0.5 + 0.5;
+                    this.opacity = 0.5;
+                    this.maxRadius = Math.random() * 200 + 100;
+                }
+                
+                update() {
+                    this.radius += this.speed;
+                    // L'opacité diminue à mesure que l'onde grandit
+                    this.opacity = 0.5 * (1 - (this.radius / this.maxRadius));
+                    
+                    // Si l'onde est trop grande, on la réinitialise à un autre endroit
+                    if (this.radius > this.maxRadius) {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.radius = 1;
+                        this.opacity = 0.5;
+                        this.maxRadius = Math.random() * 200 + 100;
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+
+            function initWaves() {
+                waves = [];
+                // Ajuster le nombre d'ondes en fonction de l'écran
+                const numWaves = Math.floor((canvas.width * canvas.height) / 50000);
+                for (let i = 0; i < numWaves; i++) {
+                    waves.push(new Wave());
+                }
+            }
+
+            function animateWaves() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < waves.length; i++) {
+                    waves[i].update();
+                    waves[i].draw();
+                }
+                requestAnimationFrame(animateWaves);
+            }
+
+            initWaves();
+            animateWaves();
+        });
+    </script>
 </body>
 </html>
