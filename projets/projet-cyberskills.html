@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plateforme CyberSkills (SAÉ 2.03) par Semih Avci - Projet en cours de développement.">
+    <title>CyberSkills : En cours de développement - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projets.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour aux projets
+                </a>
+            </div>
+
+            <h1 class="page-title">Plateforme CyberSkills<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">SAÉ 2.03 / Full-Stack PHP / Cybersécurité</span>
+        </header>
+
+        <section class="featured-card tilt-card" style="text-align: center; border-color: #d4af37; background: rgba(20, 20, 20, 0.8);">
+            <div style="font-size: 3rem; margin-bottom: 20px;">🚧</div>
+            <h2 class="card-title" style="color: #d4af37;">Projet en cours de réalisation</h2>
+            <p class="card-text" style="font-size: 1.2rem; color: #ffffff;">
+                Le développement de la plateforme <strong>CyberSkills</strong> bat son plein !
+                <br><br>
+                Je travaille actuellement sur les derniers volets techniques de l'application, notamment l'optimisation des tableaux de bord dynamiques et la sécurisation avancée des modules de QCM.
+                <br><br>
+                <span style="font-style: italic; color: #a0a0a0;">Veuillez revenir très bientôt pour découvrir l'étude de cas complète et la démonstration des fonctionnalités.</span>
+            </p>
+            
+            <div style="margin-top: 40px; padding: 20px; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+                <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: #d4af37; margin-bottom: 15px;">Focus actuels :</p>
+                <div class="tech-tags" style="justify-content: center;">
+                    <span>Backend PHP (PDO)</span>
+                    <span>Architecture BDD MySQL</span>
+                    <span>Interface Multi-rôles</span>
+                    <span>Sécurisation OWASP</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="work-section" style="opacity: 0.6;">
+            <div class="featured-card">
+                <h2 class="card-title">Le Concept</h2>
+                <p class="card-text">
+                    CyberSkills est une application web conçue pour centraliser l'apprentissage de la cybersécurité. Elle permet aux étudiants de valider des compétences par la pratique et aux formateurs de suivre une progression précise via des indicateurs de performance en temps réel.
+                </p>
+            </div>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projets.html" class="btn-cv ripple-btn">Retour aux projets</a>
+        </div>
+
+    </div>
+    
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* 1. LUEUR CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        /* 2. EFFET 3D PARALLAX */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -5; 
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        /* 3. CONSTELLATION DORÉE */
+        const canvas = document.getElementById('gold-particles');
+        const ctx = canvas.getContext('2d');
+        let pArray = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        class P {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.s = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+            }
+            u() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            d() {
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        function init() { pArray = []; for (let i = 0; i < 80; i++) pArray.push(new P()); }
+        function connect() {
+            for (let a = 0; a < pArray.length; a++) {
+                for (let b = a; b < pArray.length; b++) {
+                    let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
+                    if (d < 25000) {
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.8 - (d/25000)) + ')';
+                        ctx.lineWidth = 1; ctx.beginPath();
+                        ctx.moveTo(pArray[a].x, pArray[a].y);
+                        ctx.lineTo(pArray[b].x, pArray[b].y); ctx.stroke();
+                    }
+                }
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pArray.forEach(p => { p.u(); p.d(); });
+            connect(); requestAnimationFrame(animate);
+        }
+        init(); animate();
+
+        /* 4. RIPPLE BTN */
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    });
+</script>
+</body>
+</html>
