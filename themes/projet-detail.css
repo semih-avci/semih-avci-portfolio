@@ -351,6 +351,42 @@ code {
 }
 
 /* ========================================= */
+/* BOUTON RETOUR EN BAS (FOOTER PROJET)      */
+/* ========================================= */
+.project-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 78px;
+    padding-top: 48px;
+    text-align: center;
+}
+
+.btn-cv {
+    height: 40px;
+    padding: 0 30px;
+    background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+    color: #000000 !important;
+    font-weight: 700;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+    border: 1px solid #f0d78c;
+    transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.btn-cv:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
+}
+
+/* ========================================= */
 /* ANIMATIONS                                */
 /* ========================================= */
 @keyframes slideDown {
@@ -442,7 +478,7 @@ code {
 }
 
 /* ========================================= */
-/* FOOTER                                    */
+/* FOOTER DE LA PAGE                         */
 /* ========================================= */
 .site-footer {
     padding: 19px;
