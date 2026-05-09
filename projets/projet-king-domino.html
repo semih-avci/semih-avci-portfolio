@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="../themes/projets.css"> 
 </head>
 <body class="project-detail-body">
+    
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <div class="main-container">
         
         <header class="project-header-simple">
@@ -657,13 +661,104 @@ def jeu_complet():
         </section>
 
         <div class="project-footer">
-            <a href="../projets.html" class="btn-cv">Retour aux projets</a>
+            <a href="../projets.html" class="btn-cv ripple-btn">Retour aux projets</a>
         </div>
 
     </div>
+    
 <footer class="site-footer">
     <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* 1. EFFET RIPPLE SUR LES BOUTONS */
+        const buttons = document.querySelectorAll('.btn-cv, .back-link');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const ripple = document.createElement('span');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        /* 2. LUEUR DU CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        if(cursorGlow) {
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+        }
+
+        /* 3. PARTICULES DORÉES EN ARRIÈRE-PLAN */
+        const canvas = document.getElementById('gold-particles');
+        if(canvas) {
+            const ctx = canvas.getContext('2d');
+            let particlesArray = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 1.5; 
+                    this.speedX = Math.random() * 0.5 - 0.25; 
+                    this.speedY = Math.random() * -1 - 0.2;   
+                    this.color = 'rgba(212, 175, 55, ' + (Math.random() * 0.5 + 0.2) + ')';
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.y < 0) {
+                        this.y = canvas.height;
+                        this.x = Math.random() * canvas.width;
+                    }
+                    if (this.x < 0 || this.x > canvas.width) {
+                        this.speedX *= -1;
+                    }
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+        }
+    });
+</script>
 </body>
 </html>
-
