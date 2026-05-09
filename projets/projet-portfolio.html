@@ -11,22 +11,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="../themes/projet-kingdomino.css">
+    <link rel="stylesheet" href="../themes/projet-detail.css">
 </head>
 <body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="main-container">
         
         <header class="project-header-simple">
             <div class="back-btn-container">
-                <a href="../projets.html" class="back-link">&larr; Retour aux projets</a>
+                <a href="../projets.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour aux projets
+                </a>
             </div>
 
             <h1 class="page-title">Mon Portfolio<span class="dot">.</span></h1>
             <span class="subtitle-instruction">Développement Web / Design CSS / Animations CSS</span>
         </header>
 
-        <section class="featured-card">
+        <section class="featured-card tilt-card">
             <h2 class="card-title">1. Contexte du Projet</h2>
             <p class="card-text">
                 Ce projet a été réalisé cette année dans le cadre scolaire. La consigne était claire : concevoir et développer notre propre site web portfolio pour nous présenter.
@@ -40,18 +49,18 @@
         </section>
 
         <section class="work-section">
-            <div class="featured-card" style="margin-bottom: 30px;">
+            <div class="featured-card tilt-card" style="margin-bottom: 30px;">
                 <h2 class="card-title">2. Travail Fourni</h2>
-                <p class="card-text">
+                <div class="card-text">
                     J'ai abordé ce projet comme un véritable projet professionnel. J'ai commencé par définir un thème Royal & Luxueux ainsi que les polices que j'allais utiliser avant de structurer le code.
                     <br><br>
                     <strong>Mon organisation :</strong>
-                    <ul>
-                        <li><strong>Design Web :</strong> Création de variables CSS dans la partie ":root" pour avoir accès à une sorte de palettes comme  la gestion des couleurs et des polices sur toutes les pages.</li>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Design Web :</strong> Création de variables CSS dans la partie ":root" pour avoir accès à une sorte de palettes comme la gestion des couleurs et des polices sur toutes les pages.</li>
                         <li><strong>Structure Sémantique :</strong> Utilisation rigoureuse des balises HTML5 (`nav`, `header`, `section`) pour l'accessibilité et le référencement.</li>
                         <li><strong>Animations :</strong> Développement d'effets visuels fluides (apparitions, survols) en CSS pur pour dynamiser l'interface sans JavaScript lourd.</li>
                     </ul>
-                </p>
+                </div>
                 <div class="tech-tags">
                     <span>HTML5 Sémantique</span>
                     <span>CSS3 Avancé</span>
@@ -66,7 +75,7 @@
                     <details>
                         <summary class="module-header header-highlight">
                             <h3 class="text-highlight">Partie A : Architecture CSS (Variables) <span class="badge-me">DESIGN</span></h3>
-                            <p>Définition de la charte graphique "Ultimate Gold" via les variables CSS. <em>(Cliquer pour dérouler)</em></p>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Définition de la charte graphique "Ultimate Gold" via les variables CSS. (Cliquer pour dérouler)</p>
                         </summary>
                         
                         <div class="code-window">
@@ -99,8 +108,7 @@
     --font-serif: 'Playfair Display', serif; 
     <span class="code-comment">/* Police sans empattement pour la lisibilité du texte courant */</span>
     --font-sans: 'Montserrat', sans-serif;   
-}
-                            </code></pre>
+}</code></pre>
                         </div>
                     </details>
                 </div>
@@ -109,7 +117,7 @@
                     <details>
                         <summary class="module-header header-highlight">
                             <h3 class="text-highlight">Partie B : Structure Sémantique <span class="badge-me">HTML5</span></h3>
-                            <p>Architecture de la page d'Accueil (Navigation & Hero). <em>(Cliquer pour dérouler)</em></p>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Architecture de la page d'Accueil (Navigation & Hero). (Cliquer pour dérouler)</p>
                         </summary>
 
                         <div class="code-window">
@@ -152,8 +160,7 @@
         <span class="code-comment">&lt;!-- Description courte et impactante --&gt;</span>
         &lt;div class="description"&gt;...&lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;
-                            </code></pre>
+&lt;/div&gt;</code></pre>
                         </div>
                     </details>
                 </div>
@@ -162,7 +169,7 @@
                     <details>
                         <summary class="module-header header-highlight">
                             <h3 class="text-highlight">Partie C : Animations & Interactivité <span class="badge-me">CSS3</span></h3>
-                            <p>Création d'effets fluides sans JavaScript. <em>(Cliquer pour dérouler)</em></p>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Création d'effets fluides sans JavaScript. (Cliquer pour dérouler)</p>
                         </summary>
 
                         <div class="code-window">
@@ -200,8 +207,7 @@
     
     <span class="code-comment">/* Changement de fond pour un or plus clair */</span>
     background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
-}
-                            </code></pre>
+}</code></pre>
                         </div>
                     </details>
                 </div>
@@ -209,7 +215,7 @@
             </div>
         </section>
 
-        <section class="featured-card" style="margin-top: 60px;">
+        <section class="featured-card tilt-card" style="margin-top: 60px;">
             <h2 class="card-title">3. Difficultés Rencontrées</h2>
             <p class="card-text">
                 <strong>1. Le Responsive Design sans bibliothèque(s) :</strong><br>
@@ -223,7 +229,7 @@
             </p>
         </section>
 
-        <section class="featured-card">
+        <section class="featured-card tilt-card">
             <h2 class="card-title">4. Résultats</h2>
             <p class="card-text">
                 <strong>Le produit final :</strong><br>
@@ -235,14 +241,168 @@
         </section>
 
         <div class="project-footer">
-            <a href="../projets.html" class="btn-cv">Retour aux projets</a>
+            <a href="../projets.html" class="btn-cv ripple-btn">Retour aux projets</a>
         </div>
 
     </div>
+    
 <footer class="site-footer">
     <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        /* 1. LUEUR DU CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        
+        if(cursorGlow) {
+            document.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+                cursorGlow.style.left = mouse.x + 'px';
+                cursorGlow.style.top = mouse.y + 'px';
+            });
+        }
+
+        /* 2. EFFET 3D PARALLAX SUR LES CARTES */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -3; 
+                    const rotateY = ((x - centerX) / centerX) * 3;
+
+                    card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                    card.style.transition = 'none';
+                    card.style.zIndex = '20';
+                    card.style.borderColor = "rgba(212, 175, 55, 0.6)";
+                    card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 20}px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.15)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease, border-color 0.5s ease';
+                    card.style.zIndex = '1';
+                    card.style.borderColor = "rgba(212, 175, 55, 0.3)";
+                    card.style.boxShadow = `0 28px 58px rgba(0, 0, 0, 0.8)`;
+                });
+            });
+        }
+
+        /* 3. EFFET RIPPLE SUR LES BOUTONS */
+        const buttons = document.querySelectorAll('.ripple-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const ripple = document.createElement('span');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        /* 4. CONSTELLATION DORÉE / RÉSEAU DYNAMIQUE (LE TRUC MAGIQUE) */
+        const canvas = document.getElementById('gold-particles');
+        if(canvas) {
+            const ctx = canvas.getContext('2d');
+            let particlesArray = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5; 
+                    this.speedX = (Math.random() - 0.5) * 1.5; 
+                    this.speedY = (Math.random() - 0.5) * 1.5;   
+                    this.color = 'rgba(212, 175, 55, 0.8)';
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // Rebond sur les bords
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                    // Interaction avec la souris (les particules fuient légèrement)
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        this.x -= dx / 20;
+                        this.y -= dy / 20;
+                    }
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                // Un nombre de particules adapté à l'écran pour garder l'effet de constellation propre
+                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 10000);
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+
+            // Dessine les lignes entre les particules proches
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                                     + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+                            opacityValue = 1 - (distance / 15000);
+                            ctx.strokeStyle = 'rgba(212, 175, 55, ' + opacityValue + ')';
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                connect();
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+        }
+    });
+</script>
 </body>
-
 </html>
-
