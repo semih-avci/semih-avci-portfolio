@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez les projets de Semih Avci : développement du jeu King Domino en Python et création d'un portfolio en HTML/CSS sans bibliothèques.">
+    <meta name="description" content="Découvrez les projets de Semih Avci : développement Web, Python, réseaux Cisco, cybersécurité et Ingénierie Télécoms.">
     <title>Projets & Réalisations - Avci Semih</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,8 +11,18 @@
     <link rel="stylesheet" href="themes/projets.css">
 </head>
 <body>
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <nav class="navbar">
         <a href="index.html" class="nav-brand"><img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img"></a>
+        
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-burger">
+            <span></span><span></span><span></span>
+        </label>
+
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="apropos.html">À propos</a>
@@ -22,33 +32,34 @@
             <a href="projets.html" class="active">Projets</a>
             <a href="divers.html">Divers</a>
             <a href="contact.html">Contact</a>
+            
+            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
         </div>
-        <a href="CV-AVCI-Semih.jpeg" target="_blank" class="btn-cv">
-            Mon CV
-        </a>
+        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop ripple-btn">Mon CV</a>
     </nav>
 
     <div class="main-container">
         <header class="page-header">
             <h1 class="page-title">Mes Réalisations</h1>
-            <div class="subtitle-instruction">Développement & Web Design</div>
+            <div class="subtitle-instruction">Développement, Réseaux & Ingénierie</div>
         </header>
 
         <section class="featured-project-section">
-            <div class="featured-card">
+            <div class="featured-card tilt-card">
                 <div class="featured-content">
-                    <span class="project-tag">Projet Licence Info</span>
-                    <h2 class="featured-title">King Domino<span class="dot">.</span></h2>
-                    <p class="featured-desc">Conception et développement complet du jeu King Domino en Python. Gestion de matrices, algorithmes de placement et calcul de scores par zones.</p>
+                    <span class="project-tag">Projet Dev Web / Full-Stack</span>
+                    <h2 class="featured-title">Plateforme "CyberSkills"<span class="dot">.</span></h2>
+                    <p class="featured-desc">Développement intégral d'une plateforme d'apprentissage (e-learning). Système de connexion sécurisé, gestion des rôles (Admin, Formateur, Étudiant), soumission de projets, création de QCM dynamiques et statistiques visuelles.</p>
                     <div class="tech-tags">
-                        <span>Python</span>
-                        <span>Algorithmique</span>
-                        <span>Matrices</span>
+                        <span>PHP 8</span>
+                        <span>MySQL / PDO</span>
+                        <span>Chart.js</span>
+                        <span>HTML/CSS</span>
                     </div>
-                    <a href="projets/projet-king-domino.html" class="btn-gold btn-outline">Voir les détails &rarr;</a>
+                    <button class="btn-gold ripple-btn">En savoir plus</button>
                 </div>
                 <div class="featured-image">
-                    <div class="abstract-visual">👑</div>
+                    <div class="abstract-visual">🎓</div>
                 </div>
             </div>
         </section>
@@ -56,28 +67,296 @@
         <div class="projects-separator"></div>
 
         <section class="featured-project-section">
-            <div class="featured-card portfolio-card reverse-layout">
+            <div class="featured-card portfolio-card reverse-layout tilt-card">
+                <div class="featured-image">
+                    <div class="abstract-visual">🛡️</div>
+                </div>
+                <div class="featured-content">
+                    <span class="project-tag">Projet Cybersécurité</span>
+                    <h2 class="featured-title">Reporting de Pentest<span class="dot">.</span></h2>
+                    <p class="featured-desc">Création d'un outil de reporting pour les audits de sécurité. Enregistrement d'infrastructures (VLAN, IP, Passerelle), historique des scans de vulnérabilités (Nmap) et génération d'une synthèse des failles avec gestion des droits d'accès.</p>
+                    <div class="tech-tags">
+                        <span>Sécurité Web</span>
+                        <span>SQL (JOIN)</span>
+                        <span>PHP Sécurisé</span>
+                    </div>
+                    <button class="btn-gold ripple-btn">En savoir plus</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="projects-separator"></div>
+
+        <section class="featured-project-section">
+            <div class="featured-card tilt-card">
+                <div class="featured-content">
+                    <span class="project-tag">Projet Data & Algo (SAE 1.05)</span>
+                    <h2 class="featured-title">Analyseur d'Emplois du Temps<span class="dot">.</span></h2>
+                    <p class="featured-desc">Développement d'un script Python permettant de parser, nettoyer et analyser des données d'emplois du temps universitaires à partir de fichiers CSV et ICS, avec filtrage intelligent par groupes (TDA, TDB).</p>
+                    <div class="tech-tags">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>Traitement de Données</span>
+                    </div>
+                    <button class="btn-gold ripple-btn">En savoir plus</button>
+                </div>
+                <div class="featured-image">
+                    <div class="abstract-visual">📊</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="projects-separator"></div>
+
+        <section class="featured-project-section">
+            <div class="featured-card portfolio-card reverse-layout tilt-card">
+                <div class="featured-image">
+                    <div class="abstract-visual">🌐</div>
+                </div>
+                <div class="featured-content">
+                    <span class="project-tag">Projet Administration Système</span>
+                    <h2 class="featured-title">Déploiement d'Infrastructure<span class="dot">.</span></h2>
+                    <p class="featured-desc">Mise en place d'une architecture complète : routage dynamique (EIGRP/RIP) sur matériel Cisco, déploiement d'un serveur de téléphonie XiVO (Trunk SIP, DECT), conteneurisation Docker, et administration Windows Server (AD, GPO).</p>
+                    <div class="tech-tags">
+                        <span>Cisco IOS</span>
+                        <span>ToIP (XiVO)</span>
+                        <span>Docker</span>
+                        <span>Active Directory</span>
+                    </div>
+                    <button class="btn-gold ripple-btn">En savoir plus</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="projects-separator"></div>
+
+        <section class="featured-project-section">
+            <div class="featured-card tilt-card">
+                <div class="featured-content">
+                    <span class="project-tag">Projet Ingénierie Télécoms</span>
+                    <h2 class="featured-title">Traitement du Signal & RF<span class="dot">.</span></h2>
+                    <p class="featured-desc">Analyse spectrale (FFT) et temporelle de signaux complexes. Étude de l'échantillonnage (théorème de Shannon, anti-repliement), réception TNT/FM et transmission hertzienne (formule de Friis) via l'utilisation avancée d'oscilloscopes et d'analyseurs de spectre.</p>
+                    <div class="tech-tags">
+                        <span>Analyse Spectrale</span>
+                        <span>Ondes RF</span>
+                        <span>Électronique</span>
+                        <span>Matériel Labo</span>
+                    </div>
+                    <button class="btn-gold ripple-btn">En savoir plus</button>
+                </div>
+                <div class="featured-image">
+                    <div class="abstract-visual">📡</div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="projects-separator"></div>
+
+        <section class="featured-project-section">
+            <div class="featured-card portfolio-card reverse-layout tilt-card">
                 <div class="featured-image">
                     <div class="abstract-visual">💻</div>
                 </div>
                 <div class="featured-content">
-                    <span class="project-tag">Projet Web Design</span>
+                    <span class="project-tag">Projet UI/UX Design</span>
                     <h2 class="featured-title">Mon Portfolio<span class="dot">.</span></h2>
-                    <p class="featured-desc">Conception de ce site entier. L'objectif était de créer un site attractif ayant un contenu cohérent, avec un thème royal & luxueux sans utiliser de bibliothèques et en utilisant le CSS (Flexbox, Grid, Animations).</p>
+                    <p class="featured-desc">Création intégrale de ce site web avec un thème "Royal & Premium". Réalisé uniquement en HTML et CSS (Flexbox, Grid, Animations 3D) couplé à du JavaScript natif, sans aucune bibliothèque externe.</p>
                     <div class="tech-tags">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Responsive Design (Mobile)</span>
+                        <span>HTML5 / CSS3</span>
+                        <span>Animations 3D</span>
+                        <span>Responsive Design</span>
                     </div>
-                    <a href="projets/projet-portfolio.html" class="btn-gold btn-outline">Voir les détails &rarr;</a>
+                    <button class="btn-gold ripple-btn">En savoir plus</button>
                 </div>
             </div>
         </section>
+
     </div>
 
     <footer class="site-footer">
         <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* =========================================================
+               1. EFFET 3D PARALLAX MAGNÉTIQUE SUR LES CARTES
+               ========================================================= */
+            const tiltCards = document.querySelectorAll('.tilt-card');
+            
+            if (window.matchMedia("(min-width: 900px)").matches) {
+                tiltCards.forEach(card => {
+                    const content = card.querySelector('.featured-content');
+                    const visual = card.querySelector('.abstract-visual');
+                    const btn = card.querySelector('.btn-gold');
+
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        // Inclinaison très douce pour les grandes cartes (5 degrés max)
+                        const rotateX = ((y - centerY) / centerY) * -5; 
+                        const rotateY = ((x - centerX) / centerX) * 5;
+
+                        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                        
+                        // Reflet métallique dynamique qui suit la souris
+                        const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) - 90;
+                        card.style.background = `
+                            linear-gradient(${angle}deg, 
+                                rgba(255, 255, 255, 0.08) 0%, 
+                                rgba(212, 175, 55, 0.15) 40%, 
+                                rgba(10, 10, 10, 0.95) 80%
+                            ),
+                            #050505
+                        `;
+                        
+                        // Ombre portée dynamique pour le volume
+                        card.style.boxShadow = `${-rotateY * 3}px ${rotateX * 3 + 30}px 50px rgba(0, 0, 0, 0.9)`;
+                        card.style.borderColor = "#d4af37";
+
+                        // Lévitation des éléments internes (Effet Parallax)
+                        if(content) content.style.transform = `translateZ(40px)`;
+                        if(visual) visual.style.transform = `translateZ(80px) rotateX(${rotateX * -0.5}deg) rotateY(${rotateY * -0.5}deg)`;
+                        if(btn) btn.style.transform = `translateZ(60px)`;
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        // Retour au calme fluide
+                        card.style.transition = `transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease, background 0.6s ease, border-color 0.6s ease`;
+                        card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                        card.style.background = `linear-gradient(145deg, #111 0%, #050505 100%)`;
+                        card.style.boxShadow = `0 20px 50px rgba(0, 0, 0, 0.8)`;
+                        card.style.borderColor = `rgba(212, 175, 55, 0.28)`;
+                        
+                        // Rangement des éléments lévitants
+                        if(content) {
+                            content.style.transition = `transform 0.6s ease`;
+                            content.style.transform = `translateZ(30px)`;
+                        }
+                        if(visual) {
+                            visual.style.transition = `transform 0.6s ease`;
+                            visual.style.transform = `translateZ(80px)`;
+                        }
+                        if(btn) {
+                            btn.style.transition = `transform 0.6s ease`;
+                            btn.style.transform = `translateZ(50px)`;
+                        }
+                        
+                        // Nettoyage des transitions pour le prochain survol
+                        setTimeout(() => {
+                            card.style.transition = `none`;
+                            if(content) content.style.transition = `none`;
+                            if(visual) visual.style.transition = `none`;
+                            if(btn) btn.style.transition = `all 0.3s ease`;
+                        }, 600);
+                    });
+                    
+                    // Désactivation des transitions CSS pures dès que la souris entre
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transition = `none`;
+                        if(content) content.style.transition = `none`;
+                        if(visual) visual.style.transition = `none`;
+                    });
+                });
+            }
+
+            /* =========================================================
+               2. EFFET RIPPLE (Onde de choc au clic sur les boutons)
+               ========================================================= */
+            const buttons = document.querySelectorAll('.ripple-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const ripple = document.createElement('span');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            /* =========================================================
+               3. LUEUR DORÉE SOUS LE CURSEUR
+               ========================================================= */
+            const cursorGlow = document.getElementById('cursorGlow');
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+
+            /* =========================================================
+               4. PARTICULES DORÉES EN ARRIÈRE-PLAN (CANVAS)
+               ========================================================= */
+            const canvas = document.getElementById('gold-particles');
+            const ctx = canvas.getContext('2d');
+            let particlesArray = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 1.5; 
+                    this.speedX = Math.random() * 0.5 - 0.25; 
+                    this.speedY = Math.random() * -1 - 0.2;   
+                    const colors = ['rgba(212, 175, 55, 0.7)', 'rgba(249, 229, 160, 0.5)', 'rgba(170, 140, 44, 0.4)'];
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.y < 0) {
+                        this.y = canvas.height;
+                        this.x = Math.random() * canvas.width;
+                    }
+                    if (this.x < 0 || this.x > canvas.width) {
+                        this.speedX *= -1;
+                    }
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+        });
+    </script>
 </body>
 </html>
-
