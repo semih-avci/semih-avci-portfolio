@@ -18,11 +18,10 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 130px; /* Espace de sécurité pour le titre sous la Navbar */
+    padding-top: 120px;
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
-    /* Indispensable pour la 3D globale */
     perspective: 2000px;
 }
 
@@ -72,7 +71,7 @@ body {
 
 .navbar:hover .nav-logo-img { transform: scale(1.05); }
 
-/* Éléments masqués sur Desktop, affichés sur Mobile */
+/* Éléments masqués sur Desktop */
 .nav-toggle { display: none; }
 .nav-burger { 
     display: none; 
@@ -130,11 +129,10 @@ body {
     color: #ffffff;
     text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
-
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-/* LE BOUTON CV ROYAL */
-.btn-cv, .btn-cv-desktop {
+/* LE BOUTON CV (DESKTOP) */
+.btn-cv-desktop {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -159,13 +157,13 @@ body {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.btn-cv:hover, .btn-cv-desktop:hover {
+.btn-cv-desktop:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
     background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
 }
 
-.btn-cv::before, .btn-cv-desktop::before {
+.btn-cv-desktop::before {
     content: '';
     position: absolute;
     top: 0; left: -100%;
@@ -173,22 +171,10 @@ body {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: 0.6s;
 }
+.btn-cv-desktop:hover::before { left: 100%; }
 
-.btn-cv:hover::before, .btn-cv-desktop:hover::before { left: 100%; }
-
-.btn-cv-mobile { 
-    display: none; 
-    margin-top: 20px; 
-    padding: 12px 30px; 
-    border: 1px solid #d4af37; 
-    color: #d4af37 !important; 
-    text-decoration: none; 
-    text-transform: uppercase; 
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    letter-spacing: 1px; 
-    text-align: center; 
-}
+/* Bouton mobile caché par défaut */
+.btn-cv-mobile { display: none; }
 
 /* ========================================= */
 /* STRUCTURE PRINCIPALE                      */
@@ -208,7 +194,7 @@ body {
 .page-header {
     text-align: center;
     margin-bottom: 70px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .main-title {
@@ -250,7 +236,7 @@ body {
 }
 
 /* ========================================= */
-/* LES CARTES 3D PARALLAX (LE COEUR DU DESIGN)*/
+/* LES CARTES 3D PARALLAX                    */
 /* ========================================= */
 .interests-grid {
     display: grid;
@@ -261,7 +247,6 @@ body {
 }
 
 .interest-wrapper {
-    /* Indispensable pour que la carte enfant puisse bouger en 3D */
     perspective: 1500px; 
     position: relative;
 }
@@ -282,17 +267,13 @@ body {
     opacity: 0;
     animation: slideUp 0.8s ease forwards;
     
-    /* Configuration de la lévitation interne */
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
     box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.8), inset 1px 1px 2px rgba(255, 255, 255, 0.05);
 }
 
-.interest-wrapper:nth-child(2) .interest-card {
-    animation-delay: 0.2s;
-}
+.interest-wrapper:nth-child(2) .interest-card { animation-delay: 0.2s; }
 
-/* ÉLÉMENTS FLOTTANTS À L'INTÉRIEUR DE LA CARTE */
 .card-icon-wrapper {
     width: 90px;
     height: 90px;
@@ -306,8 +287,6 @@ body {
     color: #d4af37;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(0, 0, 0, 0.8);
     transition: all 0.4s ease-out;
-    
-    /* LA MAGIE EST LÀ : L'icône flotte très haut au-dessus de la carte */
     transform: translateZ(60px);
 }
 
@@ -317,7 +296,6 @@ body {
 }
 
 .card-content {
-    /* Le texte flotte un peu moins haut, créant plusieurs niveaux de profondeur */
     transform: translateZ(30px);
     transition: transform 0.4s ease-out;
     transform-style: preserve-3d;
@@ -355,8 +333,6 @@ body {
     letter-spacing: 1px;
     cursor: pointer;
     border-radius: 4px;
-    
-    /* Le bouton flotte aussi ! */
     transform: translateZ(45px);
     transition: all 0.3s ease;
     position: relative;
@@ -438,10 +414,11 @@ body {
 @keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }
 
 /* ========================================= */
-/* RESPONSIVE MOBILE                         */
+/* RESPONSIVE MOBILE (CORRIGÉ)               */
 /* ========================================= */
 @media (max-width: 900px) {
-    body { padding-top: 100px; }
+    /* CORRECTION DE L'ESPACE SUR MOBILE : 140px de sécurité pour éviter le chevauchement avec la navbar */
+    body { padding-top: 140px; }
     
     .navbar { 
         height: 70px; padding: 0 20px; 
@@ -450,7 +427,8 @@ body {
     }
     .nav-logo-img { height: 35px; margin: 0; }
     
-    .btn-cv, .btn-cv-desktop { display: none !important; }
+    /* On cache le bouton Desktop ! */
+    .btn-cv-desktop { display: none !important; }
     .nav-burger { display: flex; }
 
     .nav-links {
@@ -468,7 +446,21 @@ body {
     .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
     
     .nav-links a { font-size: 1.2rem; color: #f0f0f0; }
-    .nav-links .btn-cv-mobile { display: block; }
+    
+    /* On affiche le bouton Mobile DANS le menu ! */
+    .nav-links .btn-cv-mobile { 
+        display: block; 
+        margin-top: 20px; 
+        padding: 12px 30px; 
+        border: 1px solid #d4af37; 
+        color: #d4af37 !important; 
+        text-decoration: none; 
+        text-transform: uppercase; 
+        font-weight: 600; 
+        font-size: 0.9rem; 
+        letter-spacing: 1px; 
+        text-align: center; 
+    }
 
     .interests-grid { grid-template-columns: 1fr; padding: 0 20px; }
     
