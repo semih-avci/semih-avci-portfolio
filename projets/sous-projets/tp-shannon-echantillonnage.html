@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Étude expérimentale de l'échantillonnage et validation du théorème de Shannon. TP n°4 par Semih Avci.">
+    <title>TP : Numérisation & Shannon - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projet-telecoms.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour à l'Ingénierie Télécoms
+                </a>
+            </div>
+
+            <h1 class="page-title">Numérisation & Shannon<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">TP n°4 / Traitement Numérique / Échantillonnage</span>
+        </header>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">1. Contexte du TP</h2>
+            <p class="card-text">
+                Ce travail pratique explore la frontière entre le monde analogique (signaux continus) et le monde numérique (suites de bits). L'enjeu est de comprendre comment transformer un son ou une tension sans perdre d'information.
+                <br><br>
+                <strong>La problématique :</strong><br>
+                À quelle vitesse devons-nous "prendre des photos" (échantillonner) d'un signal pour pouvoir le reconstruire parfaitement ? Le <strong>Théorème de Shannon</strong> nous dit que cette fréquence doit être au moins le double de la fréquence maximale du signal.
+            </p>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card tilt-card" style="margin-bottom: 30px;">
+                <h2 class="card-title">2. Méthodologie Expérimentale</h2>
+                <div class="card-text">
+                    La manipulation a été réalisée en utilisant un environnement de programmation graphique <strong>LabVIEW</strong> couplé à une carte d'acquisition de données et un oscilloscope numérique.
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Génération :</strong> Utilisation d'un signal sinusoïdal de $f_c = 1kHz$ et d'un fichier audio réel (<em>musique.mp3</em>).</li>
+                        <li><strong>Échantillonnage :</strong> Variation de la fréquence d'échantillonnage ($f_{ech}$) à 8kHz puis 16kHz pour observer les effets sur le spectre.</li>
+                        <li><strong>Observation du repliement :</strong> Analyse visuelle des spectres "miroirs" (aliasing) qui apparaissent lorsque le critère de Shannon n'est pas respecté.</li>
+                    </ul>
+                </div>
+                <div class="tech-tags">
+                    <span>LabVIEW</span>
+                    <span>Échantillonnage (CAN)</span>
+                    <span>Spectre de Magnitude (FFT)</span>
+                    <span>Filtre Anti-repliement</span>
+                </div>
+            </div>
+
+            <div class="code-modules-container">
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>Résultats : Filtrage & Reconstruction <span class="badge-me">ANALYSE FFT</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Étude de l'impact du filtre sur un signal audio échantillonné. (Dérouler)</p>
+                        </summary>
+                        
+                        <div class="code-window">
+                            <pre><code class="language-txt">
+# Paramètres LabVIEW :
+- Signal source : musique.mp3
+- Fréquence d'échantillonnage : 16 kHz
+
+# Cas n°1 : Sans filtre anti-repliement
+- Observation : Présence de raies parasites dans la bande utile.
+- Résultat : Son déformé avec des sifflements métalliques (aliasing).
+
+# Cas n°2 : Avec filtre anti-repliement (Coupure Fc = 6 kHz)
+- Observation : Disparition totale des composantes spectrales > 8 kHz (Fe/2).
+- Résultat : Reconstruction fidèle du signal audio d'origine.
+                            </code></pre>
+                            <div class="explanation-box">
+                                <strong>Conclusion technique :</strong> L'ajout du filtre passe-bas en amont de l'échantillonneur est indispensable pour garantir qu'aucune fréquence ne dépasse la limite de Nyquist-Shannon.
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="featured-card tilt-card" style="margin-top: 60px;">
+            <h2 class="card-title">3. Défis rencontrés</h2>
+            <p class="card-text">
+                <strong>Visualisation des spectres :</strong><br>
+                Il a été complexe d'identifier les composantes du signal parmi les repliements de spectre à l'oscilloscope. L'utilisation du mode FFT avec une fenêtre de pondération adaptée a été nécessaire pour séparer le signal utile du bruit numérique.
+                <br><br>
+                <strong>Dimensionnement du filtre :</strong><br>
+                Calculer la fréquence de coupure idéale ($F_c$) pour laisser passer la musique tout en bloquant l'aliasing a demandé une étude précise des harmoniques du fichier audio utilisé.
+            </p>
+        </section>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">4. Bilan du TP</h2>
+            <p class="card-text">
+                Grâce à ce TP, j'ai acquis une compréhension pratique des systèmes de numérisation. Je sais désormais dimensionner une chaîne d'acquisition (fréquence d'échantillonnage et filtrage) pour traiter des signaux réels sans dégradation, une compétence clé en télécommunications numériques.
+            </p>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projet-telecoms.html" class="btn-cv ripple-btn">Retour aux projets</a>
+        </div>
+
+    </div>
+    
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* LUEUR CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        /* EFFET 3D CARTES */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -3; 
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 3;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        /* EFFET RIPPLE */
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        /* CONSTELLATION DORÉE */
+        const canvas = document.getElementById('gold-particles');
+        const ctx = canvas.getContext('2d');
+        let pArray = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        class P {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.s = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+            }
+            u() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            d() {
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        function init() { pArray = []; for (let i = 0; i < 60; i++) pArray.push(new P()); }
+        function connect() {
+            for (let a = 0; a < pArray.length; a++) {
+                for (let b = a; b < pArray.length; b++) {
+                    let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
+                    if (d < 25000) {
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (1 - (d/25000)) + ')';
+                        ctx.lineWidth = 1; ctx.beginPath();
+                        ctx.moveTo(pArray[a].x, pArray[a].y);
+                        ctx.lineTo(pArray[b].x, pArray[b].y); ctx.stroke();
+                    }
+                }
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pArray.forEach(p => { p.u(); p.d(); });
+            connect(); requestAnimationFrame(animate);
+        }
+        init(); animate();
+    });
+</script>
+</body>
+</html>
