@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Étude de la propagation d'ondes en espace libre et validation de la Loi de Friis. TP n°7 par Semih Avci.">
+    <title>TP : Transmission Hertzienne - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projet-telecoms.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour à l'Ingénierie Télécoms
+                </a>
+            </div>
+
+            <h1 class="page-title">Transmission Hertzienne<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">TP n°7 / Propagation RF / Loi de Friis</span>
+        </header>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">1. Contexte du TP</h2>
+            <p class="card-text">
+                L'objectif de ce travail pratique était d'étudier de manière théorique et expérimentale l'effet de la distance sur l'amplitude d'une onde électromagnétique. 
+                <br><br>
+                Pour simuler un environnement parfait sans obstacles ni échos (espace libre), nous avons utilisé une <strong>chambre anéchoïde</strong>. Cette enceinte permet d'absorber totalement les ondes pour éviter toute réflexion parasite qui fausserait les mesures de puissance.
+            </p>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card tilt-card" style="margin-bottom: 30px;">
+                <h2 class="card-title">2. Méthodologie et Matériel</h2>
+                <div class="card-text">
+                    La manipulation a été réalisée sur le <strong>Banc MTS7.6 de Leybold</strong>, relié à l'interface logicielle <em>Cassylab</em> pour l'acquisition des données en temps réel.
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Émetteur :</strong> Antenne cornet fixe envoyant un signal stable.</li>
+                        <li><strong>Récepteur :</strong> Antenne dipôle montée sur un support mobile pour varier la distance $d$ millimètre par millimètre.</li>
+                        <li><strong>Alignement :</strong> Recherche de la puissance maximale par rotation manuelle du support avant le début des relevés.</li>
+                    </ul>
+                </div>
+                <div class="tech-tags">
+                    <span>Banc Leybold</span>
+                    <span>Chambre Anéchoïde</span>
+                    <span>Modélisation Logarithmique</span>
+                    <span>Calcul de Puissance (dB)</span>
+                </div>
+            </div>
+
+            <div class="code-modules-container">
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>Exploitation Mathématique <span class="badge-me">ANALYSE</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Validation de la formule de Friis par régression linéaire. (Dérouler)</p>
+                        </summary>
+                        
+                        <div class="code-window">
+                            <pre><code class="language-txt">
+# Données de régression extraites du tableur
+# Relation entre Log(Pr) et Log(d)
+
+- Équation de la droite : y = -3.7x – 7.2
+- Coefficient de détermination (R²) : 0.86
+
+# Calcul du coefficient de corrélation (R) :
+- R = √0.86 
+- R = 0.93
+
+# Conclusion statistique :
+Comme 0.9 < R < 1, l'approximation par une droite est valide.
+La puissance reçue diminue bien proportionnellement au carré de la distance.
+                            </code></pre>
+                            <div class="explanation-box">
+                                <strong>Interprétation :</strong> Le coefficient de corrélation de 0.93 prouve que nos mesures expérimentales sont très proches du modèle théorique de Friis, malgré les incertitudes de mesure.
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="featured-card tilt-card" style="margin-top: 60px;">
+            <h2 class="card-title">3. Défis rencontrés</h2>
+            <p class="card-text">
+                <strong>Précision du positionnement :</strong><br>
+                La plus grande difficulté résidait dans l'alignement parfait des axes des deux antennes. Un décalage de quelques degrés seulement entraînait une chute brutale de la tension reçue ($U$), rendant les points de mesure incohérents sur le graphique.
+                <br><br>
+                <strong>Interprétation des unités :</strong><br>
+                Le passage des valeurs de tension en millivolts vers des échelles logarithmiques ($Log$) pour la régression a demandé une attention particulière sur les conversions d'unités afin de ne pas fausser l'équation de la pente.
+            </p>
+        </section>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">4. Résultats obtenus</h2>
+            <p class="card-text">
+                Ce TP a permis de vérifier concrètement comment les ondes radio se propagent dans l'air. J'ai appris à utiliser un banc d'antennes professionnel et à transformer des relevés physiques bruts en une preuve mathématique solide de la validité d'un théorème de télécommunication.
+            </p>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projet-telecoms.html" class="btn-cv ripple-btn">Retour aux projets</a>
+        </div>
+
+    </div>
+    
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* LUEUR CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        /* EFFET 3D CARTES */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -3; 
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 3;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        /* EFFET RIPPLE */
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        /* CONSTELLATION DORÉE */
+        const canvas = document.getElementById('gold-particles');
+        const ctx = canvas.getContext('2d');
+        let pArray = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        class P {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.s = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+            }
+            u() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            d() {
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        function init() { pArray = []; for (let i = 0; i < 60; i++) pArray.push(new P()); }
+        function connect() {
+            for (let a = 0; a < pArray.length; a++) {
+                for (let b = a; b < pArray.length; b++) {
+                    let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
+                    if (d < 25000) {
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (1 - (d/25000)) + ')';
+                        ctx.lineWidth = 1; ctx.beginPath();
+                        ctx.moveTo(pArray[a].x, pArray[a].y);
+                        ctx.lineTo(pArray[b].x, pArray[b].y); ctx.stroke();
+                    }
+                }
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pArray.forEach(p => { p.u(); p.d(); });
+            connect(); requestAnimationFrame(animate);
+        }
+        init(); animate();
+    });
+</script>
+</body>
+</html>
