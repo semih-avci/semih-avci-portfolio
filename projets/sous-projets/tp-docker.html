@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Déploiement d'une infrastructure ToIP avec XiVO par Semih Avci.">
-    <title>Expertise ToIP : Serveur XiVO - Semih Avci</title>
+    <meta name="description" content="Expertise en Conteneurisation : Docker, Personnalisation de serveur Web et Images par Semih Avci.">
+    <title>Expertise : Conteneurisation Docker - Semih Avci</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../../themes/projet-detail.css">
 
     <style>
-        #gold-particles {
+        #docker-grid {
             position: fixed;
             top: 0;
             left: 0;
@@ -26,14 +26,14 @@
 </head>
 <body class="project-detail-body">
 
-    <canvas id="gold-particles"></canvas>
+    <canvas id="docker-grid"></canvas>
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="main-container">
         
-        <header class="project-header-simple" style="padding-top: 60px; margin-bottom: 40px;">
-            <div class="back-btn-container" style="margin-bottom: 30px;">
-                <a href="../projet-adminsys.html" class="back-link ripple-btn">
+        <header class="project-header-simple" style="padding-top: 80px; margin-bottom: 40px; display: flex; flex-direction: column; gap: 20px;">
+            <div class="back-btn-container">
+                <a href="../projet-adminsys.html" class="back-link ripple-btn" style="display: inline-flex; align-items: center; gap: 8px;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>
@@ -41,14 +41,17 @@
                     Retour à l'Infrastructure
                 </a>
             </div>
-            <h1 class="page-title">Expertise ToIP : XiVO<span class="dot">.</span></h1>
-            <span class="subtitle-instruction">Architecture Call Manager / Protocoles Voix sur IP</span>
+            
+            <div class="title-wrapper">
+                <h1 class="page-title" style="margin: 0;">Conteneurisation Docker<span class="dot">.</span></h1>
+                <span class="subtitle-instruction" style="display: block; margin-top: 10px;">Virtualisation Légère / Web Server / DevOps</span>
+            </div>
         </header>
 
         <section class="featured-card tilt-card" style="margin-bottom: 25px;">
             <h2 class="card-title">1. Contexte du Projet</h2>
             <p class="card-text">
-                Dans le cadre de ma formation, j'ai pris en main le déploiement d'une infrastructure de téléphonie sur IP (ToIP) complète. L'enjeu était de configurer un serveur <strong>XiVO</strong> (IPBX basé sur Asterisk) pour répondre aux besoins d'une entreprise moderne. J'ai administré le serveur <code>vm-iutcl-xivoc-etudiant-17</code> sur l'adresse IP <code>10.172.20.27</code>.
+                Dans le cadre de mon module d'Administration Système, <strong>j'ai exploré</strong> la technologie Docker sous Linux Debian. Contrairement aux machines virtuelles classiques, Docker permet d'isoler des applications dans des environnements légers. Ma mission était de déployer, configurer et sauvegarder un serveur web personnalisé pour comprendre la flexibilité des micro-services.
             </p>
         </section>
 
@@ -58,13 +61,16 @@
             <div class="code-module my-module" style="margin-bottom: 25px;">
                 <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px;">
-                        <h3 style="color: #d4af37; margin-bottom: 10px;">A. Gestion des Identités SIP</h3>
+                        <h3 style="color: #d4af37; margin-bottom: 10px;">A. Installation & Premier Déploiement</h3>
                         <p style="color: #eee; line-height: 1.6; margin: 0;">
-                            J'ai commencé par la création des comptes utilisateurs dans l'annuaire XiVO. J'ai configuré les lignes SIP en attribuant des numéros courts internes et des numéros SDA. Pour chaque ligne, j'ai défini des contextes d'appels spécifiques afin de filtrer les droits d'accès.
+                            Après avoir installé le moteur Docker sur ma machine Debian, <strong>j'ai déployé</strong> mon premier conteneur basé sur l'image officielle <code>httpd</code> (Apache). 
+                            <br><br>
+                            Comme le montre ma capture d'écran, <strong>j'ai utilisé</strong> la commande <code>docker run</code> pour mapper le port 8080 de ma machine vers le port 80 du conteneur. J'ai ensuite vérifié le bon état de santé de mon instance avec <code>docker ps</code> pour m'assurer que le service tournait correctement en arrière-plan.
                         </p>
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <img src="../../images/xivo_utilisateurs.png" alt="Utilisateurs XiVO" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <img src="../../images/docker_terminal_deploy.png" alt="Terminal Docker" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Lancement et vérification des conteneurs actifs</p>
                     </div>
                 </div>
             </div>
@@ -72,29 +78,45 @@
             <div class="code-module my-module" style="margin-bottom: 25px;">
                 <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; flex-direction: row-reverse;">
                     <div style="flex: 1; min-width: 300px;">
-                        <h3 style="color: #d4af37; margin-bottom: 10px;">B. Interconnexion : Trunk SIP</h3>
+                        <h3 style="color: #d4af37; margin-bottom: 10px;">B. Personnalisation du Serveur HTTP</h3>
                         <p style="color: #eee; line-height: 1.6; margin: 0;">
-                            J'ai mis en place un Trunk SIP pour l'interconnexion. J'ai configuré les routes sortantes avec une gestion de préfixes (ex: préfixe "0") et les routes entrantes pour rediriger les appels externes. J'ai validé la signalisation via la console Asterisk.
+                            Une fois le serveur opérationnel, <strong>je l'ai personnalisé</strong> pour qu'il diffuse mon propre contenu. Je suis entré au cœur du conteneur pour modifier le fichier <code>index.html</code> original. 
+                            <br><br>
+                            J'ai remplacé le message générique par "Le site de Semih". Pour immortaliser cette modification, <strong>j'ai effectué</strong> un <code>docker commit</code>, créant ainsi une nouvelle image de conteneur incluant mon site web, prête à être exportée ou redéployée ailleurs.
                         </p>
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <img src="../../images/xivo_trunk.png" alt="Trunk SIP" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <img src="../../images/docker_site_custom.png" alt="Site Web Personnalisé" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Rendu du site personnalisé via localhost:8080</p>
                     </div>
+                </div>
+            </div>
+
+            <div class="code-module my-module" style="margin-bottom: 25px;">
+                <div class="explanation-box">
+                    <h3 style="color: #d4af37; margin-bottom: 10px;">C. Administration Réseau & Bridge</h3>
+                    <p style="color: #eee; line-height: 1.6; margin-bottom: 15px;">
+                        <strong>J'ai approfondi</strong> la gestion réseau en créant un <strong>Bridge</strong> personnalisé. Cela m'a permis d'isoler mes conteneurs dans un sous-réseau privé où ils peuvent communiquer entre eux par nom d'hôte, simulant ainsi une architecture multi-services sécurisée.
+                    </p>
+                    <pre><code class="language-bash" style="color: #d4af37; font-family: 'Fira Code', monospace;">
+# Inspection de mon réseau personnalisé
+$ sudo docker network inspect mon_reseau_prive
+                    </code></pre>
                 </div>
             </div>
         </section>
 
-        <section class="featured-card tilt-card" style="margin-bottom: 25px;">
+        <section class="featured-card tilt-card" style="margin-bottom: 25px; margin-top: 20px;">
             <h2 class="card-title">3. Difficultés Rencontrées</h2>
             <p class="card-text">
-                J'ai rencontré des difficultés liées au NAT, provoquant des appels sans audio. J'ai résolu cela en ajustant les paramètres IP dans la configuration d'Asterisk. Le provisionnement automatique des postes a également nécessité plusieurs tests pour être opérationnel.
+                Ma principale difficulté a été de comprendre la persistance des données. <strong>J'ai appris</strong> que sans un <code>commit</code> ou l'utilisation de <code>volumes</code>, toute modification du site web disparaissait à la suppression du conteneur. J'ai aussi dû apprendre à manipuler l'interface en ligne de commande de Docker pour diagnostiquer les erreurs de connectivité entre réseaux.
             </p>
         </section>
 
         <section class="featured-card tilt-card" style="margin-bottom: 50px;">
             <h2 class="card-title">4. Résultat Final</h2>
-            <p class="card-text">
-                L'infrastructure est totalement opérationnelle. J'ai analysé les trames avec Wireshark pour confirmer le bon établissement des sessions. Cette manipulation a validé ma capacité à gérer un système de téléphonie critique.
+            <p class="card-text" style="margin-bottom: 20px;">
+                Je maîtrise désormais le cycle de vie des conteneurs, de l'image de base à la sauvegarde personnalisée. Je suis capable de transformer n'importe quel service en une instance légère et portable. C'est une compétence cruciale qui termine mon expertise en infrastructure.
             </p>
         </section>
 
@@ -109,14 +131,12 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        /* 1. LUEUR CURSEUR */
         const cursorGlow = document.getElementById('cursorGlow');
         document.addEventListener('mousemove', (e) => {
             cursorGlow.style.left = e.clientX + 'px';
             cursorGlow.style.top = e.clientY + 'px';
         });
 
-        /* 2. EFFET 3D CARTES */
         const tiltCards = document.querySelectorAll('.tilt-card');
         if (window.matchMedia("(min-width: 900px)").matches) {
             tiltCards.forEach(card => {
@@ -124,7 +144,7 @@
                     const rect = card.getBoundingClientRect();
                     const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -4; 
                     const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 4;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                 });
                 card.addEventListener('mouseleave', () => {
                     card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
@@ -132,53 +152,63 @@
             });
         }
 
-        /* 3. CONSTELLATION DORÉE (REMISE EN PLACE) */
-        const canvas = document.getElementById('gold-particles');
+        /* EFFET DOCKER : RECTANGLES FLOTTANTS */
+        const canvas = document.getElementById('docker-grid');
         const ctx = canvas.getContext('2d');
         let pArray = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize);
         resize();
-        class P {
+
+        class Container {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.s = Math.random() * 2 + 0.5;
+                this.w = Math.random() * 18 + 8;
+                this.h = this.w * 0.6;
                 this.vx = (Math.random() - 0.5) * 1.5;
                 this.vy = (Math.random() - 0.5) * 1.5;
+                this.opacity = Math.random() * 0.4 + 0.1;
             }
-            u() {
+            update() {
                 this.x += this.vx; this.y += this.vy;
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
-            d() {
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.7)';
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
+            draw() {
+                ctx.strokeStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.lineWidth = 1.5;
+                ctx.strokeRect(this.x, this.y, this.w, this.h);
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity * 0.5})`;
+                ctx.fillRect(this.x + 3, this.y + 3, 3, 3);
             }
         }
-        function init() { pArray = []; for (let i = 0; i < 70; i++) pArray.push(new P()); }
+
+        function init() { pArray = []; for (let i = 0; i < 45; i++) pArray.push(new Container()); }
+        
         function connect() {
             for (let a = 0; a < pArray.length; a++) {
                 for (let b = a; b < pArray.length; b++) {
                     let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
                     if (d < 20000) {
-                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.5 - (d/20000)) + ')';
-                        ctx.lineWidth = 1; ctx.beginPath();
-                        ctx.moveTo(pArray[a].x, pArray[a].y);
-                        ctx.lineTo(pArray[b].x, pArray[b].y); ctx.stroke();
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.25 - (d/20000)) + ')';
+                        ctx.beginPath();
+                        ctx.moveTo(pArray[a].x + pArray[a].w/2, pArray[a].y + pArray[a].h/2);
+                        ctx.lineTo(pArray[b].x + pArray[b].w/2, pArray[b].y + pArray[b].h/2);
+                        ctx.stroke();
                     }
                 }
             }
         }
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            pArray.forEach(p => { p.u(); p.d(); });
-            connect(); requestAnimationFrame(animate);
+            pArray.forEach(p => { p.update(); p.draw(); });
+            connect();
+            requestAnimationFrame(animate);
         }
         init(); animate();
 
-        /* 4. RIPPLE */
         document.querySelectorAll('.ripple-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 const ripple = document.createElement('span');
