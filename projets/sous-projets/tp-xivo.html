@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Déploiement et administration d'un serveur XiVO par Semih Avci.">
+    <meta name="description" content="Déploiement d'une infrastructure ToIP avec XiVO par Semih Avci.">
     <title>Expertise ToIP : Serveur XiVO - Semih Avci</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="../../themes/projet-detail.css">
 </head>
 <body class="project-detail-body">
@@ -16,6 +18,7 @@
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="main-container">
+        
         <header class="project-header-simple">
             <div class="back-btn-container">
                 <a href="../projet-adminsys.html" class="back-link ripple-btn">
@@ -26,81 +29,81 @@
                     Retour à l'Infrastructure
                 </a>
             </div>
-            <h1 class="page-title">Expertise XiVO IPBX<span class="dot">.</span></h1>
-            <span class="subtitle-instruction">Déploiement Full ToIP / Administration Asterisk</span>
+            <h1 class="page-title">Expertise ToIP : XiVO<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Architecture Call Manager / Protocoles Voix sur IP</span>
         </header>
 
-        <section class="featured-card tilt-card" style="margin-bottom: 40px;">
+        <section class="featured-card tilt-card" style="margin-bottom: 20px;">
             <h2 class="card-title">1. Contexte du Projet</h2>
             <p class="card-text">
-                Dans le cadre de ma formation, j'ai été chargé de mettre en place une infrastructure de téléphonie sur IP (ToIP) complète. L'objectif était de transformer un serveur vierge en un autocommutateur (IPBX) capable de gérer des centaines de lignes, des services de messagerie et des interconnexions externes. J'ai opéré sur le serveur <code>vm-iutcl-xivoc-etudiant-17</code> (IP: <code>10.172.20.27</code>).
+                Dans le cadre de ma formation, j'ai pris en main le déploiement d'une infrastructure de téléphonie sur IP (ToIP) complète. L'enjeu était de configurer un serveur <strong>XiVO</strong> (IPBX basé sur Asterisk) pour répondre aux besoins d'une entreprise moderne : communication interne, interconnexion externe et services unifiés. J'ai administré le serveur <code>vm-iutcl-xivoc-etudiant-17</code> sur l'adresse IP <code>10.172.20.27</code>.
             </p>
         </section>
 
         <section class="work-section">
-            <h2 class="card-title" style="margin-bottom: 30px; text-align: center;">2. Travail Fourni</h2>
+            <h2 class="card-title" style="margin-bottom: 25px; text-align: center;">2. Travail Fourni</h2>
 
-            <div class="code-module my-module" style="margin-bottom: 30px;">
-                <div class="explanation-box" style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+            <div class="code-module my-module" style="margin-bottom: 20px;">
+                <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px;">
                         <h3 style="color: #d4af37; margin-bottom: 10px;">A. Gestion des Identités SIP</h3>
                         <p style="color: #eee; line-height: 1.6; margin: 0;">
-                            J'ai débuté par la création des comptes utilisateurs dans l'annuaire XiVO. J'ai attribué à chaque profil un numéro interne et un numéro SDA (ex: 04 73 18...). Cette étape lie l'identité physique de l'employé à ses protocoles de signalisation. J'ai configuré les contextes d'appels pour garantir que chaque ligne soit sécurisée et correctement isolée.
+                            J'ai commencé par la création des comptes utilisateurs dans l'annuaire XiVO. J'ai configuré les lignes SIP en attribuant des numéros courts internes et des numéros SDA. Pour chaque ligne, j'ai défini des contextes d'appels spécifiques afin de filtrer les droits d'accès (appels locaux vs appels via Trunk).
                         </p>
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <img src="../../assets/img/xivo-users.png" alt="Capture utilisateurs" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <p style="font-size: 0.75rem; color: #888; margin-top: 8px;">Interface de gestion des lignes</p>
+                        <img src="../../images/xivo_utilisateurs.png" alt="Utilisateurs XiVO" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Configuration des lignes et SDA</p>
                     </div>
                 </div>
             </div>
 
-            <div class="code-module my-module" style="margin-bottom: 30px;">
-                <div class="explanation-box" style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap; flex-direction: row-reverse;">
+            <div class="code-module my-module" style="margin-bottom: 20px;">
+                <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; flex-direction: row-reverse;">
                     <div style="flex: 1; min-width: 300px;">
                         <h3 style="color: #d4af37; margin-bottom: 10px;">B. Interconnexion : Trunk SIP</h3>
                         <p style="color: #eee; line-height: 1.6; margin: 0;">
-                            J'ai configuré un Trunk SIP pour relier mon serveur au réseau extérieur. J'ai défini des routes sortantes précises : par exemple, tout numéro commençant par "0" est redirigé vers l'opérateur. J'ai analysé les flux via la console Asterisk pour m'assurer que le "Handshake" entre mon serveur et l'opérateur se déroulait sans erreur.
+                            J'ai ensuite mis en place un Trunk SIP pour l'interconnexion. J'ai configuré les routes sortantes avec une gestion de préfixes (ex: préfixe "0") et les routes entrantes pour rediriger les appels externes vers les bons terminaux. J'ai validé la signalisation via la console Asterisk.
                         </p>
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <img src="../../assets/img/xivo-trunk.png" alt="Configuration Trunk" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <p style="font-size: 0.75rem; color: #888; margin-top: 8px;">Routes de sortie réseau</p>
+                        <img src="../../images/xivo_trunk.png" alt="Trunk SIP" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Routage et interconnexion externe</p>
                     </div>
                 </div>
             </div>
 
-            <div class="code-module my-module" style="margin-bottom: 30px;">
-                <div class="explanation-box" style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+            <div class="code-module my-module" style="margin-bottom: 20px;">
+                <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px;">
-                        <h3 style="color: #d4af37; margin-bottom: 10px;">C. Services & Mobilité</h3>
+                        <h3 style="color: #d4af37; margin-bottom: 10px;">C. Services Unifiés & Mobilité</h3>
                         <p style="color: #eee; line-height: 1.6; margin: 0;">
-                            J'ai déployé des services à haute valeur ajoutée : groupes d'appels, conférences et messagerie vocale. J'ai validé la mobilité en connectant des Softphones. La synchronisation en temps réel du journal d'appels et des favoris prouve la stabilité de la base de données Asterisk sous-jacente.
+                            J'ai déployé des services avancés : groupes d'appels, conférences et messagerie vocale. J'ai aussi testé la mobilité via des Softphones. Sur la capture ci-contre, on peut voir la synchronisation de mon journal d'appels et de mes favoris directement sur l'interface mobile.
                         </p>
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <img src="../../assets/img/xivo-softphone.png" alt="Interface mobile" style="width: 55%; border-radius: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <p style="font-size: 0.75rem; color: #888; margin-top: 8px;">Synchronisation des contacts</p>
+                        <img src="../../images/xivo_softphone.png" alt="Interface Softphone" style="width: 55%; border-radius: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Journal et Favoris (Mobilité)</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="featured-card tilt-card" style="margin-top: 30px; margin-bottom: 30px;">
+        <section class="featured-card tilt-card" style="margin-bottom: 20px; margin-top: 20px;">
             <h2 class="card-title">3. Difficultés Rencontrées</h2>
             <p class="card-text">
-                J'ai été confronté à des problèmes d'audio unidirectionnel causés par le NAT. J'ai dû modifier manuellement les paramètres IP dans Asterisk. De plus, le provisionnement automatique des postes via le DHCP (Option 66) a nécessité plusieurs ajustements de configuration réseau pour être pleinement opérationnel.
+                J'ai rencontré des difficultés liées au NAT, provoquant des appels sans audio. J'ai résolu cela en ajustant les paramètres IP dans la configuration d'Asterisk. Le provisionnement automatique des postes (Option 66 du DHCP) a également nécessité plusieurs tests pour que les fichiers de configuration soient correctement téléchargés par les terminaux.
             </p>
         </section>
 
-        <section class="featured-card tilt-card" style="margin-bottom: 50px;">
+        <section class="featured-card tilt-card" style="margin-bottom: 40px;">
             <h2 class="card-title">4. Résultat Final & Analyse</h2>
-            <p class="card-text" style="margin-bottom: 20px;">
-                L'infrastructure est aujourd'hui 100% fonctionnelle. J'ai utilisé Wireshark pour analyser la signalisation : le passage du protocole SIP (port 5060) au protocole RTP pour la voix est fluide. Cette maîtrise de XiVO me permet de concevoir des réseaux de communication critiques.
+            <p class="card-text" style="margin-bottom: 15px;">
+                L'infrastructure est totalement opérationnelle. J'ai analysé les trames avec Wireshark pour confirmer le bon établissement des sessions : signalisation SIP sur le port 5060 et flux voix RTP sur les ports dynamiques. Cette manipulation a validé ma capacité à gérer un système de téléphonie critique.
             </p>
             <div style="text-align: center;">
-                <img src="../../assets/img/xivo-wireshark.png" alt="Analyse Wireshark" style="width: 90%; border-radius: 5px; opacity: 0.8; border: 1px solid #333;">
-                <p style="font-size: 0.75rem; color: #888; margin-top: 8px;">Capture des trames SIP (INVITE / 200 OK)</p>
+                <img src="../../images/xivo_analyse.png" alt="Analyse Wireshark" style="width: 95%; border-radius: 5px; border: 1px solid #333;">
+                <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Analyse de trame : Handshake SIP</p>
             </div>
         </section>
 
