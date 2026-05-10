@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expertise en Infrastructure : XiVO, Active Directory, Routage EIGRP et Docker par Semih Avci.">
+    <title>Infrastructure & Systèmes - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projets.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour aux projets
+                </a>
+            </div>
+
+            <h1 class="page-title">Infrastructure & Réseaux<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Systèmes Critiques / ToIP / Virtualisation / Routing</span>
+        </header>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">1. Architectures Déployées</h2>
+            <p class="card-text">
+                Construire un réseau d'entreprise ne s'arrête pas à brancher des câbles. Il s'agit de créer un écosystème où la communication, la sécurité et l'agilité cohabitent.
+                <br><br>
+                Ce hub regroupe quatre projets majeurs d'infrastructure que j'ai menés de bout en bout : de la mise en place d'un réseau téléphonique IP à l'orchestration de conteneurs, en passant par le routage dynamique et la gestion des identités.
+            </p>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card" style="margin-bottom: 30px; border-color: rgba(212, 175, 55, 0.5);">
+                <h2 class="card-title">2. Domaines d'Expertise</h2>
+                <div class="card-text">
+                    Dépliez chaque module pour avoir un aperçu des technologies utilisées, et cliquez sur "Voir le détail" pour accéder à l'étude de cas complète.
+                </div>
+                <div class="tech-tags">
+                    <span>VoIP / SIP</span>
+                    <span>AD DS & GPO</span>
+                    <span>Cisco EIGRP</span>
+                    <span>Docker Containers</span>
+                </div>
+            </div>
+
+            <div class="code-modules-container">
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>A. Téléphonie IP (Serveur XiVO) <span class="badge-me">ToIP</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Déploiement d'un IPBX Open Source et gestion des lignes SIP. (Dérouler)</p>
+                        </summary>
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Aperçu :</strong> Installation et configuration d'une solution de téléphonie unifiée pour une structure multi-sites (SVI, groupes d'appels, provisionnement).
+                            </div>
+                            <div style="text-align: center; margin-top: 25px; margin-bottom: 10px;">
+                                <a href="sous-projets/tp-xivo.html" class="btn-cv ripple-btn" style="height: 38px; font-size: 0.8rem;">Voir le détail technique →</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>B. Administration Active Directory <span class="badge-me">WINDOWS SERVER</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Centralisation, DNS/DHCP et stratégies de groupe (GPO). (Dérouler)</p>
+                        </summary>
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Aperçu :</strong> Mise en place d'un contrôleur de domaine robuste pour gérer les identités et sécuriser le parc informatique via des GPO restrictives.
+                            </div>
+                            <div style="text-align: center; margin-top: 25px; margin-bottom: 10px;">
+                                <a href="sous-projets/tp-ad.html" class="btn-cv ripple-btn" style="height: 38px; font-size: 0.8rem;">Voir le détail technique →</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>C. Routage Dynamique EIGRP <span class="badge-me">CISCO</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Convergence réseau et partage de charge sur routeurs. (Dérouler)</p>
+                        </summary>
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Aperçu :</strong> Configuration avancée en ligne de commande pour assurer la redondance et la rapidité du trafic sur des topologies complexes.
+                            </div>
+                            <div style="text-align: center; margin-top: 25px; margin-bottom: 10px;">
+                                <a href="sous-projets/tp-eigrp.html" class="btn-cv ripple-btn" style="height: 38px; font-size: 0.8rem;">Voir le détail technique →</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>D. Conteneurisation (Docker) <span class="badge-me">DEVOPS</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Virtualisation légère, volumes et orchestration Docker Compose. (Dérouler)</p>
+                        </summary>
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Aperçu :</strong> Isolation d'applications, création de Dockerfiles personnalisés et déploiement d'architectures web multi-conteneurs sécurisées.
+                            </div>
+                            <div style="text-align: center; margin-top: 25px; margin-bottom: 10px;">
+                                <a href="sous-projets/tp-docker.html" class="btn-cv ripple-btn" style="height: 38px; font-size: 0.8rem;">Voir le détail technique →</a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="featured-card tilt-card" style="margin-top: 60px;">
+            <h2 class="card-title">3. La Vision Ingénieur</h2>
+            <p class="card-text">
+                Ce qui lie ces quatre projets, c'est l'<strong>interopérabilité</strong>. Maîtriser Docker est un atout, mais savoir relier des conteneurs isolés à un annuaire Active Directory via un réseau routé dynamiquement démontre une compréhension globale des systèmes d'information.
+            </p>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projets.html" class="btn-cv ripple-btn">Retour aux projets</a>
+        </div>
+
+    </div>
+    
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* LUEUR CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        /* EFFET 3D PARALLAX SUR CARTES */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -4; 
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 4;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        /* EFFET RIPPLE SUR BOUTONS */
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        /* CONSTELLATION STYLE "FLUX DE DONNÉES" */
+        const canvas = document.getElementById('gold-particles');
+        const ctx = canvas.getContext('2d');
+        let pArray = [];
+        const mouse = { x: null, y: null };
+        document.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class DataPacket {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 2.5; 
+                this.speedY = (Math.random() - 0.5) * 2.5;
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if(dist < 150) {
+                    this.x -= dx/25;
+                    this.y -= dy/25;
+                }
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#d4af37';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function init() {
+            pArray = [];
+            const n = Math.floor((canvas.width * canvas.height) / 10000);
+            for (let i = 0; i < n; i++) pArray.push(new DataPacket());
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < pArray.length; i++) {
+                for (let j = i; j < pArray.length; j++) {
+                    let d = ((pArray[i].x - pArray[j].x)**2) + ((pArray[i].y - pArray[j].y)**2);
+                    if (d < 20000) {
+                        let op = 1 - (d/20000);
+                        ctx.strokeStyle = `rgba(212, 175, 55, ${op * 0.5})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(pArray[i].x, pArray[i].y);
+                        ctx.lineTo(pArray[j].x, pArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pArray.forEach(p => { p.update(); p.draw(); });
+            drawConnections();
+            requestAnimationFrame(animate);
+        }
+        init(); animate();
+    });
+</script>
+</body>
+</html>
