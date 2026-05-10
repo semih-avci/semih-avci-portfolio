@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Administration Active Directory et Windows Server par Semih Avci.">
-    <title>Expertise Infrastructure : Active Directory - Semih Avci</title>
+    <meta name="description" content="Expertise approfondie en Administration Active Directory et Windows Server par Semih Avci.">
+    <title>Expertise : Infrastructure Active Directory - Semih Avci</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../../themes/projet-detail.css">
 </head>
@@ -26,91 +26,110 @@
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
-                    Retour à l'Infrastructure
+                    Retour au Hub Infrastructure
                 </a>
             </div>
-            <h1 class="page-title">Active Directory & Server<span class="dot">.</span></h1>
-            <span class="subtitle-instruction">Administration Windows Server / Gestion des Identités / GPO</span>
+            <h1 class="page-title">Identity Management AD<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Architecture Multi-Rôles / Sécurité GPO / Automatisation</span>
         </header>
 
-        <section class="featured-card tilt-card" style="margin-bottom: 40px;">
-            <h2 class="card-title">1. Contexte du Projet</h2>
+        <section class="featured-card tilt-card" style="border-left: 5px solid #d4af37;">
+            <h2 class="card-title">1. Vision et Objectifs</h2>
             <p class="card-text">
-                Ce projet simule le déploiement du cœur informatique d'une entreprise. Mon rôle a été de mettre en place un contrôleur de domaine sous <strong>Windows Server</strong> pour centraliser la gestion des utilisateurs et sécuriser les postes de travail. J'ai configuré un domaine DNS local (<code>Avci.local</code>) et assuré l'interconnexion entre le serveur et des clients Windows 10, créant ainsi un environnement de production standardisé.
+                Dans ce projet d'envergure, <strong>j'ai conçu</strong> l'épine dorsale numérique d'une organisation. L'Active Directory n'est pas qu'un simple annuaire ; c'est le centre de contrôle qui garantit que le bon utilisateur accède à la bonne ressource, au bon moment, de manière sécurisée.
+                <br><br>
+                <strong>Ma mission :</strong> Déployer un environnement <strong>Windows Server 2022</strong>, orchestrer un domaine DNS (<code>Avci.local</code>), et assurer la gestion centralisée d'un parc de machines Windows 10/11 à travers des politiques de sécurité strictes.
             </p>
         </section>
 
         <section class="work-section">
-            <h2 class="card-title" style="margin-bottom: 30px; text-align: center;">2. Travail Fourni</h2>
+            <h2 class="card-title" style="margin-bottom: 40px; text-align: center; letter-spacing: 3px;">2. ARCHITECTURE DÉPLOYÉE</h2>
 
-            <div class="code-module my-module" style="margin-bottom: 25px;">
-                <div class="explanation-box">
-                    <h3 style="color: #d4af37; margin-bottom: 10px;">A. Infrastructure & Contrôleur de Domaine</h3>
-                    <p style="color: #eee; line-height: 1.6; margin-bottom: 15px;">
-                        J'ai commencé par l'installation du rôle <strong>AD DS</strong> (Active Directory Domain Services) sur le serveur. J'ai promu la machine en tant que contrôleur de domaine et configuré les services DNS indispensables à la résolution de noms. J'ai ensuite procédé à la jonction des postes clients au domaine, validant ainsi la communication entre les différentes couches de l'infrastructure.
+            <div class="code-module my-module" style="margin-bottom: 30px;">
+                <div class="explanation-box" style="border-top: 3px solid #3498db;">
+                    <h3 style="color: #3498db; margin-bottom: 15px;"><i class="fas fa-server"></i> Phase I : Cœur de l'Infrastructure</h3>
+                    <p style="color: #ccc; line-height: 1.7;">
+                        <strong>J'ai configuré</strong> le premier contrôleur de domaine (DC01). Cette étape a nécessité une attention particulière sur la couche réseau. 
+                        J'ai dû paramétrer des IP statiques et installer les rôles <strong>AD DS</strong> et <strong>DNS</strong>.
                     </p>
-                    <pre><code class="language-powershell">
-# Vérification du statut du domaine via PowerShell
-PS C:\> Get-ADDomainController -Filter * | Select-Object Name, IPv4Address, IsGlobalCatalog
-
-Name            IPv4Address     IsGlobalCatalog
-----            -----------     ---------------
-SRV-AVCI-DC01   192.168.10.5    True
-                    </code></pre>
+                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 8px; margin-top: 15px;">
+                        <ul style="list-style: none; padding: 0; color: #3498db; font-family: 'Fira Code', monospace; font-size: 0.9rem;">
+                            <li>[OK] Installation Windows Server Core / GUI</li>
+                            <li>[OK] Promotion du serveur en tant que DC (Domain Controller)</li>
+                            <li>[OK] Configuration de la zone DNS Directe et Inversée</li>
+                            <li>[OK] Jonction réussie du poste client <code>PC-USER-01</code></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="code-module my-module" style="margin-bottom: 25px;">
-                <div class="explanation-box">
-                    <h3 style="color: #d4af37; margin-bottom: 10px;">B. Annuaire & Centralisation des Données</h3>
-                    <p style="color: #eee; line-height: 1.6; margin-bottom: 15px;">
-                        J'ai structuré l'annuaire en créant des <strong>Unités d'Organisation (OU)</strong> pour refléter les départements de l'entreprise. Pour chaque collaborateur, j'ai mis en place un <strong>Mapping Réseau</strong> automatique. Ce système permet à l'utilisateur de retrouver ses fichiers personnels directement sur le serveur (via le lecteur <code>Z:</code>) depuis n'importe quel poste du domaine.
+            <div class="code-module my-module" style="margin-bottom: 30px;">
+                <div class="explanation-box" style="border-top: 3px solid #d4af37;">
+                    <h3 style="color: #d4af37; margin-bottom: 15px;"><i class="fas fa-users-cog"></i> Phase II : Ingénierie de l'Annuaire</h3>
+                    <p style="color: #ccc; line-height: 1.7;">
+                        Pour organiser le parc, <strong>j'ai structuré</strong> l'annuaire de manière logique. J'ai créé des Unités d'Organisation (OU) par services (Direction, IT, RH) pour permettre une délégation de droits précise. 
                     </p>
-                    <pre><code class="language-powershell">
-# Exemple de logique de création d'arborescence (Powershell conceptuel)
-PS C:\> New-ADOrganizationalUnit -Name "Direction" -Path "DC=Avci,DC=local"
-PS C:\> New-ADUser -Name "Enzo Lamanna" -GivenName "Enzo" -Surname "Lamanna" `
-                   -UserPrincipalName "elamanna@Avci.local" `
-                   -Path "OU=Direction,DC=Avci,DC=local" `
-                   -HomeDirectory "\\SRV-AVCI-DC01\Partage\elamanna" -HomeDrive "Z:"
+                    <pre><code class="language-powershell" style="color: #d4af37;">
+# Script de création de l'arborescence
+New-ADOrganizationalUnit -Name "Personnel" -Path "DC=Avci,DC=local"
+New-ADGroup -Name "GRP_Sante" -GroupCategory Security -GroupScope Global
+# Liaison des profils itinérants pour la mobilité
+Set-ADUser -Identity "Semih" -HomeDirectory "\\SRV-DC01\Users\Semih" -HomeDrive "Z:"
                     </code></pre>
+                    <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">
+                        <em>Résultat :</em> Un utilisateur peut s'authentifier sur n'importe quelle machine et retrouver son lecteur <code>Z:</code> synchronisé instantanément.
+                    </p>
                 </div>
             </div>
 
-            <div class="code-module my-module" style="margin-bottom: 25px;">
-                <div class="explanation-box">
-                    <h3 style="color: #d4af37; margin-bottom: 10px;">C. Sécurisation par Stratégies (GPO)</h3>
-                    <p style="color: #eee; line-height: 1.6; margin-bottom: 15px;">
-                        Pour homogénéiser le parc et renforcer la sécurité, j'ai déployé plusieurs <strong>GPOs</strong>. J'ai notamment imposé un fond d'écran d'entreprise, restreint l'accès au Panneau de Configuration et à l'Invite de Commande pour les utilisateurs standards. J'ai aussi instauré une bannière légale d'avertissement à l'ouverture de session pour respecter les normes de conformité.
+            <div class="code-module my-module" style="margin-bottom: 30px;">
+                <div class="explanation-box" style="border-top: 3px solid #e74c3c;">
+                    <h3 style="color: #e74c3c; margin-bottom: 15px;"><i class="fas fa-shield-alt"></i> Phase III : Hardening & Sécurité (GPO)</h3>
+                    <p style="color: #ccc; line-height: 1.7;">
+                        La sécurité est au centre de mon travail. <strong>J'ai déployé</strong> des Group Policy Objects (GPO) pour verrouiller l'environnement de travail et empêcher toute fuite de données ou fausse manipulation.
                     </p>
-                    <pre><code class="language-powershell">
-# Forcer l'application des stratégies de groupe sur le poste client
-C:\> gpupdate /force
-Mise à jour de la stratégie...
-La mise à jour de la stratégie d'ordinateur s'est terminée sans erreur.
-La mise à jour de la stratégie d'utilisateur s'est terminée sans erreur.
-                    </code></pre>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                        <div style="background: rgba(231, 76, 60, 0.1); border: 1px solid rgba(231, 76, 60, 0.3); padding: 15px; border-radius: 8px;">
+                            <strong style="color: #e74c3c;">Restrictions</strong><br>
+                            <span style="font-size: 0.85rem; color: #bbb;">Désactivation CMD, Regedit et Panneau de Configuration.</span>
+                        </div>
+                        <div style="background: rgba(231, 76, 60, 0.1); border: 1px solid rgba(231, 76, 60, 0.3); padding: 15px; border-radius: 8px;">
+                            <strong style="color: #e74c3c;">Conformité</strong><br>
+                            <span style="font-size: 0.85rem; color: #bbb;">Bannière d'avertissement légale à l'ouverture de session.</span>
+                        </div>
+                        <div style="background: rgba(231, 76, 60, 0.1); border: 1px solid rgba(231, 76, 60, 0.3); padding: 15px; border-radius: 8px;">
+                            <strong style="color: #e74c3c;">Bureau</strong><br>
+                            <span style="font-size: 0.85rem; color: #bbb;">Fond d'écran corporate forcé et icônes standardisées.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="featured-card tilt-card" style="margin-bottom: 30px;">
-            <h2 class="card-title">3. Difficultés Rencontrées</h2>
+        <section class="featured-card tilt-card" style="margin-top: 40px; border-left: 5px solid #e67e22;">
+            <h2 class="card-title">3. Défis & Résolution de Problèmes</h2>
             <p class="card-text">
-                Le défi majeur a été la résolution <strong>DNS</strong> lors de la jonction au domaine. Un mauvais pointage empêchait le client de trouver le contrôleur de domaine ; j'ai dû corriger la configuration IP statique. J'ai également géré des conflits de permissions <strong>NTFS</strong> sur les dossiers partagés, nécessitant une analyse fine pour permettre le mapping réseau tout en protégeant l'intégrité des données des autres utilisateurs.
+                L'administration système est faite d'imprévus. <strong>J'ai dû résoudre</strong> deux problématiques majeures :
+                <br><br>
+                <strong>1. Conflits d'héritage GPO :</strong> Certaines politiques ne s'appliquaient pas aux sous-OU. J'ai utilisé l'outil <code>RSOP.msc</code> pour diagnostiquer les conflits et j'ai corrigé l'ordre de priorité des liaisons de stratégie.
+                <br><br>
+                <strong>2. Permissions NTFS vs Partage :</strong> Le lecteur <code>Z:</code> était visible mais inaccessible. J'ai identifié une erreur dans les permissions de partage "Tout le monde" qui bloquait les droits NTFS plus granulaires. J'ai appliqué la règle du "privilège minimum" pour corriger cela.
             </p>
         </section>
 
-        <section class="featured-card tilt-card" style="margin-bottom: 50px;">
-            <h2 class="card-title">4. Résultat Final</h2>
+        <section class="featured-card tilt-card" style="margin-bottom: 60px; background: rgba(212, 175, 55, 0.05); border: 1px solid #d4af37;">
+            <h2 class="card-title" style="color: #d4af37;">4. Synthèse Finale</h2>
             <p class="card-text">
-                L'infrastructure est pleinement opérationnelle : un utilisateur peut se connecter sur n'importe quelle station de travail avec ses identifiants uniques, retrouver ses documents synchronisés et se voir appliquer les restrictions de sécurité définies. Cette expérience a consolidé ma maîtrise de l'écosystème Windows Server, compétence indispensable pour l'administration d'un parc informatique d'entreprise.
+                Ce projet a validé ma capacité à administrer un domaine de bout en bout. <strong>Le résultat</strong> est un réseau d'entreprise cohérent où l'administration est centralisée : un seul changement sur le serveur s'applique instantanément à des milliers de postes.
+                <br><br>
+                Je maîtrise désormais les cycles de vie des objets AD, la sécurisation des postes par GPO et la gestion des stockages réseaux partagés.
             </p>
         </section>
 
         <div class="project-footer">
             <a href="../projet-adminsys.html" class="btn-cv ripple-btn">Retour à l'Infrastructure</a>
         </div>
+
     </div>
     
     <footer class="site-footer">
@@ -130,9 +149,9 @@ La mise à jour de la stratégie d'utilisateur s'est terminée sans erreur.
             tiltCards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
-                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -4; 
-                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 4;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -3; 
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 3;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                 });
                 card.addEventListener('mouseleave', () => {
                     card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
@@ -160,17 +179,17 @@ La mise à jour de la stratégie d'utilisateur s'est terminée sans erreur.
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
             d() {
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.7)';
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
                 ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
             }
         }
-        function init() { pArray = []; for (let i = 0; i < 70; i++) pArray.push(new P()); }
+        function init() { pArray = []; for (let i = 0; i < 90; i++) pArray.push(new P()); }
         function connect() {
             for (let a = 0; a < pArray.length; a++) {
                 for (let b = a; b < pArray.length; b++) {
                     let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
-                    if (d < 20000) {
-                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.5 - (d/20000)) + ')';
+                    if (d < 25000) {
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.5 - (d/25000)) + ')';
                         ctx.lineWidth = 1; ctx.beginPath();
                         ctx.moveTo(pArray[a].x, pArray[a].y);
                         ctx.lineTo(pArray[b].x, pArray[b].y); ctx.stroke();
