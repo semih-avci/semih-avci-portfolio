@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Expertise en Conteneurisation : Docker, Images et Réseaux par Semih Avci.">
+    <meta name="description" content="Expertise en Conteneurisation : Docker, Personnalisation de serveur Web et Images par Semih Avci.">
     <title>Expertise : Conteneurisation Docker - Semih Avci</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,15 +30,13 @@
                 </a>
             </div>
             <h1 class="page-title">Conteneurisation Docker<span class="dot">.</span></h1>
-            <span class="subtitle-instruction">Virtualisation Légère / Micro-services / DevOps</span>
+            <span class="subtitle-instruction">Virtualisation Légère / Web Server / DevOps</span>
         </header>
 
         <section class="featured-card tilt-card" style="margin-bottom: 25px;">
             <h2 class="card-title">1. Contexte du Projet</h2>
             <p class="card-text">
-                Dans le cadre du module Administration Système, <strong>j'ai exploré</strong> le concept de conteneurisation via <strong>Docker</strong> sur une distribution Linux Debian. Contrairement à la virtualisation classique, Docker permet d'isoler des applications dans des environnements légers, partageant le même noyau système. 
-                <br><br>
-                Ma mission était d'apprendre à gérer le cycle de vie complet des conteneurs : de l'installation du moteur à la création d'images personnalisées et à la gestion des réseaux isolés.
+                Dans le cadre de mon module d'Administration Système, <strong>j'ai exploré</strong> la technologie Docker sous Linux Debian. Contrairement aux machines virtuelles classiques, Docker permet d'isoler des applications dans des environnements légers. Ma mission était de déployer, configurer et sauvegarder un serveur web personnalisé pour comprendre la flexibilité des micro-services.
             </p>
         </section>
 
@@ -48,14 +46,16 @@
             <div class="code-module my-module" style="margin-bottom: 25px;">
                 <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px;">
-                        <h3 style="color: #d4af37; margin-bottom: 10px;">A. Déploiement & Mapping de Ports</h3>
+                        <h3 style="color: #d4af37; margin-bottom: 10px;">A. Installation & Premier Déploiement</h3>
                         <p style="color: #eee; line-height: 1.6; margin: 0;">
-                            <strong>J'ai déployé</strong> mon premier service web en utilisant l'image officielle <code>httpd</code> (Apache). L'enjeu majeur était de comprendre le mapping de ports : j'ai redirigé le port <strong>8080</strong> de ma machine hôte vers le port <strong>80</strong> du conteneur. Cela m'a permis d'accéder à mon serveur web via <code>localhost:8080</code> tout en gardant le conteneur isolé.
+                            Après avoir installé le moteur Docker sur ma machine Debian, <strong>j'ai déployé</strong> mon premier conteneur basé sur l'image officielle <code>httpd</code> (Apache). 
+                            <br><br>
+                            Comme le montre ma capture d'écran, <strong>j'ai utilisé</strong> la commande <code>docker run</code> pour mapper le port 8080 de ma machine vers le port 80 du conteneur. J'ai ensuite vérifié le bon état de santé de mon instance avec <code>docker ps</code> pour m'assurer que le service tournait correctement en arrière-plan.
                         </p>
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <img src="../../images/docker_apache_run.png" alt="Docker Run Apache" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Lancement du conteneur Apache</p>
+                        <img src="../../images/docker_terminal_deploy.png" alt="Terminal Docker" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Lancement et vérification des conteneurs actifs</p>
                     </div>
                 </div>
             </div>
@@ -63,28 +63,28 @@
             <div class="code-module my-module" style="margin-bottom: 25px;">
                 <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; flex-direction: row-reverse;">
                     <div style="flex: 1; min-width: 300px;">
-                        <h3 style="color: #d4af37; margin-bottom: 10px;">B. Persistance & Customisation</h3>
+                        <h3 style="color: #d4af37; margin-bottom: 10px;">B. Personnalisation du Serveur HTTP</h3>
                         <p style="color: #eee; line-height: 1.6; margin: 0;">
-                            Pour personnaliser mon service, <strong>j'ai modifié</strong> le contenu du serveur directement en session interactive. Pour ne pas perdre ces changements, <strong>j'ai utilisé</strong> la commande <code>docker commit</code> afin de créer une nouvelle image "snapshot". J'ai également appris à exporter ces travaux dans des archives <code>.tar</code> via <code>docker save</code> pour permettre une portabilité totale de l'environnement.
+                            Une fois le serveur opérationnel, <strong>je l'ai personnalisé</strong> pour qu'il diffuse mon propre contenu. Je suis entré au cœur du conteneur pour modifier le fichier <code>index.html</code> original. 
+                            <br><br>
+                            J'ai remplacé le message générique par "Le site de Semih". Pour immortaliser cette modification, <strong>j'ai effectué</strong> un <code>docker commit</code>, créant ainsi une nouvelle image de conteneur incluant mon site web, prête à être exportée ou redéployée ailleurs.
                         </p>
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
-                        <img src="../../images/docker_commit.png" alt="Docker Commit" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Création d'une image modifiée</p>
+                        <img src="../../images/docker_site_custom.png" alt="Site Web Personnalisé" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Rendu du site personnalisé via localhost:8080</p>
                     </div>
                 </div>
             </div>
 
             <div class="code-module my-module" style="margin-bottom: 25px;">
                 <div class="explanation-box">
-                    <h3 style="color: #d4af37; margin-bottom: 10px;">C. Administration Réseau Docker</h3>
+                    <h3 style="color: #d4af37; margin-bottom: 10px;">C. Administration Réseau & Bridge</h3>
                     <p style="color: #eee; line-height: 1.6; margin-bottom: 15px;">
-                        <strong>J'ai approfondi</strong> la gestion réseau en créant mes propres <strong>Bridges</strong> (ponts virtuels). J'ai configuré des réseaux isolés pour permettre à plusieurs conteneurs de communiquer entre eux via leurs noms d'hôtes internes, tout en étant protégés du réseau extérieur.
+                        <strong>J'ai approfondi</strong> la gestion réseau en créant un <strong>Bridge</strong> personnalisé. Cela m'a permis d'isoler mes conteneurs dans un sous-réseau privé où ils peuvent communiquer entre eux par nom d'hôte, simulant ainsi une architecture multi-services sécurisée.
                     </p>
                     <pre><code class="language-bash" style="color: #d4af37; font-family: 'Fira Code', monospace;">
-# Création d'un réseau bridge personnalisé
-$ sudo docker network create --driver bridge mon_reseau_prive
-# Inspection de la topologie IP
+# Inspection de mon réseau personnalisé
 $ sudo docker network inspect mon_reseau_prive
                     </code></pre>
                 </div>
@@ -94,19 +94,15 @@ $ sudo docker network inspect mon_reseau_prive
         <section class="featured-card tilt-card" style="margin-bottom: 25px; margin-top: 20px;">
             <h2 class="card-title">3. Difficultés Rencontrées</h2>
             <p class="card-text">
-                La principale difficulté a été de comprendre la nature <strong>éphémère</strong> des conteneurs. Au début, <strong>j'ai perdu</strong> des données en supprimant un conteneur sans avoir créé de volume ou fait de commit. J'ai aussi dû apprendre à gérer les conflits de ports sur la machine hôte et à diagnostiquer les problèmes de connectivité DNS entre conteneurs d'un même réseau.
+                Ma principale difficulté a été de comprendre la persistance des données. <strong>J'ai appris</strong> que sans un <code>commit</code> ou l'utilisation de <code>volumes</code>, toute modification du site web disparaissait à la suppression du conteneur. J'ai aussi dû apprendre à manipuler l'interface en ligne de commande de Docker pour diagnostiquer les erreurs de connectivité entre réseaux.
             </p>
         </section>
 
         <section class="featured-card tilt-card" style="margin-bottom: 50px;">
             <h2 class="card-title">4. Résultat Final</h2>
             <p class="card-text" style="margin-bottom: 20px;">
-                Je maîtrise désormais les fondamentaux de la conteneurisation. Je suis capable de transformer n'importe quelle application en une <strong>image Docker</strong> prête à être déployée sur n'importe quel serveur Linux. C'est une compétence cruciale qui complète mon profil d'administrateur système tourné vers le Cloud et le DevOps.
+                Je maîtrise désormais le cycle de vie des conteneurs, de l'image de base à la sauvegarde personnalisée. Je suis capable de transformer n'importe quel service en une instance légère et portable. C'est une compétence cruciale qui termine mon expertise en infrastructure.
             </p>
-            <div style="text-align: center;">
-                <img src="../../images/docker_final.png" alt="Docker PS" style="width: 90%; border-radius: 5px; border: 1px solid #333; opacity: 0.8;">
-                <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">État des conteneurs actifs en production</p>
-            </div>
         </section>
 
         <div class="project-footer">
@@ -153,11 +149,11 @@ $ sudo docker network inspect mon_reseau_prive
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.w = Math.random() * 15 + 5; // Largeur rectangle
-                this.h = this.w * 0.6;           // Hauteur rectangle
-                this.vx = (Math.random() - 0.5) * 1.2;
-                this.vy = (Math.random() - 0.5) * 1.2;
-                this.opacity = Math.random() * 0.5 + 0.2;
+                this.w = Math.random() * 18 + 8;
+                this.h = this.w * 0.6;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+                this.opacity = Math.random() * 0.4 + 0.1;
             }
             update() {
                 this.x += this.vx; this.y += this.vy;
@@ -166,22 +162,21 @@ $ sudo docker network inspect mon_reseau_prive
             }
             draw() {
                 ctx.strokeStyle = `rgba(212, 175, 55, ${this.opacity})`;
-                ctx.lineWidth = 1;
+                ctx.lineWidth = 1.5;
                 ctx.strokeRect(this.x, this.y, this.w, this.h);
-                // Petit point à l'intérieur pour simuler un "process"
-                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-                ctx.fillRect(this.x + 2, this.y + 2, 2, 2);
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity * 0.5})`;
+                ctx.fillRect(this.x + 3, this.y + 3, 3, 3);
             }
         }
 
-        function init() { pArray = []; for (let i = 0; i < 50; i++) pArray.push(new Container()); }
+        function init() { pArray = []; for (let i = 0; i < 45; i++) pArray.push(new Container()); }
         
         function connect() {
             for (let a = 0; a < pArray.length; a++) {
                 for (let b = a; b < pArray.length; b++) {
                     let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
-                    if (d < 18000) {
-                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.3 - (d/18000)) + ')';
+                    if (d < 20000) {
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.25 - (d/20000)) + ')';
                         ctx.beginPath();
                         ctx.moveTo(pArray[a].x + pArray[a].w/2, pArray[a].y + pArray[a].h/2);
                         ctx.lineTo(pArray[b].x + pArray[b].w/2, pArray[b].y + pArray[b].h/2);
@@ -193,7 +188,7 @@ $ sudo docker network inspect mon_reseau_prive
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            pArray.forEach(p => { p.update(); p.draw(); });
+            pArray.forEach(p => { p.u(); p.d(); });
             connect();
             requestAnimationFrame(animate);
         }
