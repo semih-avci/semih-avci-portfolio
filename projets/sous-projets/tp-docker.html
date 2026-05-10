@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expertise en Conteneurisation : Docker, Images et Réseaux par Semih Avci.">
+    <title>Expertise : Conteneurisation Docker - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="docker-grid"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projet-adminsys.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour à l'Infrastructure
+                </a>
+            </div>
+            <h1 class="page-title">Conteneurisation Docker<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Virtualisation Légère / Micro-services / DevOps</span>
+        </header>
+
+        <section class="featured-card tilt-card" style="margin-bottom: 25px;">
+            <h2 class="card-title">1. Contexte du Projet</h2>
+            <p class="card-text">
+                Dans le cadre du module Administration Système, <strong>j'ai exploré</strong> le concept de conteneurisation via <strong>Docker</strong> sur une distribution Linux Debian. Contrairement à la virtualisation classique, Docker permet d'isoler des applications dans des environnements légers, partageant le même noyau système. 
+                <br><br>
+                Ma mission était d'apprendre à gérer le cycle de vie complet des conteneurs : de l'installation du moteur à la création d'images personnalisées et à la gestion des réseaux isolés.
+            </p>
+        </section>
+
+        <section class="work-section">
+            <h2 class="card-title" style="margin-bottom: 30px; text-align: center;">2. Travail Fourni</h2>
+
+            <div class="code-module my-module" style="margin-bottom: 25px;">
+                <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="color: #d4af37; margin-bottom: 10px;">A. Déploiement & Mapping de Ports</h3>
+                        <p style="color: #eee; line-height: 1.6; margin: 0;">
+                            <strong>J'ai déployé</strong> mon premier service web en utilisant l'image officielle <code>httpd</code> (Apache). L'enjeu majeur était de comprendre le mapping de ports : j'ai redirigé le port <strong>8080</strong> de ma machine hôte vers le port <strong>80</strong> du conteneur. Cela m'a permis d'accéder à mon serveur web via <code>localhost:8080</code> tout en gardant le conteneur isolé.
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px; text-align: center;">
+                        <img src="../../images/docker_apache_run.png" alt="Docker Run Apache" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Lancement du conteneur Apache</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-module my-module" style="margin-bottom: 25px;">
+                <div class="explanation-box" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; flex-direction: row-reverse;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="color: #d4af37; margin-bottom: 10px;">B. Persistance & Customisation</h3>
+                        <p style="color: #eee; line-height: 1.6; margin: 0;">
+                            Pour personnaliser mon service, <strong>j'ai modifié</strong> le contenu du serveur directement en session interactive. Pour ne pas perdre ces changements, <strong>j'ai utilisé</strong> la commande <code>docker commit</code> afin de créer une nouvelle image "snapshot". J'ai également appris à exporter ces travaux dans des archives <code>.tar</code> via <code>docker save</code> pour permettre une portabilité totale de l'environnement.
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px; text-align: center;">
+                        <img src="../../images/docker_commit.png" alt="Docker Commit" style="width: 100%; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Création d'une image modifiée</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-module my-module" style="margin-bottom: 25px;">
+                <div class="explanation-box">
+                    <h3 style="color: #d4af37; margin-bottom: 10px;">C. Administration Réseau Docker</h3>
+                    <p style="color: #eee; line-height: 1.6; margin-bottom: 15px;">
+                        <strong>J'ai approfondi</strong> la gestion réseau en créant mes propres <strong>Bridges</strong> (ponts virtuels). J'ai configuré des réseaux isolés pour permettre à plusieurs conteneurs de communiquer entre eux via leurs noms d'hôtes internes, tout en étant protégés du réseau extérieur.
+                    </p>
+                    <pre><code class="language-bash" style="color: #d4af37; font-family: 'Fira Code', monospace;">
+# Création d'un réseau bridge personnalisé
+$ sudo docker network create --driver bridge mon_reseau_prive
+# Inspection de la topologie IP
+$ sudo docker network inspect mon_reseau_prive
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-card tilt-card" style="margin-bottom: 25px; margin-top: 20px;">
+            <h2 class="card-title">3. Difficultés Rencontrées</h2>
+            <p class="card-text">
+                La principale difficulté a été de comprendre la nature <strong>éphémère</strong> des conteneurs. Au début, <strong>j'ai perdu</strong> des données en supprimant un conteneur sans avoir créé de volume ou fait de commit. J'ai aussi dû apprendre à gérer les conflits de ports sur la machine hôte et à diagnostiquer les problèmes de connectivité DNS entre conteneurs d'un même réseau.
+            </p>
+        </section>
+
+        <section class="featured-card tilt-card" style="margin-bottom: 50px;">
+            <h2 class="card-title">4. Résultat Final</h2>
+            <p class="card-text" style="margin-bottom: 20px;">
+                Je maîtrise désormais les fondamentaux de la conteneurisation. Je suis capable de transformer n'importe quelle application en une <strong>image Docker</strong> prête à être déployée sur n'importe quel serveur Linux. C'est une compétence cruciale qui complète mon profil d'administrateur système tourné vers le Cloud et le DevOps.
+            </p>
+            <div style="text-align: center;">
+                <img src="../../images/docker_final.png" alt="Docker PS" style="width: 90%; border-radius: 5px; border: 1px solid #333; opacity: 0.8;">
+                <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">État des conteneurs actifs en production</p>
+            </div>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projet-adminsys.html" class="btn-cv ripple-btn">Retour à l'Infrastructure</a>
+        </div>
+    </div>
+    
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -4; 
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 4;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        /* EFFET DOCKER : RECTANGLES FLOTTANTS */
+        const canvas = document.getElementById('docker-grid');
+        const ctx = canvas.getContext('2d');
+        let pArray = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Container {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.w = Math.random() * 15 + 5; // Largeur rectangle
+                this.h = this.w * 0.6;           // Hauteur rectangle
+                this.vx = (Math.random() - 0.5) * 1.2;
+                this.vy = (Math.random() - 0.5) * 1.2;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.strokeStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.lineWidth = 1;
+                ctx.strokeRect(this.x, this.y, this.w, this.h);
+                // Petit point à l'intérieur pour simuler un "process"
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.fillRect(this.x + 2, this.y + 2, 2, 2);
+            }
+        }
+
+        function init() { pArray = []; for (let i = 0; i < 50; i++) pArray.push(new Container()); }
+        
+        function connect() {
+            for (let a = 0; a < pArray.length; a++) {
+                for (let b = a; b < pArray.length; b++) {
+                    let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
+                    if (d < 18000) {
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.3 - (d/18000)) + ')';
+                        ctx.beginPath();
+                        ctx.moveTo(pArray[a].x + pArray[a].w/2, pArray[a].y + pArray[a].h/2);
+                        ctx.lineTo(pArray[b].x + pArray[b].w/2, pArray[b].y + pArray[b].h/2);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pArray.forEach(p => { p.update(); p.draw(); });
+            connect();
+            requestAnimationFrame(animate);
+        }
+        init(); animate();
+
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    });
+</script>
+</body>
+</html>
