@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Déploiement et configuration d'un serveur Call Manager XiVO. ToIP, Trunk SIP et Services unifiés.">
+    <title>TP : Téléphonie IP (XiVO) - Semih Avci</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+        
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projet-adminsys.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour à l'Infrastructure
+                </a>
+            </div>
+
+            <h1 class="page-title">Déploiement ToIP XiVO<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Téléphonie d'Entreprise / SIP / Administration Call Server</span>
+        </header>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">1. Présentation du Projet</h2>
+            <p class="card-text">
+                Ce projet consistait en la mise en œuvre d'une infrastructure de <strong>Téléphonie sur IP (ToIP)</strong> complète pour une entreprise fictive. Nous avons utilisé le serveur Call Manager <strong>XiVO</strong> (basé sur Asterisk).
+                <br><br>
+                <strong>Environnement technique :</strong><br>
+                Le serveur a été déployé sur la VM <code>vm-iutcl-xivoc-etudiant-17</code> (adresse IP : <code>10.172.20.27</code>). L'objectif était de gérer l'intégralité du cycle de vie d'un appel, de l'enregistrement des terminaux SIP à l'interconnexion via un Trunk SIP.
+            </p>
+        </section>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="../../assets/img/xivo-topo.png" alt="Architecture réseau XiVO" style="max-width: 100%; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 15px 45px rgba(0,0,0,0.6);">
+            <p style="color: #a0a0a0; font-style: italic; font-size: 0.9rem; margin-top: 15px;">Schéma de l'infrastructure Call Server XiVO</p>
+        </div>
+
+        <section class="work-section">
+            <div class="featured-card" style="margin-bottom: 30px; border-color: rgba(212, 175, 55, 0.5);">
+                <h2 class="card-title">2. Configuration & Ingénierie</h2>
+                <div class="card-text">
+                    Le travail a été divisé en plusieurs phases critiques, de la création des utilisateurs à la gestion fine de la signalisation.
+                </div>
+                <div class="tech-tags">
+                    <span>IPBX XiVO</span>
+                    <span>Softphones & Deskphones</span>
+                    <span>SIP Trunking</span>
+                    <span>Wireshark Analysis</span>
+                    <span>Services Unifiés</span>
+                </div>
+            </div>
+
+            <div class="code-modules-container">
+
+                <div class="code-module my-module">
+                    <details open>
+                        <summary class="module-header header-highlight">
+                            <h3>A. Installation Privée & Terminaux <span class="badge-me">PHASE 1</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Création des comptes, SDA et provisionnement SIP. (Cliquer pour réduire)</p>
+                        </summary>
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Détail :</strong> Nous avons créé des comptes utilisateurs avec des identifiants SDA (ex: 04 73 18 ...). Chaque utilisateur s'est vu attribuer une ligne SIP permettant l'enregistrement sur des Softphones ou des téléphones physiques.
+                            </div>
+                            
+                            <div style="text-align: center; margin: 25px;">
+                                <img src="../../assets/img/xivo-users.png" alt="Interface utilisateurs XiVO" style="max-width: 85%; border-radius: 8px;">
+                                <p style="color: #777; font-size: 0.8rem; margin-top: 8px;">Capture : Liste des utilisateurs et lignes associées</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>B. Interconnexion (Trunk SIP) <span class="badge-binome">PHASE 2</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Sortie vers le réseau externe et gestion des appels entrants.</p>
+                        </summary>
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Technique :</strong> Mise en place d'un Trunk SIP pour relier notre serveur privé au monde extérieur. Configuration des routes sortantes et entrantes avec gestion des contextes de sécurité.
+                            </div>
+                            <pre><code class="language-bash">
+# Analyse de la signalisation SIP (Wireshark)
+- INVITE sip:101@10.172.20.27 SIP/2.0
+- 100 Trying (Le serveur traite la demande)
+- 180 Ringing (Le destinataire sonne)
+- 200 OK (La session est établie - Flux RTP activé)
+                            </code></pre>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-module my-module">
+                    <details>
+                        <summary class="module-header header-highlight">
+                            <h3>C. Fonctionnalités Avancées <span class="badge-me">PHASE 3</span></h3>
+                            <p style="margin-top:5px; font-style:italic; font-size:0.9rem; color:#a0a0a0;">Conférence, Groupes d'appels et Messagerie vocale.</p>
+                        </summary>
+                        <div class="code-window">
+                            <div class="explanation-box">
+                                <strong>Usage :</strong> Nous avons déployé des services à haute valeur ajoutée : renvoi d'appels, groupes de diffusion, et boîtes vocales consultables à distance.
+                            </div>
+                            
+                            <div style="display: flex; gap: 15px; justify-content: center; padding: 20px;">
+                                <div style="text-align:center;">
+                                    <img src="../../assets/img/xivo-journal.png" alt="Journal d'appels" style="width: 100%; max-width: 250px; border-radius: 5px;">
+                                    <p style="font-size: 0.7rem; color: #555;">Journal d'appels</p>
+                                </div>
+                                <div style="text-align:center;">
+                                    <img src="../../assets/img/xivo-favoris.png" alt="Favoris" style="width: 100%; max-width: 250px; border-radius: 5px;">
+                                    <p style="font-size: 0.7rem; color: #555;">Favoris & Contacts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="featured-card tilt-card" style="margin-top: 60px;">
+            <h2 class="card-title">3. Analyse & Bilan</h2>
+            <p class="card-text">
+                <strong>Analyse de trame :</strong><br>
+                L'observation via Wireshark a permis de valider le processus de "Handshake" SIP. Nous avons pu identifier le passage du protocole de signalisation (SIP sur port 5060) au protocole de transport de la voix (RTP).
+                <br><br>
+                <strong>Conclusion :</strong><br>
+                Ce TP a consolidé ma compréhension des architectures de communication unifiées. La maîtrise de l'interface XiVO et des commandes Asterisk me permet aujourd'hui de gérer une infrastructure ToIP d'entreprise de A à Z.
+            </p>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projet-adminsys.html" class="btn-cv ripple-btn">Retour à l'Infrastructure</a>
+        </div>
+
+    </div>
+    
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* LUEUR DU CURSEUR */
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        /* EFFET 3D CARTES */
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -3; 
+                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 3;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+        }
+
+        /* EFFET RIPPLE SUR BOUTONS */
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        /* CONSTELLATION STYLE "RÉSEAU" */
+        const canvas = document.getElementById('gold-particles');
+        const ctx = canvas.getContext('2d');
+        let pArray = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        class P {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.s = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+            }
+            u() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            d() {
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        function init() { pArray = []; for (let i = 0; i < 70; i++) pArray.push(new P()); }
+        function connect() {
+            for (let a = 0; a < pArray.length; a++) {
+                for (let b = a; b < pArray.length; b++) {
+                    let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
+                    if (d < 25000) {
+                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (1 - (d/25000)) + ')';
+                        ctx.lineWidth = 1; ctx.beginPath();
+                        ctx.moveTo(pArray[a].x, pArray[a].y);
+                        ctx.lineTo(pArray[b].x, pArray[b].y); ctx.stroke();
+                    }
+                }
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pArray.forEach(p => { p.u(); p.d(); });
+            connect(); requestAnimationFrame(animate);
+        }
+        init(); animate();
+    });
+</script>
+</body>
+</html>
