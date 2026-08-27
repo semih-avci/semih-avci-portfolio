@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SAE 2.04 - Projet Intégratif PharmaSanté : infrastructure réseau sécurisée, Cisco L3, VLAN, Stormshield, Active Directory, services Linux et téléphonie IP.">
+    <title>SAE 2.04 - Projet Intégratif | PharmaSanté - Semih Avci</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../themes/projet-detail.css">
+</head>
+<body class="project-detail-body">
+
+    <canvas id="gold-particles"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="main-container">
+
+        <header class="project-header-simple">
+            <div class="back-btn-container">
+                <a href="../projets.html" class="back-link ripple-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Retour aux projets
+                </a>
+            </div>
+
+            <h1 class="page-title">SAE 2.04 - Projet Intégratif<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">PharmaSanté / Infrastructure / Réseaux / Cybersécurité</span>
+        </header>
+
+        <section class="featured-card tilt-card">
+            <h2 class="card-title">Une infrastructure d'entreprise de bout en bout</h2>
+            <p class="card-text">
+                Réalisé en équipe en juin 2026, <strong>PharmaSanté</strong> est le projet de synthèse de ma première année de BUT Réseaux &amp; Télécommunications. L'objectif était de concevoir, déployer et sécuriser l'ensemble du système d'information d'une pharmacie fictive : réseau segmenté, services Windows et Linux, téléphonie IP, filtrage et supervision.
+                <br><br>
+                Le projet a été mené sur une infrastructure physique comprenant des équipements Cisco, un pare-feu Stormshield, plusieurs serveurs et postes métiers, des téléphones Yealink et un point d'accès Wi-Fi.
+            </p>
+            <div class="tech-tags">
+                <span>Cisco IOS</span>
+                <span>VLAN &amp; SVI</span>
+                <span>Stormshield</span>
+                <span>Windows Server</span>
+                <span>Debian</span>
+                <span>Asterisk</span>
+            </div>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card">
+                <h2 class="card-title">1. Architecture déployée</h2>
+                <p class="card-text">
+                    L'infrastructure sépare chaque service métier afin de maîtriser les flux, limiter les domaines de diffusion et appliquer des politiques de sécurité adaptées.
+                </p>
+
+                <div class="code-modules-container" style="margin-top: 30px; gap: 20px;">
+                    <div class="code-module my-module">
+                        <details>
+                            <summary class="module-header header-highlight">
+                                <h3>Segmentation réseau <span class="badge-me">VLAN</span></h3>
+                                <p>Finance, RH, Technique, Serveurs et transit. (Dérouler)</p>
+                            </summary>
+                            <div class="code-window">
+                                <div class="explanation-box">
+                                    <strong>Zones fonctionnelles :</strong>
+                                    <ul style="margin: 12px 0 0 20px; line-height: 1.8;">
+                                        <li>Finance — postes et applications du service financier</li>
+                                        <li>RH — postes et ressources humaines</li>
+                                        <li>Technique — administration et maintenance</li>
+                                        <li>Serveurs — services d'infrastructure internes</li>
+                                        <li>Transit — liaison sécurisée vers le pare-feu</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="code-module my-module">
+                        <details>
+                            <summary class="module-header header-highlight">
+                                <h3>Cœur de réseau Cisco L3 <span class="badge-me">ROUTING</span></h3>
+                                <p>SVI, routage inter-VLAN et relais DHCP. (Dérouler)</p>
+                            </summary>
+                            <div class="code-window">
+                                <div class="explanation-box">
+                                    Le switch de niveau 3 héberge les passerelles SVI, assure le routage inter-VLAN et relaie les requêtes DHCP vers le serveur Windows. Une route par défaut dirige les flux vers le Stormshield.
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="code-module my-module">
+                        <details>
+                            <summary class="module-header header-highlight">
+                                <h3>Pare-feu et accès extérieur <span class="badge-me">SÉCURITÉ</span></h3>
+                                <p>Stormshield, filtrage, routes statiques et NAT/PAT. (Dérouler)</p>
+                            </summary>
+                            <div class="code-window">
+                                <div class="explanation-box">
+                                    Le pare-feu Stormshield est placé entre le LAN et le routeur Cisco. Il protège les zones internes, filtre les communications et participe au chemin de sortie, tandis que le routeur réalise le NAT/PAT vers le réseau extérieur.
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="work-section">
+            <div class="featured-card">
+                <h2 class="card-title">2. Services intégrés</h2>
+
+                <div class="code-modules-container" style="gap: 20px;">
+                    <div class="code-module my-module">
+                        <details>
+                            <summary class="module-header header-highlight">
+                                <h3>Active Directory <span class="badge-me">WINDOWS SERVER</span></h3>
+                                <p>Administration centralisée du domaine de l'organisation. (Dérouler)</p>
+                            </summary>
+                            <div class="code-window">
+                                <div class="explanation-box">
+                                    Déploiement d'<strong>AD DS, DNS et DHCP</strong>, structuration des utilisateurs et ordinateurs, puis application de GPO de sécurité : Defender, pare-feu, restrictions, audit, Windows Update, proxy et ouverture automatique de l'intranet.
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="code-module my-module">
+                        <details>
+                            <summary class="module-header header-highlight">
+                                <h3>Serveur de services <span class="badge-me">DEBIAN</span></h3>
+                                <p>Web, proxy, fichiers, messagerie, logs et supervision. (Dérouler)</p>
+                            </summary>
+                            <div class="code-window">
+                                <div class="explanation-box">
+                                    Un serveur Debian centralise l'intranet <strong>Apache</strong>, le filtrage web <strong>Squid</strong>, le FTP, la messagerie interne, les journaux rsyslog et la supervision des services avec Uptime Kuma sous Docker.
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="code-module my-module">
+                        <details>
+                            <summary class="module-header header-highlight">
+                                <h3>Téléphonie d'entreprise <span class="badge-me">VOIP</span></h3>
+                                <p>Asterisk, PJSIP, téléphones Yealink et softphones. (Dérouler)</p>
+                            </summary>
+                            <div class="code-window">
+                                <div class="explanation-box">
+                                    Mise en service d'un IPBX Asterisk, création des extensions PJSIP, appels internes, groupe d'appel, messagerie vocale, musique d'attente, synchronisation NTP, QoS et protection du service avec Fail2Ban.
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-card tilt-card" style="border-color: rgba(212, 175, 55, 0.65);">
+            <h2 class="card-title">3. Ma contribution personnelle</h2>
+            <p class="card-text">
+                Au sein de l'équipe, j'ai principalement travaillé sur la <strong>conception et la configuration de l'architecture segmentée</strong> : plan d'adressage, création des VLAN, SVI et routage inter-VLAN sur Cisco L3, NAT/PAT, ACL et intégration du pare-feu Stormshield.
+                <br><br>
+                J'ai également participé au déploiement des services <strong>AD DS, DNS et DHCP</strong>, à la création des GPO de sécurisation, ainsi qu'aux tests de connectivité et à l'analyse des flux avec Wireshark. Enfin, j'ai contribué à la rédaction de la documentation technique et de la matrice de validation.
+            </p>
+            <div class="tech-tags">
+                <span>Architecture réseau</span>
+                <span>Configuration Cisco</span>
+                <span>Stormshield</span>
+                <span>AD / DNS / DHCP</span>
+                <span>GPO</span>
+                <span>Wireshark</span>
+            </div>
+        </section>
+
+        <section class="featured-card">
+            <h2 class="card-title">4. Un incident diagnostiqué et résolu</h2>
+            <p class="card-text">
+                Lors des tests, une <strong>route statique agrégée trop large</strong> provoquait un mauvais cheminement de certains flux et empêchait l'accès à un service DNS externe. J'ai croisé l'analyse Wireshark avec les tables de routage afin d'isoler la cause.
+                <br><br>
+                La route agrégée a été remplacée par des routes plus précises pour chacun des VLAN. Cette correction a rétabli immédiatement la résolution DNS et stabilisé la connectivité extérieure. Cette panne m'a permis d'appliquer une vraie démarche de diagnostic : observer, formuler une hypothèse, corriger puis valider.
+            </p>
+        </section>
+
+        <section class="featured-card">
+            <h2 class="card-title">5. Sécurisation et validation</h2>
+            <p class="card-text">
+                La sécurité a été pensée à plusieurs niveaux : ACL limitant l'administration SSH au poste Technique, DHCP Snooping, Port-Security, BPDU Guard, Storm-Control, politiques GPO, filtrage Squid, centralisation des logs et sauvegardes automatisées.
+                <br><br>
+                Chaque fonction a été vérifiée par une preuve reproductible : état des VLAN et des routes, attribution DHCP, résolution DNS, application des GPO, accessibilité de l'intranet, enregistrement des téléphones et analyse des paquets.
+            </p>
+            <div class="code-module my-module" style="margin-top: 28px;">
+                <details>
+                    <summary class="module-header header-highlight">
+                        <h3>Exemples de contrôles <span class="badge-me">TESTS</span></h3>
+                        <p>Commandes utilisées pendant la recette technique. (Dérouler)</p>
+                    </summary>
+                    <div class="code-window">
+                        <pre><code><span class="code-comment"># Réseau Cisco</span>
+show vlan brief
+show ip interface brief
+show ip route
+
+<span class="code-comment"># Services Windows et DNS</span>
+ipconfig /all
+nslookup &lt;service-interne&gt;
+gpresult /h C:\gpo.html
+
+<span class="code-comment"># Téléphonie</span>
+pjsip show contacts</code></pre>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="featured-card">
+            <h2 class="card-title">6. Compétences développées</h2>
+            <p class="card-text">
+                PharmaSanté m'a appris à relier des briques qui sont souvent étudiées séparément : réseau, systèmes, cybersécurité, téléphonie et services. J'ai renforcé ma capacité à <strong>concevoir une architecture cohérente</strong>, configurer des équipements réels, diagnostiquer méthodiquement une panne et produire une documentation exploitable par une autre personne.
+            </p>
+            <div class="tech-tags">
+                <span>Conception LAN</span>
+                <span>Administration système</span>
+                <span>Sécurité multicouche</span>
+                <span>Diagnostic</span>
+                <span>Documentation</span>
+                <span>Travail en équipe</span>
+            </div>
+        </section>
+
+        <div class="project-footer">
+            <a href="../projets.html" class="btn-cv ripple-btn">Retour aux projets</a>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const rotateX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -4;
+                    const rotateY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 4;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                });
+            });
+        }
+
+        document.querySelectorAll('.ripple-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        const canvas = document.getElementById('gold-particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(90, Math.floor((canvas.width * canvas.height) / 14000));
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const distance = ((particles[i].x - particles[j].x) ** 2) + ((particles[i].y - particles[j].y) ** 2);
+                    if (distance < 22000) {
+                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.55 - distance / 44000})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            drawConnections();
+            requestAnimationFrame(animateParticles);
+        }
+
+        resizeCanvas();
+        initParticles();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+        animateParticles();
+    });
+</script>
+</body>
+</html>
