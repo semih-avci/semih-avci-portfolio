@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SAE 2.04 - Projet Intégratif PharmaSanté : infrastructure réseau sécurisée, Cisco L3, VLAN, Stormshield, Active Directory, services Linux et téléphonie IP.">
+    <meta name="description" content="SAE 2.04 - Projet Intégratif PharmaSanté : contexte, travail réalisé par Semih Avci, difficultés rencontrées et bilan d'une infrastructure réseau sécurisée.">
     <title>SAE 2.04 - Projet Intégratif | PharmaSanté - Semih Avci</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,241 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../themes/projet-detail.css">
+    <style>
+        .chapter-nav {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin: 0 0 42px;
+        }
+
+        .chapter-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 58px;
+            padding: 12px 14px;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 12px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .chapter-nav a:hover {
+            transform: translateY(-3px);
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.12);
+        }
+
+        .main-chapter {
+            scroll-margin-top: 30px;
+            margin-bottom: 36px;
+        }
+
+        .chapter-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            color: #d4af37;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .chapter-kicker::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: #d4af37;
+        }
+
+        .context-grid,
+        .work-grid,
+        .difficulty-grid,
+        .results-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 28px;
+        }
+
+        .context-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .work-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .difficulty-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .results-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .context-item,
+        .work-item,
+        .difficulty-item,
+        .result-item {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-radius: 14px;
+        }
+
+        .context-item strong,
+        .work-item h3,
+        .difficulty-item h3,
+        .result-item h3 {
+            display: block;
+            margin: 0 0 10px;
+            color: #e7c95d;
+            font-family: "Montserrat", sans-serif;
+            font-size: 1rem;
+        }
+
+        .context-item span,
+        .work-item p,
+        .difficulty-item p,
+        .result-item p {
+            margin: 0;
+            color: #c6c6c6;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .difficulty-item .resolution {
+            display: block;
+            margin-top: 14px;
+            padding-top: 14px;
+            color: #ededed;
+            border-top: 1px solid rgba(212, 175, 55, 0.18);
+        }
+
+        .evidence-heading {
+            margin: 38px 0 8px;
+            color: #f0f0f0;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(1.45rem, 2.4vw, 2rem);
+        }
+
+        .evidence-intro {
+            margin: 0 0 22px;
+            color: #a9a9a9;
+            font-family: "Montserrat", sans-serif;
+            line-height: 1.7;
+        }
+
+        .evidence-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .evidence-card {
+            overflow: hidden;
+            margin: 0;
+            background: #050505;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 14px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .evidence-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+        }
+
+        .evidence-card a {
+            display: block;
+            background: #090909;
+        }
+
+        .evidence-card img {
+            display: block;
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            background: #090909;
+        }
+
+        .evidence-card figcaption {
+            padding: 18px 20px 20px;
+            color: #bdbdbd;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.84rem;
+            line-height: 1.6;
+        }
+
+        .evidence-card figcaption strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #e7c95d;
+            font-size: 0.93rem;
+        }
+
+        .evidence-card-wide {
+            grid-column: 1 / -1;
+        }
+
+        .evidence-card-wide img {
+            height: 245px;
+        }
+
+        .personal-highlight {
+            margin: 24px 0 0;
+            padding: 20px 22px;
+            color: #eeeeee;
+            background: linear-gradient(120deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.035));
+            border-left: 3px solid #d4af37;
+            border-radius: 0 12px 12px 0;
+            font-family: "Montserrat", sans-serif;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 900px) {
+            .chapter-nav,
+            .context-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .difficulty-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .chapter-nav,
+            .context-grid,
+            .work-grid,
+            .results-grid,
+            .evidence-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .evidence-card-wide {
+                grid-column: auto;
+            }
+
+            .evidence-card img,
+            .evidence-card-wide img {
+                height: auto;
+                max-height: 360px;
+            }
+        }
+    </style>
 </head>
 <body class="project-detail-body">
 
@@ -34,202 +269,201 @@
             <span class="subtitle-instruction">PharmaSanté / Infrastructure / Réseaux / Cybersécurité</span>
         </header>
 
-        <section class="featured-card tilt-card">
-            <h2 class="card-title">Une infrastructure d'entreprise de bout en bout</h2>
+        <nav class="chapter-nav" aria-label="Navigation dans le projet">
+            <a href="#contexte">1. Contexte</a>
+            <a href="#travail-fourni">2. Travail fourni</a>
+            <a href="#difficultes">3. Difficultés rencontrées</a>
+            <a href="#bilan">4. Résultats &amp; bilan</a>
+        </nav>
+
+        <section id="contexte" class="featured-card main-chapter tilt-card">
+            <span class="chapter-kicker">Partie 1</span>
+            <h2 class="card-title">Contexte</h2>
             <p class="card-text">
-                Réalisé en équipe en juin 2026, <strong>PharmaSanté</strong> est le projet de synthèse de ma première année de BUT Réseaux &amp; Télécommunications. L'objectif était de concevoir, déployer et sécuriser l'ensemble du système d'information d'une pharmacie fictive : réseau segmenté, services Windows et Linux, téléphonie IP, filtrage et supervision.
+                Réalisé en équipe en juin 2026, <strong>PharmaSanté</strong> est le projet de synthèse de ma première année de BUT Réseaux &amp; Télécommunications. L'objectif était de concevoir, déployer et sécuriser le système d'information complet d'une pharmacie fictive, depuis le câblage physique jusqu'aux services d'entreprise.
                 <br><br>
-                Le projet a été mené sur une infrastructure physique comprenant des équipements Cisco, un pare-feu Stormshield, plusieurs serveurs et postes métiers, des téléphones Yealink et un point d'accès Wi-Fi.
+                L'infrastructure devait séparer les services Finance, RH, Technique et Serveurs, permettre les communications utiles entre les zones, fournir un accès extérieur sécurisé et centraliser l'administration des utilisateurs et des postes. Le projet associait équipements Cisco, pare-feu Stormshield, Windows Server, serveurs Debian, téléphonie IP et postes clients.
             </p>
-            <div class="tech-tags">
-                <span>Cisco IOS</span>
-                <span>VLAN &amp; SVI</span>
-                <span>Stormshield</span>
-                <span>Windows Server</span>
-                <span>Debian</span>
-                <span>Asterisk</span>
-            </div>
-        </section>
 
-        <section class="work-section">
-            <div class="featured-card">
-                <h2 class="card-title">1. Architecture déployée</h2>
-                <p class="card-text">
-                    L'infrastructure sépare chaque service métier afin de maîtriser les flux, limiter les domaines de diffusion et appliquer des politiques de sécurité adaptées.
-                </p>
-
-                <div class="code-modules-container" style="margin-top: 30px; gap: 20px;">
-                    <div class="code-module my-module">
-                        <details>
-                            <summary class="module-header header-highlight">
-                                <h3>Segmentation réseau <span class="badge-me">VLAN</span></h3>
-                                <p>Finance, RH, Technique, Serveurs et transit. (Dérouler)</p>
-                            </summary>
-                            <div class="code-window">
-                                <div class="explanation-box">
-                                    <strong>Zones fonctionnelles :</strong>
-                                    <ul style="margin: 12px 0 0 20px; line-height: 1.8;">
-                                        <li>Finance — postes et applications du service financier</li>
-                                        <li>RH — postes et ressources humaines</li>
-                                        <li>Technique — administration et maintenance</li>
-                                        <li>Serveurs — services d'infrastructure internes</li>
-                                        <li>Transit — liaison sécurisée vers le pare-feu</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="code-module my-module">
-                        <details>
-                            <summary class="module-header header-highlight">
-                                <h3>Cœur de réseau Cisco L3 <span class="badge-me">ROUTING</span></h3>
-                                <p>SVI, routage inter-VLAN et relais DHCP. (Dérouler)</p>
-                            </summary>
-                            <div class="code-window">
-                                <div class="explanation-box">
-                                    Le switch de niveau 3 héberge les passerelles SVI, assure le routage inter-VLAN et relaie les requêtes DHCP vers le serveur Windows. Une route par défaut dirige les flux vers le Stormshield.
-                                </div>
-                            </div>
-                        </details>
-                    </div>
-
-                    <div class="code-module my-module">
-                        <details>
-                            <summary class="module-header header-highlight">
-                                <h3>Pare-feu et accès extérieur <span class="badge-me">SÉCURITÉ</span></h3>
-                                <p>Stormshield, filtrage, routes statiques et NAT/PAT. (Dérouler)</p>
-                            </summary>
-                            <div class="code-window">
-                                <div class="explanation-box">
-                                    Le pare-feu Stormshield est placé entre le LAN et le routeur Cisco. Il protège les zones internes, filtre les communications et participe au chemin de sortie, tandis que le routeur réalise le NAT/PAT vers le réseau extérieur.
-                                </div>
-                            </div>
-                        </details>
-                    </div>
+            <div class="context-grid">
+                <div class="context-item">
+                    <strong>Formation</strong>
+                    <span>BUT Réseaux &amp; Télécommunications</span>
+                </div>
+                <div class="context-item">
+                    <strong>Période</strong>
+                    <span>Juin 2026</span>
+                </div>
+                <div class="context-item">
+                    <strong>Organisation</strong>
+                    <span>Projet intégratif réalisé en équipe</span>
+                </div>
+                <div class="context-item">
+                    <strong>Enjeu</strong>
+                    <span>Construire une infrastructure cohérente et sécurisée</span>
                 </div>
             </div>
         </section>
 
-        <section class="work-section">
-            <div class="featured-card">
-                <h2 class="card-title">2. Services intégrés</h2>
+        <section id="travail-fourni" class="featured-card main-chapter">
+            <span class="chapter-kicker">Partie 2</span>
+            <h2 class="card-title">Travail fourni</h2>
+            <p class="card-text">
+                Mon périmètre personnel couvrait les briques centrales de l'infrastructure. J'ai assuré leur configuration, leur raccordement et leurs tests de fonctionnement, puis documenté les preuves de validation.
+            </p>
 
-                <div class="code-modules-container" style="gap: 20px;">
-                    <div class="code-module my-module">
-                        <details>
-                            <summary class="module-header header-highlight">
-                                <h3>Active Directory <span class="badge-me">WINDOWS SERVER</span></h3>
-                                <p>Administration centralisée du domaine de l'organisation. (Dérouler)</p>
-                            </summary>
-                            <div class="code-window">
-                                <div class="explanation-box">
-                                    Déploiement d'<strong>AD DS, DNS et DHCP</strong>, structuration des utilisateurs et ordinateurs, puis application de GPO de sécurité : Defender, pare-feu, restrictions, audit, Windows Update, proxy et ouverture automatique de l'intranet.
-                                </div>
-                            </div>
-                        </details>
-                    </div>
+            <p class="personal-highlight">
+                <strong>Réalisé personnellement :</strong> tout le périmètre Windows Server avec AD DS, DNS, DHCP et les GPO, la configuration du pare-feu Stormshield, le service FTP, le switch de niveau 3, le routeur Cisco, ainsi que les liaisons physiques et le branchement des équipements.
+            </p>
 
-                    <div class="code-module my-module">
-                        <details>
-                            <summary class="module-header header-highlight">
-                                <h3>Serveur de services <span class="badge-me">DEBIAN</span></h3>
-                                <p>Web, proxy, fichiers, messagerie, logs et supervision. (Dérouler)</p>
-                            </summary>
-                            <div class="code-window">
-                                <div class="explanation-box">
-                                    Un serveur Debian centralise l'intranet <strong>Apache</strong>, le filtrage web <strong>Squid</strong>, le FTP, la messagerie interne, les journaux rsyslog et la supervision des services avec Uptime Kuma sous Docker.
-                                </div>
-                            </div>
-                        </details>
-                    </div>
+            <div class="work-grid">
+                <article class="work-item">
+                    <h3>Windows Server</h3>
+                    <p>Déploiement d'AD DS, organisation du domaine, création des objets, zones et enregistrements DNS, étendues et options DHCP, puis GPO de sécurisation et de configuration pour les serveurs, utilisateurs et postes.</p>
+                </article>
 
-                    <div class="code-module my-module">
-                        <details>
-                            <summary class="module-header header-highlight">
-                                <h3>Téléphonie d'entreprise <span class="badge-me">VOIP</span></h3>
-                                <p>Asterisk, PJSIP, téléphones Yealink et softphones. (Dérouler)</p>
-                            </summary>
-                            <div class="code-window">
-                                <div class="explanation-box">
-                                    Mise en service d'un IPBX Asterisk, création des extensions PJSIP, appels internes, groupe d'appel, messagerie vocale, musique d'attente, synchronisation NTP, QoS et protection du service avec Fail2Ban.
-                                </div>
-                            </div>
-                        </details>
-                    </div>
-                </div>
+                <article class="work-item">
+                    <h3>Switch Cisco L3</h3>
+                    <p>Création des VLAN, affectation des ports, SVI, routage inter-VLAN, relais DHCP, accès SSH et protections de niveau 2 avec DHCP Snooping, Port-Security, BPDU Guard et Storm-Control.</p>
+                </article>
+
+                <article class="work-item">
+                    <h3>Routeur Cisco</h3>
+                    <p>Configuration des interfaces et des routes, raccordement vers le réseau extérieur, NAT/PAT, ACL de filtrage et contrôle des accès d'administration.</p>
+                </article>
+
+                <article class="work-item">
+                    <h3>Pare-feu Stormshield</h3>
+                    <p>Création des objets réseau, configuration des interfaces, route de retour, groupe des réseaux internes et règles de filtrage/NAT entre le LAN et la sortie.</p>
+                </article>
+
+                <article class="work-item">
+                    <h3>Service FTP</h3>
+                    <p>Mise en place du service de transfert de fichiers, organisation des espaces d'échange et validation des transferts utilisés notamment pour centraliser des sauvegardes techniques.</p>
+                </article>
+
+                <article class="work-item">
+                    <h3>Liaisons physiques et recette</h3>
+                    <p>Branchement du switch, du routeur, du pare-feu, des serveurs et des postes, contrôle des interfaces et du câblage, puis tests de connectivité et diagnostic des flux avec Wireshark.</p>
+                </article>
+            </div>
+
+            <h3 class="evidence-heading">Captures de configuration</h3>
+            <p class="evidence-intro">Ces captures proviennent du compte rendu technique du projet. Cliquez sur une image pour l'ouvrir en taille réelle.</p>
+
+            <div class="evidence-gallery">
+                <figure class="evidence-card">
+                    <a href="../images/projets/pharmasante/stormshield-filtrage.png" target="_blank" rel="noopener">
+                        <img src="../images/projets/pharmasante/stormshield-filtrage.png" alt="Configuration de la source d'une règle de filtrage Stormshield" loading="lazy">
+                    </a>
+                    <figcaption><strong>Pare-feu Stormshield</strong>Définition de la zone source et du groupe LAN dans une règle de filtrage.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/pharmasante/switch-vlans.png" target="_blank" rel="noopener">
+                        <img src="../images/projets/pharmasante/switch-vlans.png" alt="Commande show vlan brief sur le switch Cisco" loading="lazy">
+                    </a>
+                    <figcaption><strong>Segmentation du switch</strong>Validation des VLAN et de l'affectation des ports sur le switch Cisco L3.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/pharmasante/switch-dhcp-snooping.png" target="_blank" rel="noopener">
+                        <img src="../images/projets/pharmasante/switch-dhcp-snooping.png" alt="État de DHCP Snooping sur le switch Cisco" loading="lazy">
+                    </a>
+                    <figcaption><strong>Sécurisation de niveau 2</strong>Contrôle de l'activation de DHCP Snooping sur les VLAN concernés.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/pharmasante/routeur-acl.png" target="_blank" rel="noopener">
+                        <img src="../images/projets/pharmasante/routeur-acl.png" alt="Liste de contrôle d'accès sur le routeur Cisco" loading="lazy">
+                    </a>
+                    <figcaption><strong>Routeur Cisco - ACL</strong>Vérification des règles limitant les accès entrants aux services d'administration.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/pharmasante/windows-dns.png" target="_blank" rel="noopener">
+                        <img src="../images/projets/pharmasante/windows-dns.png" alt="Gestionnaire DNS de Windows Server" loading="lazy">
+                    </a>
+                    <figcaption><strong>Windows Server - DNS</strong>Création et vérification des zones DNS du domaine interne.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/pharmasante/windows-gpo-postes.png" target="_blank" rel="noopener">
+                        <img src="../images/projets/pharmasante/windows-gpo-postes.png" alt="Liste des GPO appliquées aux postes Windows" loading="lazy">
+                    </a>
+                    <figcaption><strong>Windows Server - GPO</strong>Politiques appliquées aux postes : sécurité de base, pare-feu, Defender, restrictions USB, audit et mises à jour.</figcaption>
+                </figure>
             </div>
         </section>
 
-        <section class="featured-card tilt-card" style="border-color: rgba(212, 175, 55, 0.65);">
-            <h2 class="card-title">3. Ma contribution personnelle</h2>
+        <section id="difficultes" class="featured-card main-chapter">
+            <span class="chapter-kicker">Partie 3</span>
+            <h2 class="card-title">Difficultés rencontrées</h2>
             <p class="card-text">
-                Au sein de l'équipe, j'ai principalement travaillé sur la <strong>conception et la configuration de l'architecture segmentée</strong> : plan d'adressage, création des VLAN, SVI et routage inter-VLAN sur Cisco L3, NAT/PAT, ACL et intégration du pare-feu Stormshield.
-                <br><br>
-                J'ai également participé au déploiement des services <strong>AD DS, DNS et DHCP</strong>, à la création des GPO de sécurisation, ainsi qu'aux tests de connectivité et à l'analyse des flux avec Wireshark. Enfin, j'ai contribué à la rédaction de la documentation technique et de la matrice de validation.
+                Les difficultés les plus formatrices ont demandé de croiser les configurations, les tables de routage, les résultats de commande et les captures Wireshark plutôt que de modifier les équipements au hasard.
             </p>
-            <div class="tech-tags">
-                <span>Architecture réseau</span>
-                <span>Configuration Cisco</span>
-                <span>Stormshield</span>
-                <span>AD / DNS / DHCP</span>
+
+            <div class="difficulty-grid">
+                <article class="difficulty-item">
+                    <h3>Route statique trop large</h3>
+                    <p>Une route agrégée en /16 faisait considérer une partie du réseau extérieur comme locale et perturbait notamment l'accès au DNS de l'IUT.</p>
+                    <p class="resolution"><strong>Correction :</strong> analyse du cheminement, puis remplacement par des routes /24 précises pour chaque VLAN.</p>
+                </article>
+
+                <article class="difficulty-item">
+                    <h3>GPO proxy non appliquée</h3>
+                    <p>Les paramètres destinés à l'utilisateur avaient initialement été placés dans la configuration ordinateur, empêchant leur application correcte.</p>
+                    <p class="resolution"><strong>Correction :</strong> déplacement des clés HKCU dans la configuration utilisateur, actualisation des stratégies et validation côté client.</p>
+                </article>
+
+                <article class="difficulty-item">
+                    <h3>Accès SSH après redémarrage</h3>
+                    <p>Après un rechargement, la clé RSA du switch était absente ou différente, entraînant un refus ou une alerte d'empreinte sur Windows.</p>
+                    <p class="resolution"><strong>Correction :</strong> régénération de la clé RSA, sauvegarde de la configuration et actualisation de l'empreinte connue sur le poste d'administration.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="bilan" class="featured-card main-chapter tilt-card">
+            <span class="chapter-kicker">Partie 4</span>
+            <h2 class="card-title">Résultats &amp; bilan</h2>
+            <p class="card-text">
+                À l'issue du projet, l'infrastructure était fonctionnelle de bout en bout : les postes recevaient leur configuration réseau, les noms internes étaient résolus, les GPO s'appliquaient, les VLAN communiquaient selon les règles prévues et la sortie extérieure était protégée par le pare-feu et le NAT/PAT.
+            </p>
+
+            <div class="results-grid">
+                <article class="result-item">
+                    <h3>Infrastructure opérationnelle</h3>
+                    <p>Segmentation réseau, routage, services Windows, pare-feu, FTP et liaisons physiques validés par des tests reproductibles.</p>
+                </article>
+
+                <article class="result-item">
+                    <h3>Sécurité multicouche</h3>
+                    <p>ACL, filtrage Stormshield, politiques GPO, protections du switch et limitation des accès d'administration.</p>
+                </article>
+
+                <article class="result-item">
+                    <h3>Démarche de diagnostic</h3>
+                    <p>Progression dans l'analyse méthodique d'une panne : observation, hypothèse, correction ciblée et nouvelle validation.</p>
+                </article>
+
+                <article class="result-item">
+                    <h3>Compétences consolidées</h3>
+                    <p>Conception LAN, administration Windows Server, configuration Cisco, sécurité réseau, câblage, documentation et travail en équipe.</p>
+                </article>
+            </div>
+
+            <p class="personal-highlight">
+                Ce projet m'a surtout appris à faire fonctionner ensemble des briques habituellement étudiées séparément. Il constitue ma première expérience complète de déploiement d'une infrastructure d'entreprise, avec une responsabilité personnelle forte sur le réseau, Windows Server et la sécurité périmétrique.
+            </p>
+
+            <div class="tech-tags" style="margin-top: 28px;">
+                <span>AD DS / DNS / DHCP</span>
                 <span>GPO</span>
+                <span>Cisco L3</span>
+                <span>Stormshield</span>
+                <span>FTP</span>
                 <span>Wireshark</span>
-            </div>
-        </section>
-
-        <section class="featured-card">
-            <h2 class="card-title">4. Un incident diagnostiqué et résolu</h2>
-            <p class="card-text">
-                Lors des tests, une <strong>route statique agrégée trop large</strong> provoquait un mauvais cheminement de certains flux et empêchait l'accès à un service DNS externe. J'ai croisé l'analyse Wireshark avec les tables de routage afin d'isoler la cause.
-                <br><br>
-                La route agrégée a été remplacée par des routes plus précises pour chacun des VLAN. Cette correction a rétabli immédiatement la résolution DNS et stabilisé la connectivité extérieure. Cette panne m'a permis d'appliquer une vraie démarche de diagnostic : observer, formuler une hypothèse, corriger puis valider.
-            </p>
-        </section>
-
-        <section class="featured-card">
-            <h2 class="card-title">5. Sécurisation et validation</h2>
-            <p class="card-text">
-                La sécurité a été pensée à plusieurs niveaux : ACL limitant l'administration SSH au poste Technique, DHCP Snooping, Port-Security, BPDU Guard, Storm-Control, politiques GPO, filtrage Squid, centralisation des logs et sauvegardes automatisées.
-                <br><br>
-                Chaque fonction a été vérifiée par une preuve reproductible : état des VLAN et des routes, attribution DHCP, résolution DNS, application des GPO, accessibilité de l'intranet, enregistrement des téléphones et analyse des paquets.
-            </p>
-            <div class="code-module my-module" style="margin-top: 28px;">
-                <details>
-                    <summary class="module-header header-highlight">
-                        <h3>Exemples de contrôles <span class="badge-me">TESTS</span></h3>
-                        <p>Commandes utilisées pendant la recette technique. (Dérouler)</p>
-                    </summary>
-                    <div class="code-window">
-                        <pre><code><span class="code-comment"># Réseau Cisco</span>
-show vlan brief
-show ip interface brief
-show ip route
-
-<span class="code-comment"># Services Windows et DNS</span>
-ipconfig /all
-nslookup &lt;service-interne&gt;
-gpresult /h C:\gpo.html
-
-<span class="code-comment"># Téléphonie</span>
-pjsip show contacts</code></pre>
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <section class="featured-card">
-            <h2 class="card-title">6. Compétences développées</h2>
-            <p class="card-text">
-                PharmaSanté m'a appris à relier des briques qui sont souvent étudiées séparément : réseau, systèmes, cybersécurité, téléphonie et services. J'ai renforcé ma capacité à <strong>concevoir une architecture cohérente</strong>, configurer des équipements réels, diagnostiquer méthodiquement une panne et produire une documentation exploitable par une autre personne.
-            </p>
-            <div class="tech-tags">
-                <span>Conception LAN</span>
-                <span>Administration système</span>
-                <span>Sécurité multicouche</span>
-                <span>Diagnostic</span>
-                <span>Documentation</span>
-                <span>Travail en équipe</span>
             </div>
         </section>
 
@@ -246,18 +480,18 @@ pjsip show contacts</code></pre>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const cursorGlow = document.getElementById('cursorGlow');
-        document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
+        document.addEventListener('mousemove', (event) => {
+            cursorGlow.style.left = event.clientX + 'px';
+            cursorGlow.style.top = event.clientY + 'px';
         });
 
         const tiltCards = document.querySelectorAll('.tilt-card');
-        if (window.matchMedia("(min-width: 900px)").matches) {
-            tiltCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
+        if (window.matchMedia('(min-width: 900px)').matches) {
+            tiltCards.forEach((card) => {
+                card.addEventListener('mousemove', (event) => {
                     const rect = card.getBoundingClientRect();
-                    const rotateX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -4;
-                    const rotateY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 4;
+                    const rotateX = ((event.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -4;
+                    const rotateY = ((event.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 4;
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
                 });
                 card.addEventListener('mouseleave', () => {
@@ -266,11 +500,11 @@ pjsip show contacts</code></pre>
             });
         }
 
-        document.querySelectorAll('.ripple-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+        document.querySelectorAll('.ripple-btn').forEach((button) => {
+            button.addEventListener('click', function (event) {
                 const ripple = document.createElement('span');
-                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
-                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.style.left = `${event.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${event.clientY - this.getBoundingClientRect().top}px`;
                 ripple.className = 'ripple';
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 600);
@@ -278,7 +512,7 @@ pjsip show contacts</code></pre>
         });
 
         const canvas = document.getElementById('gold-particles');
-        const ctx = canvas.getContext('2d');
+        const context = canvas.getContext('2d');
         let particles = [];
 
         function resizeCanvas() {
@@ -303,38 +537,38 @@ pjsip show contacts</code></pre>
             }
 
             draw() {
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                context.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                context.beginPath();
+                context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                context.fill();
             }
         }
 
         function initParticles() {
             particles = [];
             const count = Math.min(90, Math.floor((canvas.width * canvas.height) / 14000));
-            for (let i = 0; i < count; i++) particles.push(new Particle());
+            for (let index = 0; index < count; index += 1) particles.push(new Particle());
         }
 
         function drawConnections() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const distance = ((particles[i].x - particles[j].x) ** 2) + ((particles[i].y - particles[j].y) ** 2);
+            for (let first = 0; first < particles.length; first += 1) {
+                for (let second = first + 1; second < particles.length; second += 1) {
+                    const distance = ((particles[first].x - particles[second].x) ** 2) + ((particles[first].y - particles[second].y) ** 2);
                     if (distance < 22000) {
-                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.55 - distance / 44000})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+                        context.strokeStyle = `rgba(212, 175, 55, ${0.55 - distance / 44000})`;
+                        context.lineWidth = 1;
+                        context.beginPath();
+                        context.moveTo(particles[first].x, particles[first].y);
+                        context.lineTo(particles[second].x, particles[second].y);
+                        context.stroke();
                     }
                 }
             }
         }
 
         function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(particle => {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle) => {
                 particle.update();
                 particle.draw();
             });
