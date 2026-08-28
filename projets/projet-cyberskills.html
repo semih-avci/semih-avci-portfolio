@@ -3,26 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plateforme CyberSkills (SAÉ 2.03) par Semih Avci - Projet en cours de développement.">
-    <title>CyberSkills : En cours de développement - Semih Avci</title>
-    
+    <meta name="description" content="SAÉ 2.03 CyberSkills par Semih Avci : conception complète d'une plateforme d'apprentissage en PHP/MySQL avec gestion des rôles, QCM, formations, projets et suivi des compétences.">
+    <title>SAÉ 2.03 - CyberSkills | Semih Avci</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="../themes/projet-detail.css">
+    <style>
+        .chapter-nav {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin: 0 0 42px;
+        }
+
+        .chapter-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 58px;
+            padding: 12px 14px;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 12px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .chapter-nav a:hover,
+        .chapter-nav a:focus-visible {
+            transform: translateY(-3px);
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.12);
+            outline: none;
+        }
+
+        .main-chapter {
+            scroll-margin-top: 30px;
+            margin-bottom: 36px;
+        }
+
+        .chapter-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            color: #d4af37;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .chapter-kicker::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: #d4af37;
+        }
+
+        .context-grid,
+        .feature-grid,
+        .challenge-grid,
+        .results-grid {
+            display: grid;
+            gap: 18px;
+            margin-top: 28px;
+        }
+
+        .context-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .feature-grid,
+        .results-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .challenge-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .context-item,
+        .feature-item,
+        .challenge-item,
+        .result-item {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-radius: 14px;
+        }
+
+        .feature-item,
+        .challenge-item,
+        .result-item {
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .feature-item:hover,
+        .challenge-item:hover,
+        .result-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, 0.65);
+            background: rgba(212, 175, 55, 0.045);
+        }
+
+        .context-item strong,
+        .feature-item h3,
+        .challenge-item h3,
+        .result-item h3 {
+            display: block;
+            margin: 0 0 10px;
+            color: #e7c95d;
+            font-family: "Montserrat", sans-serif;
+            font-size: 1rem;
+        }
+
+        .context-item span,
+        .feature-item p,
+        .challenge-item p,
+        .result-item p {
+            margin: 0;
+            color: #c6c6c6;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .personal-highlight {
+            margin: 24px 0 0;
+            padding: 20px 22px;
+            color: #eeeeee;
+            background: linear-gradient(120deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.035));
+            border-left: 3px solid #d4af37;
+            border-radius: 0 12px 12px 0;
+            font-family: "Montserrat", sans-serif;
+            line-height: 1.8;
+        }
+
+        .subsection-title {
+            margin: 38px 0 10px;
+            color: #f0f0f0;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(1.45rem, 2.4vw, 2rem);
+        }
+
+        .subsection-intro {
+            margin: 0 0 22px;
+            color: #a9a9a9;
+            font-family: "Montserrat", sans-serif;
+            line-height: 1.7;
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+            counter-reset: workflow;
+        }
+
+        .workflow-step {
+            position: relative;
+            min-height: 150px;
+            padding: 22px 18px 18px;
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.085), rgba(255, 255, 255, 0.015));
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 14px;
+            counter-increment: workflow;
+        }
+
+        .workflow-step::before {
+            content: "0" counter(workflow);
+            display: block;
+            margin-bottom: 18px;
+            color: #d4af37;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+        }
+
+        .workflow-step:not(:last-child)::after {
+            content: "›";
+            position: absolute;
+            top: 50%;
+            right: -13px;
+            z-index: 2;
+            width: 24px;
+            height: 24px;
+            color: #d4af37;
+            background: #090909;
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 50%;
+            font-size: 1.3rem;
+            line-height: 20px;
+            text-align: center;
+            transform: translateY(-50%);
+        }
+
+        .workflow-step h3 {
+            margin: 0 0 9px;
+            color: #f1d778;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .workflow-step p {
+            margin: 0;
+            color: #b8b8b8;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .role-card {
+            position: relative;
+            overflow: hidden;
+            padding: 24px;
+            background: #070707;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+        }
+
+        .role-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--role-color);
+        }
+
+        .role-card h3 {
+            margin: 0 0 12px;
+            color: var(--role-color);
+            font-family: "Montserrat", sans-serif;
+            font-size: 1rem;
+        }
+
+        .role-card ul,
+        .security-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .role-card li,
+        .security-list li {
+            position: relative;
+            margin-top: 9px;
+            padding-left: 17px;
+            color: #bdbdbd;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.84rem;
+            line-height: 1.55;
+        }
+
+        .role-card li::before,
+        .security-list li::before {
+            content: "";
+            position: absolute;
+            top: 0.65em;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background: var(--role-color, #d4af37);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .security-list code {
+            display: inline;
+            padding: 0;
+            color: #e7c95d;
+            font-size: 0.82rem;
+            white-space: normal;
+        }
+
+        .role-student { --role-color: #2ecc71; }
+        .role-trainer { --role-color: #b277d2; }
+        .role-admin { --role-color: #e76b60; }
+
+        .security-panel {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 26px;
+            align-items: center;
+            margin-top: 28px;
+            padding: 26px;
+            background: rgba(212, 175, 55, 0.045);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 14px;
+        }
+
+        .security-score {
+            text-align: center;
+        }
+
+        .security-score strong {
+            display: block;
+            color: #d4af37;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.4rem, 6vw, 4.4rem);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .security-score span {
+            display: block;
+            margin-top: 10px;
+            color: #9f9f9f;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.76rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .challenge-item .solution {
+            display: block;
+            margin-top: 14px;
+            padding-top: 14px;
+            color: #ededed;
+            border-top: 1px solid rgba(212, 175, 55, 0.18);
+        }
+
+        .result-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin: 28px 0 0;
+        }
+
+        .metric {
+            padding: 20px 14px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+        }
+
+        .metric strong {
+            display: block;
+            color: #d4af37;
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .metric span {
+            display: block;
+            margin-top: 6px;
+            color: #a9a9a9;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.72rem;
+            line-height: 1.45;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .chapter-nav,
+            .context-grid,
+            .workflow-grid,
+            .result-metrics {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .workflow-step:nth-child(2)::after,
+            .workflow-step:last-child::after {
+                display: none;
+            }
+
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .chapter-nav,
+            .context-grid,
+            .feature-grid,
+            .challenge-grid,
+            .results-grid,
+            .workflow-grid,
+            .result-metrics,
+            .security-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-step::after {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .chapter-nav a,
+            .feature-item,
+            .challenge-item,
+            .result-item {
+                transition: none;
+            }
+        }
+    </style>
 </head>
 <body class="project-detail-body">
 
-    <canvas id="gold-particles"></canvas>
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <canvas id="gold-particles" aria-hidden="true"></canvas>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <div class="main-container">
-        
+    <main class="main-container">
+
         <header class="project-header-simple">
             <div class="back-btn-container">
                 <a href="../projets.html" class="back-link ripple-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
@@ -30,38 +440,258 @@
                 </a>
             </div>
 
-            <h1 class="page-title">Plateforme CyberSkills<span class="dot">.</span></h1>
-            <span class="subtitle-instruction">SAÉ 2.03 / Full-Stack PHP / Cybersécurité</span>
+            <h1 class="page-title">SAÉ 2.03 - CyberSkills<span class="dot">.</span></h1>
+            <span class="subtitle-instruction">Application Full-Stack / PHP / MySQL / Cybersécurité</span>
         </header>
 
-        <section class="featured-card tilt-card" style="text-align: center; border-color: #d4af37; background: rgba(20, 20, 20, 0.8);">
-            <div style="font-size: 3rem; margin-bottom: 20px;"></div>
-            <h2 class="card-title" style="color: #d4af37;">Projet en cours de réalisation</h2>
-            <p class="card-text" style="font-size: 1.2rem; color: #ffffff;">
-                Le développement de la plateforme <strong>CyberSkills</strong> est en cours !
+        <nav class="chapter-nav" aria-label="Navigation dans le projet">
+            <a href="#contexte">1. Contexte</a>
+            <a href="#travail-fourni">2. Travail fourni</a>
+            <a href="#difficultes">3. Difficultés rencontrées</a>
+            <a href="#bilan">4. Résultats &amp; bilan</a>
+        </nav>
+
+        <section id="contexte" class="featured-card main-chapter tilt-card">
+            <span class="chapter-kicker">Partie 1</span>
+            <h2 class="card-title">Contexte</h2>
+            <p class="card-text">
+                <strong>CyberSkills</strong> est une plateforme web pédagogique développée dans le cadre de la SAÉ 2.03. L'objectif était de réunir, dans une seule application, l'apprentissage de la cybersécurité, la validation de compétences et le suivi de la progression.
                 <br><br>
-                Je travaille actuellement sur les derniers volets techniques de l'application, notamment l'optimisation des tableaux de bord dynamiques et la sécurisation avancée des modules de QCM.
-                <br><br>
-                <span style="font-style: italic; color: #a0a0a0;">Veuillez revenir très bientôt pour découvrir l'étude de cas complète et la démonstration des fonctionnalités.</span>
+                La solution accompagne trois profils complémentaires. L'étudiant consulte des formations, passe des QCM ou dépose un projet. Le formateur publie les supports, répond aux questions et évalue les rendus. L'administrateur contrôle les comptes et les accès. Toutes ces actions s'appuient sur une base de données relationnelle commune.
             </p>
-            
-            <div style="margin-top: 40px; padding: 20px; border-top: 1px solid rgba(212, 175, 55, 0.2);">
-                <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: #d4af37; margin-bottom: 15px;">Focus actuels :</p>
-                <div class="tech-tags" style="justify-content: center;">
-                    <span>Backend PHP (PDO)</span>
-                    <span>Architecture BDD MySQL</span>
-                    <span>Interface Multi-rôles</span>
-                    <span>Sécurisation OWASP</span>
+
+            <div class="context-grid">
+                <div class="context-item">
+                    <strong>Cadre</strong>
+                    <span>SAÉ 2.03</span>
                 </div>
+                <div class="context-item">
+                    <strong>Type</strong>
+                    <span>Application web full-stack</span>
+                </div>
+                <div class="context-item">
+                    <strong>Utilisateurs</strong>
+                    <span>Étudiant, formateur et administrateur</span>
+                </div>
+                <div class="context-item">
+                    <strong>Socle technique</strong>
+                    <span>PHP, MySQL/PDO, HTML, CSS et JavaScript</span>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Un parcours pédagogique de bout en bout</h3>
+            <p class="subsection-intro">La plateforme relie l'inscription, l'apprentissage, l'évaluation et l'acquisition d'une compétence dans un même parcours.</p>
+
+            <div class="workflow-grid" aria-label="Parcours fonctionnel de CyberSkills">
+                <article class="workflow-step">
+                    <h3>Créer un compte</h3>
+                    <p>L'utilisateur s'inscrit, choisit son profil et attend la validation de l'administrateur.</p>
+                </article>
+                <article class="workflow-step">
+                    <h3>Se former</h3>
+                    <p>L'étudiant filtre le catalogue, consulte les cours PDF et échange avec un formateur.</p>
+                </article>
+                <article class="workflow-step">
+                    <h3>Être évalué</h3>
+                    <p>La compétence est travaillée par un QCM noté ou par le dépôt d'un projet.</p>
+                </article>
+                <article class="workflow-step">
+                    <h3>Suivre sa progression</h3>
+                    <p>Le tableau de bord affiche les compétences obtenues et le statut des rendus.</p>
+                </article>
             </div>
         </section>
 
-        <section class="work-section" style="opacity: 0.6;">
-            <div class="featured-card">
-                <h2 class="card-title">Le Concept</h2>
-                <p class="card-text">
-                    CyberSkills est une application web conçue pour centraliser l'apprentissage de la cybersécurité. Elle permet aux étudiants de valider des compétences par la pratique et aux formateurs de suivre une progression précise via des indicateurs de performance en temps réel.
-                </p>
+        <section id="travail-fourni" class="featured-card main-chapter">
+            <span class="chapter-kicker">Partie 2</span>
+            <h2 class="card-title">Travail fourni</h2>
+            <p class="card-text">
+                J'ai pris en charge le développement complet de la solution : modélisation des données, logique PHP, requêtes SQL, contrôle des accès, téléversement de fichiers, tableaux de bord et interface responsive.
+            </p>
+
+            <p class="personal-highlight">
+                <strong>Mon périmètre :</strong> concevoir une application cohérente de bout en bout, capable de proposer un contenu différent selon le rôle connecté tout en conservant les données de formation, d'évaluation et de progression synchronisées.
+            </p>
+
+            <div class="feature-grid">
+                <article class="feature-item">
+                    <h3>Architecture et base de données</h3>
+                    <p>Conception d'un modèle relationnel reliant utilisateurs, rôles, formations, compétences, QCM, questions, réponses et soumissions. Utilisation de PDO, de requêtes préparées, de jointures SQL et de tables de liaison.</p>
+                </article>
+
+                <article class="feature-item">
+                    <h3>Authentification et rôles</h3>
+                    <p>Inscription, hachage et vérification des mots de passe, validation préalable des comptes, création de sessions et restrictions d'accès adaptées aux trois profils.</p>
+                </article>
+
+                <article class="feature-item">
+                    <h3>Parcours étudiant</h3>
+                    <p>Catalogue filtrable, lecture des supports PDF, questions aux formateurs, passage de QCM, dépôt de projets, historique des soumissions et consultation des compétences acquises.</p>
+                </article>
+
+                <article class="feature-item">
+                    <h3>Espace formateur</h3>
+                    <p>Ajout de formations liées à une ou plusieurs compétences, traitement des questions, ouverture et évaluation des rendus, attribution de compétences et suivi des consultations.</p>
+                </article>
+
+                <article class="feature-item">
+                    <h3>Administration</h3>
+                    <p>Validation des nouveaux comptes, distinction des rôles, liste centralisée des utilisateurs et réinitialisation des mots de passe avec stockage haché.</p>
+                </article>
+
+                <article class="feature-item">
+                    <h3>Interface et statistiques</h3>
+                    <p>Tableaux de bord différenciés, identité visuelle propre à chaque rôle, mise en page responsive et graphique Chart.js pour comparer le nombre de vues des formations.</p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Trois espaces, une seule plateforme</h3>
+            <p class="subsection-intro">Chaque rôle possède ses propres actions, tandis que les informations circulent entre les tableaux de bord.</p>
+
+            <div class="role-grid">
+                <article class="role-card role-student">
+                    <h3>Espace étudiant</h3>
+                    <ul>
+                        <li>Consulter et filtrer les formations</li>
+                        <li>Passer un QCM avec calcul du score</li>
+                        <li>Déposer un projet et suivre son statut</li>
+                        <li>Visualiser les compétences validées</li>
+                    </ul>
+                </article>
+
+                <article class="role-card role-trainer">
+                    <h3>Espace formateur</h3>
+                    <ul>
+                        <li>Publier un support de formation</li>
+                        <li>Répondre aux questions des étudiants</li>
+                        <li>Valider ou refuser les projets</li>
+                        <li>Analyser les statistiques de consultation</li>
+                    </ul>
+                </article>
+
+                <article class="role-card role-admin">
+                    <h3>Espace administrateur</h3>
+                    <ul>
+                        <li>Contrôler l'activation des comptes</li>
+                        <li>Gérer l'accès selon le rôle</li>
+                        <li>Administrer les utilisateurs</li>
+                        <li>Réinitialiser un mot de passe</li>
+                    </ul>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Sécurité applicative mise en œuvre</h3>
+            <div class="security-panel">
+                <div class="security-score">
+                    <strong>6</strong>
+                    <span>contrôles intégrés</span>
+                </div>
+                <ul class="security-list">
+                    <li>Hachage avec <code>password_hash()</code> et vérification avec <code>password_verify()</code></li>
+                    <li>Requêtes préparées PDO pour limiter les injections SQL</li>
+                    <li>Échappement des données affichées avec <code>htmlspecialchars()</code></li>
+                    <li>Contrôle de session et autorisations en fonction du rôle</li>
+                    <li>Vérification conjointe de l'extension et du type MIME des projets</li>
+                    <li>Noms de fichiers uniques et transactions pour les opérations liées</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="difficultes" class="featured-card main-chapter">
+            <span class="chapter-kicker">Partie 3</span>
+            <h2 class="card-title">Difficultés rencontrées</h2>
+            <p class="card-text">
+                Les principaux défis venaient moins d'une page isolée que des interactions entre les rôles, la base de données et les deux méthodes de validation d'une compétence.
+            </p>
+
+            <div class="challenge-grid">
+                <article class="challenge-item">
+                    <h3>Garantir les bons accès</h3>
+                    <p>Un même utilisateur ne devait voir que les pages et les actions autorisées pour son profil.</p>
+                    <p class="solution"><strong>Réponse apportée :</strong> centralisation des contrôles de session et de rôle, puis vérification supplémentaire sur les pages sensibles.</p>
+                </article>
+
+                <article class="challenge-item">
+                    <h3>Valider une compétence par deux chemins</h3>
+                    <p>Une compétence peut être obtenue automatiquement après un QCM réussi ou manuellement après l'évaluation d'un projet.</p>
+                    <p class="solution"><strong>Réponse apportée :</strong> contrôle anti-doublon avant attribution et transaction lors de la validation d'un rendu.</p>
+                </article>
+
+                <article class="challenge-item">
+                    <h3>Sécuriser les fichiers envoyés</h3>
+                    <p>Le dépôt de projets ne devait pas accepter un fichier dangereux simplement renommé avec une extension autorisée.</p>
+                    <p class="solution"><strong>Réponse apportée :</strong> liste blanche des formats, contrôle du type MIME et génération d'un nom de stockage unique.</p>
+                </article>
+
+                <article class="challenge-item">
+                    <h3>Maintenir la cohérence des données</h3>
+                    <p>Formations, compétences, utilisateurs, résultats et statistiques sont reliés et doivent rester cohérents après chaque action.</p>
+                    <p class="solution"><strong>Réponse apportée :</strong> modèle relationnel, clés de liaison, jointures SQL, requêtes préparées et transactions pour les écritures multiples.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="bilan" class="featured-card main-chapter tilt-card">
+            <span class="chapter-kicker">Partie 4</span>
+            <h2 class="card-title">Résultats &amp; bilan</h2>
+            <p class="card-text">
+                Le résultat est une application pédagogique multi-rôles qui couvre tout le cycle de progression : création et validation d'un compte, accès aux ressources, évaluation, attribution d'une compétence et suivi depuis des tableaux de bord dédiés.
+            </p>
+
+            <div class="result-metrics" aria-label="Chiffres clés du projet">
+                <div class="metric">
+                    <strong>3</strong>
+                    <span>rôles utilisateurs</span>
+                </div>
+                <div class="metric">
+                    <strong>2</strong>
+                    <span>modes d'évaluation</span>
+                </div>
+                <div class="metric">
+                    <strong>1</strong>
+                    <span>catalogue centralisé</span>
+                </div>
+                <div class="metric">
+                    <strong>1</strong>
+                    <span>suivi de progression</span>
+                </div>
+            </div>
+
+            <div class="results-grid">
+                <article class="result-item">
+                    <h3>Parcours fonctionnel complet</h3>
+                    <p>Les étapes d'apprentissage, d'évaluation et de suivi sont réunies dans une navigation adaptée à chaque utilisateur.</p>
+                </article>
+
+                <article class="result-item">
+                    <h3>Données exploitées dynamiquement</h3>
+                    <p>Les contenus, statuts, scores, compétences et statistiques sont issus de MySQL et affichés selon le contexte connecté.</p>
+                </article>
+
+                <article class="result-item">
+                    <h3>Sécurité intégrée au développement</h3>
+                    <p>L'authentification, les autorisations, les entrées utilisateur et les téléversements ont été traités comme des contraintes transversales.</p>
+                </article>
+
+                <article class="result-item">
+                    <h3>Compétences consolidées</h3>
+                    <p>PHP, PDO, modélisation SQL, sessions, gestion de fichiers, logique métier, JavaScript, Chart.js et conception responsive.</p>
+                </article>
+            </div>
+
+            <p class="personal-highlight">
+                Ce projet m'a appris à penser une application comme un ensemble cohérent plutôt que comme une succession de pages. La réalisation complète de CyberSkills m'a permis de relier base de données, sécurité, logique métier et expérience utilisateur dans un même projet full-stack.
+            </p>
+
+            <div class="tech-tags" style="margin-top: 28px;">
+                <span>PHP</span>
+                <span>MySQL / PDO</span>
+                <span>HTML / CSS</span>
+                <span>JavaScript</span>
+                <span>Chart.js</span>
+                <span>Sessions &amp; rôles</span>
+                <span>SQL relationnel</span>
+                <span>Sécurité Web</span>
             </div>
         </section>
 
@@ -69,94 +699,130 @@
             <a href="../projets.html" class="btn-cv ripple-btn">Retour aux projets</a>
         </div>
 
-    </div>
-    
+    </main>
+
     <footer class="site-footer">
         <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
     </footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        /* 1. LUEUR CURSEUR */
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const cursorGlow = document.getElementById('cursorGlow');
-        document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
-        });
 
-        /* 2. EFFET 3D PARALLAX */
+        if (!reduceMotion) {
+            document.addEventListener('mousemove', (event) => {
+                cursorGlow.style.left = event.clientX + 'px';
+                cursorGlow.style.top = event.clientY + 'px';
+            });
+        } else {
+            cursorGlow.style.display = 'none';
+        }
+
         const tiltCards = document.querySelectorAll('.tilt-card');
-        if (window.matchMedia("(min-width: 900px)").matches) {
-            tiltCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
+        if (!reduceMotion && window.matchMedia('(min-width: 900px)').matches) {
+            tiltCards.forEach((card) => {
+                card.addEventListener('mousemove', (event) => {
                     const rect = card.getBoundingClientRect();
-                    const rotateX = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -5; 
-                    const rotateY = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 5;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    const rotateX = ((event.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -4;
+                    const rotateY = ((event.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 4;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
                 });
                 card.addEventListener('mouseleave', () => {
-                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
                 });
             });
         }
 
-        /* 3. CONSTELLATION DORÉE */
-        const canvas = document.getElementById('gold-particles');
-        const ctx = canvas.getContext('2d');
-        let pArray = [];
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize);
-        resize();
-        class P {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.s = Math.random() * 2 + 1;
-                this.vx = (Math.random() - 0.5) * 1.5;
-                this.vy = (Math.random() - 0.5) * 1.5;
-            }
-            u() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            d() {
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
-            }
-        }
-        function init() { pArray = []; for (let i = 0; i < 80; i++) pArray.push(new P()); }
-        function connect() {
-            for (let a = 0; a < pArray.length; a++) {
-                for (let b = a; b < pArray.length; b++) {
-                    let d = ((pArray[a].x - pArray[b].x) ** 2) + ((pArray[a].y - pArray[b].y) ** 2);
-                    if (d < 25000) {
-                        ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.8 - (d/25000)) + ')';
-                        ctx.lineWidth = 1; ctx.beginPath();
-                        ctx.moveTo(pArray[a].x, pArray[a].y);
-                        ctx.lineTo(pArray[b].x, pArray[b].y); ctx.stroke();
-                    }
-                }
-            }
-        }
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            pArray.forEach(p => { p.u(); p.d(); });
-            connect(); requestAnimationFrame(animate);
-        }
-        init(); animate();
-
-        /* 4. RIPPLE BTN */
-        document.querySelectorAll('.ripple-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+        document.querySelectorAll('.ripple-btn').forEach((button) => {
+            button.addEventListener('click', function (event) {
+                if (reduceMotion) return;
                 const ripple = document.createElement('span');
-                ripple.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
-                ripple.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
+                ripple.style.left = `${event.clientX - this.getBoundingClientRect().left}px`;
+                ripple.style.top = `${event.clientY - this.getBoundingClientRect().top}px`;
                 ripple.className = 'ripple';
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 600);
             });
         });
+
+        const canvas = document.getElementById('gold-particles');
+        if (reduceMotion) {
+            canvas.style.display = 'none';
+            return;
+        }
+
+        const context = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.vx = (Math.random() - 0.5) * 1.2;
+                this.vy = (Math.random() - 0.5) * 1.2;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                context.fillStyle = 'rgba(212, 175, 55, 0.8)';
+                context.beginPath();
+                context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                context.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(85, Math.floor((canvas.width * canvas.height) / 15000));
+            for (let index = 0; index < count; index += 1) particles.push(new Particle());
+        }
+
+        function drawConnections() {
+            for (let first = 0; first < particles.length; first += 1) {
+                for (let second = first + 1; second < particles.length; second += 1) {
+                    const distance = ((particles[first].x - particles[second].x) ** 2) + ((particles[first].y - particles[second].y) ** 2);
+                    if (distance < 22000) {
+                        context.strokeStyle = `rgba(212, 175, 55, ${0.55 - distance / 44000})`;
+                        context.lineWidth = 1;
+                        context.beginPath();
+                        context.moveTo(particles[first].x, particles[first].y);
+                        context.lineTo(particles[second].x, particles[second].y);
+                        context.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle) => {
+                particle.update();
+                particle.draw();
+            });
+            drawConnections();
+            requestAnimationFrame(animateParticles);
+        }
+
+        resizeCanvas();
+        initParticles();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+        animateParticles();
     });
 </script>
 </body>
