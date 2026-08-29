@@ -336,6 +336,56 @@
             text-transform: uppercase;
         }
 
+        .evidence-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .evidence-card {
+            overflow: hidden;
+            margin: 0;
+            background: #050505;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 14px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .evidence-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+        }
+
+        .evidence-card a {
+            display: block;
+            background: #eef3fb;
+        }
+
+        .evidence-card img {
+            display: block;
+            width: 100%;
+            height: 315px;
+            object-fit: contain;
+            background: #eef3fb;
+        }
+
+        .evidence-card figcaption {
+            padding: 18px 20px 20px;
+            color: #bdbdbd;
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.84rem;
+            line-height: 1.6;
+        }
+
+        .evidence-card figcaption strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #e7c95d;
+            font-size: 0.93rem;
+        }
+
         .challenge-item .solution {
             display: block;
             margin-top: 14px;
@@ -403,12 +453,18 @@
             .results-grid,
             .workflow-grid,
             .result-metrics,
-            .security-panel {
+            .security-panel,
+            .evidence-gallery {
                 grid-template-columns: 1fr;
             }
 
             .workflow-step::after {
                 display: none;
+            }
+
+            .evidence-card img {
+                height: auto;
+                max-height: 420px;
             }
         }
 
@@ -594,6 +650,53 @@
                     <li>Vérification conjointe de l'extension et du type MIME des projets</li>
                     <li>Noms de fichiers uniques et transactions pour les opérations liées</li>
                 </ul>
+            </div>
+
+            <h3 class="subsection-title">Captures de l'application</h3>
+            <p class="subsection-intro">Ces écrans ont été capturés depuis une version de démonstration locale construite avec les vrais templates et la feuille de style de CyberSkills. Les noms et les chiffres affichés sont fictifs afin de ne publier aucune donnée de compte réelle. Cliquez sur une image pour l'ouvrir en taille réelle.</p>
+
+            <div class="evidence-gallery">
+                <figure class="evidence-card">
+                    <a href="../images/projets/cyberskills/espace-etudiant.jpg" target="_blank" rel="noopener">
+                        <img src="../images/projets/cyberskills/espace-etudiant.jpg" alt="Tableau de bord étudiant de CyberSkills" loading="lazy">
+                    </a>
+                    <figcaption><strong>Tableau de bord étudiant</strong>Suivi des compétences acquises et de l'état des projets déposés.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/cyberskills/catalogue-formations.jpg" target="_blank" rel="noopener">
+                        <img src="../images/projets/cyberskills/catalogue-formations.jpg" alt="Catalogue des formations de CyberSkills" loading="lazy">
+                    </a>
+                    <figcaption><strong>Catalogue des formations</strong>Filtrage des ressources pédagogiques et accès aux supports de cours.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/cyberskills/qcm-securite-reseau.jpg" target="_blank" rel="noopener">
+                        <img src="../images/projets/cyberskills/qcm-securite-reseau.jpg" alt="QCM de sécurité réseau dans CyberSkills" loading="lazy">
+                    </a>
+                    <figcaption><strong>Évaluation par QCM</strong>Questions à choix unique, calcul du score et validation automatique de la compétence.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/cyberskills/depot-projet.jpg" target="_blank" rel="noopener">
+                        <img src="../images/projets/cyberskills/depot-projet.jpg" alt="Formulaire de dépôt de projet dans CyberSkills" loading="lazy">
+                    </a>
+                    <figcaption><strong>Dépôt de projet</strong>Sélection de la compétence, contrôle du format et transmission du rendu au formateur.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/cyberskills/espace-formateur.jpg" target="_blank" rel="noopener">
+                        <img src="../images/projets/cyberskills/espace-formateur.jpg" alt="Tableau de bord formateur de CyberSkills" loading="lazy">
+                    </a>
+                    <figcaption><strong>Tableau de bord formateur</strong>Projets en attente, formations publiées, questions étudiantes et statistiques.</figcaption>
+                </figure>
+
+                <figure class="evidence-card">
+                    <a href="../images/projets/cyberskills/administration.jpg" target="_blank" rel="noopener">
+                        <img src="../images/projets/cyberskills/administration.jpg" alt="Espace administrateur de CyberSkills" loading="lazy">
+                    </a>
+                    <figcaption><strong>Espace administrateur</strong>Validation des comptes, gestion des rôles et réinitialisation sécurisée des mots de passe.</figcaption>
+                </figure>
             </div>
         </section>
 
