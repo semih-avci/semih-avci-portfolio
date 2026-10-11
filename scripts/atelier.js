@@ -102,7 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.modal-toggle, .timeline-item input[type=checkbox]').forEach(input => {
     input.addEventListener('change', () => {
       if (input.checked) requestAnimationFrame(() => {
-        const dialog = activeDialog();
+        const sibling = input.nextElementSibling;
+        const dialog = sibling?.matches('.modal-overlay') ? sibling : input.parentElement.querySelector('.modal-overlay, .side-panel');
         if (!dialog) return;
         dialog.setAttribute('role', 'dialog');
         dialog.setAttribute('aria-modal', 'true');
