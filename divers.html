@@ -10,47 +10,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="themes/navigation.css">
+<meta name="theme-color" content="#10110e"><link rel="icon" href="images/logosemih.png">
+<link rel="stylesheet" href="themes/atelier.css">
+<script defer src="scripts/atelier.js"></script>
+<noscript><style>
+@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
+</style></noscript>
 </head>
-<body>
-    
-    <canvas id="gold-particles"></canvas>
-    <div class="cursor-glow" id="cursorGlow"></div>
+<body class="atelier">
+<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
+<a class="skip-link" href="#page-content">Aller au contenu</a>
+<div class="menu-shade" aria-hidden="true"></div>
+<nav class="site-nav" aria-label="Navigation principale">
+  <a class="site-brand" href="index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
+  <div class="site-nav-links" id="site-menu"><a href="index.html">Accueil</a>
+<a href="apropos.html">À propos</a>
+<a href="parcours.html">Parcours</a>
+<a href="experience.html">Expérience</a>
+<a href="competences.html">Compétences</a>
+<a href="projets.html">Projets</a>
+<a href="certifications.html">Certifications</a>
+<a href="divers.html" aria-current="page">Divers</a>
+<a href="contact.html">Contact</a><a class="site-menu-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
+  <a class="site-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
+  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</nav>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-brand"><img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img"></a>
-        
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-burger">
-            <span></span><span></span><span></span>
-        </label>
-        
-        <div class="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="apropos.html">À propos</a>
-            <a href="parcours.html">Parcours</a>
-            <a href="experience.html">Expérience</a>
-            <a href="competences.html">Compétences</a>
-            <a href="projets.html">Projets</a>
-            <a href="certifications.html">Certifications</a>
-            <a href="divers.html" class="active">Divers</a>
-            <a href="contact.html">Contact</a>
-            
-            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
-        </div>
-        
-        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop ripple-btn">
-            Mon CV
-        </a>
-    </nav>
 
-    <main class="main-container">
+
+
+
+
+    <main id="page-content" tabindex="-1" class="main-container">
         <header class="page-header">
             <h1 class="main-title">Divers & Passions</h1>
             <span class="subtitle-instruction">Ce qui m'anime au quotidien</span>
         </header>
 
         <section class="interests-grid">
-            
+
             <div class="interest-wrapper">
                 <input type="checkbox" id="modal-sport" class="modal-toggle">
                 <article class="interest-card tilt-card">
@@ -122,170 +120,9 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
-    </footer>
+    <footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><div class="footer-links"><a href="projets.html">Mes projets</a><a href="contact.html">Me contacter ↗</a></div></footer>
+<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
 
-            /* 1. EFFET 3D PARALLAX */
-            const tiltCards = document.querySelectorAll('.tilt-card');
-            
-            if (window.matchMedia("(min-width: 768px)").matches) {
-                tiltCards.forEach(card => {
-                    const icon = card.querySelector('.card-icon-wrapper');
-                    const content = card.querySelector('.card-content');
-                    const btn = card.querySelector('.btn-see-more');
-
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const centerX = rect.width / 2;
-                        const centerY = rect.height / 2;
-                        
-                        const rotateX = ((y - centerY) / centerY) * -12; 
-                        const rotateY = ((x - centerX) / centerX) * 12;
-
-                        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                        
-                        const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) - 90;
-                        card.style.background = `
-                            linear-gradient(${angle}deg, 
-                                rgba(255, 255, 255, 0.1) 0%, 
-                                rgba(212, 175, 55, 0.2) 40%, 
-                                rgba(10, 10, 10, 0.95) 80%
-                            ),
-                            #050505
-                        `;
-                        
-                        card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 20}px 40px rgba(0, 0, 0, 0.9)`;
-
-                        icon.style.transform = `translateZ(80px) rotateX(${rotateX * -0.5}deg) rotateY(${rotateY * -0.5}deg)`;
-                        content.style.transform = `translateZ(40px)`;
-                        btn.style.transform = `translateZ(60px)`;
-                        btn.style.boxShadow = `${-rotateY}px ${rotateX + 5}px 15px rgba(212, 175, 55, 0.4)`;
-                        btn.style.background = `rgba(212, 175, 55, 0.1)`;
-                    });
-
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transition = `transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease`;
-                        card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-                        card.style.background = `linear-gradient(145deg, #151515 0%, #050505 100%)`;
-                        card.style.boxShadow = `10px 20px 40px rgba(0, 0, 0, 0.8), inset 1px 1px 2px rgba(255, 255, 255, 0.05)`;
-                        
-                        icon.style.transition = `transform 0.5s ease`;
-                        icon.style.transform = `translateZ(60px)`;
-                        
-                        content.style.transition = `transform 0.5s ease`;
-                        content.style.transform = `translateZ(30px)`;
-                        
-                        btn.style.transition = `all 0.5s ease`;
-                        btn.style.transform = `translateZ(45px)`;
-                        btn.style.boxShadow = `none`;
-                        btn.style.background = `transparent`;
-                        
-                        setTimeout(() => {
-                            card.style.transition = `none`;
-                            icon.style.transition = `transform 0.1s ease-out`;
-                            content.style.transition = `transform 0.1s ease-out`;
-                            btn.style.transition = `transform 0.1s ease-out`;
-                        }, 500);
-                    });
-                    
-                    card.addEventListener('mouseenter', () => {
-                        card.style.transition = `none`;
-                    });
-                });
-            }
-
-            /* 2. LUEUR DORÉE (Curseur) */
-            const cursorGlow = document.getElementById('cursorGlow');
-            document.addEventListener('mousemove', (e) => {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            });
-
-            /* 3. EFFET RIPPLE SUR BOUTONS */
-            const buttons = document.querySelectorAll('.ripple-btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const ripple = document.createElement('span');
-                    ripple.style.left = `${x}px`;
-                    ripple.style.top = `${y}px`;
-                    ripple.classList.add('ripple');
-                    
-                    this.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                });
-            });
-
-            /* 4. PARTICULES DORÉES EN FOND */
-            const canvas = document.getElementById('gold-particles');
-            const ctx = canvas.getContext('2d');
-            let particlesArray = [];
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 1.5; 
-                    this.speedX = Math.random() * 0.5 - 0.25; 
-                    this.speedY = Math.random() * -1 - 0.2;   
-                    const colors = ['rgba(212, 175, 55, 0.7)', 'rgba(249, 229, 160, 0.5)', 'rgba(170, 140, 44, 0.4)'];
-                    this.color = colors[Math.floor(Math.random() * colors.length)];
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.y < 0) {
-                        this.y = canvas.height;
-                        this.x = Math.random() * canvas.width;
-                    }
-                    if (this.x < 0 || this.x > canvas.width) {
-                        this.speedX *= -1;
-                    }
-                }
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            function initParticles() {
-                particlesArray = [];
-                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
-                for (let i = 0; i < numberOfParticles; i++) {
-                    particlesArray.push(new Particle());
-                }
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                    particlesArray[i].draw();
-                }
-                requestAnimationFrame(animateParticles);
-            }
-
-            initParticles();
-            animateParticles();
-        });
-    </script>
 </body>
 </html>

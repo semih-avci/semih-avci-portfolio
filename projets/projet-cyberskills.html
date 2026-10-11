@@ -477,13 +477,36 @@
             }
         }
     </style>
+<meta name="theme-color" content="#10110e"><link rel="icon" href="../images/logosemih.png">
+<link rel="stylesheet" href="../themes/atelier.css">
+<script defer src="../scripts/atelier.js"></script>
+<noscript><style>
+@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
+</style></noscript>
 </head>
-<body class="project-detail-body">
+<body class="project-detail-body atelier">
+<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
+<a class="skip-link" href="#page-content">Aller au contenu</a>
+<div class="menu-shade" aria-hidden="true"></div>
+<nav class="site-nav" aria-label="Navigation principale">
+  <a class="site-brand" href="../index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
+  <div class="site-nav-links" id="site-menu"><a href="../index.html">Accueil</a>
+<a href="../apropos.html">À propos</a>
+<a href="../parcours.html">Parcours</a>
+<a href="../experience.html">Expérience</a>
+<a href="../competences.html">Compétences</a>
+<a href="../projets.html" aria-current="page">Projets</a>
+<a href="../certifications.html">Certifications</a>
+<a href="../divers.html">Divers</a>
+<a href="../contact.html">Contact</a><a class="site-menu-cv" href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
+  <a class="site-cv" href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
+  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</nav>
 
-    <canvas id="gold-particles" aria-hidden="true"></canvas>
-    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <main class="main-container">
+
+
+    <main id="page-content" tabindex="-1" class="main-container">
 
         <header class="project-header-simple">
             <div class="back-btn-container">
@@ -804,129 +827,9 @@
 
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
-    </footer>
+    <footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><div class="footer-links"><a href="../projets.html">Mes projets</a><a href="../contact.html">Me contacter ↗</a></div></footer>
+<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const cursorGlow = document.getElementById('cursorGlow');
 
-        if (!reduceMotion) {
-            document.addEventListener('mousemove', (event) => {
-                cursorGlow.style.left = event.clientX + 'px';
-                cursorGlow.style.top = event.clientY + 'px';
-            });
-        } else {
-            cursorGlow.style.display = 'none';
-        }
-
-        const tiltCards = document.querySelectorAll('.tilt-card');
-        if (!reduceMotion && window.matchMedia('(min-width: 900px)').matches) {
-            tiltCards.forEach((card) => {
-                card.addEventListener('mousemove', (event) => {
-                    const rect = card.getBoundingClientRect();
-                    const rotateX = ((event.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -4;
-                    const rotateY = ((event.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 4;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-                });
-            });
-        }
-
-        document.querySelectorAll('.ripple-btn').forEach((button) => {
-            button.addEventListener('click', function (event) {
-                if (reduceMotion) return;
-                const ripple = document.createElement('span');
-                ripple.style.left = `${event.clientX - this.getBoundingClientRect().left}px`;
-                ripple.style.top = `${event.clientY - this.getBoundingClientRect().top}px`;
-                ripple.className = 'ripple';
-                this.appendChild(ripple);
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-
-        const canvas = document.getElementById('gold-particles');
-        if (reduceMotion) {
-            canvas.style.display = 'none';
-            return;
-        }
-
-        const context = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.vx = (Math.random() - 0.5) * 1.2;
-                this.vy = (Math.random() - 0.5) * 1.2;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-
-            draw() {
-                context.fillStyle = 'rgba(212, 175, 55, 0.8)';
-                context.beginPath();
-                context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                context.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.min(85, Math.floor((canvas.width * canvas.height) / 15000));
-            for (let index = 0; index < count; index += 1) particles.push(new Particle());
-        }
-
-        function drawConnections() {
-            for (let first = 0; first < particles.length; first += 1) {
-                for (let second = first + 1; second < particles.length; second += 1) {
-                    const distance = ((particles[first].x - particles[second].x) ** 2) + ((particles[first].y - particles[second].y) ** 2);
-                    if (distance < 22000) {
-                        context.strokeStyle = `rgba(212, 175, 55, ${0.55 - distance / 44000})`;
-                        context.lineWidth = 1;
-                        context.beginPath();
-                        context.moveTo(particles[first].x, particles[first].y);
-                        context.lineTo(particles[second].x, particles[second].y);
-                        context.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((particle) => {
-                particle.update();
-                particle.draw();
-            });
-            drawConnections();
-            requestAnimationFrame(animateParticles);
-        }
-
-        resizeCanvas();
-        initParticles();
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
-        });
-        animateParticles();
-    });
-</script>
 </body>
 </html>
