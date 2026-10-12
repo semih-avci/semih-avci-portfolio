@@ -13,38 +13,39 @@
     <link rel="stylesheet" href="../themes/projets.css">
     <link rel="stylesheet" href="../themes/certifications.css">
     <link rel="stylesheet" href="../themes/navigation.css">
-<meta name="theme-color" content="#10110e"><link rel="icon" href="../images/logosemih.png">
-<link rel="stylesheet" href="../themes/atelier.css">
-<script defer src="../scripts/atelier.js?v=20261011-2"></script>
-<noscript><style>
-@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
-</style></noscript>
 </head>
-<body class="certifications-page fortinet-nse-page atelier">
-<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
-<a class="skip-link" href="#page-content">Aller au contenu</a>
-<div class="menu-shade" aria-hidden="true"></div>
-<nav class="site-nav" aria-label="Navigation principale">
-  <a class="site-brand" href="../index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
-  <div class="site-nav-links" id="site-menu"><a href="../index.html">Accueil</a>
-<a href="../apropos.html">À propos</a>
-<a href="../parcours.html">Parcours</a>
-<a href="../experience.html">Expérience</a>
-<a href="../competences.html">Compétences</a>
-<a href="../projets.html">Projets</a>
-<a href="../certifications.html" aria-current="page">Certifications</a>
-<a href="../divers.html">Divers</a>
-<a href="../contact.html">Contact</a><a class="site-menu-cv" href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
-  <a class="site-cv" href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
-  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
-</nav>
+<body class="certifications-page fortinet-nse-page">
 
+    <canvas id="gold-particles" aria-hidden="true"></canvas>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
+    <nav class="navbar" aria-label="Navigation principale">
+        <a href="../index.html" class="nav-brand" aria-label="Retour à l'accueil">
+            <img src="../images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
+        </a>
 
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu">
+            <span></span><span></span><span></span>
+        </label>
 
+        <div class="nav-links">
+            <a href="../index.html">Accueil</a>
+            <a href="../apropos.html">À propos</a>
+            <a href="../parcours.html">Parcours</a>
+            <a href="../experience.html">Expérience</a>
+            <a href="../competences.html">Compétences</a>
+            <a href="../projets.html">Projets</a>
+            <a href="../certifications.html" class="active">Certifications</a>
+            <a href="../divers.html">Divers</a>
+            <a href="../contact.html">Contact</a>
+            <a href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener" class="btn-cv-mobile">Mon CV</a>
+        </div>
 
+        <a href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener" class="btn-cv-desktop ripple-btn">Mon CV</a>
+    </nav>
 
-    <main id="page-content" tabindex="-1" class="main-container certifications-container">
+    <main class="main-container certifications-container">
         <header class="page-header certifications-header">
             <p class="eyebrow">Fortinet Training Institute</p>
             <h1 class="page-title">Parcours Fortinet NSE</h1>
@@ -126,9 +127,10 @@
         </aside>
     </main>
 
-    <footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><div class="footer-links"><a href="../projets.html">Mes projets</a><a href="../contact.html">Me contacter ↗</a></div></footer>
-<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
+    <footer class="site-footer">
+        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
+    </footer>
 
-
+    <script src="../scripts/certifications.js"></script>
 </body>
 </html>
