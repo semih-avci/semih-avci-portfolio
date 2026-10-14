@@ -7,83 +7,80 @@
     <link rel="stylesheet" href="themes/parcours.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="themes/navigation.css">
+<meta name="theme-color" content="#10110e"><link rel="icon" href="images/logosemih.png">
+<link rel="stylesheet" href="themes/atelier.css?v=20261014-1">
+<script defer src="scripts/atelier.js?v=20261014-1"></script>
+<noscript><style>
+@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
+</style></noscript>
 </head>
-<body>
+<body class="atelier">
+<div class="reading-progress" aria-hidden="true"></div><div class="cursor-glow" aria-hidden="true"></div>
+<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
+<a class="skip-link" href="#page-content">Aller au contenu</a>
+<div class="menu-shade" aria-hidden="true"></div>
+<nav class="site-nav" aria-label="Navigation principale">
+  <a class="site-brand" href="index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
+  <div class="site-nav-links" id="site-menu"><a href="index.html">Accueil</a>
+<a href="apropos.html">À propos</a>
+<a href="parcours.html" aria-current="page">Parcours</a>
+<a href="experience.html">Expérience</a>
+<a href="competences.html">Compétences</a>
+<a href="projets.html">Projets</a>
+<a href="certifications.html">Certifications</a>
+<a href="divers.html">Divers</a>
+<a href="contact.html">Contact</a><a class="site-menu-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
+  <a class="site-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
+  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</nav>
+<main id="page-content" tabindex="-1">
 
-    <canvas id="gold-particles"></canvas>
-    <div class="cursor-glow" id="cursorGlow"></div>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-brand">
-            <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
-        </a>
 
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
 
-        <div class="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="apropos.html">À propos</a>
-            <a href="parcours.html" class="active">Parcours</a>
-            <a href="experience.html">Expérience</a>
-            <a href="competences.html">Compétences</a>
-            <a href="projets.html">Projets</a>
-            <a href="certifications.html">Certifications</a>
-            <a href="divers.html">Divers</a>
-            <a href="contact.html">Contact</a>
-            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
-        </div>
-        
-        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">
-            Mon CV
-        </a>
-    </nav>
+
 
     <div class="main-container">
         <h1 class="page-title">Mon Parcours Scolaire</h1>
         <p class="subtitle">Cliquez sur une formation pour voir les détails.</p>
 
         <div class="timeline">
-            
+
             <div class="timeline-item">
                 <input type="checkbox" id="modal-but">
-                
+
                 <label class="timeline-content clickable tilt-card" for="modal-but">
                     <span class="tag tag-school">Formation • En cours</span>
-                    
+
                     <span class="header-content" style="display: flex; justify-content: space-between; align-items: baseline; width: 100%; margin-bottom: 15px;">
                         <strong style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; font-weight: normal;">BUT Réseaux & Télécommunications</strong>
                         <span class="date-badge">2025 - Présent</span>
                     </span>
-                    
+
                     <span class="school-info" style="display: block; margin-bottom: 20px;">
-                        <img src="images/iut.png" alt="Logo IUT Clermont Auvergne" class="school-logo-tiny logo-xl">
+                        <img src="images/iut.png" alt="Logo IUT Clermont Auvergne" class="school-logo-tiny logo-xl" loading="lazy">
                     </span>
-                    
+
                     <span style="display: block; color: #a0a0a0; line-height: 1.6; font-size: 0.95rem;">
                         Formation polyvalente axée sur l'administration réseau (Routage, Adressage IP, Câblage), la programmation (Python, C, Java, Bash) et le déploiement d'infrastructures.
                     </span>
-                    
+
                     <span class="click-hint">➔ Voir le détail</span>
                 </label>
-                
+
                 <div class="timeline-dot"></div>
 
                 <div class="side-panel">
                     <div class="panel-content">
                         <label for="modal-but" class="close-btn">×</label>
-                        
+
                         <h2>BUT Réseaux & Télécommunications</h2>
-                        
+
                         <div class="info-grid">
                             <div class="info-box"><strong>Établissement</strong><span>IUT Clermont Auvergne (Aubière)</span></div>
                             <div class="info-box"><strong>Année</strong><span>2025 - Présent</span></div>
-                            <div class="info-box"><strong>Obtention</strong><span>En cours (Niveau 1ère Année)</span></div>
-                            <div class="info-box"><strong>Formation</strong><span>BUT R&T - Formation</span></div>
+                            <div class="info-box"><strong>Obtention</strong><span>En cours — 2e année, semestre 3</span></div>
+                            <div class="info-box"><strong>Formation</strong><span>BUT R&amp;T — parcours cybersécurité</span></div>
                             <div class="info-box"><strong>Statut</strong><span>Étudiant</span></div>
                         </div>
 
@@ -105,11 +102,11 @@
                         <div class="highlight-text">
                             <strong>Et maintenant ?</strong><br>
                             <span style="display:block; margin-top: 5px; line-height: 1.6;">
-                                Actuellement à la fin de mon 2ème semestre, j'ai développé une bonne expertise transverse. En réseaux et systèmes, je maîtrise le routage (RIP, EIGRP), la segmentation par VLANs, l'administration de domaines Active Directory (GPO, UO) ainsi que la conteneurisation avec Docker. 
+                                Actuellement en deuxième année de BUT R&amp;T, parcours cybersécurité, je consolide mes bases en réseaux et systèmes : routage RIP, EIGRP et OSPF, segmentation par VLAN, Active Directory et GPO, Linux et conteneurisation Docker. Mes TP OSPF/MPLS renforcent ma méthode de diagnostic et d’analyse des échanges.
                                 <br><br>
                                 Mon profil s'est enrichi d'une solide maîtrise de la Programmation Orientée Objet (POO) en Python et de la gestion de données via la conception et l'interrogation de bases de données relationnelles (SQL). Je possède également une bonne compréhension de l'architecture matérielle des systèmes et de la gestion logicielle des périphériques (pilotes, registre). Enfin, ma capacité d'analyse me permet de rédiger des documents professionnels structurés tels que des cahiers des charges fonctionnels.
                                 <br><br>
-                                Fort de ce profil polyvalent, je recherche une <strong>alternance à partir de septembre 2026</strong> pour contribuer à vos projets.
+                                Fort de ce profil polyvalent, je recherche une <strong>alternance ou un stage en systèmes, réseaux ou cybersécurité</strong> pour contribuer à vos projets.
                             </span>
                         </div>
 
@@ -120,23 +117,23 @@
 
             <div class="timeline-item">
                 <input type="checkbox" id="modal-licence">
-                
+
                 <label class="timeline-content clickable tilt-card" for="modal-licence">
                     <span class="tag tag-school">Formation</span>
-                    
+
                     <span class="header-content" style="display: flex; justify-content: space-between; align-items: baseline; width: 100%; margin-bottom: 15px;">
                         <strong style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; font-weight: normal;">Licence Maths Informatique</strong>
                         <span class="date-badge">2024 - 2025</span>
                     </span>
-                    
+
                     <span class="school-info" style="display: block; margin-bottom: 20px;">
-                        <img src="images/uca.png" alt="Logo Université Clermont Auvergne" class="school-logo-tiny logo-xl">
+                        <img src="images/uca.png" alt="Logo Université Clermont Auvergne" class="school-logo-tiny logo-xl" loading="lazy">
                     </span>
-                    
+
                     <span style="display: block; color: #a0a0a0; line-height: 1.6; font-size: 0.95rem;">
                         Acquisition de bases solides en résolution de problèmes mathématiques et introduction à l'informatique théorique/pratique grâce à des cours d'algorithmique et de programmation C/Python.
                     </span>
-                    
+
                     <span class="click-hint">➔ Voir le détail</span>
                 </label>
                 <div class="timeline-dot"></div>
@@ -144,9 +141,9 @@
                 <div class="side-panel">
                     <div class="panel-content">
                         <label for="modal-licence" class="close-btn">×</label>
-                        
+
                         <h2>Détails de la Formation</h2>
-                        
+
                         <div class="info-grid">
                             <div class="info-box"><strong>Établissement</strong><span>Université Clermont Auvergne (Aubière)</span></div>
                             <div class="info-box"><strong>Année</strong><span>2024 - 2025</span></div>
@@ -158,7 +155,7 @@
 
                         <h3>Contenu Pédagogique : Semestre 1</h3>
                         <p>Durant ce semestre, j'ai appris à programmer en python et j'ai découvert comment une machine traite l'information.</p>
-                        
+
                         <div class="highlight-text">
                             <strong>Informatique</strong><br>
                             <ul style="margin-top: 10px; padding-left: 20px;">
@@ -192,7 +189,7 @@
                             <strong>Projets & Applications</strong><br>
                             <ul style="margin-top: 10px; padding-left: 20px;">
                                 <li>
-                                    <strong>Projet Informatique :</strong> 
+                                    <strong>Projet Informatique :</strong>
                                     <a href="projets/projet-king-domino.html" class="discrete-link" style="color:#d4af37; text-decoration:none;">Voir mon projet</a>
                                 </li>
                                 <li><strong>Anglais Scientifique :</strong> Pratique de l'anglais écrit et oral sur des thèmes scientifiques.</li>
@@ -209,19 +206,19 @@
 
             <div class="timeline-item">
                 <input type="checkbox" id="modal-bac">
-                
+
                 <label class="timeline-content clickable tilt-card" for="modal-bac">
                     <span class="tag tag-school">Diplôme</span>
-                    
+
                     <span class="header-content" style="display: flex; justify-content: space-between; align-items: baseline; width: 100%; margin-bottom: 15px;">
                         <strong style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; font-weight: normal;">Baccalauréat Général</strong>
                         <span class="date-badge">2021 - 2024</span>
                     </span>
-                    
+
                     <span class="school-info" style="display: block; margin-bottom: 20px;">
-                        <img src="images/lafayette.png" alt="Logo Lycée La Fayette" class="school-logo-tiny logo-lafayette"> 
+                        <img src="images/lafayette.png" alt="Logo Lycée La Fayette" class="school-logo-tiny logo-lafayette" loading="lazy">
                     </span>
-                    
+
                     <span style="display: block; color: #a0a0a0; line-height: 1.6; font-size: 0.95rem;">
                         Spécialités scientifiques : Mathématiques, SI et NSI.
                     </span>
@@ -233,23 +230,23 @@
                     <div class="panel-content">
                         <label for="modal-bac" class="close-btn">×</label>
                         <h2>Détails du Diplôme</h2>
-                        
+
                         <div class="info-grid">
                             <div class="info-box"><strong>Lycée</strong><span>La Fayette (Aubière, 63170)</span></div>
                             <div class="info-box"><strong>Année</strong><span>2024</span></div>
                             <div class="info-box"><strong>Mention</strong><span>sans mention</span></div>
                         </div>
-                        
+
                         <hr>
-                        
+
                         <h3>Spécialités Choisies</h3>
                         <p>Je me suis orienté vers un parcours au lycée axé sur les sciences mathématiques, informatiques et de l'ingénierie afin de préparer mes études supérieures en informatique :</p>
-                        
+
                         <div class="highlight-text">
                             <strong>Numérique et Sciences Informatiques (NSI)</strong><br>
                             Apprentissage de Python, du Web, du SQL ainsi que les bases de la manipulation d'un terminal Linux.
                         </div>
-                        
+
                         <div class="highlight-text">
                             <strong>Sciences de l'Ingénieur (SI)</strong><br>
                             Analyse de systèmes mécaniques et électroniques, création de logiciels, programmation de robots.
@@ -267,166 +264,10 @@
         </div>
     </div>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
-    </footer>
+    </main>
+<footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><button class="motion-toggle" type="button" aria-pressed="true">Animations : activées</button><div class="footer-links"><a href="projets.html">Mes projets</a><a href="contact.html">Me contacter ↗</a></div></footer>
+<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
 
-            /* 1. APPARITION FLUIDE AU SCROLL (FADE-UP) */
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1 // L'animation se déclenche quand 10% de la carte est visible
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Ne le fait qu'une fois
-                    }
-                });
-            }, observerOptions);
-
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            // On décale légèrement l'apparition de chaque carte
-            timelineItems.forEach((item, index) => {
-                item.style.transitionDelay = `${index * 0.15}s`;
-                observer.observe(item);
-            });
-
-            /* 2. EFFET 3D (TILT) SUR LES CARTES DE FORMATION */
-            const tiltCards = document.querySelectorAll('.tilt-card');
-            
-            if (window.matchMedia("(min-width: 768px)").matches) {
-                tiltCards.forEach(card => {
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const centerX = rect.width / 2;
-                        const centerY = rect.height / 2;
-                        
-                        // Calcul d'inclinaison (doux, max 5 degrés car la carte est grande)
-                        const rotateX = ((y - centerY) / centerY) * -5; 
-                        const rotateY = ((x - centerX) / centerX) * 5;
-
-                        card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                        
-                        // Création du reflet doré dynamique en fonction de la souris
-                        card.style.background = `
-                            rgba(255, 255, 255, 0.03) 
-                            radial-gradient(
-                                circle at ${x}px ${y}px, 
-                                rgba(212, 175, 55, 0.15) 0%, 
-                                transparent 50%
-                            )
-                        `;
-                        card.style.boxShadow = `${-rotateY}px ${rotateX + 10}px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.3)`;
-                        card.style.borderColor = "#d4af37";
-                    });
-
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                        card.style.background = `rgba(255, 255, 255, 0.03)`;
-                        card.style.boxShadow = `none`;
-                        card.style.borderColor = `rgba(212, 175, 55, 0.2)`;
-                    });
-                });
-            }
-
-            /* 3. LUEUR DORÉE QUI SUIT LE CURSEUR */
-            const cursorGlow = document.getElementById('cursorGlow');
-            document.addEventListener('mousemove', (e) => {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            });
-
-            /* 4. EFFET D'ONDE (RIPPLE) SUR LES BOUTONS */
-            const buttons = document.querySelectorAll('.btn-cv-desktop');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const ripple = document.createElement('span');
-                    ripple.style.left = `${x}px`;
-                    ripple.style.top = `${y}px`;
-                    ripple.classList.add('ripple');
-                    
-                    this.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                });
-            });
-
-            /* 5. PARTICULES D'OR EN ARRIÈRE-PLAN */
-            const canvas = document.getElementById('gold-particles');
-            const ctx = canvas.getContext('2d');
-            let particlesArray = [];
-
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 1.5; 
-                    this.speedX = Math.random() * 0.5 - 0.25; 
-                    this.speedY = Math.random() * -1 - 0.2;   
-                    const colors = ['rgba(212, 175, 55, 0.7)', 'rgba(249, 229, 160, 0.5)', 'rgba(170, 140, 44, 0.4)'];
-                    this.color = colors[Math.floor(Math.random() * colors.length)];
-                }
-                
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-
-                    if (this.y < 0) {
-                        this.y = canvas.height;
-                        this.x = Math.random() * canvas.width;
-                    }
-                    if (this.x < 0 || this.x > canvas.width) {
-                        this.speedX *= -1;
-                    }
-                }
-
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            function initParticles() {
-                particlesArray = [];
-                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
-                for (let i = 0; i < numberOfParticles; i++) {
-                    particlesArray.push(new Particle());
-                }
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                    particlesArray[i].draw();
-                }
-                requestAnimationFrame(animateParticles);
-            }
-
-            initParticles();
-            animateParticles();
-        });
-    </script>
 </body>
 </html>

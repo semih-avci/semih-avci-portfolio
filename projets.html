@@ -5,45 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Découvrez les projets de Semih Avci : SAE 2.04 PharmaSanté, réseaux Cisco, cybersécurité, développement Web, systèmes et télécommunications.">
     <title>Projets & Réalisations - Avci Semih</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="themes/projets.css">
     <link rel="stylesheet" href="themes/navigation.css">
+<meta name="theme-color" content="#10110e"><link rel="icon" href="images/logosemih.png">
+<link rel="stylesheet" href="themes/atelier.css?v=20261014-1">
+<script defer src="scripts/atelier.js?v=20261014-1"></script>
+<noscript><style>
+@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
+</style></noscript>
 </head>
-<body>
+<body class="atelier">
+<div class="reading-progress" aria-hidden="true"></div><div class="cursor-glow" aria-hidden="true"></div>
+<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
+<a class="skip-link" href="#page-content">Aller au contenu</a>
+<div class="menu-shade" aria-hidden="true"></div>
+<nav class="site-nav" aria-label="Navigation principale">
+  <a class="site-brand" href="index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
+  <div class="site-nav-links" id="site-menu"><a href="index.html">Accueil</a>
+<a href="apropos.html">À propos</a>
+<a href="parcours.html">Parcours</a>
+<a href="experience.html">Expérience</a>
+<a href="competences.html">Compétences</a>
+<a href="projets.html" aria-current="page">Projets</a>
+<a href="certifications.html">Certifications</a>
+<a href="divers.html">Divers</a>
+<a href="contact.html">Contact</a><a class="site-menu-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
+  <a class="site-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
+  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</nav>
+<main id="page-content" tabindex="-1">
 
-    <canvas id="gold-particles"></canvas>
-    <div class="cursor-glow" id="cursorGlow"></div>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-brand">
-            <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
-        </a>
-        
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-burger">
-            <span></span><span></span><span></span>
-        </label>
 
-        <div class="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="apropos.html">À propos</a>
-            <a href="parcours.html">Parcours</a>
-            <a href="experience.html">Expérience</a>
-            <a href="competences.html">Compétences</a>
-            <a href="projets.html" class="active">Projets</a>
-            <a href="certifications.html">Certifications</a>
-            <a href="divers.html">Divers</a>
-            <a href="contact.html">Contact</a>
-            
-            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
-        </div>
-        
-        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop ripple-btn">Mon CV</a>
-    </nav>
+
+
 
     <div class="main-container">
         <header class="page-header">
@@ -52,6 +52,8 @@
         </header>
 
 
+
+        <section class="cyber-focus" aria-labelledby="cyber-title"><header class="cyber-heading"><span class="case-label">Cap sur la cybersécurité</span><h2 id="cyber-title">Des bases solides. Des applications concrètes.</h2><p>Mes travaux de BUT R&amp;T construisent un socle en réseaux et systèmes pour progresser en cybersécurité. Voici les réalisations les plus directement liées à cet objectif.</p></header><div class="cyber-grid"><article class="cyber-card" data-reveal><span class="case-label">01 / Cloisonner</span><h3>Segmentation & filtrage</h3><p>VLAN, routage inter-VLAN, DMZ et ACL : organiser les communications et vérifier les flux autorisés en travaux pratiques.</p><a href="projets/projet-segmentation.html">Voir la SAE 2.01</a></article><article class="cyber-card" data-reveal><span class="case-label">02 / Administrer</span><h3>Identités & droits d’accès</h3><p>Active Directory, unités d’organisation, GPO et lecteurs réseau : relier l’administration Windows à la gestion des accès.</p><a href="projets/sous-projets/tp-ad.html">Voir les travaux AD / GPO</a></article><article class="cyber-card" data-reveal><span class="case-label">03 / Diagnostiquer</span><h3>OSPF, MPLS & analyse de trames</h3><p>Étudier les échanges entre routeurs, suivre les annonces LDP et rapprocher les captures des tables de commutation.</p><a href="projets/projet-ospf-mpls.html">Explorer le TP OSPF / MPLS</a></article><article class="cyber-card" data-reveal><span class="case-label">04 / Protéger</span><h3>Infrastructure PharmaSanté</h3><p>Un projet en équipe qui réunit segmentation, pare-feu Stormshield, services Windows et dépannage réseau.</p><a href="projets/projet-pharmasante.html">Voir les configurations</a></article><article class="cyber-card" data-reveal><span class="case-label">05 / Déployer</span><h3>Linux & conteneurisation</h3><p>Administration Debian, services réseau, conteneurs Apache et publication de ports : comprendre ce qu’un service expose.</p><a href="projets/sous-projets/tp-docker.html">Voir les travaux Docker</a></article><article class="cyber-card" data-reveal><span class="case-label">06 / Comprendre les flux</span><h3>Analyse & sécurité réseau</h3><p>Wireshark, Nmap et travail sur les protocoles : observer les échanges et documenter les constats dans un cadre de laboratoire.</p><a href="competences.html#cap-cyber">Voir les compétences associées</a></article></div></section>
 
         <div class="projects-separator"></div>
 
@@ -69,7 +71,7 @@
                     <a href="projets/projet-pharmasante.html" class="btn-gold btn-outline ripple-btn">Voir les détails &rarr;</a>
                 </div>
                 <div class="featured-image">
-                    <div class="abstract-visual">🏥</div>
+                    <img class="project-preview" src="images/projets/pharmasante/switch-vlans.png" alt="Configuration des VLAN de PharmaSanté" loading="lazy">
                 </div>
             </div>
         </section>
@@ -79,7 +81,7 @@
         <section class="featured-project-section">
             <div class="featured-card portfolio-card reverse-layout tilt-card">
                 <div class="featured-image">
-                    <div class="abstract-visual">🎓</div>
+                    <img class="project-preview" src="images/projets/cyberskills/catalogue-formations.jpg" alt="Catalogue de formations CyberSkills" loading="lazy">
                 </div>
                 <div class="featured-content">
                     <span class="project-tag">Projet Dev Web / Full-Stack</span>
@@ -111,7 +113,7 @@
                     <a href="projets/projet-pentest.html" class="btn-gold btn-outline ripple-btn">Voir les détails &rarr;</a>
                 </div>
                 <div class="featured-image">
-                    <div class="abstract-visual">🛡️</div>
+                    <svg class="project-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z"/><path d="m8 12 3 3 5-6"/></svg>
                 </div>
             </div>
         </section>
@@ -132,7 +134,7 @@
                     <a href="projets/projet-adminsys.html" class="btn-gold btn-outline ripple-btn">Voir les détails &rarr;</a>
                 </div>
                 <div class="featured-image">
-                    <div class="abstract-visual">🌐</div>
+                    <svg class="project-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="5" rx="1"/><path d="M12 7v5M4 16v-4h16v4"/><rect x="1" y="16" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><rect x="17" y="16" width="6" height="5" rx="1"/></svg>
                 </div>
             </div>
         </section>
@@ -142,7 +144,7 @@
         <section class="featured-project-section">
             <div class="featured-card portfolio-card reverse-layout tilt-card">
                 <div class="featured-image">
-                    <div class="abstract-visual">📡</div>
+                    <svg class="project-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 0 9 9M3 5a16 16 0 0 0 16 16M12 3a9 9 0 0 1 9 9M5 3a16 16 0 0 1 16 16M8 16l8-8M10 18l-4-4M14 6l4 4"/></svg>
                 </div>
                 <div class="featured-content">
                     <span class="project-tag">Projet Ingénierie Télécoms</span>
@@ -163,7 +165,7 @@
         <section class="featured-project-section">
             <div class="featured-card portfolio-card reverse-layout tilt-card">
                 <div class="featured-image">
-                    <div class="abstract-visual">📊</div>
+                    <svg class="project-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18M7 16v-5m5 5V7m5 9V4"/></svg>
                 </div>
                 <div class="featured-content">
                     <span class="project-tag">Projet Data & Algo (SAE 1.05)</span>
@@ -178,7 +180,7 @@
                 </div>
             </div>
         </section>
-        
+
         <div class="projects-separator"></div>
 
         <section class="featured-project-section">
@@ -195,13 +197,13 @@
                     <a href="projets/projet-portfolio.html" class="btn-gold btn-outline ripple-btn">Voir les détails &rarr;</a>
                 </div>
                 <div class="featured-image">
-                    <div class="abstract-visual">💻</div>
+                    <svg class="project-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="16" rx="2"/><path d="m7 8-3 3 3 3m10-6 3 3-3 3M13 7l-2 8M8 22h8M12 19v3"/></svg>
                 </div>
             </div>
         </section>
 
         <div class="projects-separator"></div>
-        
+
         <section class="featured-project-section">
             <div class="featured-card tilt-card">
                 <div class="featured-content">
@@ -216,146 +218,17 @@
                     <a href="projets/projet-king-domino.html" class="btn-gold btn-outline ripple-btn">Voir les détails &rarr;</a>
                 </div>
                 <div class="featured-image">
-                    <div class="abstract-visual">👑</div>
+                    <svg class="project-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 6 4 4 5-7 5 7 4-4-2 12H5L3 6ZM5 21h14"/></svg>
                 </div>
             </div>
         </section>
 
     </div>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
-    </footer>
+    </main>
+<footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><button class="motion-toggle" type="button" aria-pressed="true">Animations : activées</button><div class="footer-links"><a href="projets.html">Mes projets</a><a href="contact.html">Me contacter ↗</a></div></footer>
+<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
 
-            /* 1. EFFET 3D PARALLAX MAGNÉTIQUE SUR LES CARTES */
-            const tiltCards = document.querySelectorAll('.tilt-card');
-            
-            if (window.matchMedia("(min-width: 900px)").matches) {
-                tiltCards.forEach(card => {
-                    const content = card.querySelector('.featured-content');
-                    const visual = card.querySelector('.abstract-visual');
-                    const btn = card.querySelector('.btn-gold');
-
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const centerX = rect.width / 2;
-                        const centerY = rect.height / 2;
-                        
-                        const rotateX = ((y - centerY) / centerY) * -5; 
-                        const rotateY = ((x - centerX) / centerX) * 5;
-
-                        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                        
-                        const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) - 90;
-                        card.style.background = `
-                            linear-gradient(${angle}deg, 
-                                rgba(255, 255, 255, 0.08) 0%, 
-                                rgba(212, 175, 55, 0.15) 40%, 
-                                rgba(10, 10, 10, 0.95) 80%
-                            ),
-                            #050505
-                        `;
-                        
-                        card.style.boxShadow = `${-rotateY * 3}px ${rotateX * 3 + 30}px 50px rgba(0, 0, 0, 0.9)`;
-                        card.style.borderColor = "#d4af37";
-
-                        if(content) content.style.transform = `translateZ(40px)`;
-                        if(visual) visual.style.transform = `translateZ(80px) rotateX(${rotateX * -0.5}deg) rotateY(${rotateY * -0.5}deg)`;
-                        if(btn) btn.style.transform = `translateZ(60px)`;
-                    });
-
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transition = `transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease, background 0.6s ease, border-color 0.6s ease`;
-                        card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-                        card.style.background = `linear-gradient(145deg, #111 0%, #050505 100%)`;
-                        card.style.boxShadow = `0 20px 50px rgba(0, 0, 0, 0.8)`;
-                        card.style.borderColor = `rgba(212, 175, 55, 0.28)`;
-                        
-                        if(content) content.style.transition = `transform 0.6s ease`, content.style.transform = `translateZ(30px)`;
-                        if(visual) visual.style.transition = `transform 0.6s ease`, visual.style.transform = `translateZ(80px)`;
-                        if(btn) btn.style.transition = `transform 0.6s ease`, btn.style.transform = `translateZ(50px)`;
-                        
-                        setTimeout(() => {
-                            card.style.transition = `none`;
-                            if(content) content.style.transition = `none`;
-                            if(visual) visual.style.transition = `none`;
-                            if(btn) btn.style.transition = `all 0.3s ease`;
-                        }, 600);
-                    });
-                    
-                    card.addEventListener('mouseenter', () => {
-                        card.style.transition = `none`;
-                    });
-                });
-            }
-
-            /* 2. EFFET RIPPLE SUR BOUTONS */
-            const buttons = document.querySelectorAll('.ripple-btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const ripple = document.createElement('span');
-                    ripple.style.left = `${x}px`;
-                    ripple.style.top = `${y}px`;
-                    ripple.classList.add('ripple');
-                    this.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                });
-            });
-
-            /* 3. LUEUR DU CURSEUR */
-            const cursorGlow = document.getElementById('cursorGlow');
-            document.addEventListener('mousemove', (e) => {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            });
-
-            /* 4. PARTICULES DORÉES */
-            const canvas = document.getElementById('gold-particles');
-            const ctx = canvas.getContext('2d');
-            let particlesArray = [];
-            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 1.5; 
-                    this.speedX = Math.random() * 0.5 - 0.25; 
-                    this.speedY = Math.random() * -1 - 0.2;   
-                    this.color = 'rgba(212, 175, 55, ' + (Math.random() * 0.5 + 0.2) + ')';
-                }
-                update() {
-                    this.x += this.speedX; this.y += this.speedY;
-                    if (this.y < 0) { this.y = canvas.height; this.x = Math.random() * canvas.width; }
-                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                }
-                draw() { ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
-            }
-
-            function initParticles() {
-                particlesArray = [];
-                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
-                for (let i = 0; i < numberOfParticles; i++) particlesArray.push(new Particle());
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); particlesArray[i].draw(); }
-                requestAnimationFrame(animateParticles);
-            }
-            initParticles();
-            animateParticles();
-        });
-    </script>
 </body>
 </html>

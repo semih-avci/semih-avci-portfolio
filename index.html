@@ -1,215 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Semih Avci, étudiant en BUT Réseaux et Télécommunications à l'IUT Clermont Auvergne.">
-    <title>Portfolio Semih Avci</title>
-    <link rel="stylesheet" href="themes/accueil.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        #gold-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1; /* Reste derrière tout le reste */
-            pointer-events: none; /* Ne gêne pas les clics */
-            background: radial-gradient(circle at center, #111 0%, #050505 100%);
-        }
-
-        .cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            transition: opacity 0.3s ease;
-            mix-blend-mode: screen;
-        }
-
-        .btn-primary, .btn-cv-desktop {
-            position: relative;
-            overflow: hidden;
-        }
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple-effect 0.6s linear;
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-        @keyframes ripple-effect {
-            to { transform: scale(4); opacity: 0; }
-        }
-
-        .image-frame {
-            transition: transform 0.1s ease-out, box-shadow 0.3s ease;
-            transform-style: preserve-3d;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-        .navbar {
-            z-index: 2000;
-        }
-    </style>
-    <link rel="stylesheet" href="themes/navigation.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio de Semih Avci, étudiant en BUT Réseaux et Télécommunications. Découvrez mes projets en réseaux, systèmes, cybersécurité et développement.">
+<meta name="theme-color" content="#10110e"><title>Semih Avci — Réseaux &amp; Cybersécurité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="themes/accueil.css"><link rel="stylesheet" href="themes/atelier.css?v=20261014-1">
+<link rel="icon" href="images/logosemih.png"><script defer src="scripts/atelier.js?v=20261014-1"></script>
+<noscript><style>
+@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
+</style></noscript>
 </head>
-<body>
-    <canvas id="gold-particles"></canvas>
-    <div class="cursor-glow" id="cursorGlow"></div>
-    <nav class="navbar">
-        <a href="index.html" class="nav-brand">
-            <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
-        </a>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-        <div class="nav-links">
-            <a href="index.html" class="active">Accueil</a>
-            <a href="apropos.html">À propos</a>
-            <a href="parcours.html">Parcours</a>
-            <a href="experience.html">Expérience</a>
-            <a href="competences.html">Compétences</a>
-            <a href="projets.html">Projets</a>
-            <a href="certifications.html">Certifications</a>
-            <a href="divers.html">Divers</a>
-            <a href="contact.html">Contact</a>
-            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
-        </div>
-        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">Mon CV</a>
-    </nav>
-    <div class="hero-container">
-        <div class="hero-content">
-            <span class="greeting">Portfolio</span>
-            <h1 class="main-title">Avci Semih<span class="dot">.</span></h1>
-            <div class="separator-line"></div>
-            <h2 class="subtitle">Étudiant en première année de BUT Réseaux et Télécommunications</h2>
-            <div class="description">
-                <p>Configuration et sécurisation des réseaux informatiques / Étude des fondamentaux de la transmission de l'information. Actuellement en formation à l'<strong>IUT Clermont Auvergne</strong>.</p>
-                <p class="availability">Disponible pour une alternance à partir de <i>septembre 2026</i></p>
-            </div>
-            <div class="hero-buttons">
-                <a href="contact.html" class="btn-primary">Prendre contact</a>
-                <a href="parcours.html" class="btn-text">Découvrir le parcours &rarr;</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="image-frame" id="tilt-image">
-                <img src="images/matete.jpeg" alt="Semih Avci" class="profile-pic-large">
-            </div>
-            <div class="frame-decor"></div>
-        </div>
+<body class="atelier home-page">
+<div class="reading-progress" aria-hidden="true"></div><div class="cursor-glow" aria-hidden="true"></div>
+<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
+<a class="skip-link" href="#page-content">Aller au contenu</a>
+<div class="menu-shade" aria-hidden="true"></div>
+<nav class="site-nav" aria-label="Navigation principale">
+  <a class="site-brand" href="index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
+  <div class="site-nav-links" id="site-menu"><a href="index.html" aria-current="page">Accueil</a>
+<a href="apropos.html">À propos</a>
+<a href="parcours.html">Parcours</a>
+<a href="experience.html">Expérience</a>
+<a href="competences.html">Compétences</a>
+<a href="projets.html">Projets</a>
+<a href="certifications.html">Certifications</a>
+<a href="divers.html">Divers</a>
+<a href="contact.html">Contact</a><a class="site-menu-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
+  <a class="site-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
+  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</nav>
+<main class="home-main" id="page-content" tabindex="-1">
+  <section class="home-hero" aria-labelledby="intro-title">
+    <div class="home-copy">
+      <p class="home-eyebrow">Portfolio · Réseaux &amp; Télécommunications</p>
+      <h1 class="home-name" id="intro-title">Semih<br><em>Avci.</em></h1>
+      <h2 class="home-role">Connecter les systèmes.<br>Sécuriser ce qui compte.</h2>
+      <p class="home-intro">Étudiant en 2e année de BUT Réseaux &amp; Télécommunications à l’IUT Clermont Auvergne, parcours cybersécurité. Je développe mes compétences en configurant, en testant et en documentant des infrastructures réseau et système.</p>
+      <div class="home-actions"><a class="action-primary" href="projets.html">Explorer mes projets <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="action-secondary" href="contact.html">Me contacter <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+      <p class="home-availability"><span class="availability-light" aria-hidden="true"></span>À la recherche d’une alternance ou d’un stage</p>
     </div>
-    <footer class="site-footer">
-        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tiltImage = document.getElementById('tilt-image');
-            if (window.matchMedia("(min-width: 768px)").matches) {
-                tiltImage.addEventListener('mousemove', (e) => {
-                    const rect = tiltImage.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -15; 
-                    const rotateY = ((x - centerX) / centerX) * 15;
-                    tiltImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                    tiltImage.style.boxShadow = `${-rotateY}px ${rotateX}px 30px rgba(212, 175, 55, 0.4)`;
-                });
-                tiltImage.addEventListener('mouseleave', () => {
-                    tiltImage.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                    tiltImage.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.5)";
-                });
-            }
-            const cursorGlow = document.getElementById('cursorGlow');
-            document.addEventListener('mousemove', (e) => {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            });
-            const buttons = document.querySelectorAll('.btn-primary, .btn-cv-desktop');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const ripple = document.createElement('span');
-                    ripple.style.left = `${x}px`;
-                    ripple.style.top = `${y}px`;
-                    ripple.classList.add('ripple');
-                    this.appendChild(ripple);
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-            const canvas = document.getElementById('gold-particles');
-            const ctx = canvas.getContext('2d');
-            let particlesArray = [];
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2;
-                    this.speedX = Math.random() * 0.5 - 0.25; 
-                    this.speedY = Math.random() * -1 - 0.2; 
-                    const colors = ['rgba(212, 175, 55, 0.8)', 'rgba(249, 229, 160, 0.6)', 'rgba(170, 140, 44, 0.5)'];
-                    this.color = colors[Math.floor(Math.random() * colors.length)];
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.y < 0) {
-                        this.y = canvas.height;
-                        this.x = Math.random() * canvas.width;
-                    }
-                    if (this.x < 0 || this.x > canvas.width) {
-                        this.speedX *= -1;
-                    }
-                }
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-            function initParticles() {
-                particlesArray = [];
-                const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
-                for (let i = 0; i < numberOfParticles; i++) {
-                    particlesArray.push(new Particle());
-                }
-            }
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                    particlesArray[i].draw();
-                }
-                requestAnimationFrame(animateParticles);
-            }
-            initParticles();
-            animateParticles();
-        });
-    </script>
-</body>
-</html>
+    <div class="portrait-stage">
+      <div class="portrait-orbit" aria-hidden="true"></div>
+      <div class="portrait-card"><img src="images/matete.jpeg" alt="Portrait de Semih Avci" width="350" height="438" fetchpriority="high"><div class="portrait-caption"><span>Semih Avci</span><span>IUT Clermont Auvergne</span></div></div>
+      <div class="floating-note"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z"/><path d="m8 12 3 3 5-6"/></svg><div><strong>Réseaux &amp; cybersécurité</strong><small>Apprendre. Pratiquer. Progresser.</small></div></div>
+      <span class="portrait-index" aria-hidden="true">Le concret, avant tout / 2026</span>
+    </div>
+  </section>
+  <div class="expertise-strip" aria-label="Technologies utilisées"><span><i aria-hidden="true">✦</i>Cisco &amp; VLAN</span><span><i aria-hidden="true">✦</i>Windows Server</span><span><i aria-hidden="true">✦</i>Stormshield</span><span><i aria-hidden="true">✦</i>Python &amp; PHP</span><span><i aria-hidden="true">✦</i>Linux &amp; Docker</span></div>
+  <section class="home-section" aria-labelledby="projects-title">
+    <header class="home-section-heading" data-reveal><div><p class="section-eyebrow">01 / Du savoir à la pratique</p><h2 id="projects-title">Des projets <em>concrets.</em></h2></div><a class="action-secondary" href="projets.html">Toutes mes réalisations <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></header>
+    <div class="selected-work">
+      <a class="work-tile" href="projets/projet-pharmasante.html" data-reveal>
+        <div class="work-tile-visual"><img src="images/projets/pharmasante/switch-vlans.png" alt="Configuration des VLAN du projet PharmaSanté" loading="lazy" width="800" height="500"></div>
+        <div class="work-tile-copy"><div class="work-tile-topline"><span>Infrastructure sécurisée · SAE 2.04</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></div><h3>PharmaSanté</h3><p>Une infrastructure complète : segmentation réseau, services Windows et filtrage des flux avec Stormshield.</p><div class="work-tile-tags"><span>Cisco / VLAN</span><span>AD · DNS · DHCP</span><span>Stormshield</span></div></div>
+      </a>
+      <a class="work-tile" href="projets/projet-cyberskills.html" data-reveal>
+        <div class="work-tile-visual cyber"><img src="images/projets/cyberskills/catalogue-formations.jpg" alt="Catalogue des formations de la plateforme CyberSkills" loading="lazy" width="800" height="500"></div>
+        <div class="work-tile-copy"><div class="work-tile-topline"><span>Développement web · SAÉ 2.03</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></div><h3>CyberSkills</h3><p>Une plateforme d’apprentissage avec authentification, gestion des rôles et suivi de la progression.</p><div class="work-tile-tags"><span>PHP</span><span>MySQL / PDO</span><span>Chart.js</span></div></div>
+      </a>
+    </div>
+  </section>
+  <section class="home-section compact-top" aria-labelledby="expertise-title">
+    <header class="home-section-heading" data-reveal><div><p class="section-eyebrow">02 / Mes domaines de pratique</p><h2 id="expertise-title">Comprendre. <em>Construire.</em></h2></div><p class="section-note">Des compétences développées en formation et mises en pratique dans mes réalisations.</p></header>
+    <div class="expertise-grid">
+      <article class="expertise-card" data-reveal><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="5" rx="1"/><path d="M12 7v5M4 16v-4h16v4"/><rect x="1" y="16" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><rect x="17" y="16" width="6" height="5" rx="1"/></svg><span class="card-number">01</span><h3>Réseaux &amp; systèmes</h3><p>Routage Cisco, VLAN, Active Directory, DNS, DHCP et déploiement de services.</p></article>
+      <article class="expertise-card" data-reveal><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z"/><path d="m8 12 3 3 5-6"/></svg><span class="card-number">02</span><h3>Cybersécurité</h3><p>Filtrage Stormshield, analyse Wireshark, scans Nmap et sécurisation des infrastructures.</p></article>
+      <article class="expertise-card" data-reveal><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="16" rx="2"/><path d="m7 8-3 3 3 3m10-6 3 3-3 3M13 7l-2 8M8 22h8M12 19v3"/></svg><span class="card-number">03</span><h3>Développement</h3><p>Python, PHP, MySQL et interfaces web pour créer des outils utiles et documentés.</p></article>
+    </div>
+    <div class="credentials-row" data-reveal><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="m8 13-2 9 6-3 6 3-2-9"/></svg><div><strong>Fortinet NSE 1 &amp; NSE 2</strong><p>Deux certifications pour consolider mes bases en cybersécurité.</p></div><a href="certifications/fortinet-nse.html">Voir les certifications ↗</a></div>
+  </section>
+<section class="cyber-focus" aria-labelledby="home-cyber-title"><header class="cyber-heading" data-reveal><span class="case-label">03 / Mon orientation</span><h2 id="home-cyber-title">Construire mon parcours en cybersécurité.</h2><p>Comprendre les infrastructures pour mieux les protéger : segmentation, gestion des accès et diagnostic réseau.</p></header><div class="cyber-grid"><article class="cyber-card" data-reveal><span class="case-label">01 / Cloisonner</span><h3>Segmentation & filtrage</h3><p>VLAN, routage inter-VLAN, DMZ et ACL : organiser les communications et vérifier les flux autorisés en travaux pratiques.</p><a href="projets/projet-segmentation.html">Voir la SAE 2.01</a></article><article class="cyber-card" data-reveal><span class="case-label">02 / Administrer</span><h3>Identités & droits d’accès</h3><p>Active Directory, unités d’organisation, GPO et lecteurs réseau : relier l’administration Windows à la gestion des accès.</p><a href="projets/sous-projets/tp-ad.html">Voir les travaux AD / GPO</a></article><article class="cyber-card" data-reveal><span class="case-label">03 / Diagnostiquer</span><h3>OSPF, MPLS & analyse de trames</h3><p>Étudier les échanges entre routeurs, suivre les annonces LDP et rapprocher les captures des tables de commutation.</p><a href="projets/projet-ospf-mpls.html">Explorer le TP OSPF / MPLS</a></article></div></section>
+  <section class="home-contact" data-reveal aria-labelledby="contact-title"><div><p class="section-eyebrow">04 / La suite s’écrit ensemble</p><h2 id="contact-title">Faisons connaissance.</h2><p>Une alternance, un stage ou une question sur mon parcours ?<br>Je serai ravi d’en discuter avec vous.</p></div><a class="action-primary" href="contact.html">Prendre contact <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></section>
+</main>
+<footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><button class="motion-toggle" type="button" aria-pressed="true">Animations : activées</button><div class="footer-links"><a href="projets.html">Mes projets</a><a href="contact.html">Me contacter ↗</a></div></footer>
+<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
+</body></html>

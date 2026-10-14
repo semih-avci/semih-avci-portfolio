@@ -8,40 +8,41 @@
     <link rel="stylesheet" href="themes/comp.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="themes/navigation.css">
+<meta name="theme-color" content="#10110e"><link rel="icon" href="images/logosemih.png">
+<link rel="stylesheet" href="themes/atelier.css?v=20261014-1">
+<script defer src="scripts/atelier.js?v=20261014-1"></script>
+<noscript><style>
+@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
+</style></noscript>
 </head>
-<body>
+<body class="atelier">
+<div class="reading-progress" aria-hidden="true"></div><div class="cursor-glow" aria-hidden="true"></div>
+<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
+<a class="skip-link" href="#page-content">Aller au contenu</a>
+<div class="menu-shade" aria-hidden="true"></div>
+<nav class="site-nav" aria-label="Navigation principale">
+  <a class="site-brand" href="index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
+  <div class="site-nav-links" id="site-menu"><a href="index.html">Accueil</a>
+<a href="apropos.html">À propos</a>
+<a href="parcours.html">Parcours</a>
+<a href="experience.html">Expérience</a>
+<a href="competences.html" aria-current="page">Compétences</a>
+<a href="projets.html">Projets</a>
+<a href="certifications.html">Certifications</a>
+<a href="divers.html">Divers</a>
+<a href="contact.html">Contact</a><a class="site-menu-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
+  <a class="site-cv" href="CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
+  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</nav>
+<main id="page-content" tabindex="-1">
 
-    <canvas id="network-particles"></canvas>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-brand">
-            <img src="images/logosemih.png" alt="Logo Avci Semih" class="nav-logo-img">
-        </a>
 
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-burger">
-            <span></span><span></span><span></span>
-        </label>
 
-        <div class="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="apropos.html">À propos</a>
-            <a href="parcours.html">Parcours</a>
-            <a href="experience.html">Expérience</a>
-            <a href="competences.html" class="active">Compétences</a>
-            <a href="projets.html">Projets</a>
-            <a href="certifications.html">Certifications</a>
-            <a href="divers.html">Divers</a>
-            <a href="contact.html">Contact</a>
-            
-            <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-mobile">Mon CV</a>
-        </div>
-        
-        <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">Mon CV</a>
-    </nav>
 
     <div class="main-container">
         <h1 class="page-title">Mes Compétences</h1>
+<section class="cyber-focus" id="cap-cyber" aria-labelledby="skills-cyber-title"><header class="cyber-heading"><span class="case-label">Spécialisation en cours / BUT 2</span><h2 id="skills-cyber-title">Mon socle pour la cybersécurité</h2><p>Des compétences développées en formation, reliées aux projets où je les mets en pratique.</p></header><div class="cyber-grid"><article class="cyber-card" data-reveal><span class="case-label">01 / Cloisonner</span><h3>Segmentation & filtrage</h3><p>VLAN, routage inter-VLAN, DMZ et ACL : organiser les communications et vérifier les flux autorisés en travaux pratiques.</p><a href="projets/projet-segmentation.html">Voir la SAE 2.01</a></article><article class="cyber-card" data-reveal><span class="case-label">02 / Administrer</span><h3>Identités & droits d’accès</h3><p>Active Directory, unités d’organisation, GPO et lecteurs réseau : relier l’administration Windows à la gestion des accès.</p><a href="projets/sous-projets/tp-ad.html">Voir les travaux AD / GPO</a></article><article class="cyber-card" data-reveal><span class="case-label">03 / Diagnostiquer</span><h3>OSPF, MPLS & analyse de trames</h3><p>Étudier les échanges entre routeurs, suivre les annonces LDP et rapprocher les captures des tables de commutation.</p><a href="projets/projet-ospf-mpls.html">Explorer le TP OSPF / MPLS</a></article><article class="cyber-card" data-reveal><span class="case-label">04 / Protéger</span><h3>Infrastructure PharmaSanté</h3><p>Un projet en équipe qui réunit segmentation, pare-feu Stormshield, services Windows et dépannage réseau.</p><a href="projets/projet-pharmasante.html">Voir les configurations</a></article><article class="cyber-card" data-reveal><span class="case-label">05 / Déployer</span><h3>Linux & conteneurisation</h3><p>Administration Debian, services réseau, conteneurs Apache et publication de ports : comprendre ce qu’un service expose.</p><a href="projets/sous-projets/tp-docker.html">Voir les travaux Docker</a></article><article class="cyber-card" data-reveal><span class="case-label">06 / Automatiser</span><h3>Bash & sauvegardes</h3><p>Permissions Linux, scripts Shell, rsync et tâches cron : administrer les systèmes et automatiser des opérations répétitives.</p><a href="projets/projet-adminsys.html">Voir le volet systèmes</a></article></div><div class="case-note">Les travaux présentés sont des projets et TP de formation. Les compétences continuent de se consolider au fil des mises en pratique.</div><h3 style="margin-top:35px">La suite de mon parcours</h3><ol class="learning-path"><li><span class="case-label">Acquis en formation</span><strong>Réseaux & systèmes</strong>VLAN, routage, Linux, Windows Server, services et virtualisation.</li><li><span class="case-label">En cours</span><strong>Parcours cybersécurité</strong>Approfondir l’analyse réseau, la gestion des accès et la sécurisation des infrastructures.</li><li><span class="case-label">Objectif</span><strong>Mettre ces bases en pratique</strong>Progresser en stage ou en alternance sur des missions systèmes, réseaux et sécurité.</li></ol></section>
 
         <input type="radio" name="main-view" id="view-tech" checked>
         <input type="radio" name="main-view" id="view-human">
@@ -59,14 +60,14 @@
                     <input type="radio" name="tabs" id="tab-prog" value="prog">
                     <input type="radio" name="tabs" id="tab-web" value="web">
                     <input type="radio" name="tabs" id="tab-langues" value="langues">
-        
+
                     <div class="skills-sidebar">
                         <label for="tab-reseaux" class="tab-label">Réseaux & Télécoms</label>
                         <label for="tab-prog" class="tab-label">Prog & Systèmes</label>
                         <label for="tab-web" class="tab-label">Web & BDD</label>
                         <label for="tab-langues" class="tab-label">Langues</label>
                     </div>
-        
+
                     <div class="skills-display">
                         <div class="content content-reseaux" id="content-reseaux">
                             <h2>Réseaux & Télécommunications</h2>
@@ -98,7 +99,7 @@
                                 </li>
                             </ul>
                         </div>
-        
+
                         <div class="content content-prog" id="content-prog">
                             <h2>Programmation & Systèmes</h2>
                             <p>Administration de serveurs et développement logiciel.</p>
@@ -125,7 +126,7 @@
                                 </li>
                             </ul>
                         </div>
-        
+
                         <div class="content content-web" id="content-web">
                             <h2>Développement Web & BDD</h2>
                             <p>Création d'interfaces et modélisation de données.</p>
@@ -148,7 +149,7 @@
                                 </li>
                             </ul>
                         </div>
-        
+
                         <div class="content content-langues" id="content-langues">
                             <h2>Langues</h2>
                             <div class="animate-group">
@@ -206,7 +207,7 @@
     </div>
 
     <input type="checkbox" id="trigger-cisco" class="modal-toggle">
-    <div class="modal-overlay"><label for="trigger-cisco" class="modal-close-area"></label><div class="modal-content"><label for="trigger-cisco" class="close-modal">×</label><h3>Matériel Cisco & Routage</h3><div class="modal-body"><p><strong>Ce que je maîtrise :</strong> Configuration complète sur matériel physique et outil de simulation Cisco Packet Tracer.</p><p><strong>Détails :</strong> Création de VLANs, configuration de ports Trunk/Access, et mise en œuvre du routage statique et dynamique (protocoles RIP et EIGRP) pour interconnecter des architectures. </p></div></div></div>
+    <div class="modal-overlay"><label for="trigger-cisco" class="modal-close-area"></label><div class="modal-content"><label for="trigger-cisco" class="close-modal">×</label><h3>Matériel Cisco & Routage</h3><div class="modal-body"><p><strong>Ce que je maîtrise :</strong> Configuration complète sur matériel physique et outil de simulation Cisco Packet Tracer.</p><p><strong>Détails :</strong> Création de VLANs, configuration de ports Trunk/Access, et mise en œuvre du routage statique et dynamique (protocoles RIP, EIGRP et OSPF) pour interconnecter des architectures. </p></div></div></div>
 
     <input type="checkbox" id="trigger-ip" class="modal-toggle">
     <div class="modal-overlay"><label for="trigger-ip" class="modal-close-area"></label><div class="modal-content"><label for="trigger-ip" class="close-modal">×</label><h3>Adressage IPv4 & IPv6</h3><div class="modal-body"><p><strong>Ce que je maîtrise :</strong> Conception et implémentation de plans d'adressage complets.</p><p><strong>IPv6 :</strong> Compréhension de l'autoconfiguration, du protocole NDP (Network Discovery Protocol) et de la résolution d'adresses MAC sans ARP. Configuration de passerelles et de routes par défaut sous Linux et Cisco Packet Tracer.</p></div></div></div>
@@ -233,7 +234,7 @@
     <div class="modal-overlay"><label for="trigger-bash" class="modal-close-area"></label><div class="modal-content"><label for="trigger-bash" class="close-modal">×</label><h3>Bash & Environnement Linux</h3><div class="modal-body"><p><strong>Ce que je maîtrise :</strong> Administration de serveurs via l'interface en ligne de commande (CLI).</p><p><strong>Détails :</strong> Gestion des permissions (chmod/chown), manipulation de fichiers, et écriture de scripts Shell. Mise en place de processus de sauvegardes automatisées via <code>rsync</code> et <code>crontab</code>.</p></div></div></div>
 
     <input type="checkbox" id="trigger-ad" class="modal-toggle">
-    <div class="modal-overlay"><label for="trigger-ad" class="modal-close-area"></label><div class="modal-content"><label for="trigger-ad" class="close-modal">×</label><h3>Windows Server & Active Directory</h3><div class="modal-body"><p><strong>Ce que je maîtrise :</strong> Déploiement et administration d'infrastructures Microsoft.</p><p><strong>Détails :</strong> Création de domaines, conception d'Unités Organisationnelles (UO) et gestion des comptes utilisateurs. Mise en place de Stratégies de Groupes (GPO).</p></div></div></div>
+    <div class="modal-overlay"><label for="trigger-ad" class="modal-close-area"></label><div class="modal-content"><label for="trigger-ad" class="close-modal">×</label><h3>Windows Server & Active Directory</h3><div class="modal-body"><p><strong>Ce que je maîtrise :</strong> Déploiement et administration d'infrastructures Microsoft.</p><p><strong>Détails :</strong> Création de domaines, conception d’unités d’organisation (OU), gestion des comptes et mise en place de GPO. Travaux sur les lecteurs réseau, scripts de connexion, politiques de fond d’écran et vérification avec un compte utilisateur.</p></div></div></div>
 
     <input type="checkbox" id="trigger-docker" class="modal-toggle">
     <div class="modal-overlay"><label for="trigger-docker" class="modal-close-area"></label><div class="modal-content"><label for="trigger-docker" class="close-modal">×</label><h3>Docker & VirtualBox</h3><div class="modal-body"><p><strong>Ce que je maîtrise :</strong> Conteneurisation et gestion d'hyperviseurs.</p><p><strong>Détails :</strong> Configuration de réseaux virtuels NAT sous VirtualBox et gestion de VMs (clones/exportation). Utilisation de Docker : création de conteneurs (Apache), redirections de ports, création de snapshots d'images modifiées (commit) et exportation sécurisée sous forme d'archive (.tar).</p></div></div></div>
@@ -268,170 +269,10 @@
     <input type="checkbox" id="trigger-patience" class="modal-toggle">
     <div class="modal-overlay"><label for="trigger-patience" class="modal-close-area"></label><div class="modal-content"><label for="trigger-patience" class="close-modal">×</label><h3>Patience</h3><div class="modal-body"><p class="section-title">Comment je l'ai acquise :</p><p>Grâce au travail de montage vidéo, à l'analyse de trames sur Wireshark, et la résolution de bugs en programmation C et Python.</p><hr><p class="section-title">En entreprise, cela sert à :</p><p>Diagnostiquer des pannes systèmes complexes sans précipitation, et expliquer calmement des problèmes informatiques aux utilisateurs finaux avec des mots simples.</p></div></div></div>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            /* =========================================================
-               1. APPARITION EN CASCADE 3D (Effet Domino)
-               ========================================================= */
-            
-            function animateChildrenIn(container) {
-                if(!container) return;
-                const items = container.querySelectorAll('.animate-group > li, .animate-group > .soft-skill-card, .animate-group > .language-item');
-                
-                items.forEach((item, index) => {
-                    item.style.opacity = '0';
-                    item.animate([
-                        { transform: 'perspective(600px) rotateX(-60deg) translateY(20px)', opacity: 0 },
-                        { transform: 'perspective(600px) rotateX(0deg) translateY(0)', opacity: 1 }
-                    ], {
-                        duration: 600,
-                        delay: index * 80, 
-                        fill: 'both',
-                        easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-                    });
-                });
-
-                if(container.id === 'content-langues') {
-                    const fills = container.querySelectorAll('.fill');
-                    fills.forEach((fill, index) => {
-                        fill.style.width = '0%';
-                        setTimeout(() => {
-                            const targetWidth = fill.getAttribute('data-width');
-                            fill.style.transition = 'width 1s cubic-bezier(0.25, 1, 0.5, 1)';
-                            fill.style.width = targetWidth;
-                        }, 300 + (index * 150));
-                    });
-                }
-            }
-
-            animateChildrenIn(document.getElementById('content-reseaux'));
-
-            const techTabs = document.querySelectorAll('input[name="tabs"]');
-            techTabs.forEach(tab => {
-                tab.addEventListener('change', (e) => {
-                    const targetId = 'content-' + e.target.value;
-                    const container = document.getElementById(targetId);
-                    animateChildrenIn(container);
-                });
-            });
-
-            const mainTabs = document.querySelectorAll('input[name="main-view"]');
-            mainTabs.forEach(tab => {
-                tab.addEventListener('change', (e) => {
-                    if(e.target.id === 'view-human') {
-                        animateChildrenIn(document.getElementById('content-human'));
-                    } else {
-                        const activeTechTab = document.querySelector('input[name="tabs"]:checked');
-                        if(activeTechTab) {
-                            animateChildrenIn(document.getElementById('content-' + activeTechTab.value));
-                        }
-                    }
-                });
-            });
+    </main>
+<footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><button class="motion-toggle" type="button" aria-pressed="true">Animations : activées</button><div class="footer-links"><a href="projets.html">Mes projets</a><a href="contact.html">Me contacter ↗</a></div></footer>
+<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
 
 
-            /* =========================================================
-               2. ONDES D'INTERACTION (RIPPLE EFFECT)
-               ========================================================= */
-            const buttons = document.querySelectorAll('.ripple-btn, .btn-cv-desktop');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    const ripple = document.createElement('span');
-                    ripple.style.left = `${x}px`;
-                    ripple.style.top = `${y}px`;
-                    ripple.classList.add('ripple');
-                    
-                    this.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                });
-            });
-
-
-            /* =========================================================
-               3. LE RÉSEAU DORÉ (Particules interactives par connexion)
-               ========================================================= */
-            const canvas = document.getElementById('network-particles');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-
-            class NetworkNode {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * 0.8; 
-                    this.vy = (Math.random() - 0.5) * 0.8;
-                    this.radius = Math.random() * 2 + 1;
-                }
-
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                    if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
-                    ctx.fill();
-                }
-            }
-
-            function initNetwork() {
-                particles = [];
-                let numNodes = Math.floor((canvas.width * canvas.height) / 18000);
-                for (let i = 0; i < numNodes; i++) {
-                    particles.push(new NetworkNode());
-                }
-            }
-
-            function animateNetwork() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw();
-
-                    for (let j = i; j < particles.length; j++) {
-                        let dx = particles[i].x - particles[j].x;
-                        let dy = particles[i].y - particles[j].y;
-                        let distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < 130) {
-                            ctx.beginPath();
-                            let opacity = 1 - (distance / 130);
-                            ctx.strokeStyle = `rgba(212, 175, 55, ${opacity * 0.4})`;
-                            ctx.lineWidth = 1;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                requestAnimationFrame(animateNetwork);
-            }
-
-            initNetwork();
-            animateNetwork();
-        });
-    </script>
 </body>
 </html>

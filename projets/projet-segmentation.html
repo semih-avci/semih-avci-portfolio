@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SAE 2.01 : mise en pratique des VLAN, du routage inter-VLAN, d’une DMZ et des listes de contrôle d’accès dans un réseau de formation.">
+    <title>Segmentation &amp; contrôle des flux — Semih Avci</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../themes/projet-detail.css">
+<meta name="theme-color" content="#10110e"><link rel="icon" href="../images/logosemih.png">
+<link rel="stylesheet" href="../themes/atelier.css?v=20261014-1">
+<script defer src="../scripts/atelier.js?v=20261014-1"></script>
+<noscript><style>
+@media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
+</style></noscript>
+</head>
+<body class="project-detail-body atelier">
+<div class="reading-progress" aria-hidden="true"></div><div class="cursor-glow" aria-hidden="true"></div>
+<div class="site-ambient" aria-hidden="true"></div><canvas class="site-dust" aria-hidden="true"></canvas>
+<a class="skip-link" href="#page-content">Aller au contenu</a>
+<div class="menu-shade" aria-hidden="true"></div>
+<nav class="site-nav" aria-label="Navigation principale">
+  <a class="site-brand" href="../index.html" aria-label="Semih Avci — Accueil"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">Semih Avci.</span></a>
+  <div class="site-nav-links" id="site-menu"><a href="../index.html">Accueil</a>
+<a href="../apropos.html">À propos</a>
+<a href="../parcours.html">Parcours</a>
+<a href="../experience.html">Expérience</a>
+<a href="../competences.html">Compétences</a>
+<a href="../projets.html" aria-current="page">Projets</a>
+<a href="../certifications.html">Certifications</a>
+<a href="../divers.html">Divers</a>
+<a href="../contact.html">Contact</a><a class="site-menu-cv" href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Voir mon CV ↗</a></div>
+  <a class="site-cv" href="../CV_AVCI_Semih.jpeg" target="_blank" rel="noopener noreferrer">Mon CV <span aria-hidden="true">↗</span></a>
+  <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</nav>
+<main id="page-content" tabindex="-1"><div class="main-container"><header class="project-header-simple"><a class="back-link" href="../projets.html">← Tous les projets</a><p class="case-label" style="margin-top:28px">BUT Réseaux &amp; Télécommunications / Travaux pratiques</p><h1 class="page-title">Segmentation &amp; contrôle des flux</h1><p class="case-intro">SAE 2.01 : mise en pratique des VLAN, du routage inter-VLAN, d’une DMZ et des listes de contrôle d’accès dans un réseau de formation.</p></header>
+<div class="case-layout">
+<section class="case-block" data-reveal><h2>Le contexte</h2><p>Construire une infrastructure segmentée et organiser les communications entre ses différentes zones. L’objectif est de faire fonctionner le réseau tout en limitant les accès aux échanges prévus.</p><div class="tech-tags"><span>Cisco</span><span>VLAN</span><span>Inter-VLAN</span><span>DMZ</span><span>ACL</span></div></section>
+<section class="case-block" data-reveal><h2>Les travaux menés</h2><ul><li>Organiser les équipements dans des VLAN et établir le plan d’adressage.</li><li>Configurer le routage entre les réseaux.</li><li>Intégrer une DMZ pour séparer les services concernés du réseau interne.</li><li>Appliquer des ACL et tester les communications.</li></ul></section>
+<section class="case-block" data-reveal><h2>Ce que les tests doivent vérifier</h2><p>Un réseau qui répond au ping n’est pas forcément correctement filtré. La vérification consiste à comparer le résultat attendu au résultat observé pour chaque communication testée.</p><ul><li>Le trafic autorisé atteint-il sa destination ?</li><li>Le trafic interdit est-il bien bloqué ?</li><li>Un refus vient-il d’une ACL, d’un défaut d’adressage ou d’une route absente ?</li></ul></section>
+<section class="case-block" data-reveal><h2>Le lien avec la cybersécurité</h2><p>La segmentation et les règles d’accès contribuent à limiter les communications inutiles et les possibilités de déplacement entre zones. Cette base réseau se retrouve ensuite dans le projet PharmaSanté, avec un pare-feu Stormshield et des services Windows.</p><p class="case-note">Projet réalisé dans le cadre de la formation. Cette présentation résume la démarche ; elle ne constitue pas un audit d’un système en production.</p></section>
+</div><div class="case-links"><a class="action-primary" href="projet-pharmasante.html">Découvrir PharmaSanté →</a><a class="action-secondary" href="projet-ospf-mpls.html">Voir le diagnostic OSPF / MPLS ↗</a></div></div></main>
+<footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><button class="motion-toggle" type="button" aria-pressed="true">Animations : activées</button><div class="footer-links"><a href="../projets.html">Mes projets</a><a href="../contact.html">Me contacter ↗</a></div></footer>
+<button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
+
+
+</body>
+</html>
