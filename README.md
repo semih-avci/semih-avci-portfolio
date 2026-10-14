@@ -50,3 +50,7 @@ git diff --check
 ```
 
 Le contrôle statique vérifie les ressources et ancres locales, les identifiants et la navigation des 27 pages actives. Le test JavaScript vérifie les états du menu et des animations dans un environnement DOM simulé. Aucun contrôle visuel dans un navigateur n'a été réalisé pour cette mise à jour.
+
+### Ajustement après retour visuel
+
+Le soulignement de navigation est placé sous la ligne de texte, à une distance indépendante de la hauteur des liens. Les cartes restent fixes : aucun effet d’inclinaison, de flottement ou de déplacement au survol. Les reflets et le fond animé sont conservés. Les deux nouvelles fiches suivent désormais le plan Contexte, Travail fourni, Difficultés rencontrées, Résultats, avec un sommaire à ancres. Les récits des autres projets sont conservés.

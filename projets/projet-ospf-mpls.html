@@ -12,8 +12,8 @@
 
     <link rel="stylesheet" href="../themes/projet-detail.css">
 <meta name="theme-color" content="#10110e"><link rel="icon" href="../images/logosemih.png">
-<link rel="stylesheet" href="../themes/atelier.css?v=20261014-1">
-<script defer src="../scripts/atelier.js?v=20261014-1"></script>
+<link rel="stylesheet" href="../themes/atelier.css?v=20261014-2">
+<script defer src="../scripts/atelier.js?v=20261014-2"></script>
 <noscript><style>
 @media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
 </style></noscript>
@@ -38,12 +38,32 @@
   <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </nav>
 <main id="page-content" tabindex="-1"><div class="main-container"><header class="project-header-simple"><a class="back-link" href="../projets.html">← Tous les projets</a><p class="case-label" style="margin-top:28px">BUT Réseaux &amp; Télécommunications / Travaux pratiques</p><h1 class="page-title">OSPF &amp; MPLS</h1><p class="case-intro">Configuration et diagnostic d’un réseau de routeurs dans GNS3 : voisinages OSPF, annonces LDP et commutation de labels.</p></header>
+<nav class="case-chapters" aria-label="Sommaire du projet"><a href="#contexte">1. Contexte</a><a href="#travail-fourni">2. Travail fourni</a><a href="#difficultes">3. Difficultés rencontrées</a><a href="#resultats">4. Résultats</a></nav>
 <div class="case-layout">
-<section class="case-block" data-reveal><h2>Le travail réalisé</h2><ul><li>Configurer l’adressage et les interfaces des routeurs dans GNS3.</li><li>Mettre en place le routage OSPF et examiner la table de routage.</li><li>Activer MPLS sur les liens internes et consulter les informations LDP.</li><li>Capturer les échanges et interpréter les tables LIB et LFIB.</li></ul></section>
-<section class="case-block" data-reveal><h2>Ma démarche de diagnostic</h2><ol><li>Vérifier l’état des interfaces et la connectivité IP.</li><li>Contrôler les voisins OSPF et les routes apprises.</li><li>Comparer les annonces LDP aux labels locaux et distants.</li><li>Suivre le chemin d’une destination et expliquer les opérations sur les labels.</li></ol></section>
-<section class="case-block wide" data-reveal><span class="case-label">Une observation concrète</span><h2>Comprendre le retrait du label</h2><p>Pour la destination <code>192.168.4.0/24</code>, l’étude des captures et des tables a permis de suivre la propagation des annonces de labels. L’entrée <code>implicit-null</code> annoncée par le routeur de sortie explique l’action <code>Pop Label</code> du routeur précédent.</p><p class="case-note">L’annonce du routeur de sortie n’était pas directement visible dans la capture examinée. La table des bindings LDP a permis de compléter l’analyse : une capture seule ne suffit pas toujours à expliquer le comportement du réseau.</p></section>
-<section class="case-block" data-reveal><h2>Outils mobilisés</h2><p>GNS3, CLI Cisco et Wireshark.</p><ul><li><code>show ip route</code> : examiner les routes.</li><li><code>show ip ospf neighbor</code> : vérifier les voisinages.</li><li><code>show mpls ldp bindings</code> : comparer les bindings.</li><li><code>show mpls forwarding-table</code> : lire les opérations sur les labels.</li></ul></section>
-<section class="case-block" data-reveal><h2>Le lien avec la cybersécurité</h2><p>Comprendre le chemin des paquets aide à distinguer un défaut de routage d’un problème de filtrage. Ce TP développe surtout une méthode : observer, croiser plusieurs sources, puis justifier le diagnostic.</p><p class="case-note">MPLS transporte des flux à l’aide de labels ; il ne chiffre pas à lui seul les communications.</p></section>
+<section id="contexte" class="case-block wide" data-reveal>
+<h2>1. Contexte</h2>
+<p>Ce TP de BUT R&amp;T porte sur la configuration et l’analyse d’un réseau de routeurs dans GNS3. L’objectif est de comprendre comment OSPF construit les routes et comment MPLS utilise les labels pour acheminer les paquets.</p>
+<p>Environnement : GNS3, CLI Cisco et Wireshark.</p>
+</section>
+<section id="travail-fourni" class="case-block wide" data-reveal>
+<h2>2. Travail fourni</h2>
+<ul><li>Configuration de l’adressage et des interfaces des routeurs.</li><li>Mise en place du routage OSPF et examen des routes apprises.</li><li>Activation de MPLS sur les liens internes et consultation des annonces LDP.</li><li>Capture des échanges et comparaison des tables LIB et LFIB.</li></ul>
+<h3>Démarche de diagnostic</h3>
+<ol><li>Vérifier l’état des interfaces et la connectivité IP.</li><li>Contrôler les voisins OSPF et les routes apprises.</li><li>Comparer les annonces LDP aux labels locaux et distants.</li><li>Suivre une destination et expliquer les opérations sur les labels.</li></ol>
+<h3>Commandes utilisées</h3>
+<ul><li><code>show ip route</code> : examiner les routes.</li><li><code>show ip ospf neighbor</code> : vérifier les voisinages.</li><li><code>show mpls ldp bindings</code> : comparer les bindings.</li><li><code>show mpls forwarding-table</code> : lire les opérations sur les labels.</li></ul>
+</section>
+<section id="difficultes" class="case-block wide" data-reveal>
+<h2>3. Difficultés rencontrées</h2>
+<p>L’annonce du routeur de sortie n’était pas directement visible dans la capture examinée. La capture seule ne permettait donc pas d’expliquer entièrement le retrait du label.</p>
+<p>Pour compléter l’analyse, j’ai croisé les trames disponibles avec la table des bindings LDP. Cette comparaison permet de distinguer ce qui est directement observé dans la capture de ce qui est établi par les tables des routeurs.</p>
+</section>
+<section id="resultats" class="case-block wide" data-reveal>
+<h2>4. Résultats</h2>
+<p>Pour la destination <code>192.168.4.0/24</code>, l’étude des captures et des tables a permis de suivre la propagation des annonces de labels. L’entrée <code>implicit-null</code> annoncée par le routeur de sortie explique l’action <code>Pop Label</code> du routeur précédent.</p>
+<p>Ce travail renforce ma méthode de diagnostic : observer, croiser plusieurs sources, puis justifier le comportement du réseau. Comprendre le chemin des paquets aide aussi à distinguer un défaut de routage d’un problème de filtrage.</p>
+<p class="case-note">MPLS transporte des flux à l’aide de labels ; il ne chiffre pas à lui seul les communications.</p>
+</section>
 </div><div class="case-links"><a class="action-primary" href="projet-segmentation.html">Voir la segmentation réseau →</a><a class="action-secondary" href="../competences.html#cap-cyber">Mes compétences en cybersécurité ↗</a></div></div></main>
 <footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><button class="motion-toggle" type="button" aria-pressed="true">Animations : activées</button><div class="footer-links"><a href="../projets.html">Mes projets</a><a href="../contact.html">Me contacter ↗</a></div></footer>
 <button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>

@@ -112,15 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.setProperty('--spot-x', `${event.clientX - bounds.left}px`);
         card.style.setProperty('--spot-y', `${event.clientY - bounds.top}px`);
         card.style.setProperty('--spot-alpha', '.14');
-        card.style.setProperty('--tilt-x', `${-(event.clientY - bounds.top - bounds.height / 2) / bounds.height * 5}deg`);
-        card.style.setProperty('--tilt-y', `${(event.clientX - bounds.left - bounds.width / 2) / bounds.width * 7}deg`);
-        card.classList.add('is-tilting');
       });
     });
     card.addEventListener('pointerleave', () => {
       cancelAnimationFrame(pointerFrame);
       card.style.setProperty('--spot-alpha', '0');
-      card.classList.remove('is-tilting');
     });
   });
   const activeDialog = () => {
@@ -201,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (motionOff()) {
       revealObserver?.disconnect();
       document.querySelectorAll('.is-pending').forEach(el => el.classList.remove('is-pending'));
-      document.querySelectorAll('.is-tilting').forEach(el => el.classList.remove('is-tilting'));
     }
   });
 

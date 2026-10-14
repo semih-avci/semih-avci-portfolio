@@ -319,7 +319,7 @@ html { scrollbar-gutter: stable; }
   .atelier .site-nav { display: grid; grid-template-columns: 145px minmax(0,1fr) 102px; gap: 16px; }
   .atelier .site-nav-links { display: grid; grid-template-columns: repeat(9,minmax(0,1fr)); gap: 2px; }
   .atelier .site-nav-links > a { font-size: 11px; padding: 0; }
-  .atelier .site-nav-links > a::after { bottom: 18px; left: 18%; width: 64%; }
+  .atelier .site-nav-links > a::after { top: calc(50% + 14px); bottom: auto; left: 18%; width: 64%; }
 }
 @media(min-width:1001px) and (max-width:1180px) {
   .atelier .site-nav { grid-template-columns: 40px minmax(0,1fr) 94px; }
@@ -351,7 +351,6 @@ html { scrollbar-gutter: stable; }
 .atelier .motion-reveal.is-pending { translate: 0 38px; }
 .atelier .action-primary { transition: transform .2s var(--ease), translate .3s, background .3s; }
 @media(hover:hover) and (pointer:fine) {
-  .atelier .is-tilting { transform: perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)); }
   .atelier .work-tile,.atelier .expertise-card,.atelier .cyber-card,.atelier .portrait-card { transition: transform .25s var(--ease), border-color .4s, box-shadow .4s; }
 }
 @keyframes orbit-spin { to { rotate: 360deg; } }
@@ -401,3 +400,30 @@ html[data-motion=paused] .atelier .is-tilting { transform: none; }
 html[data-motion=paused] .atelier .cursor-glow,html[data-motion=paused] .atelier .site-dust { display: none; }
 html.page-hidden .atelier *,html.page-hidden .atelier *::before,html.page-hidden .atelier *::after { animation-play-state: paused !important; }
 @media(prefers-reduced-motion:reduce) { .atelier .cursor-glow { display: none; } .atelier .is-tilting { transform: none; } }
+
+/* Fixed content cards: keep lighting, never tilt, float or lift the panels. */
+.atelier :is(.featured-card, .identity-card, .contact-card, .work-tile,
+  .expertise-card, .cyber-card, .case-block, .tilt-card, .timeline-content,
+  .timeline-item, .interest-card, .interest-wrapper, .card-wrapper, .soft-skill-card,
+  .path-card, .certification-card, .certifications-summary, .certificate-note,
+  .home-note, .evidence-card, .portrait-card, .portrait-stage, .floating-note,
+  .code-module, .skill-list li, .context-item, .work-item, .difficulty-item, .result-item) {
+  transform: none !important;
+  translate: none !important;
+  rotate: none !important;
+  scale: none !important;
+  animation: none !important;
+  transition-property: opacity, border-color, background-color, box-shadow !important;
+}
+.atelier .motion-reveal, .atelier .motion-reveal.is-pending {
+  translate: none;
+  transition-property: opacity;
+}
+.atelier .project-preview, .atelier .work-tile-visual img {
+  transform: none !important;
+  transition-property: opacity;
+}
+.atelier .case-chapters { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 28px; }
+.atelier .case-chapters a { color: var(--gold); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; font-size: 12px; line-height: 1.5; text-decoration: none; }
+.atelier .case-chapters a:hover { background: rgba(229,193,110,.08); }
+.atelier .case-block h3 { font: 600 17px/1.4 'Manrope',sans-serif; margin: 24px 0 12px; }

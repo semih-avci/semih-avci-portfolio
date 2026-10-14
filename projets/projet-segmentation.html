@@ -12,8 +12,8 @@
 
     <link rel="stylesheet" href="../themes/projet-detail.css">
 <meta name="theme-color" content="#10110e"><link rel="icon" href="../images/logosemih.png">
-<link rel="stylesheet" href="../themes/atelier.css?v=20261014-1">
-<script defer src="../scripts/atelier.js?v=20261014-1"></script>
+<link rel="stylesheet" href="../themes/atelier.css?v=20261014-2">
+<script defer src="../scripts/atelier.js?v=20261014-2"></script>
 <noscript><style>
 @media(max-width:1000px){body.atelier{padding-top:0!important}.atelier .site-nav{position:relative;top:0;left:0;transform:none;margin:12px auto 24px;height:auto;flex-wrap:wrap;padding:16px}.atelier .site-nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;width:100%;max-height:none;box-shadow:none;background:transparent;padding:0;border:0;order:3}.atelier .site-nav-links a{padding:9px 12px}.atelier .site-menu-toggle,.atelier .site-menu-cv{display:none}}
 </style></noscript>
@@ -38,11 +38,28 @@
   <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </nav>
 <main id="page-content" tabindex="-1"><div class="main-container"><header class="project-header-simple"><a class="back-link" href="../projets.html">← Tous les projets</a><p class="case-label" style="margin-top:28px">BUT Réseaux &amp; Télécommunications / Travaux pratiques</p><h1 class="page-title">Segmentation &amp; contrôle des flux</h1><p class="case-intro">SAE 2.01 : mise en pratique des VLAN, du routage inter-VLAN, d’une DMZ et des listes de contrôle d’accès dans un réseau de formation.</p></header>
+<nav class="case-chapters" aria-label="Sommaire du projet"><a href="#contexte">1. Contexte</a><a href="#travail-fourni">2. Travail fourni</a><a href="#difficultes">3. Difficultés rencontrées</a><a href="#resultats">4. Résultats</a></nav>
 <div class="case-layout">
-<section class="case-block" data-reveal><h2>Le contexte</h2><p>Construire une infrastructure segmentée et organiser les communications entre ses différentes zones. L’objectif est de faire fonctionner le réseau tout en limitant les accès aux échanges prévus.</p><div class="tech-tags"><span>Cisco</span><span>VLAN</span><span>Inter-VLAN</span><span>DMZ</span><span>ACL</span></div></section>
-<section class="case-block" data-reveal><h2>Les travaux menés</h2><ul><li>Organiser les équipements dans des VLAN et établir le plan d’adressage.</li><li>Configurer le routage entre les réseaux.</li><li>Intégrer une DMZ pour séparer les services concernés du réseau interne.</li><li>Appliquer des ACL et tester les communications.</li></ul></section>
-<section class="case-block" data-reveal><h2>Ce que les tests doivent vérifier</h2><p>Un réseau qui répond au ping n’est pas forcément correctement filtré. La vérification consiste à comparer le résultat attendu au résultat observé pour chaque communication testée.</p><ul><li>Le trafic autorisé atteint-il sa destination ?</li><li>Le trafic interdit est-il bien bloqué ?</li><li>Un refus vient-il d’une ACL, d’un défaut d’adressage ou d’une route absente ?</li></ul></section>
-<section class="case-block" data-reveal><h2>Le lien avec la cybersécurité</h2><p>La segmentation et les règles d’accès contribuent à limiter les communications inutiles et les possibilités de déplacement entre zones. Cette base réseau se retrouve ensuite dans le projet PharmaSanté, avec un pare-feu Stormshield et des services Windows.</p><p class="case-note">Projet réalisé dans le cadre de la formation. Cette présentation résume la démarche ; elle ne constitue pas un audit d’un système en production.</p></section>
+<section id="contexte" class="case-block wide" data-reveal>
+<h2>1. Contexte</h2>
+<p>Dans la SAE 2.01, le travail consiste à construire une infrastructure segmentée et à organiser les communications entre ses différentes zones. L’objectif est de faire fonctionner le réseau tout en limitant les accès aux échanges prévus.</p>
+<div class="tech-tags"><span>Cisco</span><span>VLAN</span><span>Inter-VLAN</span><span>DMZ</span><span>ACL</span></div>
+</section>
+<section id="travail-fourni" class="case-block wide" data-reveal>
+<h2>2. Travail fourni</h2>
+<ul><li>Organisation des équipements dans des VLAN et définition du plan d’adressage.</li><li>Configuration du routage entre les réseaux.</li><li>Intégration d’une DMZ pour séparer les services concernés du réseau interne.</li><li>Application des ACL et tests des communications.</li></ul>
+</section>
+<section id="difficultes" class="case-block wide" data-reveal>
+<h2>3. Difficultés rencontrées</h2>
+<p>Le point délicat du diagnostic est de distinguer un blocage prévu par les règles d’accès d’un défaut de configuration. Un réseau qui répond au ping n’est pas forcément correctement filtré.</p>
+<p>La vérification repose sur la comparaison entre les communications attendues et les résultats observés : le trafic autorisé doit passer et le trafic interdit doit être bloqué. Lorsqu’un échange échoue, il faut examiner les ACL, l’adressage et les routes.</p>
+</section>
+<section id="resultats" class="case-block wide" data-reveal>
+<h2>4. Résultats</h2>
+<p>Ce travail relie la configuration des VLAN, le routage et le contrôle des flux dans une même infrastructure de formation. Il constitue une base pour le projet PharmaSanté, qui ajoute notamment un pare-feu Stormshield et des services Windows.</p>
+<p>La segmentation et les règles d’accès contribuent à limiter les communications inutiles entre zones. L’intérêt de la démarche est de vérifier les accès autorisés et les refus attendus, au-delà de la seule connectivité.</p>
+<p class="case-note">Cette synthèse présente les travaux de formation ; elle ne fournit pas de bilan chiffré des tests.</p>
+</section>
 </div><div class="case-links"><a class="action-primary" href="projet-pharmasante.html">Découvrir PharmaSanté →</a><a class="action-secondary" href="projet-ospf-mpls.html">Voir le diagnostic OSPF / MPLS ↗</a></div></div></main>
 <footer class="site-footer"><p>© 2026 Semih Avci · Réseaux, systèmes &amp; cybersécurité</p><button class="motion-toggle" type="button" aria-pressed="true">Animations : activées</button><div class="footer-links"><a href="../projets.html">Mes projets</a><a href="../contact.html">Me contacter ↗</a></div></footer>
 <button class="back-to-top" type="button" aria-label="Revenir en haut de la page">↑</button>
