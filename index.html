@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio de Semih Avci, étudiant en BUT Réseaux et Télécommunications à l'IUT Clermont Auvergne.">
     <title>Portfolio Semih Avci</title>
-    <link rel="stylesheet" href="themes/accueil.css">
+    <link rel="stylesheet" href="themes/accueil.css?v=20261105-unifie">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         #gold-particles {
@@ -55,13 +55,11 @@
             position: relative;
             z-index: 10;
         }
-        .navbar {
-            z-index: 2000;
-        }
     </style>
-    <link rel="stylesheet" href="themes/navigation.css">
+    <link rel="stylesheet" href="themes/navigation.css?v=20261105-unifie">
+    <script defer src="scripts/navigation.js?v=20261105-unifie"></script>
 </head>
-<body>
+<body class="site-layout">
     <canvas id="gold-particles"></canvas>
     <div class="cursor-glow" id="cursorGlow"></div>
     <nav class="navbar">
@@ -88,11 +86,13 @@
         </div>
         <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">Mon CV</a>
     </nav>
-    <div class="hero-container">
+    <main class="main-container home-container site-page">
+        <header class="page-header site-header">
+            <h1 class="page-title">Avci Semih</h1>
+            <p class="subtitle-instruction">Portfolio &middot; Réseaux &amp; Télécommunications</p>
+        </header>
+        <div class="hero-container">
         <div class="hero-content">
-            <span class="greeting">Portfolio</span>
-            <h1 class="main-title">Avci Semih<span class="dot">.</span></h1>
-            <div class="separator-line"></div>
             <h2 class="subtitle">Étudiant en première année de BUT Réseaux et Télécommunications</h2>
             <div class="description">
                 <p>Configuration et sécurisation des réseaux informatiques / Étude des fondamentaux de la transmission de l'information. Actuellement en formation à l'<strong>IUT Clermont Auvergne</strong>.</p>
@@ -109,7 +109,8 @@
             </div>
             <div class="frame-decor"></div>
         </div>
-    </div>
+        </div>
+    </main>
     <footer class="site-footer">
         <p>&copy; 2026 Avci Semih. Tous droits réservés.</p>
     </footer>

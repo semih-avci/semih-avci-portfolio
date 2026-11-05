@@ -6,11 +6,12 @@
     <meta name="description" content="Découvrez le profil de Semih Avci, étudiant en BUT Réseaux et Télécommunications à l'IUT Clermont Auvergne.">
     <title>À propos - Avci Semih</title>
     
-    <link rel="stylesheet" href="themes/apr.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="themes/navigation.css">
+    <link rel="stylesheet" href="themes/apr.css?v=20261105-unifie">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="themes/navigation.css?v=20261105-unifie">
+    <script defer src="scripts/navigation.js?v=20261105-unifie"></script>
 </head>
-<body>
+<body class="site-layout">
 
     <canvas id="gold-particles"></canvas>
     
@@ -43,7 +44,11 @@
         <a href="CV_AVCI_Semih.jpeg" target="_blank" class="btn-cv-desktop">Mon CV</a>
     </nav>
 
-    <main class="about-container">
+    <main class="about-container site-page">
+        <header class="page-header site-header">
+            <h1 class="page-title">À propos</h1>
+            <p class="subtitle-instruction">Profil &amp; motivations</p>
+        </header>
         <div class="identity-card" id="idCard">
             <div class="id-photo-wrapper">
                 <div class="photo-frame">
@@ -56,7 +61,7 @@
             
             <div class="id-content">
                 <span class="tech-tag">Profil Étudiant</span>
-                <h1>Avci Semih<span class="dot-gold">.</span></h1>
+                <h2 class="id-name">Avci Semih<span class="dot-gold">.</span></h2>
                 <h2 class="role">Étudiant en BUT Réseaux & Télécoms</h2>
                 <div class="separator-line"></div>
                 

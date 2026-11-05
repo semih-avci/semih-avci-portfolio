@@ -11,14 +11,14 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: #050505;
     color: #ffffff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     /* ESPACE DE SÉCURITÉ : 130px pour que le titre ne touche jamais la navbar */
-    padding-top: 130px; 
+
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
@@ -41,101 +41,11 @@ body {
 /* ========================================= */
 /* BARRE DE NAVIGATION (DESKTOP)             */
 /* ========================================= */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90px;
-    background: rgba(5, 5, 5, 0.98);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    z-index: 2000;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    z-index: 2001;
-}
-
-.nav-logo-img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    margin-right: 15px;
-    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
-    transition: transform 0.3s;
-}
-
-.navbar:hover .nav-logo-img { transform: scale(1.05); }
 
 /* Éléments masqués sur Desktop, affichés sur Mobile */
-.nav-toggle { display: none; }
-.nav-burger { 
-    display: none; 
-    flex-direction: column; 
-    justify-content: space-between; 
-    width: 30px; 
-    height: 21px; 
-    cursor: pointer; 
-    z-index: 2002; 
-}
-.nav-burger span { 
-    display: block; 
-    height: 3px; 
-    width: 100%; 
-    background-color: #d4af37; 
-    border-radius: 3px; 
-    transition: all 0.3s ease; 
-}
-
-.nav-links {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    gap: 2vw;
-    margin: 0 10px; 
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #a3a3a3;
-    font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 5px 0; 
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #d4af37;
-    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-}
-
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
 /* LE BOUTON CV */
-.btn-cv, .btn-cv-desktop {
+.btn-cv{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -143,7 +53,7 @@ body {
     padding: 0 25px;
     min-width: 125px;
     gap: 8px;
-    margin: 0 0 0 auto; 
+    margin: 0 0 0 auto;
     background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
     color: #000000 !important;
     font-size: 0.75rem;
@@ -159,14 +69,14 @@ body {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.btn-cv:hover, .btn-cv-desktop:hover {
+.btn-cv:hover{
     transform: translateY(-2px);
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
     background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
 }
 
-.btn-cv::before, .btn-cv-desktop::before {
-    content: '';
+.btn-cv::before{
+    content: "";
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
@@ -174,23 +84,9 @@ body {
     transition: 0.6s;
 }
 
-.btn-cv:hover::before, .btn-cv-desktop:hover::before { left: 100%; }
+.btn-cv:hover::before{ left: 100%; }
 
 /* Bouton pour le menu mobile (masqué sur PC) */
-.btn-cv-mobile { 
-    display: none; 
-    margin-top: 20px; 
-    padding: 12px 30px; 
-    border: 1px solid #d4af37; 
-    color: #d4af37 !important; 
-    text-decoration: none; 
-    text-transform: uppercase; 
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    letter-spacing: 1px; 
-    text-align: center; 
-}
-
 
 /* ========================================= */
 /* TITRES ET CONTENEURS                      */
@@ -206,9 +102,9 @@ body {
 .page-title {
     text-align: center;
     margin-bottom: 50px;
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     /* TAILLE FLUIDE : le titre ne se coupera plus en deux sur téléphone */
-    font-size: clamp(2rem, 6vw, 4.5rem); 
+    font-size: clamp(2rem, 6vw, 4.5rem);
     font-weight: 400;
     font-style: italic;
     line-height: 1.2;
@@ -303,7 +199,7 @@ input[name="main-view"] { display: none; }
 }
 
 .skills-wrapper::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
     background: linear-gradient(90deg, transparent, #d4af37, transparent);
 }
 
@@ -321,21 +217,21 @@ input[name="main-view"] { display: none; }
     padding: 25px 35px;
     cursor: pointer;
     color: #a3a3a3;
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.2rem;
     transition: all 0.4s ease;
     border-left: 3px solid transparent;
     display: flex; align-items: center;
 }
 
-.tab-label:hover { color: #ffffff; background-color: rgba(255, 255, 255, 0.02); padding-left: 45px; }
+.tab-label:hover { color: #ffffff; background-color: rgba(255, 255, 255, 0.02); padding-left: 35px; }
 
 #tab-reseaux:checked ~ .skills-sidebar label[for="tab-reseaux"],
 #tab-prog:checked ~ .skills-sidebar label[for="tab-prog"],
 #tab-web:checked ~ .skills-sidebar label[for="tab-web"],
 #tab-langues:checked ~ .skills-sidebar label[for="tab-langues"] {
     background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), transparent);
-    color: #d4af37; border-left-color: #d4af37; font-style: italic; padding-left: 45px;
+    color: #d4af37; border-left-color: #d4af37; font-style: italic; padding-left: 35px;
 }
 
 .skills-display {
@@ -352,7 +248,7 @@ input[name="main-view"] { display: none; }
 
 .skills-display h2 {
     color: #d4af37;
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     /* TAILLE FLUIDE POUR LE TITRE DES ONGLETS */
     font-size: clamp(1.6rem, 4vw, 2.8rem);
     margin-top: 0; margin-bottom: 30px;
@@ -379,7 +275,7 @@ input[name="main-view"] { display: none; }
 
 .skill-list strong {
     display: block; margin-bottom: 15px; color: #ffffff;
-    font-family: 'Playfair Display', serif; font-size: 1.3rem;
+    font-family: "Playfair Display", serif; font-size: 1.3rem;
 }
 
 .btn-see-more {
@@ -408,7 +304,7 @@ input[name="main-view"] { display: none; }
     border-radius: 16px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden;
 }
 
-.human-skills-container h2 { color: #d4af37; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-top: 0; margin-bottom: 20px; }
+.human-skills-container h2 { color: #d4af37; font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 3rem); margin-top: 0; margin-bottom: 20px; }
 .human-skills-container > p { color: #a3a3a3; font-size: 1.1rem; margin-bottom: 60px; max-width: 600px; }
 
 .soft-skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: stretch; }
@@ -417,7 +313,7 @@ input[name="main-view"] { display: none; }
     border-radius: 8px; transition: all 0.4s ease; position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 100%;
 }
 .soft-skill-card:hover { background: rgba(212, 175, 55, 0.03); border-color: #d4af37; transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); }
-.soft-skill-card h3 { color: #ffffff; font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-top: 0; margin-bottom: 25px; }
+.soft-skill-card h3 { color: #ffffff; font-family: "Playfair Display", serif; font-size: 1.8rem; margin-top: 0; margin-bottom: 25px; }
 .soft-skill-card p { color: #a3a3a3; font-size: 1.05rem; line-height: 1.8; margin-bottom: 40px; flex-grow: 1; }
 
 .btn-see-more-card {
@@ -447,7 +343,7 @@ input[name="main-view"] { display: none; }
 .close-modal:hover { color: #d4af37; transform: rotate(90deg); }
 .modal-close-area { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: default; }
 
-.modal-content h3 { color: #d4af37; font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-top: 0; padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 30px; }
+.modal-content h3 { color: #d4af37; font-family: "Playfair Display", serif; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-top: 0; padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 30px; }
 .modal-body p { color: #ffffff; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
 .modal-body strong { color: #d4af37; font-weight: 600; }
 
@@ -467,49 +363,15 @@ input[name="main-view"] { display: none; }
 
 @media (max-width: 900px) {
     /* Sécurité pour le titre */
-    body { padding-top: 100px; }
-    
+
     /* Transformation de la Navbar en menu Hamburger */
-    .navbar { 
-        height: 70px; 
-        padding: 0 20px; 
-        flex-direction: row; /* FORCE la ligne au lieu de la colonne */
-        justify-content: space-between; 
-        background: #050505; 
-    }
-    .nav-logo-img { height: 35px; margin: 0; }
-    
+
     /* On cache le bouton de CV ordinateur et on affiche le Hamburger */
-    .btn-cv, .btn-cv-desktop { display: none !important; }
-    .nav-burger { display: flex; }
+    .btn-cv{ display: none !important; }
 
     /* Le menu de liens qui glisse depuis la droite */
-    .nav-links {
-        position: fixed;
-        top: 0; right: 0;
-        width: 75%; height: 100vh;
-        background-color: #050505;
-        border-left: 1px solid #d4af37;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        margin: 0;
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
-        z-index: 2000;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.8);
-    }
 
-    .nav-toggle:checked ~ .nav-links { transform: translateX(0); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-    
-    .nav-links a { font-size: 1.2rem; color: #f0f0f0; }
-    
     /* On affiche le bouton de CV version mobile DANS le menu hamburger */
-    .nav-links .btn-cv-mobile { display: block; }
 
     /* Adaptation du Slider Techniques / Humaines */
     .slider-controls { width: 90%; margin: 20px auto 40px auto; }
@@ -522,7 +384,7 @@ input[name="main-view"] { display: none; }
         background: rgba(0, 0, 0, 0.3); scrollbar-width: none;
     }
     .skills-sidebar::-webkit-scrollbar { display: none; }
-    
+
     .tab-label {
         padding: 15px 20px; white-space: nowrap; font-size: 0.9rem;
         border-left: none; border-bottom: 3px solid transparent; flex-shrink: 0;
@@ -536,14 +398,14 @@ input[name="main-view"] { display: none; }
         border-left: none; border-bottom-color: #d4af37;
         padding-left: 20px; background: rgba(212, 175, 55, 0.05);
     }
-    
+
     /* Espacements divers réduits pour mobile */
     .skills-display { padding: 30px 20px; }
-    
+
     /* CORRECTION : Le titre de la catégorie peut se mettre sur plusieurs lignes */
-    .skills-display h2 { 
-        font-size: 1.6rem; 
-        line-height: 1.3; 
+    .skills-display h2 {
+        font-size: 1.6rem;
+        line-height: 1.3;
         white-space: normal; /* Autorise le retour à la ligne */
         word-wrap: break-word;
     }

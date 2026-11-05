@@ -14,14 +14,14 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: #050505;
     color: #ffffff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     /* CORRECTION DU BUG : On laisse 130px d'espace vide en haut pour ne jamais toucher la navbar de 90px */
-    padding-top: 130px; 
+
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
@@ -44,156 +44,6 @@ body {
 /* ========================================= */
 /* BARRE DE NAVIGATION                       */
 /* ========================================= */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90px;
-    background: rgba(5, 5, 5, 0.98);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    z-index: 2000;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    z-index: 2001;
-}
-
-.nav-logo-img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    margin-right: 15px;
-    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
-    transition: transform 0.3s ease;
-}
-
-.navbar:hover .nav-logo-img { transform: scale(1.05); }
-.nav-toggle { display: none; }
-
-.nav-burger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 2002;
-}
-
-.nav-burger span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #d4af37;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-.nav-links {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    gap: 2vw; 
-    margin: 0 10px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #a0a0a0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 5px 0;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #d4af37;
-    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-}
-
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
-.btn-cv-desktop {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 37px;
-    padding: 0 25px;
-    min-width: 125px;
-    gap: 8px;
-    margin: 0 0 0 auto;
-    background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
-    color: #000000 !important;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border-radius: 4px;
-    border: 1px solid #f9e5a0;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.btn-cv-desktop:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-    background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
-}
-
-.btn-cv-desktop::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: 0.6s;
-}
-.btn-cv-desktop:hover::before { left: 100%; }
-
-.btn-cv-mobile {
-    display: none;
-    margin-top: 20px;
-    padding: 12px 30px;
-    border: 1px solid #d4af37;
-    color: #d4af37;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    text-align: center;
-}
 
 /* ========================================= */
 /* CONTENU ET EXPERIENCES                    */
@@ -207,7 +57,7 @@ body {
 }
 
 h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 3.8rem;
     font-weight: 400;
     font-style: italic;
@@ -222,7 +72,7 @@ h1 {
 .subtitle-instruction {
     display: block;
     color: #d4af37;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -238,22 +88,22 @@ details {
     max-width: 950px;
     margin: 0 auto 35px auto;
     background: linear-gradient(145deg, #151515 0%, #050505 100%);
-    
+
     /* Bords biseautés asymétriques */
     border-top: 1px solid rgba(212, 175, 55, 0.4);
     border-left: 1px solid rgba(212, 175, 55, 0.2);
     border-right: 1px solid rgba(0, 0, 0, 0.9);
     border-bottom: 1px solid rgba(0, 0, 0, 0.9);
     border-radius: 12px;
-    
+
     position: relative;
     z-index: 10;
-    
+
     /* PREPARATION 3D (pas d'overflow hidden !) */
     transition: transform 0.1s ease-out, box-shadow 0.1s ease-out, background 0.3s ease;
     transform-style: preserve-3d;
     box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.05);
-    
+
     animation: fadeInUp 0.8s ease forwards;
     opacity: 0;
 }
@@ -278,7 +128,7 @@ summary {
     justify-content: space-between;
     position: relative;
     background: linear-gradient(to right, rgba(212, 175, 55, 0.05), transparent);
-    
+
     /* LEVITATION MASSIVE */
     transform: translateZ(40px);
     transform-style: preserve-3d;
@@ -287,7 +137,7 @@ summary {
 summary::-webkit-details-marker { display: none; }
 
 summary strong {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.6rem;
     color: #fff;
     font-weight: 500;
@@ -297,7 +147,7 @@ summary strong {
 
 summary .exp-date {
     display: block;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
     color: #d4af37;
@@ -311,8 +161,8 @@ summary .exp-date {
 }
 
 summary::after {
-    content: '+';
-    font-family: 'Montserrat', sans-serif;
+    content: "+";
+    font-family: "Montserrat", sans-serif;
     font-size: 2.2rem;
     font-weight: 200;
     color: #d4af37;
@@ -322,7 +172,7 @@ summary::after {
 }
 
 details[open] summary::after {
-    content: '−';
+    content: "−";
     transform: rotate(180deg);
     color: #fff;
     text-shadow: none;
@@ -345,7 +195,7 @@ details[open] summary::after {
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
     flex-shrink: 0;
     transition: transform 0.3s ease;
-    
+
     /* Lévite encore plus haut que le summary */
     transform: translateZ(20px);
 }
@@ -362,7 +212,7 @@ details:hover .exp-logo {
     font-size: 1.05rem;
     line-height: 2;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
-    
+
     /* LEVITATION DU TEXTE */
     transform: translateZ(30px);
 }
@@ -402,8 +252,8 @@ details:hover .exp-logo {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; 
-    pointer-events: none; 
+    z-index: -1;
+    pointer-events: none;
 }
 
 .cursor-glow {
@@ -431,51 +281,12 @@ details:hover .exp-logo {
     to { transform: scale(4); opacity: 0; }
 }
 
-
 /* ========================================= */
 /* RESPONSIVE DESIGN                         */
 /* ========================================= */
 
 @media (max-width: 900px) {
     /* Sur mobile, on réduit l'espace en haut car la navbar est plus fine */
-    body { padding-top: 100px; }
-    
-    .navbar {
-        height: 70px;
-        padding: 0 20px;
-        flex-direction: row;
-        justify-content: space-between;
-        background: #050505;
-    }
-    .nav-logo-img { height: 35px; margin: 0; }
-    .btn-cv-desktop { display: none; }
-    .nav-burger { display: flex; }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 75%;
-        height: 100vh;
-        background-color: #050505;
-        border-left: 1px solid #d4af37;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        margin: 0;
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
-        z-index: 2000;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.8);
-    }
-
-    .nav-toggle:checked ~ .nav-links { transform: translateX(0); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-    .nav-links a { font-size: 1.2rem; color: #f0f0f0; }
-    .btn-cv-mobile { display: inline-block; }
 
     h1 { font-size: 2.5rem; }
 
@@ -497,9 +308,9 @@ details:hover .exp-logo {
     }
     .exp-logo { width: 40px; height: 40px; }
     summary strong { font-size: 1.3rem; }
-    
+
     .exp-details { padding: 20px 25px; }
-    
+
     /* Désactiver la 3D sur mobile pour éviter les bugs tactiles */
     details { transform-style: flat; }
     summary, .exp-details, .exp-logo { transform: none !important; }

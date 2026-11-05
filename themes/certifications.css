@@ -707,10 +707,6 @@
 }
 
 @media (max-width: 900px) {
-    .certifications-page {
-        padding-top: 0 !important;
-    }
-
     .certifications-container {
         width: min(91%, 680px);
     }

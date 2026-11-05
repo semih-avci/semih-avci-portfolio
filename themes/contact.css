@@ -12,13 +12,13 @@ html {
 body {
     background-color: #050505;
     color: #f0f0f0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     /* ESPACE DE SÉCURITÉ SUR ORDINATEUR */
-    padding-top: 130px;
+
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
@@ -35,68 +35,31 @@ body {
 /* ========================================= */
 /* BARRE DE NAVIGATION (DESKTOP)             */
 /* ========================================= */
-.navbar {
-    position: fixed; top: 0; left: 0; width: 100%; height: 90px;
-    background: rgba(5, 5, 5, 0.98); border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 25px; z-index: 5000; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-}
-.nav-brand { display: flex; align-items: center; z-index: 5001; }
-.nav-logo-img { height: 48px; width: auto; filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3)); transition: transform 0.3s ease; }
-.navbar:hover .nav-logo-img { transform: scale(1.05); }
 
 /* Éléments masqués sur Desktop, affichés sur Mobile */
-.nav-toggle { display: none; }
-.nav-burger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; z-index: 5002; }
-.nav-burger span { display: block; height: 3px; width: 100%; background-color: #d4af37; border-radius: 3px; transition: all 0.3s ease; }
-
-.nav-links { display: flex; flex: 1; justify-content: center; align-items: center; gap: 2vw; margin: 0 10px; }
-.nav-links a {
-    text-decoration: none; color: #a0a0a0; font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem); font-weight: 500; text-transform: uppercase;
-    letter-spacing: 1px; padding: 5px 0; position: relative; transition: all 0.3s ease; white-space: nowrap;
-}
-.nav-links a::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
-    background: #d4af37; transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-}
-.nav-links a:hover, .nav-links a.active { color: #ffffff; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
 /* LE BOUTON CV ROYAL (DESKTOP) */
-.btn-cv-desktop {
-    display: inline-flex; align-items: center; justify-content: center; height: 37px; padding: 0 25px;
-    min-width: 125px; gap: 8px; margin: 0 0 0 auto; background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
-    color: #000000 !important; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border-radius: 4px;
-    border: 1px solid #f9e5a0; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.btn-cv-desktop:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%); }
-.btn-cv-desktop::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); transition: 0.6s; }
-.btn-cv-desktop:hover::before { left: 100%; }
-
-.btn-cv-mobile { display: none; }
 
 /* ========================================= */
 /* STRUCTURE ET TITRES                       */
 /* ========================================= */
-.contact-container { 
-    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; 
-    padding: 0 20px 60px 20px; width: 90%; max-width: 1280px; margin: 0 auto; position: relative; z-index: 10; 
+.contact-container {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    padding: 0 20px 60px 20px; width: 90%; max-width: 1280px; margin: 0 auto; position: relative; z-index: 10;
 }
 .page-header { text-align: center; margin-bottom: 50px; }
 .main-title {
-    font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 400; 
+    font-family: "Playfair Display", serif; font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 400;
     font-style: italic; line-height: 1.1; margin: 0 0 10px 0; background: linear-gradient(to right, #ffffff 20%, #f0d78c 50%, #ffffff 80%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
     animation: fadeDown 1s ease-out;
 }
 .subtitle-instruction {
-    font-family: 'Montserrat', sans-serif; color: #d4af37; font-size: 1.1rem; font-weight: 300; margin: 0;
+    font-family: "Montserrat", sans-serif; color: #d4af37; font-size: 1.1rem; font-weight: 300; margin: 0;
     position: relative; display: inline-block; padding-bottom: 15px; opacity: 0; animation: fadeIn 1s ease-out 0.5s forwards;
 }
 .subtitle-instruction::after {
-    content: ''; display: block; width: 40px; height: 1px; background-color: #d4af37; margin: 10px auto 0 auto; box-shadow: 0 0 10px #d4af37;
+    content: ""; display: block; width: 40px; height: 1px; background-color: #d4af37; margin: 10px auto 0 auto; box-shadow: 0 0 10px #d4af37;
 }
 
 /* ========================================= */
@@ -132,8 +95,8 @@ body {
 
 .contact-item:hover .icon-circle { background: #d4af37; color: #000000; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); transform: translateZ(30px) scale(1.1); }
 
-.item-text h2 { font-family: 'Playfair Display', serif; color: #f0d78c; font-size: 1.3rem; margin: 0 0 5px 0; font-weight: 400; }
-.contact-link, .contact-text { font-family: 'Montserrat', sans-serif; color: #ffffff; text-decoration: none; font-size: 1.1rem; font-weight: 300; position: relative; transition: color 0.3s; }
+.item-text h2 { font-family: "Playfair Display", serif; color: #f0d78c; font-size: 1.3rem; margin: 0 0 5px 0; font-weight: 400; }
+.contact-link, .contact-text { font-family: "Montserrat", sans-serif; color: #ffffff; text-decoration: none; font-size: 1.1rem; font-weight: 300; position: relative; transition: color 0.3s; }
 .contact-item:hover .contact-link, .contact-item:hover .contact-text { color: #d4af37; }
 
 /* BULLE DE COPIE (PRESSE-PAPIERS) */
@@ -146,7 +109,7 @@ body {
 
 /* BOUTON LINKEDIN PULSANT */
 .social-links { margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: center; position: relative; z-index: 1; transform: translateZ(40px); }
-.social-btn { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 15px 40px; border: 1px solid #a3a3a3; border-radius: 50px; color: #a3a3a3; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; transition: all 0.4s ease; position: relative; overflow: hidden; box-shadow: 0 0 0 rgba(212, 175, 55, 0); animation: pulse 2s infinite; }
+.social-btn { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 15px 40px; border: 1px solid #a3a3a3; border-radius: 50px; color: #a3a3a3; font-family: "Montserrat", sans-serif; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; transition: all 0.4s ease; position: relative; overflow: hidden; box-shadow: 0 0 0 rgba(212, 175, 55, 0); animation: pulse 2s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
 .social-btn:hover { border-color: #d4af37; color: #000; background: #d4af37; transform: scale(1.05); animation: none; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5); }
 .social-btn svg { transition: transform 0.4s ease; }
@@ -167,54 +130,19 @@ body {
 /* ========================================= */
 @media (max-width: 900px) {
     /* CORRECTION : On tue le padding du body et on met une grosse marge au conteneur */
-    body { padding-top: 0 !important; }
-    
-    .contact-container { margin-top: 110px !important; } /* Empêche le titre de passer sous le menu ! */
-    
-    .navbar { height: 70px; padding: 0 20px; flex-direction: row; justify-content: space-between; background: #050505; }
-    .nav-logo-img { height: 35px; margin: 0; }
-    
-    .btn-cv-desktop { display: none !important; } /* Adieu le bouton PC sur mobile */
-    .nav-burger { display: flex; }
+
+     /* Adieu le bouton PC sur mobile */
 
     /* Le menu glissant */
-    .nav-links {
-        position: fixed; top: 0; right: 0; width: 75%; height: 100vh;
-        background-color: #050505; border-left: 1px solid #d4af37;
-        flex-direction: column; justify-content: center; align-items: center;
-        gap: 30px; margin: 0; transform: translateX(100%);
-        transition: transform 0.4s ease-in-out; z-index: 5000;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.8);
-    }
 
-    .nav-toggle:checked ~ .nav-links { transform: translateX(0); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-    
-    .nav-links a { font-size: 1.2rem; color: #f0f0f0; }
-    
     /* Bouton CV Mobile intégré DANS le menu hamburger */
-    .nav-links .btn-cv-mobile { 
-        display: block !important; 
-        margin-top: 20px; 
-        padding: 12px 30px; 
-        border: 1px solid #d4af37; 
-        color: #d4af37 !important; 
-        text-decoration: none; 
-        text-transform: uppercase; 
-        font-weight: 600; 
-        font-size: 0.9rem; 
-        letter-spacing: 1px; 
-        text-align: center; 
-    }
 
     /* Nettoyage 3D sur mobile pour éviter les bugs tactiles */
     .contact-card, .contact-item, .icon-circle, .social-links { transform-style: flat; transform: none !important; transition: none; }
     .contact-card { padding: 40px 20px; }
     .contact-item { flex-direction: column; text-align: center; gap: 15px; }
     .social-btn { width: 100%; justify-content: center; }
-    
+
     /* Gère la bulle de copie sur mobile */
     .copy-tooltip { position: relative; right: auto; top: auto; transform: none; margin-top: 10px; display: none; }
     .copy-tooltip.active { display: block; transform: none; }

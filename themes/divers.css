@@ -12,13 +12,13 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: #050505;
     color: #f0f0f0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 120px;
+
     overflow-x: hidden;
     background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 60%);
     background-attachment: scroll;
@@ -37,144 +37,12 @@ body {
 /* ========================================= */
 /* BARRE DE NAVIGATION (DESKTOP)             */
 /* ========================================= */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90px;
-    background: rgba(5, 5, 5, 0.98);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    z-index: 2000;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    z-index: 2001;
-}
-
-.nav-logo-img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-    margin-right: 15px;
-    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
-    transition: transform 0.3s ease;
-}
-
-.navbar:hover .nav-logo-img { transform: scale(1.05); }
 
 /* Éléments masqués sur Desktop */
-.nav-toggle { display: none; }
-.nav-burger { 
-    display: none; 
-    flex-direction: column; 
-    justify-content: space-between; 
-    width: 30px; 
-    height: 21px; 
-    cursor: pointer; 
-    z-index: 2002; 
-}
-.nav-burger span { 
-    display: block; 
-    height: 3px; 
-    width: 100%; 
-    background-color: #d4af37; 
-    border-radius: 3px; 
-    transition: all 0.3s ease; 
-}
-
-.nav-links {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center; 
-    gap: 2vw;
-    margin: 0 10px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #a0a0a0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.7rem, 1vw + 0.3rem, 0.85rem);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 5px 0;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #d4af37;
-    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-}
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
 /* LE BOUTON CV (DESKTOP) */
-.btn-cv-desktop {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 37px;
-    padding: 0 25px;
-    min-width: 125px;
-    gap: 8px;
-    margin: 0 0 0 auto; 
-    background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
-    color: #000000 !important;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border-radius: 4px;
-    border: 1px solid #f9e5a0;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.btn-cv-desktop:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-    background: linear-gradient(135deg, #fff7cc 0%, #d4af37 100%);
-}
-
-.btn-cv-desktop::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: 0.6s;
-}
-.btn-cv-desktop:hover::before { left: 100%; }
 
 /* Bouton mobile caché par défaut */
-.btn-cv-mobile { display: none; }
 
 /* ========================================= */
 /* STRUCTURE PRINCIPALE                      */
@@ -198,7 +66,7 @@ body {
 }
 
 .main-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 400;
     font-style: italic;
@@ -213,7 +81,7 @@ body {
 .subtitle-instruction {
     display: inline-block;
     color: #d4af37;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -224,7 +92,7 @@ body {
 }
 
 .subtitle-instruction::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -247,7 +115,7 @@ body {
 }
 
 .interest-wrapper {
-    perspective: 1500px; 
+    perspective: 1500px;
     position: relative;
 }
 
@@ -266,7 +134,7 @@ body {
     text-align: center;
     opacity: 0;
     animation: slideUp 0.8s ease forwards;
-    
+
     transform-style: preserve-3d;
     transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
     box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.8), inset 1px 1px 2px rgba(255, 255, 255, 0.05);
@@ -302,7 +170,7 @@ body {
 }
 
 .card-content h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -311,7 +179,7 @@ body {
 }
 
 .activity-name {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 2.5rem;
     color: #f0f0f0;
     margin-bottom: 35px;
@@ -326,7 +194,7 @@ body {
     background: transparent;
     border: 1px solid #d4af37;
     color: #d4af37;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -378,7 +246,7 @@ body {
 .close-icon:hover { color: #d4af37; transform: rotate(90deg); }
 
 .modal-title {
-    font-family: 'Playfair Display', serif; font-size: 2.5rem;
+    font-family: "Playfair Display", serif; font-size: 2.5rem;
     color: #d4af37; text-align: center; margin-bottom: 20px;
 }
 
@@ -418,52 +286,13 @@ body {
 /* ========================================= */
 @media (max-width: 900px) {
     /* CORRECTION DE L'ESPACE SUR MOBILE : 140px de sécurité pour éviter le chevauchement avec la navbar */
-    body { padding-top: 140px; }
-    
-    .navbar { 
-        height: 70px; padding: 0 20px; 
-        flex-direction: row; justify-content: space-between; 
-        background: #050505; 
-    }
-    .nav-logo-img { height: 35px; margin: 0; }
-    
+
     /* On cache le bouton Desktop ! */
-    .btn-cv-desktop { display: none !important; }
-    .nav-burger { display: flex; }
 
-    .nav-links {
-        position: fixed; top: 0; right: 0; width: 75%; height: 100vh;
-        background-color: #050505; border-left: 1px solid #d4af37;
-        flex-direction: column; justify-content: center; align-items: center;
-        gap: 30px; margin: 0; transform: translateX(100%);
-        transition: transform 0.4s ease-in-out; z-index: 2000;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.8);
-    }
-
-    .nav-toggle:checked ~ .nav-links { transform: translateX(0); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
-    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-    
-    .nav-links a { font-size: 1.2rem; color: #f0f0f0; }
-    
     /* On affiche le bouton Mobile DANS le menu ! */
-    .nav-links .btn-cv-mobile { 
-        display: block; 
-        margin-top: 20px; 
-        padding: 12px 30px; 
-        border: 1px solid #d4af37; 
-        color: #d4af37 !important; 
-        text-decoration: none; 
-        text-transform: uppercase; 
-        font-weight: 600; 
-        font-size: 0.9rem; 
-        letter-spacing: 1px; 
-        text-align: center; 
-    }
 
     .interests-grid { grid-template-columns: 1fr; padding: 0 20px; }
-    
+
     /* Sur mobile, on annule la 3D pour éviter les bugs tactiles */
     .interest-card { transform-style: flat; }
     .card-icon-wrapper, .card-content, .btn-see-more { transform: none !important; }
@@ -474,5 +303,5 @@ body {
 
 .site-footer {
     text-align: center; padding: 20px; background-color: #050505;
-    color: #d4af37; font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: auto; 
+    color: #d4af37; font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: auto;
 }
