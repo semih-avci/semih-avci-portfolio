@@ -118,6 +118,7 @@ body.site-layout * { letter-spacing: 0; }
 .site-page > .header-intro { margin: 0 auto 40px; max-width: 780px; color: var(--site-muted); text-align: center; }
 .site-header + .projects-separator { display: none; }
 .site-page .slider-controls { margin-top: 0; }
+.site-page .card-wrapper { margin-inline: auto; }
 .site-layout .site-footer {
     position: relative; z-index: 1; width: 100%; margin: auto 0 0;
     padding: 20px var(--site-gutter); background: #050505;
